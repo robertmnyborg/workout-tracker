@@ -1,65 +1,215 @@
-import Image from "next/image";
+import Link from "next/link";
+import { prisma } from "@/lib/prisma";
+import { startOfWeek, endOfWeek, format, differenceInMinutes } from "date-fns";
+import { WeekOverview } from "@/components/WeekOverview";
 
-export default function Home() {
+async function getProgram() {
+  return prisma.program.findFirst({
+    include: {
+      days: {
+        orderBy: { dayNumber: "asc" },
+        include: {
+          sections: {
+            orderBy: { order: "asc" },
+            include: {
+              exercises: { orderBy: { order: "asc" } },
+            },
+          },
+        },
+      },
+    },
+  });
+}
+
+async function getThisWeekSessions() {
+  const now = new Date();
+  const weekStart = startOfWeek(now, { weekStartsOn: 1 });
+  const weekEnd = endOfWeek(now, { weekStartsOn: 1 });
+
+  return prisma.workoutSession.findMany({
+    where: {
+      date: { gte: weekStart, lte: weekEnd },
+      completedAt: { not: null },
+    },
+    include: { programDay: true },
+  });
+}
+
+async function getRecentSessions() {
+  return prisma.workoutSession.findMany({
+    where: { completedAt: { not: null } },
+    include: {
+      programDay: true,
+      setLogs: true,
+    },
+    orderBy: { date: "desc" },
+    take: 5,
+  });
+}
+
+async function getStreak() {
+  const sessions = await prisma.workoutSession.findMany({
+    where: { completedAt: { not: null } },
+    orderBy: { date: "desc" },
+    select: { date: true },
+  });
+
+  if (sessions.length === 0) return 0;
+
+  let streak = 0;
+  const now = new Date();
+  let checkWeekStart = startOfWeek(now, { weekStartsOn: 1 });
+
+  const hasCurrentWeek = sessions.some((s) => s.date >= checkWeekStart);
+  if (!hasCurrentWeek) {
+    checkWeekStart = new Date(
+      checkWeekStart.getTime() - 7 * 24 * 60 * 60 * 1000
+    );
+  }
+
+  while (true) {
+    const weekEnd = endOfWeek(checkWeekStart, { weekStartsOn: 1 });
+    const hasSession = sessions.some(
+      (s) => s.date >= checkWeekStart && s.date <= weekEnd
+    );
+    if (!hasSession) break;
+    streak++;
+    checkWeekStart = new Date(
+      checkWeekStart.getTime() - 7 * 24 * 60 * 60 * 1000
+    );
+  }
+
+  return streak;
+}
+
+export default async function Dashboard() {
+  const [program, weekSessions, recentSessions, streak] = await Promise.all([
+    getProgram(),
+    getThisWeekSessions(),
+    getRecentSessions(),
+    getStreak(),
+  ]);
+
+  if (!program) {
+    return (
+      <div className="text-center py-20">
+        <h1 className="text-2xl font-bold mb-4">No Program Found</h1>
+        <p className="text-muted text-sm">
+          Run the seed script to load the workout program.
+        </p>
+      </div>
+    );
+  }
+
+  const completedDayNumbers = weekSessions.map((s) => s.programDay.dayNumber);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="space-y-8">
+      <div className="flex items-start justify-between">
+        <div>
+          <h1 className="text-2xl font-bold">{program.name}</h1>
+          <p className="text-muted text-sm mt-1">
+            Phase 1 — Foundation (Weeks 1-4)
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        {streak > 0 && (
+          <div className="bg-accent/10 text-accent-dark px-3 py-1.5 rounded-lg text-sm font-medium">
+            {streak} week streak
+          </div>
+        )}
+      </div>
+
+      <WeekOverview
+        days={program.days}
+        completedDayNumbers={completedDayNumbers}
+      />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {program.days.map((day) => {
+          const isCompleted = completedDayNumbers.includes(day.dayNumber);
+          const exerciseCount = day.sections.reduce(
+            (acc, s) => acc + s.exercises.length,
+            0
+          );
+
+          return (
+            <div
+              key={day.id}
+              className={`bg-card rounded-xl border p-5 ${
+                isCompleted ? "border-accent/40" : "border-border"
+              }`}
+            >
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <div className="text-xs font-medium text-muted uppercase tracking-wide">
+                    Day {day.dayNumber}
+                  </div>
+                  <h3 className="text-lg font-semibold mt-0.5">{day.name}</h3>
+                </div>
+                {isCompleted && (
+                  <span className="text-accent text-xl">✓</span>
+                )}
+              </div>
+              <p className="text-sm text-muted mb-1">{day.focus}</p>
+              <p className="text-xs text-muted mb-4">
+                {exerciseCount} exercises · {day.totalTime}
+              </p>
+              <Link
+                href={`/workout/${day.id}`}
+                className={`block text-center py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  isCompleted
+                    ? "bg-background text-muted hover:text-foreground border border-border"
+                    : "bg-primary text-white hover:bg-primary-dark"
+                }`}
+              >
+                {isCompleted ? "Do Again" : "Start Workout"}
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+
+      {recentSessions.length > 0 && (
+        <div>
+          <h2 className="text-lg font-semibold mb-3">Recent Workouts</h2>
+          <div className="space-y-2">
+            {recentSessions.map((session) => {
+              const duration = session.completedAt
+                ? differenceInMinutes(
+                    new Date(session.completedAt),
+                    new Date(session.startedAt)
+                  )
+                : null;
+
+              return (
+                <Link
+                  key={session.id}
+                  href={`/history?session=${session.id}`}
+                  className="flex items-center justify-between bg-card border border-border rounded-lg px-4 py-3 hover:border-primary/30 transition-colors"
+                >
+                  <div>
+                    <div className="font-medium text-sm">
+                      Day {session.programDay.dayNumber}:{" "}
+                      {session.programDay.name}
+                    </div>
+                    <div className="text-xs text-muted">
+                      {format(new Date(session.date), "EEE, MMM d")}
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-sm font-medium">
+                      {session.setLogs.length} sets
+                    </div>
+                    {duration !== null && (
+                      <div className="text-xs text-muted">{duration} min</div>
+                    )}
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      </main>
+      )}
     </div>
   );
 }
