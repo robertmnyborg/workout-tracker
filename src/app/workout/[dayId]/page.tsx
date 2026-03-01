@@ -148,7 +148,7 @@ export default function WorkoutPage({
                 exercise={exercise}
                 sessionId={session.id}
                 restSeconds={section.restSeconds}
-                existingLogs={session.setLogs.filter(
+                existingLogs={(session.setLogs || []).filter(
                   (l) => l.exerciseId === exercise.id
                 )}
               />
