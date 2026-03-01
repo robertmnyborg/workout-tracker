@@ -20,16 +20,26 @@ type SetLogData = {
   completed: boolean;
 };
 
+type SetRecommendation = {
+  setNumber: number;
+  previousWeight: number | null;
+  previousReps: number | null;
+  suggestedWeight: number | null;
+  suggestedReps: number | null;
+};
+
 export function ExerciseCard({
   exercise,
   sessionId,
   restSeconds,
   existingLogs,
+  recommendations = [],
 }: {
   exercise: Exercise;
   sessionId: string;
   restSeconds: number | null;
   existingLogs: SetLogData[];
+  recommendations?: SetRecommendation[];
 }) {
   const [showTimer, setShowTimer] = useState(false);
   const [completedSets, setCompletedSets] = useState(
@@ -81,11 +91,23 @@ export function ExerciseCard({
             </p>
           )}
 
+          {recommendations.length > 0 && recommendations[0].previousWeight !== null && (
+            <p className="text-xs text-muted mb-2 italic">
+              Last session: {recommendations[0].previousWeight} lbs × {recommendations[0].previousReps} reps
+            </p>
+          )}
+          {recommendations.length > 0 && recommendations[0].previousWeight === null && recommendations[0].previousReps !== null && (
+            <p className="text-xs text-muted mb-2 italic">
+              Last session: {recommendations[0].previousReps} reps
+            </p>
+          )}
+
           <div className="space-y-0.5">
             {Array.from({ length: exercise.sets }, (_, i) => {
               const log = existingLogs.find(
                 (l) => l.exerciseId === exercise.id && l.setNumber === i + 1
               );
+              const rec = recommendations.find((r) => r.setNumber === i + 1);
               return (
                 <SetInput
                   key={i}
@@ -96,6 +118,10 @@ export function ExerciseCard({
                   defaultReps={log?.reps ?? undefined}
                   defaultCompleted={log?.completed ?? false}
                   onComplete={handleSetComplete}
+                  suggestedWeight={rec?.suggestedWeight ?? undefined}
+                  suggestedReps={rec?.suggestedReps ?? undefined}
+                  previousWeight={rec?.previousWeight ?? undefined}
+                  previousReps={rec?.previousReps ?? undefined}
                 />
               );
             })}

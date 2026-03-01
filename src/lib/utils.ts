@@ -33,3 +33,30 @@ export function formatTime(date: Date | string): string {
 export function cn(...classes: (string | undefined | false | null)[]) {
   return classes.filter(Boolean).join(" ");
 }
+
+/**
+ * Parse target reps from exercise rep string.
+ * "8-10" → 10, "6" → 6, "45 seconds" → null (time-based)
+ */
+export function parseTargetReps(reps: string): number | null {
+  const cleaned = reps.trim().toLowerCase();
+  if (cleaned.includes("second") || cleaned.includes("sec") || cleaned.includes("min")) {
+    return null;
+  }
+  const rangeMatch = cleaned.match(/(\d+)\s*[-–]\s*(\d+)/);
+  if (rangeMatch) {
+    return parseInt(rangeMatch[2]);
+  }
+  const singleMatch = cleaned.match(/^(\d+)$/);
+  if (singleMatch) {
+    return parseInt(singleMatch[1]);
+  }
+  return null;
+}
+
+/**
+ * Round a weight to the nearest increment (default 2.5 lbs).
+ */
+export function roundToNearest(value: number, increment: number = 2.5): number {
+  return Math.round(value / increment) * increment;
+}

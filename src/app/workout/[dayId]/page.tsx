@@ -47,6 +47,15 @@ type Session = {
   setLogs: SetLog[];
 };
 
+type SetRecommendation = {
+  exerciseId: string;
+  setNumber: number;
+  previousWeight: number | null;
+  previousReps: number | null;
+  suggestedWeight: number | null;
+  suggestedReps: number | null;
+};
+
 const sectionTypeColors: Record<string, string> = {
   activation: "text-amber-600 bg-amber-50",
   main: "text-red-600 bg-red-50",
@@ -63,6 +72,7 @@ export default function WorkoutPage({
 }) {
   const router = useRouter();
   const [session, setSession] = useState<Session | null>(null);
+  const [recommendations, setRecommendations] = useState<SetRecommendation[]>([]);
   const [loading, setLoading] = useState(true);
   const [finishing, setFinishing] = useState(false);
   const [dayId, setDayId] = useState<string | null>(null);
@@ -75,13 +85,18 @@ export default function WorkoutPage({
     if (!dayId) return;
 
     const startWorkout = async () => {
-      const res = await fetch("/api/workouts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ programDayId: dayId }),
-      });
-      const data = await res.json();
+      const [sessionRes, recsRes] = await Promise.all([
+        fetch("/api/workouts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ programDayId: dayId }),
+        }),
+        fetch(`/api/workouts/recommendations?programDayId=${dayId}`),
+      ]);
+      const data = await sessionRes.json();
+      const recs = await recsRes.json();
       setSession(data);
+      setRecommendations(Array.isArray(recs) ? recs : []);
       setLoading(false);
     };
 
@@ -150,6 +165,9 @@ export default function WorkoutPage({
                 restSeconds={section.restSeconds}
                 existingLogs={(session.setLogs || []).filter(
                   (l) => l.exerciseId === exercise.id
+                )}
+                recommendations={recommendations.filter(
+                  (r) => r.exerciseId === exercise.id
                 )}
               />
             ))}
