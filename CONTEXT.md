@@ -8,7 +8,7 @@ Personal web app to track a 4-day vertical jump program. Log sets/reps/weight, v
 - Prisma 6 + Neon Postgres (cloud DB)
 - Tailwind CSS 4
 - Recharts for progress charts
-- No auth (single user)
+- Two-profile support (no auth, localStorage-based switching)
 - Deployed on Vercel: https://workout-tracker-eta-nine.vercel.app
 
 ## Source Data
@@ -16,8 +16,10 @@ Personal web app to track a 4-day vertical jump program. Log sets/reps/weight, v
 - Full program is seeded via `prisma/seed.ts`
 
 ## Data Model
+- Profile (id, name) — two workout partners, no auth
 - Program → ProgramDay → Section → Exercise
 - WorkoutSession → SetLog (records weight/reps per set)
+- WorkoutSession.profileId → Profile (each session belongs to one profile)
 
 ## Pages
 | Route | Description |
@@ -34,7 +36,8 @@ Personal web app to track a 4-day vertical jump program. Log sets/reps/weight, v
 | `/api/programs` | GET | Full program with nested days/sections/exercises |
 | `/api/programs/exercises` | POST, PATCH, DELETE | CRUD individual exercises |
 | `/api/programs/reset` | POST | Re-seed database to default |
-| `/api/workouts` | GET, POST | List sessions, start new session |
+| `/api/profiles` | GET, POST, PATCH | Profile CRUD (list, create, rename) |
+| `/api/workouts` | GET, POST | List sessions (profileId filter), find-or-create session |
 | `/api/workouts/[id]` | GET, PATCH | Get/update session (e.g., completedAt) |
 | `/api/workouts/[id]/sets` | POST | Upsert a set log |
 | `/api/workouts/recommendations` | GET | Progressive overload recommendations based on last completed session |
@@ -55,12 +58,33 @@ npx prisma studio    # Visual DB browser
 - **Helpers**: `parseTargetReps()` handles "8-10", "6", "45 seconds" formats. `roundToNearest()` for weight rounding.
 - **Files**: `src/app/api/workouts/recommendations/route.ts`, changes in `SetInput.tsx`, `ExerciseCard.tsx`, `workout/[dayId]/page.tsx`, `utils.ts`
 
+## Profile System
+- **Context**: `src/lib/profile-context.tsx` — React Context + localStorage. Stores profiles and activeProfileId. Instant switching, no API call.
+- **Setup**: `src/components/ProfileSetup.tsx` — Full-screen overlay on first visit when no profiles in localStorage. Two name inputs → POST to `/api/profiles`.
+- **Switcher**: `src/components/ProfileSwitcher.tsx` — Toggle pill in header (via `ClientLayout.tsx`). Active profile = `bg-primary text-white`.
+- **Layout**: `src/components/ClientLayout.tsx` — Client component wrapping children with `ProfileProvider`, header with nav + switcher, and `ProfileSetup`.
+- **Dashboard sync**: `src/components/DashboardProfileSync.tsx` — Keeps URL `?profile=id` in sync with context for the server-rendered dashboard.
+- **Workout page**: Holds `sessions: Record<profileId, Session>` and `recs: Record<profileId, SetRecommendation[]>`. Switching profiles loads that profile's session lazily (cached once loaded). Finish button only completes the active profile's session.
+- **Find-or-create**: `POST /api/workouts` checks for existing uncompleted same-day session for that profile before creating a new one.
+- **All pages filter by profileId**: Dashboard (server queries), history, progress, recommendations.
+- **Migration**: `20260302042656_add_profiles` — Creates Profile table, inserts "Default" profile, assigns existing sessions to it.
+
+## Dark Mode
+- **CSS**: `globals.css` — `@variant dark (&:where(.dark, .dark *))` enables class-based dark mode in Tailwind v4. `.dark {}` block overrides all theme CSS variables (background, foreground, primary, accent, muted, border, card, danger, warning).
+- **Context**: `src/lib/theme-context.tsx` — ThemeProvider persists preference in localStorage (`workout-theme`). Falls back to `prefers-color-scheme: dark` system preference on first visit.
+- **Toggle**: `src/components/ThemeToggle.tsx` — Moon/sun SVG icon button in header nav. Calls `toggleTheme()` from context.
+- **Flash prevention**: Inline `<script>` in `layout.tsx` `<head>` reads localStorage and applies `.dark` class before React hydrates.
+- **Section badges**: Workout and program pages use `dark:` Tailwind variants for section type colors (e.g., `dark:text-amber-400 dark:bg-amber-900/30`) since those use hardcoded Tailwind colors outside the CSS variable system.
+
 ## Key Decisions
 - Used Prisma 6 (not 7) because Prisma 7 requires adapter-based client init which adds complexity
 - Switched from SQLite to Neon Postgres for Vercel deployment
 - Tailwind CSS used freely (not Peek design system — this is a personal project)
 - Phase indicator on dashboard is static for now (could be dynamic based on week count)
 - Recommendations fetched in parallel with session creation (Promise.all) for no added latency
+- Profiles stored in localStorage (no auth) — switching is instant, no round-trip
+- Workout page caches both sessions in state so toggling between profiles is seamless
+- Dark mode uses class-based strategy (`.dark` on `<html>`) with CSS variable overrides — no Tailwind config needed in v4, just `@variant dark` directive
 
 ## Status
 - [x] Project setup
@@ -74,4 +98,6 @@ npx prisma studio    # Visual DB browser
 - [x] PWA support (manifest, apple-web-app)
 - [x] Progressive overload recommendations (pre-fill weights, hint text, progression indicator)
 - [x] Deployed to Vercel + Neon Postgres
+- [x] Two-profile support (setup modal, toggle switcher, per-profile sessions/recs/history/progress)
+- [x] Dark mode (toggle in header, system preference detection, localStorage persistence, no flash)
 - [x] Build passes
