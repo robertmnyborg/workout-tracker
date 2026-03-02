@@ -71,6 +71,8 @@ npx prisma studio    # Visual DB browser
 
 ## Dark Mode
 - **CSS**: `globals.css` — `@variant dark (&:where(.dark, .dark *))` enables class-based dark mode in Tailwind v4. `.dark {}` block overrides all theme CSS variables (background, foreground, primary, accent, muted, border, card, danger, warning).
+- **Critical**: Must use `@theme` (NOT `@theme inline`) so Tailwind utilities reference CSS custom properties (`var(--color-card)`) instead of hardcoded values (`#ffffff`). Without this, `.dark {}` overrides have no effect on utility classes.
+- **Apple HIG palette**: Dark mode uses Apple's elevation system — Level 0 `#000000` (page bg), Level 1 `#1c1c1e` (cards), Separator `#38383a` (borders), Labels `#f5f5f7` → `#8e8e93` (primary → secondary text). Includes `color-scheme: dark` for native form controls.
 - **Context**: `src/lib/theme-context.tsx` — ThemeProvider persists preference in localStorage (`workout-theme`). Falls back to `prefers-color-scheme: dark` system preference on first visit.
 - **Toggle**: `src/components/ThemeToggle.tsx` — Moon/sun SVG icon button in header nav. Calls `toggleTheme()` from context.
 - **Flash prevention**: Inline `<script>` in `layout.tsx` `<head>` reads localStorage and applies `.dark` class before React hydrates.
@@ -84,7 +86,7 @@ npx prisma studio    # Visual DB browser
 - Recommendations fetched in parallel with session creation (Promise.all) for no added latency
 - Profiles stored in localStorage (no auth) — switching is instant, no round-trip
 - Workout page caches both sessions in state so toggling between profiles is seamless
-- Dark mode uses class-based strategy (`.dark` on `<html>`) with CSS variable overrides — no Tailwind config needed in v4, just `@variant dark` directive
+- Dark mode uses class-based strategy (`.dark` on `<html>`) with CSS variable overrides — must use `@theme` (not `@theme inline`) so utilities resolve via CSS vars. Apple HIG color palette for proper elevation hierarchy.
 
 ## Status
 - [x] Project setup
