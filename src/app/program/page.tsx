@@ -177,7 +177,7 @@ export default function ProgramPage() {
                       editingExercise === exercise.id ? (
                         <div
                           key={exercise.id}
-                          className="bg-white/80 border border-border rounded-lg p-3 space-y-2"
+                          className="bg-card/80 border border-border rounded-lg p-3 space-y-2"
                         >
                           <input
                             value={editForm.name || ""}
@@ -242,7 +242,7 @@ export default function ProgramPage() {
                       ) : (
                         <div
                           key={exercise.id}
-                          className="flex items-start justify-between bg-white/50 rounded-lg px-3 py-2 group"
+                          className="flex items-start justify-between bg-card/50 rounded-lg px-3 py-2 group"
                         >
                           <div className="flex-1 min-w-0">
                             <div className="text-sm font-medium">

@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { format, parseISO } from "date-fns";
+import { useTheme } from "@/lib/theme-context";
 
 type DataPoint = {
   date: string;
@@ -29,6 +30,15 @@ export function ProgressChart({
   label: string;
   color: string;
 }) {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
+  const gridColor = isDark ? "#38383a" : "#e2e8f0";
+  const tickColor = isDark ? "#8e8e93" : "#64748b";
+  const tooltipBg = isDark ? "#1c1c1e" : "#ffffff";
+  const tooltipBorder = isDark ? "#38383a" : "#e2e8f0";
+  const tooltipText = isDark ? "#f5f5f7" : "#0f172a";
+
   if (data.length === 0) {
     return (
       <div className="h-48 flex items-center justify-center text-sm text-muted">
@@ -41,18 +51,20 @@ export function ProgressChart({
     <div className="h-64">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+          <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
           <XAxis
             dataKey="date"
-            tick={{ fontSize: 11, fill: "#64748b" }}
+            tick={{ fontSize: 11, fill: tickColor }}
             tickFormatter={(val) => format(parseISO(val), "MMM d")}
           />
-          <YAxis tick={{ fontSize: 11, fill: "#64748b" }} />
+          <YAxis tick={{ fontSize: 11, fill: tickColor }} />
           <Tooltip
             contentStyle={{
               fontSize: 12,
               borderRadius: 8,
-              border: "1px solid #e2e8f0",
+              border: `1px solid ${tooltipBorder}`,
+              backgroundColor: tooltipBg,
+              color: tooltipText,
             }}
             labelFormatter={(val) => format(parseISO(val as string), "MMM d, yyyy")}
             formatter={(value) => [
