@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --color-background: #f8fafc;
   --color-foreground: #0f172a;
@@ -20,4 +22,19 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Dark mode overrides */
+.dark {
+  --color-background: #0f172a;
+  --color-foreground: #e2e8f0;
+  --color-primary: #818cf8;
+  --color-primary-dark: #6366f1;
+  --color-accent: #34d399;
+  --color-accent-dark: #10b981;
+  --color-muted: #94a3b8;
+  --color-border: #334155;
+  --color-card: #1e293b;
+  --color-danger: #f87171;
+  --color-warning: #fbbf24;
 }

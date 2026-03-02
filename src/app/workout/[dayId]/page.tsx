@@ -59,12 +59,12 @@ type SetRecommendation = {
 };
 
 const sectionTypeColors: Record<string, string> = {
-  activation: "text-amber-600 bg-amber-50",
-  main: "text-red-600 bg-red-50",
-  accessory: "text-blue-600 bg-blue-50",
-  cooldown: "text-green-600 bg-green-50",
-  core: "text-purple-600 bg-purple-50",
-  agility: "text-orange-600 bg-orange-50",
+  activation: "text-amber-600 bg-amber-100/60 dark:text-amber-400 dark:bg-amber-900/30",
+  main: "text-red-600 bg-red-100/60 dark:text-red-400 dark:bg-red-900/30",
+  accessory: "text-blue-600 bg-blue-100/60 dark:text-blue-400 dark:bg-blue-900/30",
+  cooldown: "text-green-600 bg-green-100/60 dark:text-green-400 dark:bg-green-900/30",
+  core: "text-purple-600 bg-purple-100/60 dark:text-purple-400 dark:bg-purple-900/30",
+  agility: "text-orange-600 bg-orange-100/60 dark:text-orange-400 dark:bg-orange-900/30",
 };
 
 export default function WorkoutPage({

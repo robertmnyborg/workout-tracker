@@ -38,12 +38,12 @@ type Program = {
 };
 
 const sectionTypeColors: Record<string, string> = {
-  activation: "bg-amber-50 border-amber-200",
-  main: "bg-red-50 border-red-200",
-  accessory: "bg-blue-50 border-blue-200",
-  cooldown: "bg-green-50 border-green-200",
-  core: "bg-purple-50 border-purple-200",
-  agility: "bg-orange-50 border-orange-200",
+  activation: "bg-amber-50 border-amber-200 dark:bg-amber-900/20 dark:border-amber-800",
+  main: "bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800",
+  accessory: "bg-blue-50 border-blue-200 dark:bg-blue-900/20 dark:border-blue-800",
+  cooldown: "bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800",
+  core: "bg-purple-50 border-purple-200 dark:bg-purple-900/20 dark:border-purple-800",
+  agility: "bg-orange-50 border-orange-200 dark:bg-orange-900/20 dark:border-orange-800",
 };
 
 export default function ProgramPage() {
