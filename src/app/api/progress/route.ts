@@ -4,13 +4,16 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const exerciseId = searchParams.get("exerciseId");
+  const profileId = searchParams.get("profileId");
 
   if (!exerciseId) {
-    // Return all exercises that have been logged
+    // Return all exercises that have been logged (filtered by profile if provided)
+    const where: Record<string, unknown> = {
+      setLogs: { some: profileId ? { workoutSession: { profileId } } : {} },
+    };
+
     const exercises = await prisma.exercise.findMany({
-      where: {
-        setLogs: { some: {} },
-      },
+      where,
       select: {
         id: true,
         name: true,
@@ -22,11 +25,16 @@ export async function GET(request: NextRequest) {
   }
 
   // Return set logs for a specific exercise over time
+  const logWhere: Record<string, unknown> = {
+    exerciseId,
+    completed: true,
+  };
+  if (profileId) {
+    logWhere.workoutSession = { profileId };
+  }
+
   const logs = await prisma.setLog.findMany({
-    where: {
-      exerciseId,
-      completed: true,
-    },
+    where: logWhere,
     include: {
       workoutSession: {
         select: { date: true },

@@ -1,9 +1,11 @@
 export const dynamic = "force-dynamic";
 
+import { Suspense } from "react";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { startOfWeek, endOfWeek, format, differenceInMinutes } from "date-fns";
 import { WeekOverview } from "@/components/WeekOverview";
+import { DashboardProfileSync } from "@/components/DashboardProfileSync";
 
 async function getProgram() {
   return prisma.program.findFirst({
@@ -23,13 +25,23 @@ async function getProgram() {
   });
 }
 
-async function getThisWeekSessions() {
+async function resolveProfileId(profileParam: string | undefined) {
+  if (profileParam) return profileParam;
+  // Fallback: use first profile
+  const first = await prisma.profile.findFirst({
+    orderBy: { createdAt: "asc" },
+  });
+  return first?.id ?? null;
+}
+
+async function getThisWeekSessions(profileId: string) {
   const now = new Date();
   const weekStart = startOfWeek(now, { weekStartsOn: 1 });
   const weekEnd = endOfWeek(now, { weekStartsOn: 1 });
 
   return prisma.workoutSession.findMany({
     where: {
+      profileId,
       date: { gte: weekStart, lte: weekEnd },
       completedAt: { not: null },
     },
@@ -37,9 +49,12 @@ async function getThisWeekSessions() {
   });
 }
 
-async function getRecentSessions() {
+async function getRecentSessions(profileId: string) {
   return prisma.workoutSession.findMany({
-    where: { completedAt: { not: null } },
+    where: {
+      profileId,
+      completedAt: { not: null },
+    },
     include: {
       programDay: true,
       setLogs: true,
@@ -49,9 +64,9 @@ async function getRecentSessions() {
   });
 }
 
-async function getStreak() {
+async function getStreak(profileId: string) {
   const sessions = await prisma.workoutSession.findMany({
-    where: { completedAt: { not: null } },
+    where: { profileId, completedAt: { not: null } },
     orderBy: { date: "desc" },
     select: { date: true },
   });
@@ -84,17 +99,41 @@ async function getStreak() {
   return streak;
 }
 
-export default async function Dashboard() {
+export default async function Dashboard({
+  searchParams,
+}: {
+  searchParams: Promise<{ profile?: string }>;
+}) {
+  const params = await searchParams;
+  const profileId = await resolveProfileId(params.profile);
+
+  if (!profileId) {
+    return (
+      <div className="text-center py-20">
+        <Suspense>
+          <DashboardProfileSync />
+        </Suspense>
+        <h1 className="text-2xl font-bold mb-4">Welcome</h1>
+        <p className="text-muted text-sm">
+          Set up your profiles to get started.
+        </p>
+      </div>
+    );
+  }
+
   const [program, weekSessions, recentSessions, streak] = await Promise.all([
     getProgram(),
-    getThisWeekSessions(),
-    getRecentSessions(),
-    getStreak(),
+    getThisWeekSessions(profileId),
+    getRecentSessions(profileId),
+    getStreak(profileId),
   ]);
 
   if (!program) {
     return (
       <div className="text-center py-20">
+        <Suspense>
+          <DashboardProfileSync />
+        </Suspense>
         <h1 className="text-2xl font-bold mb-4">No Program Found</h1>
         <p className="text-muted text-sm">
           Run the seed script to load the workout program.
@@ -107,6 +146,10 @@ export default async function Dashboard() {
 
   return (
     <div className="space-y-8">
+      <Suspense>
+        <DashboardProfileSync />
+      </Suspense>
+
       <div className="flex items-start justify-between">
         <div>
           <h1 className="text-2xl font-bold">{program.name}</h1>

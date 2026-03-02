@@ -10,6 +10,13 @@ async function main() {
   await prisma.section.deleteMany();
   await prisma.programDay.deleteMany();
   await prisma.program.deleteMany();
+  await prisma.profile.deleteMany();
+
+  // Create default profile
+  const defaultProfile = await prisma.profile.create({
+    data: { name: "Default" },
+  });
+  console.log(`Default profile: ${defaultProfile.name} (${defaultProfile.id})`);
 
   const program = await prisma.program.create({
     data: {

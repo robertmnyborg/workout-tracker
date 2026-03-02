@@ -14,6 +14,7 @@ export type SetRecommendation = {
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const programDayId = searchParams.get("programDayId");
+  const profileId = searchParams.get("profileId");
 
   if (!programDayId) {
     return NextResponse.json(
@@ -23,11 +24,16 @@ export async function GET(request: NextRequest) {
   }
 
   // Find the most recent completed session for this program day
+  const where: Record<string, unknown> = {
+    programDayId,
+    completedAt: { not: null },
+  };
+  if (profileId) {
+    where.profileId = profileId;
+  }
+
   const lastSession = await prisma.workoutSession.findFirst({
-    where: {
-      programDayId,
-      completedAt: { not: null },
-    },
+    where,
     orderBy: { date: "desc" },
     include: {
       setLogs: {

@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { ExerciseCard } from "@/components/ExerciseCard";
 import { WorkoutTimer } from "@/components/WorkoutTimer";
+import { ProfileSwitcher } from "@/components/ProfileSwitcher";
+import { useProfile } from "@/lib/profile-context";
 
 type Exercise = {
   id: string;
@@ -71,43 +73,64 @@ export default function WorkoutPage({
   params: Promise<{ dayId: string }>;
 }) {
   const router = useRouter();
-  const [session, setSession] = useState<Session | null>(null);
-  const [recommendations, setRecommendations] = useState<SetRecommendation[]>([]);
+  const { activeProfile, hydrated } = useProfile();
+
+  const [sessions, setSessions] = useState<Record<string, Session>>({});
+  const [recs, setRecs] = useState<Record<string, SetRecommendation[]>>({});
   const [loading, setLoading] = useState(true);
   const [finishing, setFinishing] = useState(false);
   const [dayId, setDayId] = useState<string | null>(null);
+  const [loadedProfiles, setLoadedProfiles] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     params.then((p) => setDayId(p.dayId));
   }, [params]);
 
+  // Load session + recs for active profile
   useEffect(() => {
-    if (!dayId) return;
+    if (!dayId || !hydrated || !activeProfile) return;
+    if (loadedProfiles.has(activeProfile.id)) return;
 
-    const startWorkout = async () => {
+    const loadSession = async () => {
+      setLoading(true);
       const [sessionRes, recsRes] = await Promise.all([
         fetch("/api/workouts", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ programDayId: dayId }),
+          body: JSON.stringify({
+            programDayId: dayId,
+            profileId: activeProfile.id,
+          }),
         }),
-        fetch(`/api/workouts/recommendations?programDayId=${dayId}`),
+        fetch(
+          `/api/workouts/recommendations?programDayId=${dayId}&profileId=${activeProfile.id}`
+        ),
       ]);
-      const data = await sessionRes.json();
-      const recs = await recsRes.json();
-      setSession(data);
-      setRecommendations(Array.isArray(recs) ? recs : []);
+      const sessionData = await sessionRes.json();
+      const recsData = await recsRes.json();
+
+      setSessions((prev) => ({ ...prev, [activeProfile.id]: sessionData }));
+      setRecs((prev) => ({
+        ...prev,
+        [activeProfile.id]: Array.isArray(recsData) ? recsData : [],
+      }));
+      setLoadedProfiles((prev) => new Set(prev).add(activeProfile.id));
       setLoading(false);
     };
 
-    startWorkout();
-  }, [dayId]);
+    loadSession();
+  }, [dayId, activeProfile, hydrated, loadedProfiles]);
+
+  const activeSession = activeProfile
+    ? sessions[activeProfile.id] ?? null
+    : null;
+  const activeRecs = activeProfile ? recs[activeProfile.id] ?? [] : [];
 
   const finishWorkout = useCallback(async () => {
-    if (!session) return;
+    if (!activeSession) return;
     setFinishing(true);
 
-    await fetch(`/api/workouts/${session.id}`, {
+    await fetch(`/api/workouts/${activeSession.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ completedAt: new Date().toISOString() }),
@@ -115,9 +138,9 @@ export default function WorkoutPage({
 
     router.push("/");
     router.refresh();
-  }, [session, router]);
+  }, [activeSession, router]);
 
-  if (loading || !session) {
+  if (!hydrated || loading || !activeSession) {
     return (
       <div className="flex items-center justify-center py-20">
         <div className="text-muted">Starting workout...</div>
@@ -131,15 +154,25 @@ export default function WorkoutPage({
       <div className="flex items-center justify-between sticky top-14 bg-background/95 backdrop-blur py-3 -mx-4 px-4 z-40 border-b border-border">
         <div>
           <h1 className="text-lg font-bold">
-            Day {session.programDay.dayNumber}: {session.programDay.name}
+            Day {activeSession.programDay.dayNumber}:{" "}
+            {activeSession.programDay.name}
           </h1>
-          <p className="text-xs text-muted">{session.programDay.focus}</p>
+          <div className="flex items-center gap-2 mt-1">
+            <p className="text-xs text-muted">
+              {activeSession.programDay.focus}
+            </p>
+          </div>
         </div>
-        <WorkoutTimer startTime={new Date(session.startedAt)} />
+        <WorkoutTimer startTime={new Date(activeSession.startedAt)} />
+      </div>
+
+      {/* Profile Switcher below header */}
+      <div className="flex justify-center">
+        <ProfileSwitcher />
       </div>
 
       {/* Sections */}
-      {session.programDay.sections.map((section) => (
+      {activeSession.programDay.sections.map((section) => (
         <div key={section.id}>
           <div className="flex items-center gap-2 mb-3">
             <span
@@ -161,12 +194,12 @@ export default function WorkoutPage({
               <ExerciseCard
                 key={exercise.id}
                 exercise={exercise}
-                sessionId={session.id}
+                sessionId={activeSession.id}
                 restSeconds={section.restSeconds}
-                existingLogs={(session.setLogs || []).filter(
+                existingLogs={(activeSession.setLogs || []).filter(
                   (l) => l.exerciseId === exercise.id
                 )}
-                recommendations={recommendations.filter(
+                recommendations={activeRecs.filter(
                   (r) => r.exerciseId === exercise.id
                 )}
               />
@@ -183,7 +216,9 @@ export default function WorkoutPage({
             disabled={finishing}
             className="w-full py-3 rounded-xl bg-accent text-white font-medium text-sm hover:bg-accent-dark transition-colors disabled:opacity-50"
           >
-            {finishing ? "Saving..." : "Finish Workout"}
+            {finishing
+              ? "Saving..."
+              : `Finish Workout (${activeProfile?.name})`}
           </button>
         </div>
       </div>

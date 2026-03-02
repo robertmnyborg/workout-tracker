@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ProgressChart } from "@/components/ProgressChart";
+import { useProfile } from "@/lib/profile-context";
 
 type Exercise = {
   id: string;
@@ -16,6 +17,7 @@ type ProgressData = {
 };
 
 export default function ProgressPage() {
+  const { activeProfile, hydrated } = useProfile();
   const [exercises, setExercises] = useState<Exercise[]>([]);
   const [selectedExercise, setSelectedExercise] = useState<string>("");
   const [progress, setProgress] = useState<ProgressData[]>([]);
@@ -25,8 +27,13 @@ export default function ProgressPage() {
   });
   const [loading, setLoading] = useState(true);
 
+  // Fetch exercise list when profile changes
   useEffect(() => {
-    fetch("/api/progress")
+    if (!hydrated || !activeProfile) return;
+
+    setLoading(true);
+    setSelectedExercise("");
+    fetch(`/api/progress?profileId=${activeProfile.id}`)
       .then((r) => r.json())
       .then((data) => {
         setExercises(data);
@@ -35,12 +42,15 @@ export default function ProgressPage() {
         }
         setLoading(false);
       });
-  }, []);
+  }, [activeProfile, hydrated]);
 
+  // Fetch progress data when selected exercise changes
   useEffect(() => {
-    if (!selectedExercise) return;
+    if (!selectedExercise || !activeProfile) return;
 
-    fetch(`/api/progress?exerciseId=${selectedExercise}`)
+    fetch(
+      `/api/progress?exerciseId=${selectedExercise}&profileId=${activeProfile.id}`
+    )
       .then((r) => r.json())
       .then((data) => {
         setProgress(data.progress || []);
@@ -48,7 +58,7 @@ export default function ProgressPage() {
           data.personalBests || { maxWeight: 0, maxVolume: 0 }
         );
       });
-  }, [selectedExercise]);
+  }, [selectedExercise, activeProfile]);
 
   if (loading) {
     return (

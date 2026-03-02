@@ -59,8 +59,17 @@ model Exercise {
   @@unique([sectionId, order])
 }
 
+model Profile {
+  id              String           @id @default(cuid())
+  name            String
+  createdAt       DateTime         @default(now())
+  workoutSessions WorkoutSession[]
+}
+
 model WorkoutSession {
   id           String      @id @default(cuid())
+  profileId    String
+  profile      Profile     @relation(fields: [profileId], references: [id])
   programDayId String
   programDay   ProgramDay  @relation(fields: [programDayId], references: [id])
   date         DateTime    @default(now())

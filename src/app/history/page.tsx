@@ -12,6 +12,7 @@ import {
   getDay,
   differenceInMinutes,
 } from "date-fns";
+import { useProfile } from "@/lib/profile-context";
 
 type Session = {
   id: string;
@@ -36,19 +37,24 @@ type Session = {
 };
 
 export default function HistoryPage() {
+  const { activeProfile, hydrated } = useProfile();
   const [sessions, setSessions] = useState<Session[]>([]);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedSession, setSelectedSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/workouts?limit=100")
+    if (!hydrated || !activeProfile) return;
+
+    setLoading(true);
+    setSelectedSession(null);
+    fetch(`/api/workouts?limit=100&profileId=${activeProfile.id}`)
       .then((r) => r.json())
       .then((data) => {
         setSessions(data);
         setLoading(false);
       });
-  }, []);
+  }, [activeProfile, hydrated]);
 
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(currentMonth);
