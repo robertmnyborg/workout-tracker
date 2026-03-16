@@ -26,6 +26,7 @@ model ProgramDay {
   totalTime       String?
   sections        Section[]
   workoutSessions WorkoutSession[]
+  scheduleEntries ScheduleEntry[]
 
   @@unique([programId, dayNumber])
 }
@@ -77,6 +78,28 @@ model WorkoutSession {
   completedAt  DateTime?
   notes        String?
   setLogs      SetLog[]
+}
+
+model WeekSchedule {
+  id         String          @id @default(cuid())
+  weekNumber Int             @unique
+  name       String
+  notes      String?
+  entries    ScheduleEntry[]
+}
+
+model ScheduleEntry {
+  id           String        @id @default(cuid())
+  scheduleId   String
+  schedule     WeekSchedule  @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  dayOfWeek    Int           // 1=Monday ... 7=Sunday
+  programDayId String?
+  programDay   ProgramDay?   @relation(fields: [programDayId], references: [id])
+  isRest       Boolean       @default(false)
+  notes        String?
+  order        Int           @default(1)
+
+  @@unique([scheduleId, dayOfWeek, order])
 }
 
 model SetLog {

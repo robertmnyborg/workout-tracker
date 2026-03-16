@@ -4,6 +4,8 @@ const prisma = new PrismaClient();
 
 async function main() {
   // Clear existing data
+  await prisma.scheduleEntry.deleteMany();
+  await prisma.weekSchedule.deleteMany();
   await prisma.setLog.deleteMany();
   await prisma.workoutSession.deleteMany();
   await prisma.exercise.deleteMany();
@@ -1527,6 +1529,95 @@ async function main() {
     ],
   });
 
+  // ═══════════════════════════════════════════════════════
+  // WEEKLY SCHEDULES (3-week combined calendar)
+  // ═══════════════════════════════════════════════════════
+
+  // Helper: dayOfWeek 1=Mon ... 7=Sun
+  const MON = 1, TUE = 2, WED = 3, THU = 4, FRI = 5, SAT = 6, SUN = 7;
+
+  // --- Week 1: Base Building ---
+  const week1 = await prisma.weekSchedule.create({
+    data: { weekNumber: 1, name: "Week 1 — Base Building", notes: "3x steady-state + 2x base intervals + 1x long run. All 4 lifting days." },
+  });
+
+  await prisma.scheduleEntry.createMany({
+    data: [
+      // Monday: Lower Strength + Steady-State
+      { scheduleId: week1.id, dayOfWeek: MON, programDayId: day1.id, order: 1 },
+      { scheduleId: week1.id, dayOfWeek: MON, programDayId: cDay1.id, order: 2, notes: "Cardio after lifting" },
+      // Tuesday: Intervals Base (standalone)
+      { scheduleId: week1.id, dayOfWeek: TUE, programDayId: cDay2.id, order: 1 },
+      // Wednesday: Upper Body + Core + Steady-State
+      { scheduleId: week1.id, dayOfWeek: WED, programDayId: day2.id, order: 1 },
+      { scheduleId: week1.id, dayOfWeek: WED, programDayId: cDay1.id, order: 2, notes: "Cardio after lifting" },
+      // Thursday: Rest
+      { scheduleId: week1.id, dayOfWeek: THU, isRest: true, order: 1, notes: "Recovery day" },
+      // Friday: Lower Power + Intervals Base
+      { scheduleId: week1.id, dayOfWeek: FRI, programDayId: day3.id, order: 1 },
+      { scheduleId: week1.id, dayOfWeek: FRI, programDayId: cDay2.id, order: 2, notes: "Cardio after lifting" },
+      // Saturday: Athletic Full Body + Steady-State
+      { scheduleId: week1.id, dayOfWeek: SAT, programDayId: day4.id, order: 1 },
+      { scheduleId: week1.id, dayOfWeek: SAT, programDayId: cDay1.id, order: 2, notes: "Cardio after lifting" },
+      // Sunday: Long Easy Run
+      { scheduleId: week1.id, dayOfWeek: SUN, programDayId: cDay3.id, order: 1 },
+    ],
+  });
+
+  // --- Week 2: Intensity Ramp ---
+  const week2 = await prisma.weekSchedule.create({
+    data: { weekNumber: 2, name: "Week 2 — Intensity Ramp", notes: "2x steady-state + 3x ramp intervals + 1x basketball intervals. All 4 lifting days." },
+  });
+
+  await prisma.scheduleEntry.createMany({
+    data: [
+      // Monday: Lower Strength + Steady-State
+      { scheduleId: week2.id, dayOfWeek: MON, programDayId: day1.id, order: 1 },
+      { scheduleId: week2.id, dayOfWeek: MON, programDayId: cDay1.id, order: 2, notes: "Cardio after lifting" },
+      // Tuesday: Intervals Ramp (standalone)
+      { scheduleId: week2.id, dayOfWeek: TUE, programDayId: cDay4.id, order: 1 },
+      // Wednesday: Upper Body + Core + Intervals Ramp
+      { scheduleId: week2.id, dayOfWeek: WED, programDayId: day2.id, order: 1 },
+      { scheduleId: week2.id, dayOfWeek: WED, programDayId: cDay4.id, order: 2, notes: "Cardio after lifting" },
+      // Thursday: Rest
+      { scheduleId: week2.id, dayOfWeek: THU, isRest: true, order: 1, notes: "Recovery day" },
+      // Friday: Lower Power + Basketball Intervals
+      { scheduleId: week2.id, dayOfWeek: FRI, programDayId: day3.id, order: 1 },
+      { scheduleId: week2.id, dayOfWeek: FRI, programDayId: cDay5.id, order: 2, notes: "Sport-specific conditioning after lifting" },
+      // Saturday: Athletic Full Body + Steady-State
+      { scheduleId: week2.id, dayOfWeek: SAT, programDayId: day4.id, order: 1 },
+      { scheduleId: week2.id, dayOfWeek: SAT, programDayId: cDay1.id, order: 2, notes: "Cardio after lifting" },
+      // Sunday: Intervals Ramp (standalone)
+      { scheduleId: week2.id, dayOfWeek: SUN, programDayId: cDay4.id, order: 1 },
+    ],
+  });
+
+  // --- Week 3: Peak + Taper ---
+  const week3 = await prisma.weekSchedule.create({
+    data: { weekNumber: 3, name: "Week 3 — Peak + Taper", notes: "2 lifting days only (Mon/Tue). 2x moderate intervals + 1x taper jog. Rest Thu-Sat. Game Sunday." },
+  });
+
+  await prisma.scheduleEntry.createMany({
+    data: [
+      // Monday: Lower Strength + Intervals Base (moderate effort)
+      { scheduleId: week3.id, dayOfWeek: MON, programDayId: day1.id, order: 1 },
+      { scheduleId: week3.id, dayOfWeek: MON, programDayId: cDay2.id, order: 2, notes: "Moderate effort — don't go all-out" },
+      // Tuesday: Upper Body + Core + Intervals Base (moderate effort)
+      { scheduleId: week3.id, dayOfWeek: TUE, programDayId: day2.id, order: 1 },
+      { scheduleId: week3.id, dayOfWeek: TUE, programDayId: cDay2.id, order: 2, notes: "Moderate effort — last interval session" },
+      // Wednesday: Taper Jog
+      { scheduleId: week3.id, dayOfWeek: WED, programDayId: cDay6.id, order: 1 },
+      // Thursday: Rest
+      { scheduleId: week3.id, dayOfWeek: THU, isRest: true, order: 1, notes: "Recovery — fresh legs for game day" },
+      // Friday: Rest
+      { scheduleId: week3.id, dayOfWeek: FRI, isRest: true, order: 1, notes: "Rest or light walk" },
+      // Saturday: Rest
+      { scheduleId: week3.id, dayOfWeek: SAT, isRest: true, order: 1, notes: "Rest — stay off your feet" },
+      // Sunday: Game Day
+      { scheduleId: week3.id, dayOfWeek: SUN, isRest: true, order: 1, notes: "Game Day — fresh legs!" },
+    ],
+  });
+
   console.log("Seed complete!");
   console.log(`Program: ${program.name} (${program.id})`);
   console.log(`Days: ${[day1, day2, day3, day4].map((d) => d.name).join(", ")}`);
@@ -1534,6 +1625,7 @@ async function main() {
   console.log(
     `Days: ${[cDay1, cDay2, cDay3, cDay4, cDay5, cDay6].map((d) => d.name).join(", ")}`
   );
+  console.log(`Schedules: ${[week1, week2, week3].map((w) => w.name).join(", ")}`);
 }
 
 main()
