@@ -79,6 +79,24 @@ async function main() {
         reps: "5 each side",
         order: 3,
       },
+      {
+        sectionId: d1Activation.id,
+        name: "Prone Press Up",
+        description:
+          "Lying on stomach, hands by shoulders. Press upper body up, keeping hips on floor. Exhale on press. Lumbar extension prep before heavy loading.",
+        sets: 1,
+        reps: "10",
+        order: 4,
+      },
+      {
+        sectionId: d1Activation.id,
+        name: "Supine Hip IR/ER Rotation",
+        description:
+          "Lying on back, knees bent, feet wider than hips. Let both knees fall to one side, then the other. Controlled hip rotation to prep for squats and hinges.",
+        sets: 2,
+        reps: "10 each side",
+        order: 5,
+      },
     ],
   });
 
@@ -297,6 +315,15 @@ async function main() {
         sets: 2,
         reps: "5 each position",
         order: 3,
+      },
+      {
+        sectionId: d2Activation.id,
+        name: "Sidelying Thoracic Rotation (Open Book)",
+        description:
+          "Lying on side, knees bent 75°, arms together in front. Slide top hand over bottom hand 5 times, then lift top arm up and over to floor on other side. Keep knees together — only rotate upper back.",
+        sets: 2,
+        reps: "10 each side",
+        order: 4,
       },
     ],
   });
@@ -559,6 +586,24 @@ async function main() {
         reps: "10 each side",
         order: 3,
       },
+      {
+        sectionId: d3Activation.id,
+        name: "Reverse Clamshell",
+        description:
+          "Side-lying, knees bent. Keep knees together, rotate top foot upward. Targets internal rotators — complements regular clamshells.",
+        sets: 2,
+        reps: "10 each side",
+        order: 4,
+      },
+      {
+        sectionId: d3Activation.id,
+        name: "Quadruped Train Tracks",
+        description:
+          "On hands and knees, towel or block under one knee. Lift working knee until parallel with elevated knee, then lower. Toes stay on ground. Deep hip stabilizer activation before explosive work.",
+        sets: 2,
+        reps: "15 each side",
+        order: 5,
+      },
     ],
   });
 
@@ -786,12 +831,21 @@ async function main() {
       },
       {
         sectionId: d4Activation.id,
-        name: "Diaphragmatic Breathing with TVA Contraction",
+        name: "TA March",
         description:
-          "Lay on back, knees bent. Inhale into lower belly, exhale and contract pelvic floor/transverse abdominals.",
-        sets: 1,
-        reps: "10 breaths",
+          "Lying on back, knees bent, feet flat. Tighten abdominals, slowly raise one leg keeping knee bent, return, repeat other side. Keep trunk stiff and low back flat — don't let it arch.",
+        sets: 2,
+        reps: "15 each side",
         order: 3,
+      },
+      {
+        sectionId: d4Activation.id,
+        name: "Forward T (Single-Leg Balance)",
+        description:
+          "Standing upright, hands at waist. Balance on one leg, hinge at hips and tilt forward while extending other leg backward (body forms a T). Return and repeat. Keep back straight, don't let knee collapse inward.",
+        sets: 2,
+        reps: "10 each side",
+        order: 4,
       },
     ],
   });
