@@ -4,8 +4,8 @@
   "description": "4-Day Vertical Jump Program Tracker",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#6366f1",
+  "background_color": "#f0f4f8",
+  "theme_color": "#1a3a5c",
   "orientation": "portrait",
   "icons": [
     {

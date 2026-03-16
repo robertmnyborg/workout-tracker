@@ -127,7 +127,7 @@ export default function ProgressPage() {
           data={progress}
           dataKey="maxWeight"
           label="Max Weight"
-          color="#6366f1"
+          color="#1a3a5c"
         />
       </div>
 
@@ -137,7 +137,7 @@ export default function ProgressPage() {
           data={progress}
           dataKey="totalVolume"
           label="Volume"
-          color="#10b981"
+          color="#4a90d9"
         />
       </div>
     </div>
