@@ -20,6 +20,7 @@ Personal web app to track a 4-day vertical jump program. Log sets/reps/weight, v
 - Program → ProgramDay → Section → Exercise
 - WorkoutSession → SetLog (records weight/reps per set)
 - WorkoutSession.profileId → Profile (each session belongs to one profile)
+- Multiple programs supported — dashboard and program page render all programs
 
 ## Pages
 | Route | Description |
@@ -78,6 +79,17 @@ npx prisma studio    # Visual DB browser
 - **Flash prevention**: Inline `<script>` in `layout.tsx` `<head>` reads localStorage and applies `.dark` class before React hydrates.
 - **Section badges**: Workout and program pages use `dark:` Tailwind variants for section type colors (e.g., `dark:text-amber-400 dark:bg-amber-900/30`) since those use hardcoded Tailwind colors outside the CSS variable system.
 
+## Cardio Program
+- **"Basketball Cardio Program"** — 3-week cardiovascular plan for basketball game prep
+- 6 session types as ProgramDays: Steady-State, Intervals Base (Wk1), Long Easy Run, Intervals Ramp (Wk2), Basketball Intervals, Taper Jog (Wk3)
+- No week-based auto-scheduling — user picks the right session based on their week
+- Section types `cardio` (cyan) and `intervals` (rose) added to program page color map
+- Uses existing schema — `reps` field stores durations like "20-30 min", "30s hard / 90s easy"
+- Week schedule reference:
+  - **Week 1**: 3x Steady-State + 2x Intervals Base + 1x Long Easy Run
+  - **Week 2**: 2x Steady-State + 3x Intervals Ramp + 1x Basketball Intervals
+  - **Week 3 (taper)**: 2x Intervals (moderate) + 1x Taper Jog + rest days before game
+
 ## Key Decisions
 - Used Prisma 6 (not 7) because Prisma 7 requires adapter-based client init which adds complexity
 - Switched from SQLite to Neon Postgres for Vercel deployment
@@ -87,10 +99,11 @@ npx prisma studio    # Visual DB browser
 - Profiles stored in localStorage (no auth) — switching is instant, no round-trip
 - Workout page caches both sessions in state so toggling between profiles is seamless
 - Dark mode uses class-based strategy (`.dark` on `<html>`) with CSS variable overrides — must use `@theme` (not `@theme inline`) so utilities resolve via CSS vars. Apple HIG color palette for proper elevation hierarchy.
+- Multi-program support: dashboard/API/program page all use `findMany` instead of `findFirst`, week overview uses day IDs (not day numbers) to handle overlapping numbering across programs
 
 ## Status
 - [x] Project setup
-- [x] Database schema + seed (all 4 days, all exercises with cues)
+- [x] Database schema + seed (4 lifting days + 6 cardio session types)
 - [x] API routes
 - [x] Dashboard page
 - [x] Active Workout page (set logging, rest timer, workout timer)
@@ -102,4 +115,6 @@ npx prisma studio    # Visual DB browser
 - [x] Deployed to Vercel + Neon Postgres
 - [x] Two-profile support (setup modal, toggle switcher, per-profile sessions/recs/history/progress)
 - [x] Dark mode (toggle in header, system preference detection, localStorage persistence, no flash)
+- [x] Multi-program support (dashboard, API, program page all show multiple programs)
+- [x] Basketball Cardio Program (6 session types: steady-state, base intervals, long run, ramp intervals, basketball intervals, taper jog)
 - [x] Build passes

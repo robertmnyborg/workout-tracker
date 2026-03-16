@@ -7,8 +7,9 @@ import { startOfWeek, endOfWeek, format, differenceInMinutes } from "date-fns";
 import { WeekOverview } from "@/components/WeekOverview";
 import { DashboardProfileSync } from "@/components/DashboardProfileSync";
 
-async function getProgram() {
-  return prisma.program.findFirst({
+async function getPrograms() {
+  return prisma.program.findMany({
+    orderBy: { createdAt: "asc" },
     include: {
       days: {
         orderBy: { dayNumber: "asc" },
@@ -121,14 +122,14 @@ export default async function Dashboard({
     );
   }
 
-  const [program, weekSessions, recentSessions, streak] = await Promise.all([
-    getProgram(),
+  const [programs, weekSessions, recentSessions, streak] = await Promise.all([
+    getPrograms(),
     getThisWeekSessions(profileId),
     getRecentSessions(profileId),
     getStreak(profileId),
   ]);
 
-  if (!program) {
+  if (programs.length === 0) {
     return (
       <div className="text-center py-20">
         <Suspense>
@@ -142,7 +143,7 @@ export default async function Dashboard({
     );
   }
 
-  const completedDayNumbers = weekSessions.map((s) => s.programDay.dayNumber);
+  const completedDayIds = new Set(weekSessions.map((s) => s.programDayId));
 
   return (
     <div className="space-y-8">
@@ -152,9 +153,9 @@ export default async function Dashboard({
 
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold">{program.name}</h1>
+          <h1 className="text-2xl font-bold">My Programs</h1>
           <p className="text-muted text-sm mt-1">
-            Phase 1 — Foundation (Weeks 1-4)
+            {programs.length} active programs
           </p>
         </div>
         {streak > 0 && (
@@ -164,55 +165,76 @@ export default async function Dashboard({
         )}
       </div>
 
-      <WeekOverview
-        days={program.days}
-        completedDayNumbers={completedDayNumbers}
-      />
+      {programs.map((program) => {
+        const programCompletedDayIds = program.days
+          .filter((d) => completedDayIds.has(d.id))
+          .map((d) => d.id);
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {program.days.map((day) => {
-          const isCompleted = completedDayNumbers.includes(day.dayNumber);
-          const exerciseCount = day.sections.reduce(
-            (acc, s) => acc + s.exercises.length,
-            0
-          );
-
-          return (
-            <div
-              key={day.id}
-              className={`bg-card rounded-xl border p-5 ${
-                isCompleted ? "border-accent/40" : "border-border"
-              }`}
-            >
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <div className="text-xs font-medium text-muted uppercase tracking-wide">
-                    Day {day.dayNumber}
-                  </div>
-                  <h3 className="text-lg font-semibold mt-0.5">{day.name}</h3>
-                </div>
-                {isCompleted && (
-                  <span className="text-accent text-xl">✓</span>
-                )}
-              </div>
-              <p className="text-sm text-muted mb-1">{day.focus}</p>
-              <p className="text-xs text-muted mb-4">
-                {exerciseCount} exercises · {day.totalTime}
-              </p>
-              <Link
-                href={`/workout/${day.id}`}
-                className={`block text-center py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                  isCompleted
-                    ? "bg-background text-muted hover:text-foreground border border-border"
-                    : "bg-primary text-white hover:bg-primary-dark"
-                }`}
-              >
-                {isCompleted ? "Do Again" : "Start Workout"}
-              </Link>
+        return (
+          <div key={program.id} className="space-y-4">
+            <div>
+              <h2 className="text-lg font-semibold">{program.name}</h2>
+              {program.description && (
+                <p className="text-sm text-muted mt-0.5">
+                  {program.description}
+                </p>
+              )}
             </div>
-          );
-        })}
-      </div>
+
+            <WeekOverview
+              days={program.days}
+              completedDayIds={programCompletedDayIds}
+            />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {program.days.map((day) => {
+                const isCompleted = completedDayIds.has(day.id);
+                const exerciseCount = day.sections.reduce(
+                  (acc, s) => acc + s.exercises.length,
+                  0
+                );
+
+                return (
+                  <div
+                    key={day.id}
+                    className={`bg-card rounded-xl border p-5 ${
+                      isCompleted ? "border-accent/40" : "border-border"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <div className="text-xs font-medium text-muted uppercase tracking-wide">
+                          Day {day.dayNumber}
+                        </div>
+                        <h3 className="text-lg font-semibold mt-0.5">
+                          {day.name}
+                        </h3>
+                      </div>
+                      {isCompleted && (
+                        <span className="text-accent text-xl">✓</span>
+                      )}
+                    </div>
+                    <p className="text-sm text-muted mb-1">{day.focus}</p>
+                    <p className="text-xs text-muted mb-4">
+                      {exerciseCount} exercises · {day.totalTime}
+                    </p>
+                    <Link
+                      href={`/workout/${day.id}`}
+                      className={`block text-center py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                        isCompleted
+                          ? "bg-background text-muted hover:text-foreground border border-border"
+                          : "bg-primary text-white hover:bg-primary-dark"
+                      }`}
+                    >
+                      {isCompleted ? "Do Again" : "Start Workout"}
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
 
       {recentSessions.length > 0 && (
         <div>
@@ -234,7 +256,6 @@ export default async function Dashboard({
                 >
                   <div>
                     <div className="font-medium text-sm">
-                      Day {session.programDay.dayNumber}:{" "}
                       {session.programDay.name}
                     </div>
                     <div className="text-xs text-muted">

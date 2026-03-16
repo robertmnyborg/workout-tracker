@@ -44,27 +44,29 @@ const sectionTypeColors: Record<string, string> = {
   cooldown: "bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800",
   core: "bg-purple-50 border-purple-200 dark:bg-purple-900/20 dark:border-purple-800",
   agility: "bg-orange-50 border-orange-200 dark:bg-orange-900/20 dark:border-orange-800",
+  cardio: "bg-cyan-50 border-cyan-200 dark:bg-cyan-900/20 dark:border-cyan-800",
+  intervals: "bg-rose-50 border-rose-200 dark:bg-rose-900/20 dark:border-rose-800",
 };
 
 export default function ProgramPage() {
-  const [program, setProgram] = useState<Program | null>(null);
+  const [programs, setPrograms] = useState<Program[]>([]);
   const [expandedDay, setExpandedDay] = useState<string | null>(null);
   const [editingExercise, setEditingExercise] = useState<string | null>(null);
   const [editForm, setEditForm] = useState<Partial<Exercise>>({});
   const [loading, setLoading] = useState(true);
 
-  const fetchProgram = useCallback(() => {
+  const fetchPrograms = useCallback(() => {
     fetch("/api/programs")
       .then((r) => r.json())
       .then((data) => {
-        setProgram(data);
+        setPrograms(data);
         setLoading(false);
       });
   }, []);
 
   useEffect(() => {
-    fetchProgram();
-  }, [fetchProgram]);
+    fetchPrograms();
+  }, [fetchPrograms]);
 
   const startEdit = (exercise: Exercise) => {
     setEditingExercise(exercise.id);
@@ -83,7 +85,7 @@ export default function ProgramPage() {
       body: JSON.stringify({ id: exerciseId, ...editForm }),
     });
     setEditingExercise(null);
-    fetchProgram();
+    fetchPrograms();
   };
 
   const deleteExercise = async (exerciseId: string) => {
@@ -91,7 +93,7 @@ export default function ProgramPage() {
     await fetch(`/api/programs/exercises?id=${exerciseId}`, {
       method: "DELETE",
     });
-    fetchProgram();
+    fetchPrograms();
   };
 
   const resetProgram = async () => {
@@ -102,23 +104,24 @@ export default function ProgramPage() {
     )
       return;
 
-    // Call a reset endpoint (we'll create this inline for simplicity)
     await fetch("/api/programs/reset", { method: "POST" });
-    fetchProgram();
+    fetchPrograms();
   };
 
-  if (loading || !program) {
+  if (loading || programs.length === 0) {
     return (
       <div className="py-20 text-center text-muted text-sm">Loading...</div>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold">{program.name}</h1>
-          <p className="text-sm text-muted mt-1">{program.description}</p>
+          <h1 className="text-2xl font-bold">Programs</h1>
+          <p className="text-sm text-muted mt-1">
+            {programs.length} programs · {programs.reduce((acc, p) => acc + p.days.length, 0)} workout days
+          </p>
         </div>
         <button
           onClick={resetProgram}
@@ -128,157 +131,165 @@ export default function ProgramPage() {
         </button>
       </div>
 
-      {/* Days */}
-      {program.days.map((day) => (
-        <div key={day.id} className="bg-card border border-border rounded-xl">
-          <button
-            onClick={() =>
-              setExpandedDay(expandedDay === day.id ? null : day.id)
-            }
-            className="w-full p-4 flex items-center justify-between text-left"
-          >
-            <div>
-              <div className="text-xs font-medium text-muted uppercase tracking-wide">
-                Day {day.dayNumber}
-              </div>
-              <h3 className="text-lg font-semibold">{day.name}</h3>
-              <p className="text-xs text-muted">
-                {day.focus} · {day.totalTime}
-              </p>
-            </div>
-            <span className="text-muted text-lg">
-              {expandedDay === day.id ? "−" : "+"}
-            </span>
-          </button>
+      {programs.map((program) => (
+        <div key={program.id} className="space-y-3">
+          <div>
+            <h2 className="text-lg font-semibold">{program.name}</h2>
+            <p className="text-sm text-muted">{program.description}</p>
+          </div>
 
-          {expandedDay === day.id && (
-            <div className="px-4 pb-4 space-y-4">
-              {day.sections.map((section) => (
-                <div
-                  key={section.id}
-                  className={`border rounded-lg p-3 ${
-                    sectionTypeColors[section.type] || "bg-background border-border"
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <h4 className="text-sm font-semibold">{section.name}</h4>
-                    {section.restSeconds && (
-                      <span className="text-xs text-muted">
-                        Rest: {section.restSeconds}s
-                      </span>
-                    )}
+          {program.days.map((day) => (
+            <div key={day.id} className="bg-card border border-border rounded-xl">
+              <button
+                onClick={() =>
+                  setExpandedDay(expandedDay === day.id ? null : day.id)
+                }
+                className="w-full p-4 flex items-center justify-between text-left"
+              >
+                <div>
+                  <div className="text-xs font-medium text-muted uppercase tracking-wide">
+                    Day {day.dayNumber}
                   </div>
-                  {section.notes && (
-                    <p className="text-xs text-muted mb-2">{section.notes}</p>
-                  )}
-
-                  <div className="space-y-2">
-                    {section.exercises.map((exercise) =>
-                      editingExercise === exercise.id ? (
-                        <div
-                          key={exercise.id}
-                          className="bg-card/80 border border-border rounded-lg p-3 space-y-2"
-                        >
-                          <input
-                            value={editForm.name || ""}
-                            onChange={(e) =>
-                              setEditForm({ ...editForm, name: e.target.value })
-                            }
-                            className="w-full text-sm p-2 border border-border rounded-md"
-                            placeholder="Exercise name"
-                          />
-                          <textarea
-                            value={(editForm.description as string) || ""}
-                            onChange={(e) =>
-                              setEditForm({
-                                ...editForm,
-                                description: e.target.value,
-                              })
-                            }
-                            className="w-full text-xs p-2 border border-border rounded-md"
-                            placeholder="Description / cues"
-                            rows={2}
-                          />
-                          <div className="flex gap-2">
-                            <input
-                              type="number"
-                              value={editForm.sets || ""}
-                              onChange={(e) =>
-                                setEditForm({
-                                  ...editForm,
-                                  sets: parseInt(e.target.value),
-                                })
-                              }
-                              className="w-20 text-sm p-2 border border-border rounded-md"
-                              placeholder="Sets"
-                            />
-                            <input
-                              value={editForm.reps || ""}
-                              onChange={(e) =>
-                                setEditForm({
-                                  ...editForm,
-                                  reps: e.target.value,
-                                })
-                              }
-                              className="flex-1 text-sm p-2 border border-border rounded-md"
-                              placeholder="Reps"
-                            />
-                          </div>
-                          <div className="flex gap-2 justify-end">
-                            <button
-                              onClick={() => setEditingExercise(null)}
-                              className="px-3 py-1 text-xs text-muted hover:text-foreground"
-                            >
-                              Cancel
-                            </button>
-                            <button
-                              onClick={() => saveEdit(exercise.id)}
-                              className="px-3 py-1 text-xs bg-primary text-white rounded-md hover:bg-primary-dark"
-                            >
-                              Save
-                            </button>
-                          </div>
-                        </div>
-                      ) : (
-                        <div
-                          key={exercise.id}
-                          className="flex items-start justify-between bg-card/50 rounded-lg px-3 py-2 group"
-                        >
-                          <div className="flex-1 min-w-0">
-                            <div className="text-sm font-medium">
-                              {exercise.name}
-                            </div>
-                            <div className="text-xs text-muted">
-                              {exercise.sets} x {exercise.reps}
-                            </div>
-                            {exercise.description && (
-                              <div className="text-xs text-muted mt-0.5 truncate">
-                                {exercise.description}
-                              </div>
-                            )}
-                          </div>
-                          <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity ml-2">
-                            <button
-                              onClick={() => startEdit(exercise)}
-                              className="px-2 py-1 text-xs text-primary hover:bg-primary/10 rounded"
-                            >
-                              Edit
-                            </button>
-                            <button
-                              onClick={() => deleteExercise(exercise.id)}
-                              className="px-2 py-1 text-xs text-danger hover:bg-danger/10 rounded"
-                            >
-                              Del
-                            </button>
-                          </div>
-                        </div>
-                      )
-                    )}
-                  </div>
+                  <h3 className="text-lg font-semibold">{day.name}</h3>
+                  <p className="text-xs text-muted">
+                    {day.focus} · {day.totalTime}
+                  </p>
                 </div>
-              ))}
+                <span className="text-muted text-lg">
+                  {expandedDay === day.id ? "−" : "+"}
+                </span>
+              </button>
+
+              {expandedDay === day.id && (
+                <div className="px-4 pb-4 space-y-4">
+                  {day.sections.map((section) => (
+                    <div
+                      key={section.id}
+                      className={`border rounded-lg p-3 ${
+                        sectionTypeColors[section.type] || "bg-background border-border"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <h4 className="text-sm font-semibold">{section.name}</h4>
+                        {section.restSeconds ? (
+                          <span className="text-xs text-muted">
+                            Rest: {section.restSeconds}s
+                          </span>
+                        ) : null}
+                      </div>
+                      {section.notes && (
+                        <p className="text-xs text-muted mb-2">{section.notes}</p>
+                      )}
+
+                      <div className="space-y-2">
+                        {section.exercises.map((exercise) =>
+                          editingExercise === exercise.id ? (
+                            <div
+                              key={exercise.id}
+                              className="bg-card/80 border border-border rounded-lg p-3 space-y-2"
+                            >
+                              <input
+                                value={editForm.name || ""}
+                                onChange={(e) =>
+                                  setEditForm({ ...editForm, name: e.target.value })
+                                }
+                                className="w-full text-sm p-2 border border-border rounded-md"
+                                placeholder="Exercise name"
+                              />
+                              <textarea
+                                value={(editForm.description as string) || ""}
+                                onChange={(e) =>
+                                  setEditForm({
+                                    ...editForm,
+                                    description: e.target.value,
+                                  })
+                                }
+                                className="w-full text-xs p-2 border border-border rounded-md"
+                                placeholder="Description / cues"
+                                rows={2}
+                              />
+                              <div className="flex gap-2">
+                                <input
+                                  type="number"
+                                  value={editForm.sets || ""}
+                                  onChange={(e) =>
+                                    setEditForm({
+                                      ...editForm,
+                                      sets: parseInt(e.target.value),
+                                    })
+                                  }
+                                  className="w-20 text-sm p-2 border border-border rounded-md"
+                                  placeholder="Sets"
+                                />
+                                <input
+                                  value={editForm.reps || ""}
+                                  onChange={(e) =>
+                                    setEditForm({
+                                      ...editForm,
+                                      reps: e.target.value,
+                                    })
+                                  }
+                                  className="flex-1 text-sm p-2 border border-border rounded-md"
+                                  placeholder="Reps"
+                                />
+                              </div>
+                              <div className="flex gap-2 justify-end">
+                                <button
+                                  onClick={() => setEditingExercise(null)}
+                                  className="px-3 py-1 text-xs text-muted hover:text-foreground"
+                                >
+                                  Cancel
+                                </button>
+                                <button
+                                  onClick={() => saveEdit(exercise.id)}
+                                  className="px-3 py-1 text-xs bg-primary text-white rounded-md hover:bg-primary-dark"
+                                >
+                                  Save
+                                </button>
+                              </div>
+                            </div>
+                          ) : (
+                            <div
+                              key={exercise.id}
+                              className="flex items-start justify-between bg-card/50 rounded-lg px-3 py-2 group"
+                            >
+                              <div className="flex-1 min-w-0">
+                                <div className="text-sm font-medium">
+                                  {exercise.name}
+                                </div>
+                                <div className="text-xs text-muted">
+                                  {exercise.sets} x {exercise.reps}
+                                </div>
+                                {exercise.description && (
+                                  <div className="text-xs text-muted mt-0.5 truncate">
+                                    {exercise.description}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity ml-2">
+                                <button
+                                  onClick={() => startEdit(exercise)}
+                                  className="px-2 py-1 text-xs text-primary hover:bg-primary/10 rounded"
+                                >
+                                  Edit
+                                </button>
+                                <button
+                                  onClick={() => deleteExercise(exercise.id)}
+                                  className="px-2 py-1 text-xs text-danger hover:bg-danger/10 rounded"
+                                >
+                                  Del
+                                </button>
+                              </div>
+                            </div>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
+          ))}
         </div>
       ))}
     </div>

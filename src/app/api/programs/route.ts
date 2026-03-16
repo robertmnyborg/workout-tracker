@@ -2,7 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const program = await prisma.program.findFirst({
+  const programs = await prisma.program.findMany({
+    orderBy: { createdAt: "asc" },
     include: {
       days: {
         orderBy: { dayNumber: "asc" },
@@ -20,5 +21,5 @@ export async function GET() {
     },
   });
 
-  return NextResponse.json(program);
+  return NextResponse.json(programs);
 }

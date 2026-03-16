@@ -8,11 +8,13 @@ type Day = {
 
 export function WeekOverview({
   days,
-  completedDayNumbers,
+  completedDayIds,
 }: {
   days: Day[];
-  completedDayNumbers: number[];
+  completedDayIds: string[];
 }) {
+  const completedSet = new Set(completedDayIds);
+
   return (
     <div className="bg-card border border-border rounded-xl p-4">
       <div className="text-xs font-medium text-muted uppercase tracking-wide mb-3">
@@ -20,7 +22,7 @@ export function WeekOverview({
       </div>
       <div className="flex gap-3">
         {days.map((day) => {
-          const done = completedDayNumbers.includes(day.dayNumber);
+          const done = completedSet.has(day.id);
           return (
             <div key={day.id} className="flex-1 text-center">
               <div

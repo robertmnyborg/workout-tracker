@@ -1008,9 +1008,478 @@ async function main() {
     ],
   });
 
+  // ═══════════════════════════════════════════════════════
+  // CARDIO PROGRAM: 3-Week Basketball Conditioning
+  // ═══════════════════════════════════════════════════════
+  const cardioProgram = await prisma.program.create({
+    data: {
+      name: "Basketball Cardio Program",
+      description:
+        "3-week cardiovascular training plan for basketball. Builds lactate threshold and sprint recovery speed. Stop hard training 4-5 days before game day.",
+    },
+  });
+
+  // ─── Cardio Day 1: Steady-State Cardio ───
+  const cDay1 = await prisma.programDay.create({
+    data: {
+      programId: cardioProgram.id,
+      name: "Steady-State Cardio",
+      focus: "Aerobic base, 65-70% max HR",
+      dayNumber: 1,
+      totalTime: "25-35 min",
+    },
+  });
+
+  const c1Warmup = await prisma.section.create({
+    data: {
+      programDayId: cDay1.id,
+      name: "Warm-Up",
+      type: "activation",
+      order: 1,
+      restSeconds: 0,
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c1Warmup.id,
+        name: "Light Jog or Brisk Walk",
+        description: "Easy pace to raise heart rate gradually.",
+        sets: 1,
+        reps: "5 min",
+        order: 1,
+      },
+    ],
+  });
+
+  const c1Main = await prisma.section.create({
+    data: {
+      programDayId: cDay1.id,
+      name: "Main Work",
+      type: "cardio",
+      order: 2,
+      notes:
+        "Run, bike, or row. Keep heart rate at 65-70% max. Conversational pace — you should be able to talk.",
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c1Main.id,
+        name: "Steady-State Run / Bike / Row",
+        description:
+          "Maintain consistent pace at 65-70% max HR. Choose run, bike, or row based on joint comfort.",
+        sets: 1,
+        reps: "20-30 min",
+        order: 1,
+      },
+    ],
+  });
+
+  const c1Cooldown = await prisma.section.create({
+    data: {
+      programDayId: cDay1.id,
+      name: "Cool-Down",
+      type: "cooldown",
+      order: 3,
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c1Cooldown.id,
+        name: "Walk + Light Stretching",
+        description: "Easy walk, then stretch calves, quads, hip flexors.",
+        sets: 1,
+        reps: "5 min",
+        order: 1,
+      },
+    ],
+  });
+
+  // ─── Cardio Day 2: Interval Training — Base ───
+  const cDay2 = await prisma.programDay.create({
+    data: {
+      programId: cardioProgram.id,
+      name: "Intervals — Base",
+      focus: "Sprint capacity, lactate tolerance (Week 1 intensity)",
+      dayNumber: 2,
+      totalTime: "20-25 min",
+    },
+  });
+
+  const c2Warmup = await prisma.section.create({
+    data: {
+      programDayId: cDay2.id,
+      name: "Warm-Up",
+      type: "activation",
+      order: 1,
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c2Warmup.id,
+        name: "Easy Jog + Dynamic Stretches",
+        description:
+          "5 min easy jog, then leg swings, high knees, butt kicks.",
+        sets: 1,
+        reps: "5 min",
+        order: 1,
+      },
+    ],
+  });
+
+  const c2Main = await prisma.section.create({
+    data: {
+      programDayId: cDay2.id,
+      name: "Intervals",
+      type: "intervals",
+      order: 2,
+      restSeconds: 90,
+      notes:
+        "30 seconds at ~85-90% effort, then 90 seconds easy jog/walk recovery. 6-8 rounds.",
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c2Main.id,
+        name: "30s Hard / 90s Easy",
+        description:
+          "Sprint or hard effort for 30 seconds, then recover with easy jog or walk for 90 seconds. Repeat.",
+        sets: 8,
+        reps: "30s hard / 90s easy",
+        order: 1,
+      },
+    ],
+  });
+
+  const c2Cooldown = await prisma.section.create({
+    data: {
+      programDayId: cDay2.id,
+      name: "Cool-Down",
+      type: "cooldown",
+      order: 3,
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c2Cooldown.id,
+        name: "Walk + Stretch",
+        description: "5 min easy walk, then static stretches for legs.",
+        sets: 1,
+        reps: "5 min",
+        order: 1,
+      },
+    ],
+  });
+
+  // ─── Cardio Day 3: Long Easy Run ───
+  const cDay3 = await prisma.programDay.create({
+    data: {
+      programId: cardioProgram.id,
+      name: "Long Easy Run",
+      focus: "Aerobic endurance, fat oxidation",
+      dayNumber: 3,
+      totalTime: "35-45 min",
+    },
+  });
+
+  const c3Main = await prisma.section.create({
+    data: {
+      programDayId: cDay3.id,
+      name: "Main Work",
+      type: "cardio",
+      order: 1,
+      notes:
+        "Easy conversational pace. This builds aerobic base. Don't push — the intervals do the hard work.",
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c3Main.id,
+        name: "Easy Run",
+        description:
+          "30-40 minutes at easy, conversational pace. Walk breaks are fine if needed.",
+        sets: 1,
+        reps: "30-40 min",
+        order: 1,
+      },
+    ],
+  });
+
+  const c3Cooldown = await prisma.section.create({
+    data: {
+      programDayId: cDay3.id,
+      name: "Cool-Down",
+      type: "cooldown",
+      order: 2,
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c3Cooldown.id,
+        name: "Walk + Full Lower Body Stretch",
+        description:
+          "5 min walk, then calves, quads, hamstrings, hip flexors, glutes. 30s each.",
+        sets: 1,
+        reps: "5 min walk + stretching",
+        order: 1,
+      },
+    ],
+  });
+
+  // ─── Cardio Day 4: Intervals — Ramp ───
+  const cDay4 = await prisma.programDay.create({
+    data: {
+      programId: cardioProgram.id,
+      name: "Intervals — Ramp",
+      focus: "Higher intensity intervals (Week 2 progression)",
+      dayNumber: 4,
+      totalTime: "25-30 min",
+    },
+  });
+
+  const c4Warmup = await prisma.section.create({
+    data: {
+      programDayId: cDay4.id,
+      name: "Warm-Up",
+      type: "activation",
+      order: 1,
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c4Warmup.id,
+        name: "Easy Jog + Dynamic Stretches",
+        description:
+          "5 min easy jog, then leg swings, high knees, butt kicks.",
+        sets: 1,
+        reps: "5 min",
+        order: 1,
+      },
+    ],
+  });
+
+  const c4Main = await prisma.section.create({
+    data: {
+      programDayId: cDay4.id,
+      name: "Intervals",
+      type: "intervals",
+      order: 2,
+      restSeconds: 80,
+      notes:
+        "40 seconds at ~85-90% effort, then 80 seconds easy recovery. 8-10 rounds. More work, less rest than Base intervals.",
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c4Main.id,
+        name: "40s Hard / 80s Easy",
+        description:
+          "Sprint or hard effort for 40 seconds, then recover for 80 seconds. Repeat. More aggressive than Base intervals.",
+        sets: 10,
+        reps: "40s hard / 80s easy",
+        order: 1,
+      },
+    ],
+  });
+
+  const c4Cooldown = await prisma.section.create({
+    data: {
+      programDayId: cDay4.id,
+      name: "Cool-Down",
+      type: "cooldown",
+      order: 3,
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c4Cooldown.id,
+        name: "Walk + Stretch",
+        description: "5 min easy walk, then static stretches.",
+        sets: 1,
+        reps: "5 min",
+        order: 1,
+      },
+    ],
+  });
+
+  // ─── Cardio Day 5: Basketball Intervals ───
+  const cDay5 = await prisma.programDay.create({
+    data: {
+      programId: cardioProgram.id,
+      name: "Basketball Intervals",
+      focus: "Sport-specific conditioning, court movement patterns",
+      dayNumber: 5,
+      totalTime: "25-30 min",
+    },
+  });
+
+  const c5Warmup = await prisma.section.create({
+    data: {
+      programDayId: cDay5.id,
+      name: "Warm-Up",
+      type: "activation",
+      order: 1,
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c5Warmup.id,
+        name: "Light Jog + Lateral Shuffles",
+        description:
+          "3 min jog, then 2 min of lateral shuffles, backpedals, and defensive slides.",
+        sets: 1,
+        reps: "5 min",
+        order: 1,
+      },
+    ],
+  });
+
+  const c5Main = await prisma.section.create({
+    data: {
+      programDayId: cDay5.id,
+      name: "Basketball Drills",
+      type: "intervals",
+      order: 2,
+      restSeconds: 90,
+      notes:
+        "Simulate game-like sprint patterns. Full effort on each rep, full recovery between sets.",
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c5Main.id,
+        name: "Suicide Sprints (Shuttle Runs)",
+        description:
+          "Baseline → free throw line → back → half court → back → far free throw → back → far baseline → back. All-out effort.",
+        sets: 6,
+        reps: "1 full suicide",
+        order: 1,
+      },
+      {
+        sectionId: c5Main.id,
+        name: "Defensive Slide Shuttles",
+        description:
+          "Defensive stance, slide baseline to baseline. Stay low, quick feet. Alternate leading direction.",
+        sets: 4,
+        reps: "1 full court",
+        order: 2,
+      },
+    ],
+  });
+
+  const c5Cooldown = await prisma.section.create({
+    data: {
+      programDayId: cDay5.id,
+      name: "Cool-Down",
+      type: "cooldown",
+      order: 3,
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c5Cooldown.id,
+        name: "Walk + Full Stretch",
+        description:
+          "Easy walk, then calves, quads, hamstrings, hip flexors, groin. 30s each.",
+        sets: 1,
+        reps: "5-10 min",
+        order: 1,
+      },
+    ],
+  });
+
+  // ─── Cardio Day 6: Taper Jog ───
+  const cDay6 = await prisma.programDay.create({
+    data: {
+      programId: cardioProgram.id,
+      name: "Taper Jog",
+      focus: "Active recovery, maintain without fatiguing (Week 3 taper)",
+      dayNumber: 6,
+      totalTime: "20-25 min",
+    },
+  });
+
+  const c6Main = await prisma.section.create({
+    data: {
+      programDayId: cDay6.id,
+      name: "Easy Jog",
+      type: "cardio",
+      order: 1,
+      notes:
+        "Very easy pace. This is about staying loose, not building fitness. If in doubt, go slower.",
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c6Main.id,
+        name: "Easy Jog",
+        description:
+          "20 minutes at very easy pace. This is active recovery — keep it light.",
+        sets: 1,
+        reps: "20 min",
+        order: 1,
+      },
+    ],
+  });
+
+  const c6Cooldown = await prisma.section.create({
+    data: {
+      programDayId: cDay6.id,
+      name: "Cool-Down",
+      type: "cooldown",
+      order: 2,
+    },
+  });
+
+  await prisma.exercise.createMany({
+    data: [
+      {
+        sectionId: c6Cooldown.id,
+        name: "Walk + Light Stretch",
+        description: "Easy walk, gentle stretching. Stay loose.",
+        sets: 1,
+        reps: "5 min",
+        order: 1,
+      },
+    ],
+  });
+
   console.log("Seed complete!");
   console.log(`Program: ${program.name} (${program.id})`);
   console.log(`Days: ${[day1, day2, day3, day4].map((d) => d.name).join(", ")}`);
+  console.log(`Program: ${cardioProgram.name} (${cardioProgram.id})`);
+  console.log(
+    `Days: ${[cDay1, cDay2, cDay3, cDay4, cDay5, cDay6].map((d) => d.name).join(", ")}`
+  );
 }
 
 main()
