@@ -65,16 +65,19 @@ model Profile {
   name            String
   createdAt       DateTime         @default(now())
   workoutSessions WorkoutSession[]
+  nutritionTarget NutritionTarget?
+  mealPlans       MealPlan[]
+  mealLogs        MealLog[]
 }
 
 model WorkoutSession {
-  id           String      @id @default(cuid())
+  id           String     @id @default(cuid())
   profileId    String
-  profile      Profile     @relation(fields: [profileId], references: [id])
+  profile      Profile    @relation(fields: [profileId], references: [id])
   programDayId String
-  programDay   ProgramDay  @relation(fields: [programDayId], references: [id])
-  date         DateTime    @default(now())
-  startedAt    DateTime    @default(now())
+  programDay   ProgramDay @relation(fields: [programDayId], references: [id])
+  date         DateTime   @default(now())
+  startedAt    DateTime   @default(now())
   completedAt  DateTime?
   notes        String?
   setLogs      SetLog[]
@@ -89,15 +92,15 @@ model WeekSchedule {
 }
 
 model ScheduleEntry {
-  id           String        @id @default(cuid())
+  id           String       @id @default(cuid())
   scheduleId   String
-  schedule     WeekSchedule  @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
-  dayOfWeek    Int           // 1=Monday ... 7=Sunday
+  schedule     WeekSchedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  dayOfWeek    Int // 1=Monday ... 7=Sunday
   programDayId String?
-  programDay   ProgramDay?   @relation(fields: [programDayId], references: [id])
-  isRest       Boolean       @default(false)
+  programDay   ProgramDay?  @relation(fields: [programDayId], references: [id])
+  isRest       Boolean      @default(false)
   notes        String?
-  order        Int           @default(1)
+  order        Int          @default(1)
 
   @@unique([scheduleId, dayOfWeek, order])
 }
@@ -113,4 +116,95 @@ model SetLog {
   reps             Int?
   completed        Boolean        @default(false)
   notes            String?
+}
+
+model NutritionTarget {
+  id        String  @id @default(cuid())
+  profileId String  @unique
+  profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  calories  Int
+  protein   Int
+  carbs     Int
+  fat       Int
+}
+
+model Food {
+  id                  String         @id @default(cuid())
+  name                String         @unique
+  brand               String?
+  caloriesPer100g     Float
+  proteinPer100g      Float
+  carbsPer100g        Float
+  fatPer100g          Float
+  defaultServingGrams Float?
+  defaultServingLabel String?
+  tags                String[]
+  createdAt           DateTime       @default(now())
+  mealLogItems        MealLogItem[]
+  mealPlanItems       MealPlanItem[]
+}
+
+model MealPlan {
+  id        String         @id @default(cuid())
+  profileId String
+  profile   Profile        @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  name      String
+  isActive  Boolean        @default(false)
+  createdAt DateTime       @default(now())
+  meals     MealPlanMeal[]
+
+  @@unique([profileId, name])
+}
+
+model MealPlanMeal {
+  id          String         @id @default(cuid())
+  mealPlanId  String
+  mealPlan    MealPlan       @relation(fields: [mealPlanId], references: [id], onDelete: Cascade)
+  mealType    String
+  title       String
+  description String?
+  variant     Int            @default(1)
+  frequency   String?
+  notes       String?
+  order       Int
+  items       MealPlanItem[]
+}
+
+model MealPlanItem {
+  id             String       @id @default(cuid())
+  mealPlanMealId String
+  mealPlanMeal   MealPlanMeal @relation(fields: [mealPlanMealId], references: [id], onDelete: Cascade)
+  foodId         String
+  food           Food         @relation(fields: [foodId], references: [id])
+  gramsMale      Float
+  gramsFemale    Float
+  notes          String?
+  order          Int
+}
+
+model MealLog {
+  id        String        @id @default(cuid())
+  profileId String
+  profile   Profile       @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  date      DateTime
+  mealType  String
+  title     String?
+  createdAt DateTime      @default(now())
+  items     MealLogItem[]
+
+  @@index([profileId, date])
+}
+
+model MealLogItem {
+  id        String  @id @default(cuid())
+  mealLogId String
+  mealLog   MealLog @relation(fields: [mealLogId], references: [id], onDelete: Cascade)
+  foodId    String
+  food      Food    @relation(fields: [foodId], references: [id])
+  grams     Float
+  calories  Float
+  protein   Float
+  carbs     Float
+  fat       Float
+  order     Int     @default(0)
 }

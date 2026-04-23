@@ -1626,6 +1626,504 @@ async function main() {
     `Days: ${[cDay1, cDay2, cDay3, cDay4, cDay5, cDay6].map((d) => d.name).join(", ")}`
   );
   console.log(`Schedules: ${[week1, week2, week3].map((w) => w.name).join(", ")}`);
+
+  await seedMeals();
+  console.log("Meal seed complete!");
+}
+
+// ═══════════════════════════════════════════════════════════
+// MEAL TRACKING SEED
+// Foods: upsert by name (idempotent)
+// Nutrition targets & plans: per profile found in DB
+// Does NOT wipe MealLog / MealLogItem (user data)
+// ═══════════════════════════════════════════════════════════
+
+type FoodSeed = {
+  name: string;
+  caloriesPer100g: number;
+  proteinPer100g: number;
+  carbsPer100g: number;
+  fatPer100g: number;
+  defaultServingGrams?: number;
+  defaultServingLabel?: string;
+  tags?: string[];
+};
+
+const FOODS: FoodSeed[] = [
+  // Eggs & Dairy
+  { name: "Eggs, whole", caloriesPer100g: 155, proteinPer100g: 13, carbsPer100g: 1.1, fatPer100g: 11, defaultServingGrams: 50, defaultServingLabel: "1 large egg" },
+  { name: "Greek yogurt, plain 2%", caloriesPer100g: 73, proteinPer100g: 10, carbsPer100g: 4, fatPer100g: 2, defaultServingGrams: 245, defaultServingLabel: "1 cup", tags: ["probiotic"] },
+  { name: "Cottage cheese, low-fat", caloriesPer100g: 72, proteinPer100g: 12, carbsPer100g: 3, fatPer100g: 1, defaultServingGrams: 226, defaultServingLabel: "1 cup" },
+  { name: "Whey protein powder", caloriesPer100g: 375, proteinPer100g: 75, carbsPer100g: 7.5, fatPer100g: 3.8, defaultServingGrams: 32, defaultServingLabel: "1 scoop" },
+  { name: "Milk, whole", caloriesPer100g: 61, proteinPer100g: 3.2, carbsPer100g: 4.8, fatPer100g: 3.3, defaultServingGrams: 244, defaultServingLabel: "1 cup" },
+  { name: "Fortified soy milk", caloriesPer100g: 54, proteinPer100g: 3.3, carbsPer100g: 6.3, fatPer100g: 1.8, defaultServingGrams: 243, defaultServingLabel: "1 cup" },
+
+  // Fish & Seafood
+  { name: "Salmon, wild", caloriesPer100g: 208, proteinPer100g: 20, carbsPer100g: 0, fatPer100g: 13, defaultServingGrams: 170, defaultServingLabel: "6 oz", tags: ["fattyFish"] },
+  { name: "Sardines, canned in olive oil", caloriesPer100g: 208, proteinPer100g: 25, carbsPer100g: 0, fatPer100g: 11, defaultServingGrams: 92, defaultServingLabel: "1 can", tags: ["fattyFish"] },
+  { name: "Mackerel, Atlantic", caloriesPer100g: 205, proteinPer100g: 19, carbsPer100g: 0, fatPer100g: 14, defaultServingGrams: 170, defaultServingLabel: "6 oz", tags: ["fattyFish"] },
+  { name: "Tuna, canned in water", caloriesPer100g: 116, proteinPer100g: 26, carbsPer100g: 0, fatPer100g: 1, defaultServingGrams: 142, defaultServingLabel: "1 can", tags: ["fattyFish"] },
+  { name: "Oysters, raw", caloriesPer100g: 81, proteinPer100g: 9.5, carbsPer100g: 4.5, fatPer100g: 2.3, defaultServingGrams: 170, defaultServingLabel: "6 oz", tags: ["organReplacement", "zincSource"] },
+  { name: "Clams, canned", caloriesPer100g: 148, proteinPer100g: 26, carbsPer100g: 5.1, fatPer100g: 1.9, defaultServingGrams: 85, defaultServingLabel: "3 oz", tags: ["organReplacement", "zincSource"] },
+  { name: "Mussels, cooked", caloriesPer100g: 172, proteinPer100g: 24, carbsPer100g: 7.4, fatPer100g: 4.5, defaultServingGrams: 85, defaultServingLabel: "3 oz", tags: ["organReplacement"] },
+
+  // Poultry & Meat
+  { name: "Chicken breast, cooked", caloriesPer100g: 165, proteinPer100g: 31, carbsPer100g: 0, fatPer100g: 3.6, defaultServingGrams: 170, defaultServingLabel: "6 oz" },
+  { name: "Chicken thigh, cooked skinless", caloriesPer100g: 209, proteinPer100g: 26, carbsPer100g: 0, fatPer100g: 11, defaultServingGrams: 170, defaultServingLabel: "6 oz" },
+  { name: "Ground beef, 93/7 lean", caloriesPer100g: 152, proteinPer100g: 22, carbsPer100g: 0, fatPer100g: 7, defaultServingGrams: 113, defaultServingLabel: "4 oz", tags: ["zincSource"] },
+  { name: "Sirloin, lean", caloriesPer100g: 183, proteinPer100g: 30, carbsPer100g: 0, fatPer100g: 6, defaultServingGrams: 170, defaultServingLabel: "6 oz", tags: ["zincSource"] },
+  { name: "Flank steak", caloriesPer100g: 192, proteinPer100g: 28, carbsPer100g: 0, fatPer100g: 8, defaultServingGrams: 170, defaultServingLabel: "6 oz", tags: ["zincSource"] },
+  { name: "Ground turkey, lean", caloriesPer100g: 148, proteinPer100g: 27, carbsPer100g: 0, fatPer100g: 4, defaultServingGrams: 113, defaultServingLabel: "4 oz" },
+
+  // Legumes & Soy
+  { name: "Tofu, firm", caloriesPer100g: 144, proteinPer100g: 17, carbsPer100g: 3, fatPer100g: 9, defaultServingGrams: 100, defaultServingLabel: "3.5 oz" },
+  { name: "Tofu, silken", caloriesPer100g: 55, proteinPer100g: 6, carbsPer100g: 2, fatPer100g: 3, defaultServingGrams: 150, defaultServingLabel: "¾ cup" },
+  { name: "Natto", caloriesPer100g: 212, proteinPer100g: 18, carbsPer100g: 13, fatPer100g: 11, defaultServingGrams: 50, defaultServingLabel: "1 pack", tags: ["fermentedK2", "probiotic"] },
+  { name: "Miso paste", caloriesPer100g: 199, proteinPer100g: 12, carbsPer100g: 26, fatPer100g: 6, defaultServingGrams: 17, defaultServingLabel: "1 tbsp", tags: ["fermentedK2", "probiotic"] },
+  { name: "Edamame, shelled cooked", caloriesPer100g: 122, proteinPer100g: 11, carbsPer100g: 9.9, fatPer100g: 5.2, defaultServingGrams: 155, defaultServingLabel: "1 cup" },
+  { name: "Lentils, cooked", caloriesPer100g: 116, proteinPer100g: 9, carbsPer100g: 20, fatPer100g: 0.4, defaultServingGrams: 198, defaultServingLabel: "1 cup" },
+  { name: "White beans, cooked", caloriesPer100g: 139, proteinPer100g: 9.7, carbsPer100g: 25, fatPer100g: 0.3, defaultServingGrams: 179, defaultServingLabel: "1 cup" },
+
+  // Grains
+  { name: "Brown rice, cooked", caloriesPer100g: 112, proteinPer100g: 2.6, carbsPer100g: 24, fatPer100g: 0.9, defaultServingGrams: 195, defaultServingLabel: "1 cup" },
+  { name: "Quinoa, cooked", caloriesPer100g: 120, proteinPer100g: 4.4, carbsPer100g: 21, fatPer100g: 1.9, defaultServingGrams: 185, defaultServingLabel: "1 cup" },
+  { name: "Whole wheat bread", caloriesPer100g: 247, proteinPer100g: 13, carbsPer100g: 41, fatPer100g: 4.2, defaultServingGrams: 30, defaultServingLabel: "1 slice" },
+  { name: "Oats, rolled, dry", caloriesPer100g: 389, proteinPer100g: 17, carbsPer100g: 66, fatPer100g: 7, defaultServingGrams: 40, defaultServingLabel: "½ cup dry" },
+  { name: "Buckwheat soba, cooked", caloriesPer100g: 99, proteinPer100g: 5, carbsPer100g: 21, fatPer100g: 0.1, defaultServingGrams: 114, defaultServingLabel: "1 cup" },
+  { name: "Whole wheat pasta, cooked", caloriesPer100g: 124, proteinPer100g: 5, carbsPer100g: 26, fatPer100g: 0.9, defaultServingGrams: 140, defaultServingLabel: "1 cup" },
+
+  // Vegetables - greens
+  { name: "Spinach, raw", caloriesPer100g: 23, proteinPer100g: 2.9, carbsPer100g: 3.6, fatPer100g: 0.4, defaultServingGrams: 30, defaultServingLabel: "1 cup", tags: ["darkLeafyGreens"] },
+  { name: "Kale, raw", caloriesPer100g: 49, proteinPer100g: 4.3, carbsPer100g: 8.8, fatPer100g: 0.9, defaultServingGrams: 67, defaultServingLabel: "1 cup", tags: ["darkLeafyGreens", "vitC"] },
+  { name: "Collard greens, cooked", caloriesPer100g: 33, proteinPer100g: 2.7, carbsPer100g: 6, fatPer100g: 0.7, defaultServingGrams: 190, defaultServingLabel: "1 cup", tags: ["darkLeafyGreens"] },
+  { name: "Bok choy, cooked", caloriesPer100g: 13, proteinPer100g: 1.6, carbsPer100g: 1.8, fatPer100g: 0.2, defaultServingGrams: 170, defaultServingLabel: "1 cup", tags: ["darkLeafyGreens"] },
+  { name: "Gai lan (Chinese broccoli)", caloriesPer100g: 22, proteinPer100g: 1.2, carbsPer100g: 4.7, fatPer100g: 0.4, defaultServingGrams: 88, defaultServingLabel: "1 cup", tags: ["darkLeafyGreens", "vitC"] },
+  { name: "Komatsuna, cooked", caloriesPer100g: 21, proteinPer100g: 2.5, carbsPer100g: 2.5, fatPer100g: 0.3, defaultServingGrams: 130, defaultServingLabel: "1 cup", tags: ["darkLeafyGreens"] },
+
+  // Vegetables - other
+  { name: "Broccoli, raw", caloriesPer100g: 34, proteinPer100g: 2.8, carbsPer100g: 7, fatPer100g: 0.4, defaultServingGrams: 91, defaultServingLabel: "1 cup", tags: ["vitC", "chromium"] },
+  { name: "Red bell pepper", caloriesPer100g: 31, proteinPer100g: 1, carbsPer100g: 6, fatPer100g: 0.3, defaultServingGrams: 149, defaultServingLabel: "1 pepper", tags: ["vitC"] },
+  { name: "Mushrooms, white", caloriesPer100g: 22, proteinPer100g: 3.1, carbsPer100g: 3.3, fatPer100g: 0.3, defaultServingGrams: 70, defaultServingLabel: "1 cup" },
+  { name: "Shiitake mushrooms", caloriesPer100g: 34, proteinPer100g: 2.2, carbsPer100g: 7, fatPer100g: 0.5, defaultServingGrams: 70, defaultServingLabel: "1 cup" },
+  { name: "Avocado", caloriesPer100g: 160, proteinPer100g: 2, carbsPer100g: 9, fatPer100g: 15, defaultServingGrams: 150, defaultServingLabel: "1 medium" },
+  { name: "Sweet potato, baked", caloriesPer100g: 90, proteinPer100g: 2, carbsPer100g: 21, fatPer100g: 0.1, defaultServingGrams: 200, defaultServingLabel: "1 medium" },
+  { name: "Kabocha squash", caloriesPer100g: 49, proteinPer100g: 1.4, carbsPer100g: 12, fatPer100g: 0.2, defaultServingGrams: 116, defaultServingLabel: "1 cup" },
+  { name: "Carrots, raw", caloriesPer100g: 41, proteinPer100g: 0.9, carbsPer100g: 9.6, fatPer100g: 0.2, defaultServingGrams: 128, defaultServingLabel: "1 cup" },
+  { name: "Onion", caloriesPer100g: 40, proteinPer100g: 1.1, carbsPer100g: 9.3, fatPer100g: 0.1, defaultServingGrams: 160, defaultServingLabel: "1 cup" },
+  { name: "Bean sprouts", caloriesPer100g: 30, proteinPer100g: 3, carbsPer100g: 6, fatPer100g: 0.2, defaultServingGrams: 104, defaultServingLabel: "1 cup" },
+  { name: "Cabbage, raw", caloriesPer100g: 25, proteinPer100g: 1.3, carbsPer100g: 6, fatPer100g: 0.1, defaultServingGrams: 89, defaultServingLabel: "1 cup" },
+  { name: "Kimchi", caloriesPer100g: 15, proteinPer100g: 1.1, carbsPer100g: 2.4, fatPer100g: 0.5, defaultServingGrams: 150, defaultServingLabel: "1 cup", tags: ["fermentedK2", "vitC", "probiotic"] },
+
+  // Seaweed
+  { name: "Nori, sheet", caloriesPer100g: 349, proteinPer100g: 44, carbsPer100g: 44, fatPer100g: 2.7, defaultServingGrams: 2.6, defaultServingLabel: "1 sheet", tags: ["iodine"] },
+  { name: "Wakame, dried", caloriesPer100g: 45, proteinPer100g: 3, carbsPer100g: 9, fatPer100g: 0.6, defaultServingGrams: 5, defaultServingLabel: "1 tbsp", tags: ["iodine"] },
+  { name: "Hijiki, dried", caloriesPer100g: 180, proteinPer100g: 7, carbsPer100g: 52, fatPer100g: 1.3, defaultServingGrams: 10, defaultServingLabel: "1 tbsp", tags: ["iodine"] },
+
+  // Nuts & Seeds
+  { name: "Almonds", caloriesPer100g: 579, proteinPer100g: 21, carbsPer100g: 22, fatPer100g: 50, defaultServingGrams: 28, defaultServingLabel: "1 oz", tags: ["vitE"] },
+  { name: "Walnuts", caloriesPer100g: 654, proteinPer100g: 15, carbsPer100g: 14, fatPer100g: 65, defaultServingGrams: 28, defaultServingLabel: "1 oz" },
+  { name: "Pumpkin seeds", caloriesPer100g: 559, proteinPer100g: 30, carbsPer100g: 11, fatPer100g: 49, defaultServingGrams: 28, defaultServingLabel: "1 oz", tags: ["zincSource"] },
+  { name: "Sunflower seeds", caloriesPer100g: 584, proteinPer100g: 21, carbsPer100g: 20, fatPer100g: 52, defaultServingGrams: 28, defaultServingLabel: "1 oz", tags: ["vitE"] },
+  { name: "Brazil nuts", caloriesPer100g: 656, proteinPer100g: 14, carbsPer100g: 12, fatPer100g: 66, defaultServingGrams: 15, defaultServingLabel: "3 nuts", tags: ["brazilNuts"] },
+  { name: "Sesame seeds", caloriesPer100g: 573, proteinPer100g: 18, carbsPer100g: 23, fatPer100g: 50, defaultServingGrams: 9, defaultServingLabel: "1 tbsp" },
+  { name: "Ground flax", caloriesPer100g: 534, proteinPer100g: 18, carbsPer100g: 29, fatPer100g: 42, defaultServingGrams: 7, defaultServingLabel: "1 tbsp" },
+  { name: "Tahini", caloriesPer100g: 595, proteinPer100g: 17, carbsPer100g: 21, fatPer100g: 54, defaultServingGrams: 15, defaultServingLabel: "1 tbsp" },
+
+  // Fruits
+  { name: "Apple, with skin", caloriesPer100g: 52, proteinPer100g: 0.3, carbsPer100g: 14, fatPer100g: 0.2, defaultServingGrams: 182, defaultServingLabel: "1 medium", tags: ["chromium"] },
+  { name: "Asian pear", caloriesPer100g: 42, proteinPer100g: 0.5, carbsPer100g: 11, fatPer100g: 0.2, defaultServingGrams: 275, defaultServingLabel: "1 medium", tags: ["chromium"] },
+  { name: "Banana", caloriesPer100g: 89, proteinPer100g: 1.1, carbsPer100g: 23, fatPer100g: 0.3, defaultServingGrams: 118, defaultServingLabel: "1 medium" },
+  { name: "Mixed berries", caloriesPer100g: 57, proteinPer100g: 0.7, carbsPer100g: 14, fatPer100g: 0.3, defaultServingGrams: 150, defaultServingLabel: "1 cup", tags: ["vitC"] },
+  { name: "Lemon juice", caloriesPer100g: 22, proteinPer100g: 0.4, carbsPer100g: 7, fatPer100g: 0.2, defaultServingGrams: 15, defaultServingLabel: "1 tbsp", tags: ["vitC"] },
+
+  // Fats & Sauces
+  { name: "Olive oil", caloriesPer100g: 884, proteinPer100g: 0, carbsPer100g: 0, fatPer100g: 100, defaultServingGrams: 14, defaultServingLabel: "1 tbsp" },
+  { name: "Sesame oil", caloriesPer100g: 884, proteinPer100g: 0, carbsPer100g: 0, fatPer100g: 100, defaultServingGrams: 14, defaultServingLabel: "1 tbsp" },
+  { name: "Soy sauce", caloriesPer100g: 53, proteinPer100g: 8, carbsPer100g: 5, fatPer100g: 0.6, defaultServingGrams: 16, defaultServingLabel: "1 tbsp" },
+  { name: "Gochujang", caloriesPer100g: 152, proteinPer100g: 6, carbsPer100g: 32, fatPer100g: 2.5, defaultServingGrams: 17, defaultServingLabel: "1 tbsp" },
+];
+
+async function seedFoods() {
+  for (const f of FOODS) {
+    await prisma.food.upsert({
+      where: { name: f.name },
+      create: { ...f, tags: f.tags ?? [] },
+      update: { ...f, tags: f.tags ?? [] },
+    });
+  }
+  console.log(`Seeded ${FOODS.length} foods`);
+}
+
+type ItemSpec = { food: string; gramsMale: number; gramsFemale: number; notes?: string };
+type MealSpec = {
+  mealType: string;
+  title: string;
+  description?: string;
+  variant?: number;
+  frequency?: string;
+  notes?: string;
+  items: ItemSpec[];
+};
+
+async function createPlan(
+  profileId: string,
+  name: string,
+  isActive: boolean,
+  meals: MealSpec[],
+  foodMap: Map<string, string>
+) {
+  const plan = await prisma.mealPlan.create({
+    data: { profileId, name, isActive },
+  });
+  let order = 0;
+  for (const m of meals) {
+    const mealRow = await prisma.mealPlanMeal.create({
+      data: {
+        mealPlanId: plan.id,
+        mealType: m.mealType,
+        title: m.title,
+        description: m.description,
+        variant: m.variant ?? 1,
+        frequency: m.frequency,
+        notes: m.notes,
+        order: order++,
+      },
+    });
+    let itemOrder = 0;
+    for (const it of m.items) {
+      const foodId = foodMap.get(it.food);
+      if (!foodId) {
+        console.warn(`  Skipping item: food not found: "${it.food}"`);
+        continue;
+      }
+      await prisma.mealPlanItem.create({
+        data: {
+          mealPlanMealId: mealRow.id,
+          foodId,
+          gramsMale: it.gramsMale,
+          gramsFemale: it.gramsFemale,
+          notes: it.notes,
+          order: itemOrder++,
+        },
+      });
+    }
+  }
+  return plan;
+}
+
+const WESTERN: MealSpec[] = [
+  {
+    mealType: "breakfast",
+    title: "Power Scramble Bowl",
+    frequency: "daily",
+    items: [
+      { food: "Eggs, whole", gramsMale: 200, gramsFemale: 100, notes: "4 (M) / 2 (F) eggs" },
+      { food: "Spinach, raw", gramsMale: 60, gramsFemale: 60, notes: "2 cups sautéed" },
+      { food: "Mushrooms, white", gramsMale: 35, gramsFemale: 35, notes: "½ cup" },
+      { food: "Red bell pepper", gramsMale: 75, gramsFemale: 75, notes: "½ pepper" },
+      { food: "Avocado", gramsMale: 75, gramsFemale: 75, notes: "½ avocado" },
+      { food: "Whole wheat bread", gramsMale: 60, gramsFemale: 30, notes: "2 slices (M) / 1 (F)" },
+      { food: "Greek yogurt, plain 2%", gramsMale: 245, gramsFemale: 245, notes: "1 cup side" },
+    ],
+  },
+  {
+    mealType: "midMorningSnack",
+    title: "Almonds + Apple + Cottage Cheese",
+    frequency: "daily",
+    items: [
+      { food: "Almonds", gramsMale: 28, gramsFemale: 28 },
+      { food: "Apple, with skin", gramsMale: 182, gramsFemale: 182 },
+      { food: "Cottage cheese, low-fat", gramsMale: 226, gramsFemale: 113, notes: "1 cup (M) / ½ cup (F)" },
+    ],
+  },
+  {
+    mealType: "lunch",
+    title: "Salmon Power Bowl",
+    variant: 1,
+    frequency: "3x/week",
+    items: [
+      { food: "Salmon, wild", gramsMale: 227, gramsFemale: 142, notes: "8 oz (M) / 5 oz (F)" },
+      { food: "Brown rice, cooked", gramsMale: 195, gramsFemale: 195 },
+      { food: "Kale, raw", gramsMale: 134, gramsFemale: 134, notes: "2 cups massaged + lemon" },
+      { food: "Pumpkin seeds", gramsMale: 28, gramsFemale: 28 },
+      { food: "Sweet potato, baked", gramsMale: 200, gramsFemale: 200 },
+    ],
+  },
+  {
+    mealType: "lunch",
+    title: "Grilled Chicken + Lentils",
+    variant: 2,
+    frequency: "1x/week",
+    items: [
+      { food: "Chicken breast, cooked", gramsMale: 227, gramsFemale: 142 },
+      { food: "Lentils, cooked", gramsMale: 198, gramsFemale: 198 },
+      { food: "Broccoli, raw", gramsMale: 182, gramsFemale: 182, notes: "2 cups steamed" },
+      { food: "Tahini", gramsMale: 15, gramsFemale: 15, notes: "drizzle" },
+    ],
+  },
+  {
+    mealType: "lunch",
+    title: "Sardine + White Bean Salad",
+    variant: 3,
+    frequency: "1x/week",
+    items: [
+      { food: "Sardines, canned in olive oil", gramsMale: 184, gramsFemale: 92, notes: "2 cans (M) / 1 (F)" },
+      { food: "White beans, cooked", gramsMale: 179, gramsFemale: 179 },
+      { food: "Whole wheat bread", gramsMale: 60, gramsFemale: 30 },
+      { food: "Olive oil", gramsMale: 14, gramsFemale: 14 },
+    ],
+  },
+  {
+    mealType: "preWorkout",
+    title: "Whey Shake + Banana",
+    frequency: "daily",
+    items: [
+      { food: "Whey protein powder", gramsMale: 48, gramsFemale: 32, notes: "1.5 scoops (M) / 1 (F)" },
+      { food: "Milk, whole", gramsMale: 244, gramsFemale: 244, notes: "1 cup" },
+      { food: "Banana", gramsMale: 118, gramsFemale: 118 },
+    ],
+  },
+  {
+    mealType: "dinner",
+    title: "Grass-Fed Beef + Broccoli Stir-Fry",
+    variant: 1,
+    frequency: "2x/week",
+    items: [
+      { food: "Sirloin, lean", gramsMale: 227, gramsFemale: 142 },
+      { food: "Broccoli, raw", gramsMale: 182, gramsFemale: 182 },
+      { food: "Red bell pepper", gramsMale: 150, gramsFemale: 150 },
+      { food: "Quinoa, cooked", gramsMale: 185, gramsFemale: 185 },
+      { food: "Olive oil", gramsMale: 14, gramsFemale: 14 },
+    ],
+  },
+  {
+    mealType: "dinner",
+    title: "Oysters + Spinach + Sweet Potato (liver replacement)",
+    description: "Pan-seared oysters over wilted spinach with mashed sweet potato — nutrient-density anchor replacing weekly liver",
+    variant: 2,
+    frequency: "1x/week",
+    items: [
+      { food: "Oysters, raw", gramsMale: 170, gramsFemale: 113, notes: "6 oz (M) / 4 oz (F) pan-seared" },
+      { food: "Spinach, raw", gramsMale: 90, gramsFemale: 90, notes: "3 cups wilted" },
+      { food: "Sweet potato, baked", gramsMale: 200, gramsFemale: 200, notes: "mashed" },
+      { food: "Eggs, whole", gramsMale: 50, gramsFemale: 50, notes: "runny yolk on top" },
+      { food: "Olive oil", gramsMale: 14, gramsFemale: 14 },
+    ],
+  },
+  {
+    mealType: "dinner",
+    title: "Chicken Thigh + Lentil Stew",
+    variant: 3,
+    frequency: "2x/week",
+    items: [
+      { food: "Chicken thigh, cooked skinless", gramsMale: 227, gramsFemale: 142 },
+      { food: "Lentils, cooked", gramsMale: 198, gramsFemale: 198 },
+      { food: "Collard greens, cooked", gramsMale: 190, gramsFemale: 190 },
+    ],
+  },
+  {
+    mealType: "dinner",
+    title: "Mackerel + Whole Grain Pasta",
+    variant: 4,
+    frequency: "1x/week",
+    items: [
+      { food: "Mackerel, Atlantic", gramsMale: 170, gramsFemale: 113 },
+      { food: "Whole wheat pasta, cooked", gramsMale: 140, gramsFemale: 140 },
+      { food: "Broccoli, raw", gramsMale: 91, gramsFemale: 91 },
+      { food: "Olive oil", gramsMale: 14, gramsFemale: 14 },
+    ],
+  },
+  {
+    mealType: "eveningSnack",
+    title: "Cottage Cheese + Berries + Flax",
+    frequency: "daily",
+    items: [
+      { food: "Cottage cheese, low-fat", gramsMale: 226, gramsFemale: 226 },
+      { food: "Mixed berries", gramsMale: 150, gramsFemale: 150 },
+      { food: "Ground flax", gramsMale: 7, gramsFemale: 7 },
+      { food: "Brazil nuts", gramsMale: 15, gramsFemale: 15, notes: "2–3 nuts for selenium" },
+    ],
+  },
+];
+
+const ASIAN: MealSpec[] = [
+  {
+    mealType: "breakfast",
+    title: "Japanese Power Plate",
+    frequency: "daily",
+    items: [
+      { food: "Eggs, whole", gramsMale: 200, gramsFemale: 100, notes: "4 (M) / 2 (F) onsen-style" },
+      { food: "Natto", gramsMale: 50, gramsFemale: 50, notes: "or firm tofu 4oz" },
+      { food: "Spinach, raw", gramsMale: 45, gramsFemale: 45, notes: "gomae with sesame" },
+      { food: "Sesame seeds", gramsMale: 9, gramsFemale: 9 },
+      { food: "Miso paste", gramsMale: 17, gramsFemale: 17, notes: "in soup with wakame + shiitake" },
+      { food: "Wakame, dried", gramsMale: 5, gramsFemale: 5 },
+      { food: "Brown rice, cooked", gramsMale: 195, gramsFemale: 98, notes: "1 cup (M) / ½ (F)" },
+      { food: "Nori, sheet", gramsMale: 5.2, gramsFemale: 5.2, notes: "2 sheets" },
+    ],
+  },
+  {
+    mealType: "midMorningSnack",
+    title: "Edamame + Almonds + Asian Pear",
+    frequency: "daily",
+    items: [
+      { food: "Edamame, shelled cooked", gramsMale: 233, gramsFemale: 155, notes: "1.5 cups (M) / 1 (F)" },
+      { food: "Almonds", gramsMale: 28, gramsFemale: 28 },
+      { food: "Asian pear", gramsMale: 275, gramsFemale: 275 },
+    ],
+  },
+  {
+    mealType: "lunch",
+    title: "Korean Salmon Bibimbap",
+    variant: 1,
+    frequency: "3x/week",
+    items: [
+      { food: "Salmon, wild", gramsMale: 227, gramsFemale: 142, notes: "gochujang-glazed" },
+      { food: "Brown rice, cooked", gramsMale: 195, gramsFemale: 195 },
+      { food: "Kimchi", gramsMale: 75, gramsFemale: 75, notes: "½ cup" },
+      { food: "Kale, raw", gramsMale: 134, gramsFemale: 134, notes: "or gai lan" },
+      { food: "Pumpkin seeds", gramsMale: 28, gramsFemale: 28 },
+      { food: "Carrots, raw", gramsMale: 64, gramsFemale: 64, notes: "shredded" },
+      { food: "Bean sprouts", gramsMale: 52, gramsFemale: 52 },
+      { food: "Sesame oil", gramsMale: 14, gramsFemale: 14 },
+      { food: "Gochujang", gramsMale: 17, gramsFemale: 17 },
+    ],
+  },
+  {
+    mealType: "lunch",
+    title: "Vietnamese Beef Pho",
+    variant: 2,
+    frequency: "1x/week",
+    items: [
+      { food: "Sirloin, lean", gramsMale: 227, gramsFemale: 142 },
+      { food: "Bok choy, cooked", gramsMale: 170, gramsFemale: 170 },
+      { food: "Brown rice, cooked", gramsMale: 195, gramsFemale: 195, notes: "or rice noodles" },
+    ],
+  },
+  {
+    mealType: "lunch",
+    title: "Thai Grilled Chicken Larb",
+    variant: 3,
+    frequency: "1x/week",
+    items: [
+      { food: "Chicken breast, cooked", gramsMale: 227, gramsFemale: 142 },
+      { food: "Cabbage, raw", gramsMale: 178, gramsFemale: 178 },
+      { food: "Brown rice, cooked", gramsMale: 195, gramsFemale: 195 },
+      { food: "Lemon juice", gramsMale: 15, gramsFemale: 15 },
+    ],
+  },
+  {
+    mealType: "preWorkout",
+    title: "Whey Shake + Banana (soy milk)",
+    frequency: "daily",
+    items: [
+      { food: "Whey protein powder", gramsMale: 48, gramsFemale: 32 },
+      { food: "Fortified soy milk", gramsMale: 243, gramsFemale: 243 },
+      { food: "Banana", gramsMale: 118, gramsFemale: 118 },
+    ],
+  },
+  {
+    mealType: "dinner",
+    title: "Chinese Beef + Gai Lan Stir-Fry",
+    variant: 1,
+    frequency: "2x/week",
+    items: [
+      { food: "Flank steak", gramsMale: 227, gramsFemale: 142 },
+      { food: "Gai lan (Chinese broccoli)", gramsMale: 176, gramsFemale: 176 },
+      { food: "Shiitake mushrooms", gramsMale: 70, gramsFemale: 70 },
+      { food: "Quinoa, cooked", gramsMale: 185, gramsFemale: 185 },
+      { food: "Sesame oil", gramsMale: 14, gramsFemale: 14 },
+      { food: "Soy sauce", gramsMale: 16, gramsFemale: 16 },
+    ],
+  },
+  {
+    mealType: "dinner",
+    title: "Korean Oyster + Seaweed Soup (liver replacement)",
+    description: "굴국 — oyster and wakame soup over rice with kimchi. Replaces weekly liver for zinc/copper/B12/selenium.",
+    variant: 2,
+    frequency: "1x/week",
+    items: [
+      { food: "Oysters, raw", gramsMale: 170, gramsFemale: 113, notes: "6 oz (M) / 4 oz (F)" },
+      { food: "Wakame, dried", gramsMale: 10, gramsFemale: 10 },
+      { food: "Brown rice, cooked", gramsMale: 195, gramsFemale: 195 },
+      { food: "Kimchi", gramsMale: 75, gramsFemale: 75 },
+      { food: "Sesame oil", gramsMale: 14, gramsFemale: 14 },
+    ],
+  },
+  {
+    mealType: "dinner",
+    title: "Japanese Chicken Donburi",
+    variant: 3,
+    frequency: "2x/week",
+    items: [
+      { food: "Chicken thigh, cooked skinless", gramsMale: 227, gramsFemale: 142 },
+      { food: "Brown rice, cooked", gramsMale: 195, gramsFemale: 195 },
+      { food: "Miso paste", gramsMale: 17, gramsFemale: 17, notes: "lentil-miso stew side" },
+      { food: "Lentils, cooked", gramsMale: 148, gramsFemale: 148 },
+      { food: "Komatsuna, cooked", gramsMale: 130, gramsFemale: 130, notes: "or collards" },
+    ],
+  },
+  {
+    mealType: "dinner",
+    title: "Mackerel Shioyaki + Soba",
+    variant: 4,
+    frequency: "1x/week",
+    items: [
+      { food: "Mackerel, Atlantic", gramsMale: 170, gramsFemale: 113 },
+      { food: "Buckwheat soba, cooked", gramsMale: 114, gramsFemale: 114 },
+      { food: "Hijiki, dried", gramsMale: 10, gramsFemale: 10 },
+      { food: "Carrots, raw", gramsMale: 64, gramsFemale: 64 },
+    ],
+  },
+  {
+    mealType: "eveningSnack",
+    title: "Silken Tofu + Brazil Nuts + Berries",
+    frequency: "daily",
+    items: [
+      { food: "Tofu, silken", gramsMale: 240, gramsFemale: 180, notes: "with scallion + soy + sesame" },
+      { food: "Soy sauce", gramsMale: 8, gramsFemale: 8 },
+      { food: "Sesame oil", gramsMale: 7, gramsFemale: 7 },
+      { food: "Brazil nuts", gramsMale: 15, gramsFemale: 15, notes: "2–3 for selenium" },
+      { food: "Mixed berries", gramsMale: 75, gramsFemale: 75 },
+    ],
+  },
+];
+
+async function seedMeals() {
+  await seedFoods();
+
+  const allFoods = await prisma.food.findMany();
+  const foodMap = new Map(allFoods.map((f) => [f.name, f.id]));
+
+  const profiles = await prisma.profile.findMany({ orderBy: { createdAt: "asc" } });
+  if (profiles.length === 0) {
+    console.log("No profiles to seed meals for — skipping plan seeding");
+    return;
+  }
+
+  // First profile defaults to Male targets, second defaults to Female
+  const presets = [
+    { calories: 2900, protein: 215, carbs: 325, fat: 87 }, // Male
+    { calories: 2000, protein: 145, carbs: 200, fat: 65 }, // Female
+  ];
+
+  for (let i = 0; i < profiles.length; i++) {
+    const p = profiles[i];
+    const preset = presets[Math.min(i, 1)];
+
+    await prisma.nutritionTarget.upsert({
+      where: { profileId: p.id },
+      create: { profileId: p.id, ...preset },
+      update: preset,
+    });
+
+    // Wipe and recreate plan templates
+    await prisma.mealPlan.deleteMany({ where: { profileId: p.id } });
+    await createPlan(p.id, "Western Power", i === 0, WESTERN, foodMap);
+    await createPlan(p.id, "Asian-Based", false, ASIAN, foodMap);
+
+    console.log(`  Seeded meals for profile: ${p.name}`);
+  }
 }
 
 main()
