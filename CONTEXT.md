@@ -81,8 +81,9 @@ Dashboard is calendar-based (Mon-Sun) with a week toggle (1/2/3). Each day shows
 ## Pages
 | Route | Description |
 |-------|-------------|
-| `/` | Calendar dashboard: Mon-Sun schedule, week toggle (1/2/3), today highlighted, stacked workouts per day, rest days, recent history |
-| `/workout/[dayId]` | Active workout: exercise cards, set logging, rest timer, workout timer |
+| `/` | **Today (unified daily log)** — app opens here. Resolves today's weekday → all of today's schedule entries in order → stacks every section (PT Activation → Strength → Cardio) into ONE scroll with one timer and one "Finish Day". Rest-day + day-complete states. Week toggle (no start-date anchor yet, defaults to week 1). Component: `src/components/DayLog.tsx` (find-or-creates one WorkoutSession per program day, merged only in the view). Added 2026-06-08. |
+| `/week` | Calendar dashboard (the former `/`): Mon-Sun schedule, week toggle (1/2/3), today highlighted, stacked workouts per day, rest days, recent history |
+| `/workout/[dayId]` | Single-day active workout (still used by `/week` cards and Today's "Redo"): exercise cards, set logging, rest timer, workout timer |
 | `/progress` | Charts: weight over time, volume over time, personal bests |
 | `/history` | Calendar view, session detail on click, summary stats |
 | `/program` | View/edit all programs, inline exercise editing |

@@ -8,7 +8,8 @@ import { ProfileSwitcher } from "@/components/ProfileSwitcher";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navItems = [
-  { href: "/", label: "Dashboard", icon: "🏠" },
+  { href: "/", label: "Today", icon: "🏋️" },
+  { href: "/week", label: "Week", icon: "🗓️" },
   { href: "/meals", label: "Meals", icon: "🍽️" },
   { href: "/progress", label: "Progress", icon: "📈" },
   { href: "/history", label: "History", icon: "📅" },

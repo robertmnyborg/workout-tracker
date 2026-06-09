@@ -5,9 +5,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 export function WeekSelector({
   currentWeek,
   totalWeeks,
+  basePath = "/",
 }: {
   currentWeek: number;
   totalWeeks: number;
+  basePath?: string;
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -15,7 +17,7 @@ export function WeekSelector({
   const setWeek = (week: number) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("week", week.toString());
-    router.push(`/?${params.toString()}`);
+    router.push(`${basePath}?${params.toString()}`);
   };
 
   return (
