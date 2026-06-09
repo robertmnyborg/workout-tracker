@@ -7,6 +7,7 @@ import { format, startOfDay } from "date-fns";
 import { DashboardProfileSync } from "@/components/DashboardProfileSync";
 import { WeekSelector } from "@/components/WeekSelector";
 import { DayLog, type DayEntry } from "@/components/DayLog";
+import { getUserNow, getUserDayOfWeek } from "@/lib/utils";
 
 const DAY_NAMES = [
   "Monday",
@@ -67,11 +68,10 @@ export default async function Today({
   const profileId = await resolveProfileId(params.profile);
   const weekNumber = parseInt(params.week || "1");
 
-  // Today's day of week (1=Mon ... 7=Sun)
-  const jsDay = new Date().getDay();
-  const todayDow = jsDay === 0 ? 7 : jsDay;
+  // Today's day of week in the user's timezone (1=Mon ... 7=Sun)
+  const todayDow = getUserDayOfWeek();
   const todayName = DAY_NAMES[todayDow - 1];
-  const dateLabel = format(new Date(), "EEE, MMM d");
+  const dateLabel = format(getUserNow(), "EEE, MMM d");
 
   if (!profileId) {
     return (

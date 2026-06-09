@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { startOfWeek, endOfWeek, format, differenceInMinutes } from "date-fns";
 import { DashboardProfileSync } from "@/components/DashboardProfileSync";
 import { WeekSelector } from "@/components/WeekSelector";
+import { getUserDayOfWeek } from "@/lib/utils";
 
 const DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
@@ -151,9 +152,8 @@ export default async function Dashboard({
 
   const completedDayIds = new Set(weekSessions.map((s) => s.programDayId));
 
-  // Get today's day of week (1=Mon ... 7=Sun)
-  const jsDay = new Date().getDay(); // 0=Sun, 1=Mon...
-  const todayDow = jsDay === 0 ? 7 : jsDay;
+  // Get today's day of week in the user's timezone (1=Mon ... 7=Sun)
+  const todayDow = getUserDayOfWeek();
 
   // Group entries by day of week
   const entriesByDay = new Map<

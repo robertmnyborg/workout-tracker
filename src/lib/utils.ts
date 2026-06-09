@@ -1,5 +1,27 @@
 import { startOfWeek, endOfWeek, format, parseISO } from "date-fns";
 
+const USER_TIME_ZONE = "America/Los_Angeles";
+
+/**
+ * "Now" as the user experiences it (Pacific), with wall-clock fields set so
+ * getDay()/format() return the user's local weekday and date.
+ *
+ * Why: server components render in UTC on Vercel, so `new Date().getDay()`
+ * rolls to tomorrow after ~5pm Pacific. The Today view must reflect the
+ * user's calendar day, not the server's.
+ */
+export function getUserNow(): Date {
+  return new Date(
+    new Date().toLocaleString("en-US", { timeZone: USER_TIME_ZONE })
+  );
+}
+
+/** Day of week in the user's timezone: 1 = Monday ... 7 = Sunday. */
+export function getUserDayOfWeek(): number {
+  const jsDay = getUserNow().getDay(); // 0 = Sun
+  return jsDay === 0 ? 7 : jsDay;
+}
+
 export function getCurrentWeekRange() {
   const now = new Date();
   return {
