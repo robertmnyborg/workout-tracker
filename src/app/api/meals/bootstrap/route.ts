@@ -14,6 +14,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "profileId required" }, { status: 400 });
   }
 
+  const profile = await prisma.profile.findUnique({ where: { id: profileId } });
+  if (!profile) {
+    return NextResponse.json(
+      { error: "Profile not found. Refresh the page to re-sync your profile." },
+      { status: 404 }
+    );
+  }
+
   const presets: Record<"male" | "female", { calories: number; protein: number; carbs: number; fat: number }> = {
     male: { calories: 2900, protein: 215, carbs: 325, fat: 87 },
     female: { calories: 2000, protein: 145, carbs: 200, fat: 65 },

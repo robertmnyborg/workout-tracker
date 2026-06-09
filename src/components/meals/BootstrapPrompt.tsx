@@ -10,16 +10,27 @@ type Props = {
 
 export function BootstrapPrompt({ profileId, profileName, onDone }: Props) {
   const [busy, setBusy] = useState<"male" | "female" | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const pick = async (preset: "male" | "female") => {
     setBusy(preset);
+    setError(null);
     try {
       const res = await fetch("/api/meals/bootstrap", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ profileId, preset }),
       });
-      if (res.ok) onDone();
+      if (res.ok) {
+        onDone();
+        return;
+      }
+      const body = await res.json().catch(() => ({}));
+      setError(
+        body.error ?? `Bootstrap failed (${res.status}). Try again or refresh.`
+      );
+    } catch {
+      setError("Network error. Check your connection and try again.");
     } finally {
       setBusy(null);
     }
@@ -58,6 +69,14 @@ export function BootstrapPrompt({ profileId, profileName, onDone }: Props) {
       <div className="text-xs text-muted">
         Both presets seed the Western Power and Asian-Based plan templates.
       </div>
+      {error && (
+        <div
+          role="alert"
+          className="text-xs rounded-lg border border-red-500/40 bg-red-500/10 text-red-400 px-3 py-2"
+        >
+          {error}
+        </div>
+      )}
     </div>
   );
 }
