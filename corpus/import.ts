@@ -17,6 +17,7 @@ const load = <T>(d: string): T[] =>
 
 // Programs that become app programs. The trainer programs are already seeded; PT routines live in warm-ups.
 const IMPORT_PROGRAMS = ["bat-28day"];
+const REBUILD = process.argv.includes("--rebuild");
 
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 
@@ -43,13 +44,20 @@ async function main() {
   for (const p of load<ProgramFile>("programs").filter((p) => IMPORT_PROGRAMS.includes(p.id))) {
     const existing = await prisma.program.findUnique({
       where: { corpusId: p.id },
-      include: { days: { include: { _count: { select: { workoutSessions: true } } } } },
+      include: {
+        _count: { select: { enrollments: true } },
+        days: { include: { _count: { select: { workoutSessions: true } } } },
+      },
     });
-    if (existing?.days.some((d) => d._count.workoutSessions > 0)) {
-      console.log(`program ${p.id}: has logged sessions, left as is`);
-      continue;
+    if (existing) {
+      // Deleting cascades to enrollments (BAT start dates), so rebuild only on request and only when unused.
+      const used = existing._count.enrollments > 0 || existing.days.some((d) => d._count.workoutSessions > 0);
+      if (!REBUILD || used) {
+        console.log(`program ${p.id}: exists, left as is${used ? " (has enrollments or sessions)" : "; pass --rebuild to recreate"}`);
+        continue;
+      }
+      await prisma.program.delete({ where: { id: existing.id } });
     }
-    if (existing) await prisma.program.delete({ where: { id: existing.id } });
 
     const program = await prisma.program.create({ data: { name: p.name, description: p.description, corpusId: p.id } });
     for (const d of p.days) {
