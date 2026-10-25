@@ -224,8 +224,10 @@ Plan: `plans/unified-corpus-and-coach.md`.
 - `npm run corpus:check` validates (enums, unique ids, link targets). `npm run corpus:import` upserts into the DB.
 - **Never run `prisma db seed` / `/api/programs/reset`: they delete all profiles and sessions.** `corpus:import` is additive.
 - Gaps: BAT Day 27 not captured (locked lesson), Day 26 copies Day 25 (unconfirmed), Day 14 is photos only.
-- Adding a source: transcribe (`~/.claude/skills/transcribe/run.sh <url>`; its final fetch returns empty, take the transcript from
-  the SSE `[done]` event), extract to `library/<source>.json`, `corpus:check`, `corpus:import`.
+- Adding a YouTube source: Antigravity pulls it (Google data access), never Claude scraping:
+  `agy -p "Get the full transcript and key coaching points of <url>; write corpus/sources/youtube/<id>.md" --print-timeout 600s`.
+  Then extract to `library/<source>.json`, `npm run corpus:check`, `npm run corpus:import`.
+  (n1-KuZ9aOHM was transcribed via usetranscribe.io before this rule existed.)
 
 ### DB additions (migration 20261024120000, additive)
 `LibraryExercise` (corpus mirror, `data` = full JSON), `Exercise.libraryId`, `Program.corpusId`,
