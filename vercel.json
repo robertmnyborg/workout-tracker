@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "true",
+  "buildCommand": "mkdir -p redirect-only && touch redirect-only/.keep",
+  "outputDirectory": "redirect-only",
+  "redirects": [
+    { "source": "/(.*)", "destination": "https://robert-workout-tracker.fly.dev/$1", "permanent": false }
+  ]
+}

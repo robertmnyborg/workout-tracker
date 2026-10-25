@@ -1,0 +1,15 @@
+# Deploys the app to Fly.io on every push to main. The Vercel project only redirects here (see vercel.json).
+name: Fly Deploy
+on:
+  push:
+    branches: [main]
+concurrency: deploy-group
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only --ha=false
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
