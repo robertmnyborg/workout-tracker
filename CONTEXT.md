@@ -1,5 +1,14 @@
 # Workout Tracker
 
+## Re-entry (updated 2026-10-25)
+- Live: https://robert-workout-tracker.fly.dev. Push to main deploys (GitHub Actions → Fly, ~2 min). Tests: `~/bin/prove-tests "npm test"` (33 engine tests).
+- Main flows: /setup (5 questions) → /coach (chat, speaks first, cited rules) → Start session; weekly jump test + 12-week block on /progress.
+- Engine files: `src/lib/engine/{plan,recovery,athlete,phase,progression}.ts` (pure); DB glue `src/lib/coach/build.ts`; Claude only parses chat (`src/lib/coach/parse.ts`).
+- Profiles: Robert, Casey, Nyborg (Robert made Nyborg on 2026-10-25). None onboarded yet; DB has 0 completed sessions, so the coach's "yesterday you did X" fills in once workouts get logged.
+- Testing: make a `zz-*` profile via `POST /api/profiles`, drive it in the automation Chrome by seeding localStorage (`workout-profiles`, `workout-active-profile-id`), then clear localStorage BEFORE deleting the profile, or the app re-creates it. Restart the dev server after `prisma generate`.
+- Permission prompts in bypass mode came from `~/.claude/hooks/careful-guard.py` (fixed 2026-10-25: logs + allows in bypass). If prompts return, read `~/.claude/logs/careful-bypassed.log`.
+- Open ideas, none started: bodyweight for loaded-jump weights, equipment filter, logging outside sport from the Week page.
+
 ## Purpose
 Personal web app to track a combined training program: vertical jump / strength training, basketball cardio conditioning, and PT-inspired stabilizer work integrated into warm-ups. Log sets/reps/weight, view progress over time, and use rest timers.
 
@@ -86,7 +95,9 @@ Dashboard is calendar-based (Mon-Sun) with a week toggle (1/2/3). Each day shows
 | `/` | **Today (unified daily log)** — app opens here. Resolves today's weekday → all of today's schedule entries in order → stacks every section (PT Activation → Strength → Cardio) into ONE scroll with one timer and one "Finish Day". Rest-day + day-complete states. Week toggle (no start-date anchor yet, defaults to week 1). Component: `src/components/DayLog.tsx` (find-or-creates one WorkoutSession per program day, merged only in the view). Added 2026-06-08. |
 | `/week` | Calendar dashboard (the former `/`): Mon-Sun schedule, week toggle (1/2/3), today highlighted, stacked workouts per day, rest days, recent history |
 | `/workout/[dayId]` | Single-day active workout (still used by `/week` cards and Today's "Redo"): exercise cards, set logging, rest timer, workout timer |
-| `/progress` | Charts: weight over time, volume over time, personal bests |
+| `/coach` | Chat coach: opening message (recent load, goal, suggestion, block week, test due), plan card, Edit settings |
+| `/setup` | 5-question onboarding conversation with progress bar; saves Profile.goal/goalFocus/athlete, starts the jump block |
+| `/progress` | Jump test card (log, chart/table, block week) on top; then weight/volume charts, personal bests |
 | `/history` | Calendar view, session detail on click, summary stats |
 | `/program` | View/edit all programs, inline exercise editing |
 | `/meals` | Daily meal log with macro progress bars, meal-by-meal sections, weekly non-negotiables card, date picker |
@@ -147,17 +158,18 @@ npx prisma studio    # Visual DB browser
 - **Find-or-create**: `POST /api/workouts` checks for existing uncompleted same-day session for that profile before creating a new one.
 - **All pages filter by profileId**: Dashboard (server queries), history, progress, recommendations.
 
-## Color Theme — Navy Blue
-- **Light mode**: Navy primary `#1a3a5c`, columbia blue accent `#4a90d9`, cool gray bg `#f0f4f8`, slate-blue muted `#6b839e`, soft blue-gray borders `#c8d6e5`
-- **Dark mode**: Steel blue primary `#5b9bd5`, sky accent `#75b8f4`, deep navy bg `#0a1222`, dark navy cards `#111d2e`, dark slate borders `#1e2d42`
-- **Section type badges** use distinct Tailwind colors (amber, red, blue, green, purple, orange, cyan, rose) for functional differentiation — not theme colors
-- PWA manifest and icon also use navy `#1a3a5c`
+## Color Theme — Peek dashboard tokens (since 2026-10-25)
+- Source: `~/.claude/peek-dashboard-system.md`, as applied in tools-marketing-tracker. Tokens in `src/app/globals.css` `@theme`.
+- Light: page `#fafafa`, cards white, hairline `#ebebeb`, text `#4a4960`, headings + primary navy `#1d1c38`, accent teal-800 `#37736f`, teal `#04d2c6` only for the active tab, focus ring, progress bar.
+- Dark: page `#121220`, cards `#1a1a2b`, borders `#2a2a3e`, primary flips to light `#e6e6ef` with `text-on-primary` navy.
+- Use `text-on-primary` / `text-on-accent` on filled buttons, never `text-white`. All radius tokens are 4px. Roboto via next/font on `<html>`.
+- Section types are plain uppercase muted labels (rainbow pills removed). PWA icon still navy `#1a3a5c`.
 
 ## Dark Mode
 - **CSS**: `globals.css` — `@variant dark (&:where(.dark, .dark *))` enables class-based dark mode in Tailwind v4. `.dark {}` block overrides all theme CSS variables.
 - **Critical**: Must use `@theme` (NOT `@theme inline`) so Tailwind utilities reference CSS custom properties. Without this, `.dark {}` overrides have no effect on utility classes.
 - **Context**: `src/lib/theme-context.tsx` — ThemeProvider persists preference in localStorage (`workout-theme`). Falls back to `prefers-color-scheme: dark` system preference on first visit.
-- **Toggle**: `src/components/ThemeToggle.tsx` — Moon/sun SVG icon button in header nav.
+- **Toggle**: `src/components/ThemeToggle.tsx` — Light | Dark segmented switch in the header (`setTheme`).
 - **Flash prevention**: Inline `<script>` in `layout.tsx` `<head>` reads localStorage and applies `.dark` class before React hydrates.
 
 ## Key Decisions
@@ -211,6 +223,7 @@ npx prisma studio    # Visual DB browser
 - [x] Meal tracker: API routes (foods, meals, totals, weekly-compliance, progress, plans, bootstrap)
 - [x] Meal tracker: UI (/meals daily log, /meals/plans, /meals/foods, /meals/progress) with macro bars, compliance checklist, plan suggestions
 - [x] Build passes
+- [x] Chat coach, recovery rules, jump corpus, /setup, jump block + weekly test, Peek restyle (2026-10-25)
 
 ## Unified corpus + Coach (2026-10-24)
 Plan: `plans/unified-corpus-and-coach.md`.
