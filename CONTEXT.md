@@ -227,7 +227,7 @@ Plan: `plans/unified-corpus-and-coach.md`.
 - Adding a YouTube source: Antigravity pulls it (Google data access), never Claude scraping:
   `agy -p "Get the full transcript and key coaching points of <url>; write corpus/sources/youtube/<id>.md" --print-timeout 600s`.
   Then extract to `library/<source>.json`, `npm run corpus:check`, `npm run corpus:import`.
-  (n1-KuZ9aOHM was transcribed via usetranscribe.io before this rule existed.)
+  (n1-KuZ9aOHM was re-pulled this way on 2026-10-25: native transcript, description, top 20 jump comments.)
 
 ### DB additions (migration 20261024120000, additive)
 `LibraryExercise` (corpus mirror, `data` = full JSON), `Exercise.libraryId`, `Program.corpusId`,
