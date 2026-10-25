@@ -106,3 +106,59 @@ test("jump day: explosive work capped, strength still programmed", () => {
   assert.ok(main.filter((i) => i === "depth-jump" || i.startsWith("bound-")).length <= 2);
   assert.ok(main.includes("back-squat"));
 });
+
+// --- recovery ---
+import { assessRecovery, outsideEvents, suggestFocus, type LoadEvent } from "./recovery";
+
+const ev = (daysAgo: number, o: Partial<LoadEvent>): LoadEvent => ({ daysAgo, label: "x", category: "strength", region: "lower", intensity: 4, ...o });
+const libUp = [...lib, ex("bench-press", { bodyAreas: ["shoulder", "elbow-wrist"], goals: ["strength"], intensity: 4 })];
+
+test("recovery: jumps yesterday -> no plyos today, legs rest, cited", () => {
+  const rec = assessRecovery([ev(1, { category: "plyometric", intensity: 5 })]);
+  assert.equal(rec.noExplosive, true);
+  assert.deepEqual(rec.restRegions, ["lower"]);
+  assert.ok(rec.rules.every((r) => r.source.length > 0));
+  const p = buildPlan(fresh, lib, [], rec);
+  assert.ok(!ids(p).includes("depth-jump"));
+  assert.ok(!ids(p).includes("back-squat"));
+});
+
+test("recovery: two jump days this week caps explosive work", () => {
+  const rec = assessRecovery([ev(3, { category: "plyometric", region: null }), ev(5, { category: "power", region: null })]);
+  assert.equal(rec.noExplosive, true);
+  assert.equal(assessRecovery([ev(3, { category: "plyometric", region: null })]).noExplosive, false);
+});
+
+test("recovery: legs yesterday -> strength focus trains upper body", () => {
+  const rec = assessRecovery([ev(1, {})]);
+  const p = buildPlan({ ...fresh, focus: ["strength"] }, libUp, [], rec);
+  assert.ok(ids(p).includes("bench-press"));
+  assert.ok(!ids(p).includes("back-squat"));
+});
+
+test("recovery: an hour of basketball today -> no jumps, no heavy legs, no extra conditioning", () => {
+  const rec = assessRecovery(outsideEvents([{ kind: "basketball", minutes: 60, hard: true, jumping: true }], 0));
+  assert.equal(rec.noExplosive, true);
+  assert.equal(rec.noConditioning, true);
+  assert.ok(rec.restRegions.includes("lower"));
+  assert.deepEqual(suggestFocus(["jump"], rec), ["posture"]);
+});
+
+test("recovery: full-body loading rests when any region rests", () => {
+  const full = [...libUp, ex("bb-complex", { bodyAreas: ["full-body"], goals: ["strength"], intensity: 3 })];
+  assert.ok(!ids(buildPlan({ ...fresh, focus: ["strength"] }, full, [], assessRecovery([ev(1, {})]))).includes("bb-complex"));
+  assert.ok(ids(buildPlan({ ...fresh, focus: ["strength"] }, full)).includes("bb-complex"));
+});
+
+test("recovery: override keeps the plan but reports the rules", () => {
+  const rec = assessRecovery([ev(1, { category: "plyometric", intensity: 5 })]);
+  const p = buildPlan({ ...fresh, override: true }, lib, [], rec);
+  assert.ok(ids(p).includes("depth-jump"));
+  assert.equal(p.rules.length, rec.rules.length);
+});
+
+test("recovery: old or light work does not block", () => {
+  const rec = assessRecovery([ev(2, {}), ev(1, { category: "mobility", intensity: 2 })]);
+  assert.deepEqual(rec, { noExplosive: false, noConditioning: false, restRegions: [], rules: [] });
+  assert.deepEqual(suggestFocus(["jump", "power"], rec), ["jump", "power"]);
+});

@@ -1,9 +1,11 @@
 // Glue between the database and the pure engine: library + BAT day + history -> plan with doses.
 import { prisma } from "../prisma";
 import type { CorpusExercise } from "../../../corpus/schema";
+import type { Goal } from "../../../corpus/schema";
 import { buildPlan, estimateMinutes, readiness, type CheckIn, type LibItem, type Plan, type PlanItem } from "../engine/plan";
 import { nextDose, type PastSession } from "../engine/progression";
-import { programDayNumber } from "../program-day";
+import { assessRecovery, EXPLOSIVE, LOADING, outsideEvents, region, suggestFocus, type LoadEvent, type OutsideActivity, type Recovery } from "../engine/recovery";
+import { daysAgo, programDayNumber } from "../program-day";
 
 export type CoachItem = PlanItem & { weight: number | null; progression: string; swapTo?: string };
 export type CoachPlan = Omit<Plan, "blocks"> & { blocks: { name: string; items: CoachItem[] }[]; batDay: number | null };
@@ -47,11 +49,71 @@ async function history(profileId: string, libraryId: string): Promise<PastSessio
   }));
 }
 
-export async function buildCoachPlan(profileId: string, checkIn: CheckIn): Promise<CoachPlan> {
+async function loadLibrary() {
   const rows = await prisma.libraryExercise.findMany();
-  const library = new Map(rows.map((r) => [r.id, r.data as unknown as CorpusExercise]));
+  return new Map(rows.map((r) => [r.id, r.data as unknown as CorpusExercise]));
+}
+
+/** Last 7 days of logged sessions and outside activity, as load events. `skipCheckIn` = the live conversation. */
+async function recentEvents(profileId: string, library: Map<string, CorpusExercise>, skipCheckIn?: string): Promise<LoadEvent[]> {
+  const since = new Date(Date.now() - 8 * 86_400_000);
+  const [sessions, checkIns] = await Promise.all([
+    prisma.workoutSession.findMany({
+      where: { profileId, completedAt: { not: null }, date: { gte: since } },
+      include: { setLogs: { where: { completed: true }, include: { exercise: true } } },
+    }),
+    prisma.checkIn.findMany({ where: { profileId, date: { gte: since }, id: skipCheckIn ? { not: skipCheckIn } : undefined } }),
+  ]);
+  const events: LoadEvent[] = [];
+  for (const s of sessions) {
+    const d = daysAgo(s.date);
+    for (const id of new Set(s.setLogs.map((l) => l.exercise.libraryId).filter(Boolean) as string[])) {
+      const e = library.get(id);
+      if (e) events.push({ daysAgo: d, label: e.name, category: e.category, region: region(e.bodyAreas), intensity: e.intensity });
+    }
+  }
+  for (const c of checkIns) events.push(...outsideEvents((c.outsideActivity as OutsideActivity[] | null) ?? [], daysAgo(c.date)));
+  return events.filter((e) => e.daysAgo >= 0 && e.daysAgo <= 6);
+}
+
+const DAY = (d: number) => (d === 0 ? "Today" : d === 1 ? "Yesterday" : `${d} days ago`);
+const REGION = { lower: "legs", upper: "upper body", core: "core" } as const;
+
+/** One line per day: "Yesterday: jumps, legs. 3 days ago: basketball 60 min." */
+function describe(events: LoadEvent[]): string {
+  const byDay = new Map<number, Set<string>>();
+  for (const e of [...events].sort((a, b) => a.daysAgo - b.daysAgo)) {
+    const tag = EXPLOSIVE.has(e.category) && e.intensity >= 4 ? "jumps"
+      : LOADING.has(e.category) && e.region ? REGION[e.region]
+      : e.category === "conditioning" ? e.label : null;
+    if (tag) byDay.set(e.daysAgo, (byDay.get(e.daysAgo) ?? new Set()).add(tag));
+  }
+  return [...byDay].map(([d, tags]) => `${DAY(d)}: ${[...tags].join(", ")}.`).join(" ");
+}
+
+export interface Opening { message: string; suggestedFocus: Goal[]; goal: string | null; recovery: Recovery }
+
+/** The coach's first message: what you did, your goal, what it suggests, then the question. */
+export async function coachOpening(profileId: string): Promise<Opening> {
+  const [profile, library] = await Promise.all([prisma.profile.findUniqueOrThrow({ where: { id: profileId } }), loadLibrary()]);
+  const events = await recentEvents(profileId, library);
+  const recovery = assessRecovery(events);
+  const suggestedFocus = suggestFocus(profile.goalFocus as Goal[], recovery);
+  const lines = [
+    describe(events) || "Nothing logged in the last week.",
+    profile.goal ? `Your goal: ${profile.goal}.` : "No standing goal yet. Tell me one, like \"my goal is to dunk\".",
+    `I'd suggest ${suggestedFocus.join(" + ")} today${recovery.rules.length ? `, because:\n${recovery.rules.map((r) => `• ${r.text}`).join("\n")}` : "."}`,
+    "How are you feeling, and how much time do you have?",
+  ];
+  return { message: lines.join("\n\n"), suggestedFocus, goal: profile.goal, recovery };
+}
+
+export async function buildCoachPlan(profileId: string, checkIn: CheckIn, skipCheckIn?: string): Promise<CoachPlan> {
+  const library = await loadLibrary();
   const bat = await batItems(profileId, library);
-  const plan = buildPlan(checkIn, [...library.values()] as LibItem[], bat.items);
+  const events = await recentEvents(profileId, library, skipCheckIn);
+  const recovery = assessRecovery([...events, ...outsideEvents(checkIn.outsideActivity ?? [], 0)]);
+  const plan = buildPlan(checkIn, [...library.values()] as LibItem[], bat.items, recovery);
   const r = readiness(checkIn);
 
   const blocks = await Promise.all(plan.blocks.map(async (b) => ({

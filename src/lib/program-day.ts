@@ -1,4 +1,4 @@
-import { getUserNow } from "./utils";
+import { getUserNow, USER_TIME_ZONE } from "./utils";
 
 /** "2026-10-24" -> UTC midnight of that calendar date (timezone-free storage). */
 export function ymdToUtc(ymd: string): Date {
@@ -15,4 +15,10 @@ export function userTodayYmd(): string {
 /** Day number in a day-sequenced program: 0 on the start date. */
 export function programDayNumber(startDate: Date, todayYmd = userTodayYmd()): number {
   return Math.round((ymdToUtc(todayYmd).getTime() - startDate.getTime()) / 86_400_000);
+}
+
+/** Whole calendar days between an instant (in the user's timezone) and today: 0 = today. */
+export function daysAgo(at: Date, todayYmd = userTodayYmd()): number {
+  const ymd = at.toLocaleDateString("en-CA", { timeZone: USER_TIME_ZONE });
+  return Math.round((ymdToUtc(todayYmd).getTime() - ymdToUtc(ymd).getTime()) / 86_400_000);
 }

@@ -1,6 +1,6 @@
 import { startOfWeek, endOfWeek, format, parseISO } from "date-fns";
 
-const USER_TIME_ZONE = "America/Los_Angeles";
+export const USER_TIME_ZONE = "America/Los_Angeles";
 
 /**
  * "Now" as the user experiences it (Pacific), with wall-clock fields set so

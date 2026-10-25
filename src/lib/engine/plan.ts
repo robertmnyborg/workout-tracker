@@ -1,6 +1,7 @@
 // Deterministic session builder. Same check-in + library + history => same plan.
 // The AI layer only produces a CheckIn; it never picks exercises or loads.
 import type { BodyArea, CorpusExercise, Dose, Goal } from "../../../corpus/schema";
+import { EXPLOSIVE, LOADING, region, type OutsideActivity, type Recovery, type Rule } from "./recovery";
 
 export interface CheckIn {
   energy: number; // 1-5
@@ -9,6 +10,8 @@ export interface CheckIn {
   painAreas: BodyArea[];
   focus: Goal[];
   minutes: number;
+  outsideActivity?: OutsideActivity[]; // sport or cardio already done today
+  override?: boolean; // user insists despite recovery rules: they become warnings
 }
 
 export interface PlanItem {
@@ -31,6 +34,7 @@ export interface Plan {
   minutes: number;
   blocks: PlanBlock[];
   notes: string[];
+  rules: Rule[]; // recovery rules that shaped (or, on override, would have shaped) today
 }
 
 export type LibItem = Pick<
@@ -125,15 +129,22 @@ const MAIN_CATEGORIES: Partial<Record<Goal, string[]>> = {
  * Build a session. `alignment` = today's BAT day items when enrolled; they go first, untouched,
  * because the protocol's day order is the point of the 28 days.
  */
-export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] = []): Plan {
+export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] = [], recovery?: Recovery): Plan {
   const r = readiness(c);
   const maxIntensity = MAX_INTENSITY[r];
-  const allowHighImpact = r >= 4 && !c.painAreas.some((p) => IMPACT_SENSITIVE.includes(p));
+  const rec = recovery && !c.override ? recovery : undefined;
+  const allowHighImpact = r >= 4 && !c.painAreas.some((p) => IMPACT_SENSITIVE.includes(p)) && !rec?.noExplosive;
   const pool = library.filter((e) => safe(e, c, maxIntensity, allowHighImpact));
   const used = new Set<string>(alignment.map((i) => i.exerciseId));
   const notes: string[] = [];
 
   const mainCats = new Set(c.focus.flatMap((g) => MAIN_CATEGORIES[g] ?? []));
+  if (rec?.noExplosive) EXPLOSIVE.forEach((k) => mainCats.delete(k));
+  if (rec?.noConditioning) mainCats.delete("conditioning");
+  // Full-body loading (complexes, cleans) touches every region, so any resting region rules it out.
+  const rested = (e: LibItem) => !!rec && LOADING.has(e.category) &&
+    (e.bodyAreas.includes("full-body") ? rec.restRegions.length > 0 : rec.restRegions.includes(region(e.bodyAreas)!));
+  if (recovery?.rules.length && c.override) notes.push("You chose to train through the recovery rules; they are warnings today.");
   const recoveryDay = r <= 2 || mainCats.size === 0;
   if (r <= 2) notes.push(`Readiness ${r}/5: capped at intensity ${maxIntensity}, one set fewer, no jumping.`);
   if (c.painAreas.length) notes.push(`Pain in ${c.painAreas.join(", ")}: only gentle work touches those areas.`);
@@ -161,7 +172,7 @@ export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] 
 
   if (!recoveryDay) {
     const ranked = rank(
-      pool.filter((e) => mainCats.has(e.category)),
+      pool.filter((e) => mainCats.has(e.category) && !rested(e)),
       (e) => e.goals.filter((g) => c.focus.includes(g)).length * 2 + e.bodyAreas.filter((b) => focusAreas.has(b)).length
     );
     // Explosive work first while fresh (capped per category), then strength.
@@ -170,10 +181,11 @@ export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] 
     const main = [...explosive, ...ranked.filter((e) => !(e.category in CATEGORY_CAP))];
     blocks.push(fill("Main", main, Math.max(0, left()), r, used,
       (e) => `${e.category} for ${c.focus.join("/")}`));
+    if (!main.length) notes.push("Recovery rules leave nothing to load for this focus today, so it is alignment and prep only.");
   } else if (mainCats.size) {
     notes.push("Main block skipped: recovery day. Come back to it when readiness is 3+.");
   }
 
   const total = blocks.flatMap((b) => b.items).reduce((s, i) => s + i.minutes, 0);
-  return { readiness: r, maxIntensity, allowHighImpact, minutes: total, blocks: blocks.filter((b) => b.items.length), notes };
+  return { readiness: r, maxIntensity, allowHighImpact, minutes: total, blocks: blocks.filter((b) => b.items.length), notes, rules: recovery?.rules ?? [] };
 }

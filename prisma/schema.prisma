@@ -67,6 +67,8 @@ model Exercise {
 model Profile {
   id              String              @id @default(cuid())
   name            String
+  goal            String? // standing goal in the user's words: "dunk by summer"
+  goalFocus       String[]            @default([])
   createdAt       DateTime            @default(now())
   workoutSessions WorkoutSession[]
   nutritionTarget NutritionTarget?
@@ -246,19 +248,21 @@ model ProgramEnrollment {
 
 // "Here's how I feel" — the parsed inputs and the plan the engine built from them.
 model CheckIn {
-  id        String   @id @default(cuid())
-  profileId String
-  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  date      DateTime @default(now())
-  rawText   String?
-  energy    Int
-  soreness  Int
-  sleep     Int?
-  painAreas String[]
-  focus     String[]
-  minutes   Int
-  plan      Json
-  createdAt DateTime @default(now())
+  id              String   @id @default(cuid())
+  profileId       String
+  profile         Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  date            DateTime @default(now())
+  rawText         String?
+  energy          Int
+  soreness        Int
+  sleep           Int?
+  painAreas       String[]
+  focus           String[]
+  minutes         Int
+  outsideActivity Json?
+  override        Boolean  @default(false)
+  plan            Json
+  createdAt       DateTime @default(now())
 
   @@index([profileId, date])
 }

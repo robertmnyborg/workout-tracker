@@ -245,7 +245,7 @@ Plan: `plans/unified-corpus-and-coach.md`.
 ### BAT on Today
 `BatCard` on `/`: Start (pick Day 0 date) → "BAT Day N of 28". The BAT day stacks first in the daily log every day, rest days included.
 
-### Engine (`src/lib/engine/`, pure, `npm test` = 12 node:test cases)
+### Engine (`src/lib/engine/`, pure, `npm test` = 20 node:test cases)
 - `readiness` = round((energy + (6 - soreness) + sleep) / 3) - 1 if any pain. Max intensity: r1→2, r2→3, r3→4, r4-5→5.
   High impact only at readiness 4+ and no knee/ankle/lumbar/hip pain.
 - Painful areas get only gentle work (breathing/alignment/mobility/stability, intensity ≤ 2).
@@ -256,14 +256,21 @@ Plan: `plans/unified-corpus-and-coach.md`.
 - Open engine gaps (from yt-programming.md): no scheduled deload every 4-8 weeks, no training-age gate, no RPE input, no
   game-day taper (yt-athletic.md has the rules), no per-exercise pain swap (yt-pt.md rules), readiness ignores stress/appetite/jump height.
 
-### Coach (`/coach`)
-Text → `POST /api/coach/parse` (Claude `claude-opus-5-5`, effort low, zod structured output, only reads the note) → sliders/chips
-(editable) → `POST /api/coach/plan` (engine, saves CheckIn) → `POST /api/coach/start` (creates a day in the "Coach Sessions"
-program) → existing `/workout/[dayId]` logger. Claude never picks exercises or loads.
+### Coach (`/coach`) — chat since 2026-10-25 (plan: `plans/chat-coach.md`)
+`GET /api/coach/opening` (no AI: last 7 days of logged sessions + outside activity, standing goal, recovery rules →
+suggested focus + question) → each message `POST /api/coach/chat` (Claude edits the current check-in: fields, outside
+activity like "an hour of basketball", new standing goal, override) → engine rebuilds → plan card in the reply → "Start
+this session" → `POST /api/coach/start`. One CheckIn row per conversation, updated each turn. "Adjust settings by hand"
+posts the same route with no message. Claude never picks exercises or loads; its summary only restates what you said.
+- Recovery (`src/lib/engine/recovery.ts`), each rule cites a principle line, shown under the plan:
+  explosive work not on consecutive days and max 2 days/week; region (lower/upper/core, full-body = all) loaded yesterday
+  or earlier today rests from Main; hard sport/cardio today or yesterday → no heavy legs; cardio already done today → no
+  extra conditioning. "Train through" (override) keeps the plan and shows the rules as warnings.
+- DB (migration 20261025120000, additive): `Profile.goal`, `Profile.goalFocus`; `CheckIn.outsideActivity`, `CheckIn.override`.
 - Runs on Robert's Claude subscription via the Claude Agent SDK, the same pattern as Peek's mimic: Fly secret
   `CLAUDE_CODE_OAUTH_TOKEN` from `claude setup-token` (valid 1 year, created 2026-10-25; rotate by re-running and
   `fly secrets set`). Locally it uses the logged-in Claude Code session. Any ANTHROPIC_API_KEY is stripped from the
-  child env because it would outrank the token. Parse takes ~12 s. Without a token, parse returns 503 and the sliders still work.
+  child env because it would outrank the token. Parse takes ~12 s. Without a token, chat returns 503 and Adjust still works.
 - Why Fly, not Vercel: the SDK bundles a 278MB Claude binary (linux-x64); Vercel functions cap at 250MB.
 
 ### Status 2026-10-24
