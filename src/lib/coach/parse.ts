@@ -1,7 +1,8 @@
 // Free text ("knees are cranky, slept badly, want to work on my jump, 30 min") -> typed CheckIn.
 // Claude only reads the user's words; the engine (src/lib/engine) decides the training.
-import Anthropic from "@anthropic-ai/sdk";
-import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
+// Runs on a Claude subscription through the Agent SDK (same pattern as Peek's mimic): locally it uses
+// the logged-in Claude Code session, in production a `claude setup-token` value in CLAUDE_CODE_OAUTH_TOKEN.
+import { query } from "@anthropic-ai/claude-agent-sdk";
 import { z } from "zod";
 import { BODY_AREAS, GOALS } from "../../../corpus/schema";
 import type { CheckIn } from "../engine/plan";
@@ -24,17 +25,26 @@ Pain areas are places that hurt or are injured, not ordinary muscle soreness. "T
 Focus mapping: jumping higher or dunking -> jump (plus power); posture, alignment, standing straighter -> posture; feeling beat up or wanting an easy day -> recovery; back or joint pain -> pain-relief; getting stronger -> strength; cardio or wind -> conditioning.`;
 
 export async function parseCheckIn(text: string): Promise<ParsedCheckIn> {
-  const client = new Anthropic();
-  const response = await client.messages.parse({
-    model: "claude-opus-5-5",
-    max_tokens: 2000,
-    output_config: { effort: "low", format: zodOutputFormat(CheckInSchema) },
-    system: SYSTEM,
-    messages: [{ role: "user", content: text }],
-  });
-  if (response.stop_reason === "refusal" || !response.parsed_output) {
-    throw new Error("Could not read that note. Set the sliders instead.");
+  // An API key outranks the OAuth token in the CLI's credential lookup; drop it so the subscription is used.
+  const { ANTHROPIC_API_KEY: _drop, ...env } = process.env;
+  for await (const m of query({
+    prompt: text,
+    options: {
+      systemPrompt: SYSTEM,
+      model: "claude-opus-5-5",
+      effort: "low",
+      tools: [], // reading a note needs no tools
+      settingSources: [], // ignore ~/.claude config, hooks and CLAUDE.md
+      persistSession: false,
+      maxTurns: 3,
+      env,
+      outputFormat: { type: "json_schema", schema: z.toJSONSchema(CheckInSchema, { target: "draft-7" }) },
+    },
+  })) {
+    if (m.type !== "result") continue;
+    const parsed = m.subtype === "success" ? CheckInSchema.safeParse(m.structured_output) : null;
+    if (!parsed?.success) throw new Error("Could not read that note. Set the sliders instead.");
+    return { ...parsed.data, sleep: parsed.data.sleep ?? undefined };
   }
-  const p = response.parsed_output;
-  return { ...p, sleep: p.sleep ?? undefined };
+  throw new Error("Could not read that note. Set the sliders instead.");
 }
