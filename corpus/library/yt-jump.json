@@ -1,0 +1,969 @@
+[
+  {
+    "id": "snap-down",
+    "name": "Snap Down",
+    "aliases": [
+      "snapdown"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=_YudFDcW_Iw @ 0:24"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot"
+    ],
+    "goals": [
+      "jump",
+      "stability"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Stand tall with both arms all the way overhead. Progression: rise onto the balls of the feet first.",
+    "execution": "Throw the arms down hard and snap the hips and knees down quickly into an athletic landing position, absorbing the force. Reset to tall and repeat.",
+    "cues": [
+      "Throw the arms down harder",
+      "Go up onto the ball of the foot, as high as you can, then snap down quick",
+      "Absorb the force"
+    ],
+    "errors": [],
+    "why": "Level 1 of TMS's 5-level plyometric progression: teaches force absorption and high internal muscle forces before more intense plyos; also a bone-density stimulus (TMS, _YudFDcW_Iw @ 0:15, 5:25).",
+    "defaultDose": {
+      "sets": 2,
+      "reps": "5"
+    },
+    "intensity": 2,
+    "impact": "low",
+    "progression": {
+      "method": "complexity",
+      "harder": "drop-freeze"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=_YudFDcW_Iw"
+  },
+  {
+    "id": "drop-freeze",
+    "name": "Drop Freeze",
+    "aliases": [
+      "drop and stick",
+      "stick landing off box"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=_YudFDcW_Iw @ 1:07"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot"
+    ],
+    "goals": [
+      "jump",
+      "stability"
+    ],
+    "equipment": [
+      "plyo box"
+    ],
+    "position": "standing on box",
+    "setup": "Stand on a box. Single-leg variation (step off, land on one leg) is used for intermediate athletes.",
+    "execution": "Step off the box, fall the distance of the box, and catch the landing in triple flexion. Freeze in the landing position.",
+    "cues": [
+      "Land soft",
+      "Absorb the force and catch the landing",
+      "Be quiet with the landing"
+    ],
+    "errors": [],
+    "why": "Level 1 of the 5-level progression; master snap downs and drop freezes before box jumps (TMS, _YudFDcW_Iw @ 1:23).",
+    "defaultDose": {
+      "sets": 2,
+      "reps": "5"
+    },
+    "intensity": 3,
+    "impact": "high",
+    "progression": {
+      "method": "complexity",
+      "easier": "snap-down",
+      "harder": "box-jump"
+    },
+    "contraindications": [
+      "Acute knee/ankle pain"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=_YudFDcW_Iw"
+  },
+  {
+    "id": "box-jump",
+    "name": "Box Jump",
+    "aliases": [
+      "jump to box",
+      "one-step jump to box"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=_YudFDcW_Iw @ 1:31"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot",
+      "full-body"
+    ],
+    "goals": [
+      "jump",
+      "power"
+    ],
+    "equipment": [
+      "plyo box (12-30 in)"
+    ],
+    "position": "standing",
+    "setup": "Stand facing a box. PJF measured a one-step max jump onto a 12-inch box (AR1JI0RFsbQ @ 2:34).",
+    "execution": "Throw the arms down hard past the hips, load the hips back, then explode up and land softly on top of the box. Step down.",
+    "cues": [
+      "Throw the arms down hard so they break the line of the body, behind the hips",
+      "Throw the hips back to load the posterior chain",
+      "Explode through and up"
+    ],
+    "errors": [],
+    "why": "Level 2: the box reduces landing contact forces so you can do more jumps early without patellar or Achilles issues (TMS, _YudFDcW_Iw @ 1:31). Landing on a 12-inch box measured 2100 N, about 50% of a soft 24-inch drop landing; higher boxes lower it further (PJF, AR1JI0RFsbQ @ 2:34-3:12). TMS classes box jumps as concentric 'jump training' (500-700 ms contact), not true plyometrics (TMS, xeR4RprByc4 @ 2:21).",
+    "defaultDose": {
+      "sets": 4,
+      "reps": "3-5"
+    },
+    "intensity": 4,
+    "impact": "low",
+    "progression": {
+      "method": "complexity",
+      "easier": "drop-freeze",
+      "harder": "depth-jump-to-box"
+    },
+    "contraindications": [
+      "Max-intent takeoff still loads the patellar tendon and can flare patellar tendinopathy even with no landing impact (PJF, AR1JI0RFsbQ @ 4:00)"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=_YudFDcW_Iw"
+  },
+  {
+    "id": "depth-jump-to-box",
+    "name": "Depth Jump to Box",
+    "aliases": [
+      "box-to-box depth jump"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=_YudFDcW_Iw @ 3:17"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot",
+      "full-body"
+    ],
+    "goals": [
+      "jump",
+      "power"
+    ],
+    "equipment": [
+      "2 plyo boxes"
+    ],
+    "position": "standing on box",
+    "setup": "Two boxes: a drop box starting at 12-18 inches, and a second box to jump onto.",
+    "execution": "Step off the first box, fall the box's distance, push into the ground very quickly, and jump up onto the second box.",
+    "cues": [
+      "Step off, don't jump off",
+      "Very quickly push into the ground",
+      "Start at 12-18 in; move to 24 in only when technique is good"
+    ],
+    "errors": [
+      "Spending too long on the ground (description)"
+    ],
+    "why": "Level 4 entry: the second box removes the landing impact. Master vertical jumps and drop freezes before depth jumps (TMS, _YudFDcW_Iw @ 2:44, 3:25).",
+    "defaultDose": {
+      "sets": 3,
+      "reps": "3-5"
+    },
+    "intensity": 5,
+    "impact": "high",
+    "progression": {
+      "method": "load",
+      "easier": "box-jump",
+      "harder": "single-leg-depth-landing-hold"
+    },
+    "contraindications": [
+      "Acute knee/ankle pain",
+      "Not before mastering vertical jumps and drop freezes"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=_YudFDcW_Iw"
+  },
+  {
+    "id": "single-leg-depth-landing-hold",
+    "name": "Single-Leg Depth Drop Landing Hold",
+    "aliases": [
+      "single-leg depth jump isometric hold"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=_YudFDcW_Iw @ 3:48"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot"
+    ],
+    "goals": [
+      "jump",
+      "stability"
+    ],
+    "equipment": [
+      "plyo box"
+    ],
+    "position": "standing on box",
+    "setup": "Low box (use a smaller box if the athlete struggles).",
+    "execution": "Step off the box, land on one leg, and hold the bottom position for 1-2 seconds. Once controlled, progress to a single-leg landing into a lateral jump, vertical jump or single-leg tuck jump, then sequence 4-5 reps in a row.",
+    "cues": [
+      "Hold the bottom position for a second",
+      "Don't drop the hip",
+      "Don't let the knee come into the midline",
+      "Find a strong single-leg position"
+    ],
+    "errors": [
+      "Hip drop",
+      "Knee collapsing to midline"
+    ],
+    "why": "Level 5 (depth jump variations). TMS keeps an athlete here for a few weeks before harder single-leg variations (TMS, _YudFDcW_Iw @ 4:04-5:16).",
+    "defaultDose": {
+      "sets": 3,
+      "reps": "3 each leg",
+      "holdSeconds": 2
+    },
+    "intensity": 4,
+    "impact": "high",
+    "progression": {
+      "method": "complexity",
+      "easier": "depth-jump-to-box"
+    },
+    "contraindications": [
+      "Acute knee/ankle pain"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=_YudFDcW_Iw"
+  },
+  {
+    "id": "dumbbell-loaded-jump",
+    "name": "Dumbbell Loaded Jump",
+    "aliases": [
+      "loaded jump",
+      "DB jump"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=1CFAZfxEkoQ @ 0:51"
+    },
+    "category": "power",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot",
+      "full-body"
+    ],
+    "goals": [
+      "power",
+      "jump"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "position": "standing",
+    "setup": "Hold dumbbells totalling about 10% of bodyweight, 15% at most. Start on the balls of the feet.",
+    "execution": "Drop to about a quarter squat, jump up, land and hold for a second, reset, and go again. Reps are not continuous.",
+    "cues": [
+      "Only a quarter squat, the range you use in sport",
+      "Land and hold before the next rep"
+    ],
+    "errors": [
+      "Collapsing too far into a full squat"
+    ],
+    "why": "Phase 1 (hypertrophy + plyo) power exercise for moderately trained athletes, e.g. someone who plays basketball a couple of times a week; beginners start with drop freezes (TMS, 1CFAZfxEkoQ @ 1:09-1:25).",
+    "defaultDose": {
+      "sets": 4,
+      "reps": "5"
+    },
+    "intensity": 4,
+    "impact": "high",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": [
+      "Acute knee/ankle pain"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=1CFAZfxEkoQ"
+  },
+  {
+    "id": "trap-bar-jump-to-boxes",
+    "name": "Weighted Trap Bar Jump (landing on boxes)",
+    "aliases": [
+      "loaded trap bar jump",
+      "trap bar jump"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=AR1JI0RFsbQ @ 0:21"
+    },
+    "category": "power",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot",
+      "full-body"
+    ],
+    "goals": [
+      "power",
+      "jump"
+    ],
+    "equipment": [
+      "trap bar",
+      "plates",
+      "two 12-inch boxes"
+    ],
+    "position": "standing",
+    "setup": "Load a trap bar and stand between two 12-inch boxes so the plates can drop onto them.",
+    "execution": "Take off with max intent. On the way down, don't stick the landing with the weight: let the plates drop onto the boxes, then stop yourself, so you land with roughly bodyweight.",
+    "cues": [
+      "Max intent on the takeoff",
+      "Let the weights drop to the boxes, then stop yourself"
+    ],
+    "errors": [],
+    "why": "Low-impact power option: about 2500 N on takeoff and barely 3000 N on landing, versus 3500-4500 N for a bodyweight landing from 24 in. Use it when on-court volume is high and you still want explosiveness (PJF, AR1JI0RFsbQ @ 0:36-1:39, 3:36).",
+    "defaultDose": {
+      "sets": 4,
+      "reps": "3"
+    },
+    "intensity": 4,
+    "impact": "low",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": [
+      "Max jumping still produces spring forces that can flare patellar tendinopathy, even with zero impact (PJF, AR1JI0RFsbQ @ 4:00)"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=AR1JI0RFsbQ"
+  },
+  {
+    "id": "spanish-squat-isometric",
+    "name": "Spanish Squat Isometric Hold",
+    "aliases": [
+      "Spanish squat hold"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=6oBTSuxggLc @ 5:07"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "pain-relief",
+      "strength"
+    ],
+    "equipment": [
+      "heavy loop band and anchor (or a dumbbell for goblet hold)"
+    ],
+    "position": "standing",
+    "setup": "Loop a heavy band around both knees from an anchor, step back to get tension. Alternative: hold a dumbbell under the chin in a goblet squat.",
+    "execution": "Sit the weight back and hold a little above thighs-parallel (down to parallel if there is no tendon pain) for 45 seconds.",
+    "cues": [
+      "Sit back into the band",
+      "Expect a good burn in the quads",
+      "Go to thighs parallel only if pain-free"
+    ],
+    "errors": [],
+    "why": "Isometrics give an analgesic effect that lasted at least 45 minutes in Rio's study, so do them before practice, a game, lifting or plyos (PJF, 6oBTSuxggLc @ 5:39-6:32).",
+    "defaultDose": {
+      "sets": 3,
+      "holdSeconds": 45,
+      "frequency": "2-4 sets before practice, games, lifting or plyos"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "hold",
+      "harder": "tempo-heavy-slow-squat"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=6oBTSuxggLc"
+  },
+  {
+    "id": "tempo-heavy-slow-squat",
+    "name": "Metronome-Paced Heavy Slow Squat (HSR)",
+    "aliases": [
+      "heavy slow resistance",
+      "HSR squat",
+      "externally paced squat"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=6oBTSuxggLc @ 7:25"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "strength",
+      "pain-relief"
+    ],
+    "equipment": [
+      "metronome app",
+      "load (Spanish squat band, barbell or dumbbells)"
+    ],
+    "position": "standing",
+    "setup": "Pick a squat pattern (Spanish squat or rear-foot-elevated split squat) and a heavy load. Start a metronome app.",
+    "execution": "Lower for two seconds on the beat and rise for two seconds on the beat, heavy, slow and with perfect form. Do not be explosive.",
+    "cues": [
+      "Two seconds down, two seconds up, on the beat",
+      "Load heavy but keep perfect form",
+      "Go slow; not explosive for tendon health"
+    ],
+    "errors": [],
+    "why": "External pacing reduced pain-related inhibition in Rio's work, allowing more reps or load (PJF, 6oBTSuxggLc @ 7:25-8:15). TMS: 30 s of slow 2-up/2-down reps can match a 30 s heavy isometric for tendons (TMS, h8zKS5qZZdY @ 9:00).",
+    "defaultDose": {
+      "sets": 3,
+      "reps": "about 30 seconds of slow reps (2 s down, 2 s up)"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load",
+      "easier": "spanish-squat-isometric"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=6oBTSuxggLc"
+  },
+  {
+    "id": "single-leg-leg-extension-isometric",
+    "name": "Single-Leg Leg Extension Isometric (mid-range)",
+    "aliases": [
+      "patellar tendon iso hold"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=h8zKS5qZZdY @ 3:12"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "knee"
+    ],
+    "goals": [
+      "strength",
+      "pain-relief"
+    ],
+    "equipment": [
+      "leg extension machine"
+    ],
+    "position": "seated",
+    "setup": "One leg on a leg extension machine. Knee at mid-range: not fully straight, not fully bent.",
+    "execution": "Hold the position. GPP: 1-3 minute holds at light load. Tendon rebuilding: add load until a 20-40 second hold is an honest 7/10 (a weight you can hold 30 s but not 45 s).",
+    "cues": [
+      "Halfway between straight and bent",
+      "Heavy enough that the end of the hold is an honest 7 out of 10"
+    ],
+    "errors": [
+      "Using a load so light it never reaches the ~70% loading threshold"
+    ],
+    "why": "TMS's pick to target the patellar tendon. Heavy loads beat light loads for tendon adaptation; build up over 3+ months, 2-3x per week minimum (TMS, h8zKS5qZZdY @ 3:12, 6:23-7:44, 9:50).",
+    "defaultDose": {
+      "sets": 3,
+      "holdSeconds": 30,
+      "frequency": "2-3x weekly"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=h8zKS5qZZdY"
+  },
+  {
+    "id": "toes-extended-calf-raise-hold",
+    "name": "Calf Raise Hold on Wedge, Toes Extended",
+    "aliases": [
+      "plantar fascia calf raise hold"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=h8zKS5qZZdY @ 4:47"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "ankle-foot"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "wedge or step"
+    ],
+    "position": "standing",
+    "setup": "Stand in a calf raise with the toes extended up on a wedge.",
+    "execution": "Hold the top of the calf raise for 2 minutes. Progress by adding weight so the hold lasts 20-40 seconds.",
+    "cues": [
+      "Toes extended up on the wedge"
+    ],
+    "errors": [],
+    "why": "GPP example for plantar fascia and Achilles capacity: 2-minute hold, 2 sets, 6 days a week for 6 weeks (TMS, h8zKS5qZZdY @ 4:47, 6:46).",
+    "defaultDose": {
+      "sets": 2,
+      "holdSeconds": 120,
+      "frequency": "6x weekly for 6 weeks"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "load",
+      "harder": "heavy-calf-raise-isometric"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=h8zKS5qZZdY"
+  },
+  {
+    "id": "heavy-calf-raise-isometric",
+    "name": "Heavy Calf Raise Isometric (Johnson calf raise hold)",
+    "aliases": [
+      "Johnson calf raise hold",
+      "overcoming calf raise"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=h8zKS5qZZdY @ 7:48"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "ankle-foot"
+    ],
+    "goals": [
+      "strength",
+      "power"
+    ],
+    "equipment": [
+      "barbell or Smith machine",
+      "spotter arms",
+      "bench (Johnson variation: one foot up on the bench)"
+    ],
+    "position": "standing",
+    "setup": "Barbell on spotter arms at calf-raise height. Johnson variation: one foot up on a bench.",
+    "execution": "Find your max: add weight until you can't lift the bar off the spotter arms (often 200+ lb for a decently strong athlete). Back off to about 70% of that and hold the calf raise for about 30 seconds.",
+    "cues": [
+      "Back off to ~70% of the max you can lift off the pins",
+      "Hold ~30 seconds"
+    ],
+    "errors": [
+      "Holding a 20 lb dumbbell when ~150 lb is needed to reach the loading threshold"
+    ],
+    "why": "Reaching the ~70% max-force threshold is what moves tendon strength; most PT patients never load heavy enough (TMS, h8zKS5qZZdY @ 6:46-8:34). Strong calves underpin sprinting and plyometrics (TMS, xeR4RprByc4 @ 13:28).",
+    "defaultDose": {
+      "sets": 3,
+      "holdSeconds": 30,
+      "frequency": "2-3x weekly"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load",
+      "easier": "toes-extended-calf-raise-hold"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=h8zKS5qZZdY"
+  },
+  {
+    "id": "knee-iso-push",
+    "name": "Knee Iso Push (overcoming isometric)",
+    "aliases": [
+      "overcoming knee isometric",
+      "knee ISO push"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=h8zKS5qZZdY @ 12:24"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "power",
+      "strength"
+    ],
+    "equipment": [
+      "fixed barbell (rack pins or Smith machine)"
+    ],
+    "position": "standing, single leg",
+    "setup": "Set a bar you cannot move at a height where you stand on one leg with a shallow knee bend under it.",
+    "execution": "Push up into the fixed bar as hard as possible for 3 seconds on the left, rest 5-10 s, then 3 seconds on the right. 3 reps per leg, rest 1-2 minutes, 4 sets. Ballistic version (well-trained athletes only): 1-second pushes, 8-10 reps per set.",
+    "cues": [
+      "Push as hard as you can",
+      "3 seconds: long enough to peak force without a drop-off",
+      "Do these before the session; save 30 s yielding holds for the end"
+    ],
+    "errors": [],
+    "why": "Max-force overcoming isometrics for healthy athletes; TMS measured about a 7% jump height increase when done before training (varies by athlete) (TMS, h8zKS5qZZdY @ 11:04-13:56).",
+    "defaultDose": {
+      "sets": 4,
+      "reps": "3 x 3-second pushes each leg"
+    },
+    "intensity": 4,
+    "impact": "none",
+    "progression": {
+      "method": "complexity"
+    },
+    "contraindications": [
+      "Ballistic (1-second) version not for tendon rehab or an injured tendon (TMS, h8zKS5qZZdY @ 16:12)"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=h8zKS5qZZdY"
+  },
+  {
+    "id": "single-leg-lateral-barrier-hop",
+    "name": "Single-Leg Lateral Barrier Hop",
+    "aliases": [
+      "single-leg lateral hurdle hop"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=1CFAZfxEkoQ @ 6:41"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "knee",
+      "ankle-foot",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "jump",
+      "stability"
+    ],
+    "equipment": [
+      "low barrier or hurdle"
+    ],
+    "position": "standing, single leg",
+    "setup": "Stand on one leg beside a low barrier.",
+    "execution": "Hop sideways over the barrier on one leg. Start by sticking each landing; progress to continuous back-and-forth countermovement hops, more explosive and powerful.",
+    "cues": [
+      "Stick the landing first",
+      "Then go continuous back and forth"
+    ],
+    "errors": [],
+    "why": "Phase 2 single-leg plyometric after phase 1's loaded jumps and double-leg box jumps (TMS, 1CFAZfxEkoQ @ 6:25).",
+    "defaultDose": {
+      "sets": 3,
+      "reps": "5 each leg"
+    },
+    "intensity": 4,
+    "impact": "high",
+    "progression": {
+      "method": "complexity"
+    },
+    "contraindications": [
+      "Acute knee/ankle pain"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=1CFAZfxEkoQ"
+  },
+  {
+    "id": "band-resisted-penultimate-step",
+    "name": "Band-Resisted Penultimate Step",
+    "aliases": [
+      "band penultimate drill"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=wrF0h4YadvM @ 33:16"
+    },
+    "category": "skill",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "full-body"
+    ],
+    "goals": [
+      "jump"
+    ],
+    "equipment": [
+      "long resistance band",
+      "anchor"
+    ],
+    "position": "standing",
+    "setup": "Hook a band around the hips from an anchor behind you so there is tension.",
+    "execution": "Step into your penultimate (second-to-last) step against the band. If you just step instead of pushing, you don't cover distance; if your hip lifts, the band pulls you back. Then take the band off and do approach jumps.",
+    "cues": [
+      "Push into the penultimate step to create length; don't reach",
+      "Keep the hip level or slightly dropping, never lifting",
+      "Beat the band; don't let the band beat you"
+    ],
+    "errors": [
+      "Short penultimate",
+      "Hip lifting into the penultimate"
+    ],
+    "why": "Feedback drill that fixes penultimate length and lift without verbal cueing; PJF has seen it change mechanics in one session (PJF, wrF0h4YadvM @ 33:16-34:45).",
+    "defaultDose": {
+      "sets": 3,
+      "reps": "3-5"
+    },
+    "intensity": 2,
+    "impact": "low",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=wrF0h4YadvM"
+  },
+  {
+    "id": "two-foot-approach-jump",
+    "name": "Two-Foot Approach Jump",
+    "aliases": [
+      "approach jump off two",
+      "running vertical jump"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=wrF0h4YadvM @ 26:28"
+    },
+    "category": "skill",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot",
+      "full-body"
+    ],
+    "goals": [
+      "jump",
+      "power"
+    ],
+    "equipment": [
+      "hoop or target (optional)"
+    ],
+    "position": "standing",
+    "setup": "Approach with a run-up (combine standard: 15 ft; guards use up to the three-point line).",
+    "execution": "Short third-to-last step, long penultimate step that drops the hips low, then plant both feet in a turned stance (chest toward the side of the backboard, roughly half of a 90-degree turn) and jump with a big countermovement arm swing.",
+    "cues": [
+      "Long penultimate from pushing harder, not reaching",
+      "At the plant you should already be at your lowest point; everything after is up",
+      "Turn stance like a hockey stop, about half of 90 degrees",
+      "Big arm swing: pinkies at least ear height"
+    ],
+    "errors": [
+      "Hip lifts into the penultimate, wasting contact time on absorbing",
+      "Square stance (toes straight) in open space, which drifts you forward and loads the front of the knee"
+    ],
+    "why": "Mechanics are the fastest vertical gains; the turn stance shares deceleration with the hips instead of the patellar tendon (PJF, wrF0h4YadvM @ 1:42, 26:36-31:44, 45:08-47:59).",
+    "defaultDose": {
+      "sets": 4,
+      "reps": "3"
+    },
+    "intensity": 5,
+    "impact": "high",
+    "progression": {
+      "method": "complexity"
+    },
+    "contraindications": [
+      "Acute knee/ankle pain"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=wrF0h4YadvM"
+  },
+  {
+    "id": "one-foot-approach-jump",
+    "name": "One-Foot Approach Jump (cross swing or one-hand pick)",
+    "aliases": [
+      "one-leg takeoff",
+      "single-leg approach jump"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=wrF0h4YadvM @ 49:27"
+    },
+    "category": "skill",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot",
+      "core",
+      "full-body"
+    ],
+    "goals": [
+      "jump",
+      "power"
+    ],
+    "equipment": [
+      "basketball (optional)"
+    ],
+    "position": "standing",
+    "setup": "Run-up into a one-foot takeoff. One-foot jumpers do better with more momentum (PJF, wrF0h4YadvM @ 7:00).",
+    "execution": "Plant on a near-stiff takeoff leg and drive the free knee up. With the ball, either cross swing (dip the ball to the takeoff-side hip, then rip it up as the free knee drives) or one-hand pick (ball in one hand, free arm swings opposite the driving knee).",
+    "cues": [
+      "Stiff takeoff leg, relying on run-up momentum",
+      "Cross swing: ball to the takeoff hip, rip up with the knee drive; let the torso coil and uncoil",
+      "One-hand pick: free arm swings like a sprint arm"
+    ],
+    "errors": [
+      "Leg buckling under the speed (a stiffness deficit; build it in the weight room and with short-contact plyos, not by cueing)"
+    ],
+    "why": "Ground contact is about half a two-foot jump's, so there's no time for a full arm swing. Mastering the one-hand pick adds 2-5 inches for many players (PJF, wrF0h4YadvM @ 49:27-58:48).",
+    "defaultDose": {
+      "sets": 4,
+      "reps": "3 each takeoff leg"
+    },
+    "intensity": 5,
+    "impact": "high",
+    "progression": {
+      "method": "complexity"
+    },
+    "contraindications": [
+      "Acute knee/ankle pain"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=wrF0h4YadvM"
+  },
+  {
+    "id": "speed-drop",
+    "name": "Speed Drop",
+    "aliases": [
+      "attack-the-floor drop",
+      "drop catch"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=wrF0h4YadvM @ 20:36"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot"
+    ],
+    "goals": [
+      "jump",
+      "power"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Stand tall.",
+    "execution": "Pull yourself toward the floor with the hip flexors and hamstrings (don't let gravity take you down), reverse out of the bottom as fast as possible, then stop. Not a max-height jump.",
+    "cues": [
+      "Attack the floor",
+      "Pull yourself down; don't fall",
+      "Reverse out as fast as possible, then stop"
+    ],
+    "errors": [],
+    "why": "Builds eccentric rate of force development and fast transitions out of the bottom. Lower-level athletes jump lower when cued to drop fast, so practice this as a drill but don't cue fast drops on test jumps until strength is there (PJF, wrF0h4YadvM @ 18:59-22:26).",
+    "defaultDose": {
+      "sets": 3,
+      "reps": "5"
+    },
+    "intensity": 3,
+    "impact": "low",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=wrF0h4YadvM"
+  },
+  {
+    "id": "box-drop-cross-punch",
+    "name": "Box Drop with Cross Dumbbell Punch",
+    "aliases": [
+      "box drop punch"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=wrF0h4YadvM @ 61:26"
+    },
+    "category": "power",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "core",
+      "full-body"
+    ],
+    "goals": [
+      "power",
+      "jump"
+    ],
+    "equipment": [
+      "low box",
+      "dumbbell"
+    ],
+    "position": "standing on box",
+    "setup": "Stand on a low box with the right foot, a dumbbell held in both hands.",
+    "execution": "Drop off and land on the left foot on the ground. As the left foot hits, punch the dumbbell hard across to the outside of the left knee. Then rip the dumbbell back up across the body to get back onto the box. Mirror for the other side.",
+    "cues": [
+      "Punch as hard as you can as the foot lands",
+      "Rip the dumbbell back up across the body to return to the box"
+    ],
+    "errors": [],
+    "why": "Trains the core coil and uncoil of the one-foot cross swing under extra landing force (PJF, wrF0h4YadvM @ 61:18-62:21).",
+    "defaultDose": {
+      "sets": 3,
+      "reps": "5 each side"
+    },
+    "intensity": 3,
+    "impact": "high",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": [
+      "Acute knee/ankle pain"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=wrF0h4YadvM"
+  },
+  {
+    "id": "dunk-session",
+    "name": "Dunk Session (go-to then weak side)",
+    "aliases": [
+      "dunk practice session"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=wrF0h4YadvM @ 65:11"
+    },
+    "category": "skill",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot",
+      "full-body"
+    ],
+    "goals": [
+      "jump",
+      "power"
+    ],
+    "equipment": [
+      "basketball hoop",
+      "basketball"
+    ],
+    "position": "court",
+    "setup": "On a court, warmed up. Sessions progress from 10 to 20 minutes.",
+    "execution": "First half: dunk or attempt off your go-to takeoff (e.g., left leg, right-left plant). Second half: weak side only, freestyle: opposite takeoff foot, opposite hand, opposite plant.",
+    "cues": [
+      "First 10 minutes go-to, last 10 minutes all weakness",
+      "Aim for in-game reactive dunks, not warm-up dunks"
+    ],
+    "errors": [],
+    "why": "Balancing takeoff legs is a skill built with real-life reps, not in the weight room (PJF, wrF0h4YadvM @ 64:23-66:06). Counts as maximal jumps toward the weekly 30-50+ (PJF, mNbpZ9-7XM0 @ 4:03).",
+    "defaultDose": {
+      "durationMin": 20
+    },
+    "intensity": 5,
+    "impact": "high",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": [
+      "Acute knee/ankle pain"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=wrF0h4YadvM"
+  }
+]

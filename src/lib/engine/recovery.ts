@@ -33,7 +33,9 @@ export interface Recovery {
 
 const LOWER: BodyArea[] = ["knee", "pelvis-hip", "ankle-foot"];
 const UPPER: BodyArea[] = ["shoulder", "elbow-wrist", "thoracic", "neck"];
-export const EXPLOSIVE = new Set<Category>(["plyometric", "power"]);
+// Hard jump work: max jumps, fast lifts, approach/dunk sessions (PJF's "jerk budget" buckets).
+export const EXPLOSIVE = new Set<Category>(["plyometric", "power", "skill"]);
+export const hardJump = (e: { category: Category; intensity: number }) => EXPLOSIVE.has(e.category) && e.intensity >= 4;
 export const LOADING = new Set<Category>(["strength", "power", "plyometric"]);
 
 /** Primary region an exercise loads: legs win over arms, arms over trunk. */
@@ -59,21 +61,20 @@ export function assessRecovery(events: LoadEvent[]): Recovery {
   const rules: Rule[] = [];
   const recent = events.filter((e) => e.daysAgo <= 1);
 
-  const explosive = (e: LoadEvent) => EXPLOSIVE.has(e.category) && e.intensity >= 4;
-  const lastExplosive = recent.find(explosive);
-  const explosiveDays = new Set(events.filter((e) => explosive(e) && e.daysAgo >= 1 && e.daysAgo <= 6).map((e) => e.daysAgo));
+  const lastExplosive = recent.find(hardJump);
+  const explosiveDays = new Set(events.filter((e) => hardJump(e) && e.daysAgo >= 1 && e.daysAgo <= 6).map((e) => e.daysAgo));
   let noExplosive = false;
   if (lastExplosive) {
     noExplosive = true;
     rules.push({
-      text: `Jumps ${when(lastExplosive.daysAgo)} (${lastExplosive.label}): no jumps or explosive lifts today. Power work is the most fatigue-sensitive training.`,
-      source: "RP, 2nbDIrDnBjY @ 24:39 (yt-athletic); one day between explosive sessions is an [inference]",
+      text: `Hard jumping ${when(lastExplosive.daysAgo)} (${lastExplosive.label}): no max jumps or fast lifts today. Keep 48 hours between hard jump days; slow strength and easy drills are fine.`,
+      source: "PJF, NF658w-s8io @ 7:40 and mNbpZ9-7XM0 @ 1:10; TMS, 1CFAZfxEkoQ @ 3:02 (yt-jump rules 1, 8)",
     });
   } else if (explosiveDays.size >= 2) {
     noExplosive = true;
     rules.push({
-      text: `${explosiveDays.size} jump days in the last week already: explosive work caps at 2 a week.`,
-      source: "Nippard, cPsy38pkZzE @ 14:43 (yt-athletic rule 11)",
+      text: `${explosiveDays.size} hard jump days in the last week already: the default is 2 a week (e.g. Mon + Thu).`,
+      source: "PJF, NF658w-s8io @ 7:40; Nippard, cPsy38pkZzE @ 14:43 (yt-jump rule 1, yt-athletic rule 11)",
     });
   }
 
@@ -86,10 +87,11 @@ export function assessRecovery(events: LoadEvent[]): Recovery {
         text: `${REGION_NAME[e.region]} trained ${when(e.daysAgo)} (${e.label}): no loading it again today.`,
         source: "RP, QlZPCJJOUfQ (yt-programming rule 24: no back-to-back clustering)",
       });
-    } else if (e.category === "conditioning" && e.intensity >= 4 && e.region === "lower") {
+    } else if (e.category === "conditioning" && e.intensity >= 4 && e.region === "lower" && e.daysAgo === 0) {
+      // Same day only: the day after basketball, slow heavy strength is fine (PJF, mNbpZ9-7XM0 @ 1:10).
       rest.add("lower");
       rules.push({
-        text: `Hard ${e.label} ${when(e.daysAgo)}: no heavy leg lifting today. Keep hard cardio and heavy legs on separate days.`,
+        text: `Hard ${e.label} earlier today: no heavy leg lifting today. Keep hard cardio and heavy legs on separate days.`,
         source: "RP, 2nbDIrDnBjY @ 42:12 (yt-athletic rule 7)",
       });
     }

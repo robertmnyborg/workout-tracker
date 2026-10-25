@@ -1,7 +1,7 @@
 // Deterministic session builder. Same check-in + library + history => same plan.
 // The AI layer only produces a CheckIn; it never picks exercises or loads.
 import type { BodyArea, CorpusExercise, Dose, Goal } from "../../../corpus/schema";
-import { EXPLOSIVE, LOADING, region, type OutsideActivity, type Recovery, type Rule } from "./recovery";
+import { hardJump, LOADING, region, type OutsideActivity, type Recovery, type Rule } from "./recovery";
 
 export interface CheckIn {
   energy: number; // 1-5
@@ -68,8 +68,13 @@ function safe(e: LibItem, c: CheckIn, maxIntensity: number, allowHighImpact: boo
   if (e.impact === "high" && !allowHighImpact) return false;
   const hurts = e.bodyAreas.some((b) => c.painAreas.includes(b));
   // A painful area still gets gentle work (that is the PT/BAT point), never loading.
-  return !hurts || (GENTLE.has(e.category) && e.intensity <= 2);
+  return !hurts || (GENTLE.has(e.category) && e.intensity <= 2) || tendonIso(e);
 }
+
+// Isometric/slow tendon loading for a painful joint (Spanish squat holds for a cranky knee):
+// PJF, 6oBTSuxggLc @ 5:00-9:55 and AR1JI0RFsbQ @ 4:00 (yt-jump rule 12).
+const tendonIso = (e: LibItem) =>
+  e.category === "strength" && e.impact === "none" && e.intensity <= 3 && e.goals.includes("pain-relief");
 
 const SOURCE_RANK: Record<string, number> = { bat: 0, pt: 1, trainer: 2, youtube: 3 };
 
@@ -139,10 +144,9 @@ export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] 
   const notes: string[] = [];
 
   const mainCats = new Set(c.focus.flatMap((g) => MAIN_CATEGORIES[g] ?? []));
-  if (rec?.noExplosive) EXPLOSIVE.forEach((k) => mainCats.delete(k));
   if (rec?.noConditioning) mainCats.delete("conditioning");
   // Full-body loading (complexes, cleans) touches every region, so any resting region rules it out.
-  const rested = (e: LibItem) => !!rec && LOADING.has(e.category) &&
+  const rested = (e: LibItem) => (!!rec?.noExplosive && hardJump(e)) || !!rec && LOADING.has(e.category) &&
     (e.bodyAreas.includes("full-body") ? rec.restRegions.length > 0 : rec.restRegions.includes(region(e.bodyAreas)!));
   if (recovery?.rules.length && c.override) notes.push("You chose to train through the recovery rules; they are warnings today.");
   const recoveryDay = r <= 2 || mainCats.size === 0;
@@ -164,8 +168,9 @@ export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] 
   const focusAreas = new Set<BodyArea>([...c.painAreas, ...c.focus.flatMap((g) => FOCUS_AREAS[g] ?? [])]);
   const prepBudget = recoveryDay ? left() : Math.min(left(), Math.round(c.minutes * 0.2));
   const prep = rank(
-    pool.filter((e) => e.category === "mobility" || e.category === "stability"),
-    (e) => e.goals.filter((g) => c.focus.includes(g)).length + e.bodyAreas.filter((b) => focusAreas.has(b)).length
+    pool.filter((e) => e.category === "mobility" || e.category === "stability" ||
+      (tendonIso(e) && e.bodyAreas.some((b) => c.painAreas.includes(b)))),
+    (e) => (tendonIso(e) ? 3 : 0) + e.goals.filter((g) => c.focus.includes(g)).length + e.bodyAreas.filter((b) => focusAreas.has(b)).length
   );
   blocks.push(fill("Prep", prep, prepBudget, r, used,
     (e) => e.goals.some((g) => c.focus.includes(g)) ? `Supports ${c.focus.join("/")}` : "Stability prep", recoveryDay ? 8 : 4));

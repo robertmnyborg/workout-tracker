@@ -144,6 +144,21 @@ test("recovery: an hour of basketball today -> no jumps, no heavy legs, no extra
   assert.deepEqual(suggestFocus(["jump"], rec), ["posture"]);
 });
 
+test("recovery: day after basketball -> no jumps, but slow heavy legs are fine", () => {
+  const rec = assessRecovery(outsideEvents([{ kind: "basketball", minutes: 60, hard: true, jumping: true }], 1));
+  assert.equal(rec.noExplosive, true);
+  assert.deepEqual(rec.restRegions, []);
+  const p = buildPlan({ ...fresh, focus: ["jump"] }, lib, [], rec);
+  assert.ok(ids(p).includes("back-squat"));
+  assert.ok(!ids(p).includes("depth-jump"));
+});
+
+test("knee pain brings tendon isometrics into prep", () => {
+  const iso = ex("spanish-squat-isometric", { bodyAreas: ["knee", "pelvis-hip"], goals: ["pain-relief", "strength"], intensity: 2 });
+  const p = buildPlan({ ...fresh, painAreas: ["knee"] }, [...lib, iso]);
+  assert.ok(p.blocks.find((b) => b.name === "Prep")!.items.some((i) => i.exerciseId === "spanish-squat-isometric"));
+});
+
 test("recovery: full-body loading rests when any region rests", () => {
   const full = [...libUp, ex("bb-complex", { bodyAreas: ["full-body"], goals: ["strength"], intensity: 3 })];
   assert.ok(!ids(buildPlan({ ...fresh, focus: ["strength"] }, full, [], assessRecovery([ev(1, {})]))).includes("bb-complex"));

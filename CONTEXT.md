@@ -263,9 +263,14 @@ activity like "an hour of basketball", new standing goal, override) → engine r
 this session" → `POST /api/coach/start`. One CheckIn row per conversation, updated each turn. "Adjust settings by hand"
 posts the same route with no message. Claude never picks exercises or loads; its summary only restates what you said.
 - Recovery (`src/lib/engine/recovery.ts`), each rule cites a principle line, shown under the plan:
-  explosive work not on consecutive days and max 2 days/week; region (lower/upper/core, full-body = all) loaded yesterday
-  or earlier today rests from Main; hard sport/cardio today or yesterday → no heavy legs; cardio already done today → no
-  extra conditioning. "Train through" (override) keeps the plan and shows the rules as warnings.
+  48 h between hard jump days (plyo/power/skill at intensity ≥4, or jumping sport) and 2 a week (PJF); region
+  (lower/upper/core, full-body = all) loaded yesterday or earlier today rests from Main; hard sport earlier TODAY → no heavy
+  legs (the day after, slow heavy strength is fine, PJF); cardio already done today → no extra conditioning. Knee (any) pain
+  pulls pain-relief tendon isometrics (Spanish squat etc.) into Prep.
+- Jump corpus (2026-10-25): Antigravity picked The Movement System (Dr. Matt Casturo, DPT) and PJF Performance (Paul
+  Fabritz, NBA) from 14 channels (`corpus/sources/youtube/jump/README.md`); 12 transcripts → `principles/yt-jump.md`
+  (20 engine rules) + 20 drills in `library/yt-jump.json`. Not yet in the engine: weekly contact caps by training age,
+  jerk budget across a week, plyo level gate, 12-week phase clock, weekly jump test (need jump-height and plyo-age inputs). "Train through" (override) keeps the plan and shows the rules as warnings.
 - DB (migration 20261025120000, additive): `Profile.goal`, `Profile.goalFocus`; `CheckIn.outsideActivity`, `CheckIn.override`.
 - Runs on Robert's Claude subscription via the Claude Agent SDK, the same pattern as Peek's mimic: Fly secret
   `CLAUDE_CODE_OAUTH_TOKEN` from `claude setup-token` (valid 1 year, created 2026-10-25; rotate by re-running and
