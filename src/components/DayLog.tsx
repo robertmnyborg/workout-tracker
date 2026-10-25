@@ -73,6 +73,7 @@ type LoadedEntry = {
 };
 
 const sectionTypeColors: Record<string, string> = {
+  alignment: "text-teal-600 bg-teal-100/60 dark:text-teal-400 dark:bg-teal-900/30",
   activation: "text-amber-600 bg-amber-100/60 dark:text-amber-400 dark:bg-amber-900/30",
   main: "text-red-600 bg-red-100/60 dark:text-red-400 dark:bg-red-900/30",
   accessory: "text-blue-600 bg-blue-100/60 dark:text-blue-400 dark:bg-blue-900/30",

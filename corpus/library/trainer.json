@@ -1,0 +1,2761 @@
+[
+  {
+    "id": "banded-monster-walk",
+    "name": "Banded Monster Walk",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Activation"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee"
+    ],
+    "goals": [
+      "stability",
+      "strength"
+    ],
+    "equipment": [
+      "mini band x2"
+    ],
+    "position": "standing",
+    "setup": "Double band: one at the ankles, one above the knees. Sink into a quarter-squat.",
+    "execution": "Walk forward, backward, and laterally, staying low in the quarter-squat throughout.",
+    "cues": [
+      "Stay low in quarter-squat"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 steps each direction"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps",
+      "easier": "lateral-band-walk"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "single-leg-glute-bridge-march",
+    "name": "Single Leg Glute Bridge March",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Activation"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "pelvis-hip",
+      "core"
+    ],
+    "goals": [
+      "stability",
+      "strength"
+    ],
+    "equipment": [],
+    "position": "supine",
+    "setup": "Lie on your back with knees bent.",
+    "execution": "Drive hips up into a bridge, then alternate extending one leg at a time while holding the bridge.",
+    "cues": [
+      "Keep hips level"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "45 seconds"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "hold",
+      "harder": "single-leg-glute-bridge-liftoff"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "ankle-mobility-wall",
+    "name": "Ankle Mobility Against Wall",
+    "aliases": [
+      "Knee-to-Wall Ankle Mobility"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Activation"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "ankle-foot"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "half-kneeling or standing",
+    "setup": "Stand facing a wall with the front foot 4 inches from the wall.",
+    "execution": "Drive the knee forward over the toes toward the wall without the heel lifting.",
+    "cues": [
+      "Knee over toes",
+      "Heel stays down"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "5 each side"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "barbell-front-squat",
+    "name": "Barbell Front Squat",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Strength Block A"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip",
+      "core"
+    ],
+    "goals": [
+      "strength",
+      "jump"
+    ],
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
+    "position": "standing",
+    "setup": "Barbell in the front rack with elbows high.",
+    "execution": "Sit down between the hips to full depth with knees tracking over toes, then stand.",
+    "cues": [
+      "Elbows high",
+      "Sit between hips",
+      "Knees tracking over toes",
+      "Full depth"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 4,
+      "reps": "8"
+    },
+    "intensity": 4,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "barbell-deadlift",
+    "name": "Barbell Deadlift",
+    "aliases": [
+      "Conventional Deadlift"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Strength Block A"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "pelvis-hip",
+      "lumbar",
+      "knee"
+    ],
+    "goals": [
+      "strength",
+      "power"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "position": "standing",
+    "setup": "Conventional stance over the bar.",
+    "execution": "Hinge at the hips with a flat back, drive through the heels, and lock out with the glutes.",
+    "cues": [
+      "Flat back",
+      "Drive through heels",
+      "Lock out with glutes"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 4,
+      "reps": "6"
+    },
+    "intensity": 4,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "ffe-bulgarian-split-squat-hold",
+    "name": "Front-Foot-Elevated Bulgarian Split Squat + Hold",
+    "aliases": [
+      "FFE Bulgarian Split Squat",
+      "Rear-Foot-Elevated Split Squat"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Strength Block B"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "strength",
+      "jump",
+      "stability"
+    ],
+    "equipment": [
+      "dumbbells or barbell",
+      "bench",
+      "step"
+    ],
+    "position": "split stance",
+    "setup": "Hold dumbbells or use a barbell. Rear foot on a bench, front foot elevated.",
+    "execution": "Lower into the split squat and stand, knee tracking over toe. On the last rep, hold 10s at the bottom.",
+    "cues": [
+      "Knee tracks over toe",
+      "10s hold at bottom on last rep"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "8 each leg"
+    },
+    "intensity": 4,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "barbell-rdl",
+    "name": "Barbell RDL",
+    "aliases": [
+      "Romanian Deadlift"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Strength Block B"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "pelvis-hip",
+      "lumbar"
+    ],
+    "goals": [
+      "strength"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "position": "standing",
+    "setup": "Stand holding the barbell, slight knee bend.",
+    "execution": "Push the hips back until you feel a hamstring stretch, keeping the bar close to the legs, then return.",
+    "cues": [
+      "Slight knee bend",
+      "Push hips back",
+      "Bar stays close to legs"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 4,
+      "reps": "6"
+    },
+    "intensity": 4,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "weighted-wall-sit",
+    "name": "Wall Sit",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Accessory Work"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip",
+      "core"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "dumbbells or kettlebells",
+      "wall"
+    ],
+    "position": "wall",
+    "setup": "Back against the wall holding DBs or KBs at your sides. Knees at 90°, knees over heels, toes up.",
+    "execution": "Hold the position with abs pressed into the wall.",
+    "cues": [
+      "Knees at 90°",
+      "Knees over heels",
+      "Toes up",
+      "Abs pressed into wall"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "1 min"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "physioball-hamstring-curl",
+    "name": "Physioball Hamstring Curls",
+    "aliases": [
+      "Stability Ball Leg Curl"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Accessory Work"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "strength"
+    ],
+    "equipment": [
+      "physioball"
+    ],
+    "position": "supine",
+    "setup": "Lie on your back with heels on a physioball and hips up in a bridge.",
+    "execution": "Curl the ball toward the glutes, then extend slowly.",
+    "cues": [
+      "Hips up",
+      "Extend slowly"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "reps",
+      "harder": "glute-ham-raise"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "glute-ham-raise",
+    "name": "Glute/Ham Raise",
+    "aliases": [
+      "Nordic Curl",
+      "GHR"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Accessory Work"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "strength"
+    ],
+    "equipment": [
+      "GHR or anchor",
+      "band (assist)"
+    ],
+    "position": "kneeling",
+    "setup": "Set up on a GHR, or anchor the feet for a Nordic curl variation. Use a band for assistance if needed.",
+    "execution": "Lower under control (controlled eccentric) and pull back up.",
+    "cues": [
+      "Controlled eccentric"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "8"
+    },
+    "intensity": 4,
+    "impact": "none",
+    "progression": {
+      "method": "reps",
+      "easier": "physioball-hamstring-curl"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "foam-roll-lower-body",
+    "name": "Foam Roll: Quads, Hamstrings, Calves, TFL, IT Bands",
+    "aliases": [
+      "Foam Roll: Calves, Quads, Hamstrings, TFL, IT Bands"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Cool-Down"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip",
+      "ankle-foot"
+    ],
+    "goals": [
+      "recovery",
+      "mobility"
+    ],
+    "equipment": [
+      "foam roller",
+      "lacrosse ball"
+    ],
+    "setup": "Foam roller, plus a lacrosse ball for the TFL.",
+    "execution": "Roll each area for 60s: quads, hamstrings, calves, TFL, IT bands.",
+    "cues": [
+      "Use lacrosse ball for TFL"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "60s each"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "hamstring-strap-stretch",
+    "name": "Hamstring Static Series with Strap",
+    "aliases": [
+      "Supine Hamstring Stretch with Strap"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Cool-Down"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee"
+    ],
+    "goals": [
+      "mobility",
+      "recovery"
+    ],
+    "equipment": [
+      "strap"
+    ],
+    "position": "supine",
+    "setup": "Lie on your back with a strap around one foot.",
+    "execution": "Hold the leg straight up, then across the body, then open out, 30s each position, each leg.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "30s each position",
+      "holdSeconds": 30
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "calf-stretch",
+    "name": "Calf Stretch",
+    "aliases": [
+      "Ankle Stretch"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Cool-Down"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "ankle-foot"
+    ],
+    "goals": [
+      "mobility",
+      "recovery"
+    ],
+    "equipment": [
+      "step"
+    ],
+    "position": "standing",
+    "setup": "Stand on a step.",
+    "execution": "Hang the heels off the step and hold.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "60s",
+      "holdSeconds": 60
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "hip-flexor-lunge-stretch",
+    "name": "Hip Flexor Lunge Stretch",
+    "aliases": [
+      "Hip Flexor Lunge Stretch with Yoga Blocks"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Strength / Cool-Down"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility",
+      "recovery"
+    ],
+    "equipment": [
+      "yoga blocks (optional)"
+    ],
+    "position": "half-kneeling",
+    "setup": "Kneel in a lunge position (Day 3 version: yoga blocks for support).",
+    "execution": "Hold 30s each side. Day 3 version: 10 knee drops, then the 30s hold, each side.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "30s each side",
+      "holdSeconds": 30
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "band-complex",
+    "name": "Band Complex",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Activation"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "shoulder",
+      "thoracic"
+    ],
+    "goals": [
+      "stability",
+      "posture"
+    ],
+    "equipment": [
+      "light band"
+    ],
+    "position": "standing",
+    "setup": "Light band.",
+    "execution": "5 reps each, slow and controlled: retract, reverse fly, upright row, regular row, palms behind body.",
+    "cues": [
+      "Slow and controlled"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "5 each movement"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "wall-angels",
+    "name": "Wall Angels",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Activation"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "shoulder",
+      "thoracic"
+    ],
+    "goals": [
+      "mobility",
+      "posture"
+    ],
+    "equipment": [
+      "wall"
+    ],
+    "position": "wall",
+    "setup": "Back flat against the wall, arms in a \"W\" position.",
+    "execution": "Slide up to \"Y\" and back down, keeping wrists and elbows touching the wall.",
+    "cues": [
+      "Back flat against wall",
+      "Wrists and elbows touch wall"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "physioball-scap-complex",
+    "name": "Physioball Scap Complex",
+    "aliases": [
+      "YTWI on Ball"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Activation"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "shoulder",
+      "thoracic"
+    ],
+    "goals": [
+      "stability",
+      "posture"
+    ],
+    "equipment": [
+      "physioball"
+    ],
+    "position": "prone",
+    "setup": "Lie chest-down on a physioball.",
+    "execution": "Lift arms in Y, T, W, and I positions, squeezing the shoulder blades.",
+    "cues": [
+      "Squeeze shoulder blades"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "5 each position"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "single-arm-cable-row",
+    "name": "Single Arm Cable Row",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Push/Pull Block"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "shoulder",
+      "core"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "position": "split stance",
+    "setup": "Stand in a split stance facing the cable.",
+    "execution": "Pull to the hip and squeeze the shoulder blade back, with no torso rotation.",
+    "cues": [
+      "Squeeze shoulder blade back",
+      "No torso rotation"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 each arm"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "single-arm-cable-press",
+    "name": "Single Arm Cable Press",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Push/Pull Block"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "shoulder",
+      "core"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "position": "split stance",
+    "setup": "Stand in a split stance facing away from the cable, handle at chest height.",
+    "execution": "Press from chest height with the core braced, no leaning.",
+    "cues": [
+      "Core braced",
+      "No leaning"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 each arm"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "db-curl-to-press-single-leg",
+    "name": "DB Curl to Press (Standing on One Leg)",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Push/Pull Block"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "shoulder",
+      "elbow-wrist",
+      "core"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "dumbbells",
+      "bench"
+    ],
+    "position": "single-leg standing",
+    "setup": "Hold dumbbells, one foot elevated on a bench behind you.",
+    "execution": "Curl the dumbbells, then press overhead. Alternate standing leg each set.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "5 each side"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "pull-up",
+    "name": "Pull-Ups or Banded Assisted Pull-Ups",
+    "aliases": [
+      "Pull-Up",
+      "Banded Assisted Pull-Up"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Push/Pull Block"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "shoulder",
+      "elbow-wrist",
+      "core"
+    ],
+    "goals": [
+      "strength"
+    ],
+    "equipment": [
+      "pull-up bar",
+      "band (assist)"
+    ],
+    "position": "hanging",
+    "setup": "Hang from the bar; loop a band for assistance as needed.",
+    "execution": "Start from a full dead hang and pull until the chin is over the bar.",
+    "cues": [
+      "Full dead hang at bottom",
+      "Chin over bar at top"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "6-8"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "db-shoulder-press-single-leg",
+    "name": "DB Shoulder Press (Standing on One Leg)",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Accessory Work"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "shoulder",
+      "core"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "position": "single-leg standing",
+    "setup": "Hold dumbbells at the shoulders, standing on one leg.",
+    "execution": "Press overhead with the core engaged throughout. Alternate standing leg each set.",
+    "cues": [
+      "Core engaged throughout"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "8"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "rope-face-pull",
+    "name": "Rope Face Pulls",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Accessory Work"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "shoulder",
+      "thoracic"
+    ],
+    "goals": [
+      "strength",
+      "posture"
+    ],
+    "equipment": [
+      "cable",
+      "rope"
+    ],
+    "position": "standing",
+    "setup": "Rope attachment on a cable.",
+    "execution": "Pull to forehead level and externally rotate at the end position, squeezing the rear delts.",
+    "cues": [
+      "Externally rotate at end position",
+      "Squeeze rear delts"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "tricep-skull-crusher",
+    "name": "Tricep Skull Crushers",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Accessory Work"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "elbow-wrist"
+    ],
+    "goals": [
+      "strength"
+    ],
+    "equipment": [
+      "EZ bar or dumbbells",
+      "bench"
+    ],
+    "position": "supine",
+    "setup": "Lie on a bench, weight held with elbows pointed at the ceiling.",
+    "execution": "Lower to the forehead and extend fully.",
+    "cues": [
+      "Elbows pointed at ceiling"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "plank",
+    "name": "Plank",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Core Circuit"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [],
+    "position": "prone",
+    "setup": "Forearm plank with elbows under shoulders.",
+    "execution": "Hold, squeezing the knees together and contracting the pelvic floor.",
+    "cues": [
+      "Squeeze knees together",
+      "Contract pelvic floor"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "30s",
+      "holdSeconds": 30
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "hold",
+      "harder": "physioball-plank-circles"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "side-bridge",
+    "name": "Side Bridge",
+    "aliases": [
+      "Side Plank"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Core Circuit"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [],
+    "position": "side-lying",
+    "setup": "Side-lying on the elbow, feet stacked or staggered.",
+    "execution": "Lift into a side bridge with hips forward and hold, focusing on pelvic floor contraction.",
+    "cues": [
+      "Hips forward",
+      "Pelvic floor contraction"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "30s each side",
+      "holdSeconds": 30
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "hold",
+      "harder": "adductor-side-bridge"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "dead-bug",
+    "name": "Dead Bug",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Core Circuit"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core",
+      "lumbar"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [],
+    "position": "supine",
+    "setup": "Lie on your back, lower back pressed into the floor.",
+    "execution": "Extend opposite arm and opposite leg simultaneously, exhaling as you extend.",
+    "cues": [
+      "Lower back pressed into floor",
+      "Exhale as you extend"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 each side"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps",
+      "harder": "physioball-dead-bug"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "banded-bird-dog",
+    "name": "Bird Dog (Banded)",
+    "aliases": [
+      "Bird Dog"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Core Circuit"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core",
+      "lumbar",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [
+      "mini band"
+    ],
+    "position": "quadruped",
+    "setup": "On hands and knees with a band around the wrists or ankles.",
+    "execution": "Extend the opposite arm and leg, hold 2s at the top.",
+    "cues": [
+      "Hold 2s at top"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 each side"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "body-coil",
+    "name": "Body Coil",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Core Circuit"
+    },
+    "category": "power",
+    "bodyAreas": [
+      "core",
+      "thoracic"
+    ],
+    "goals": [
+      "power"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Stand with arms extended, feet planted.",
+    "execution": "Rotate the trunk powerfully while keeping the hips stable.",
+    "cues": [
+      "Feet planted",
+      "Hips stable"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "6"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "foam-roll-upper-body",
+    "name": "Foam Roll: Lats, Scapula, Thoracic Spine, Chest",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Cool-Down"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "shoulder",
+      "thoracic"
+    ],
+    "goals": [
+      "recovery",
+      "mobility"
+    ],
+    "equipment": [
+      "foam roller",
+      "lacrosse ball"
+    ],
+    "setup": "Foam roller, plus a lacrosse ball for the chest.",
+    "execution": "Roll each area for 60s: lats, scapula, thoracic spine, chest.",
+    "cues": [
+      "Use lacrosse ball for chest"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "60s each"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "foam-roll-thoracic-extension",
+    "name": "Foam Roll Thoracic Extensions",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Cool-Down"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "thoracic"
+    ],
+    "goals": [
+      "mobility",
+      "posture"
+    ],
+    "equipment": [
+      "foam roller"
+    ],
+    "position": "supine",
+    "setup": "Lie with the foam roller across the upper back.",
+    "execution": "Extend over the roller for 2 min total.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "2 min"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "clock-stretch",
+    "name": "Clock Stretch",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Cool-Down"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "shoulder",
+      "thoracic"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "setup": "Arm positioned at 12 o'clock.",
+    "execution": "Hold each position 15s: 12, 2, and 10 o'clock.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "15s each position",
+      "holdSeconds": 15
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "ninety-ninety-stretch",
+    "name": "90/90 Stretch",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Upper Body + Core / Cool-Down"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility",
+      "recovery"
+    ],
+    "equipment": [],
+    "position": "seated",
+    "setup": "Sit in the 90/90 position.",
+    "execution": "Hold 30s each side.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "30s each side",
+      "holdSeconds": 30
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "side-leg-raise-circles",
+    "name": "Side Leg Raises + Circles",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Activation"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [],
+    "position": "side-lying",
+    "setup": "Lie on your side, top foot dorsiflexed.",
+    "execution": "Raise the leg leading with the heel for 10 reps, then make basketball-sized circles 10 each direction.",
+    "cues": [
+      "Lead with heel (dorsiflexed)",
+      "Circles basketball-sized"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 raises + 10 circles each direction, each side"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "single-leg-glute-bridge-liftoff",
+    "name": "Single Leg Glute Bridge Liftoffs",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Activation"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "pelvis-hip",
+      "core"
+    ],
+    "goals": [
+      "stability",
+      "strength"
+    ],
+    "equipment": [],
+    "position": "supine",
+    "setup": "Lie on your back, one foot planted.",
+    "execution": "Drive the hips up on one leg and hold 1s at the top.",
+    "cues": [
+      "Keep hips level",
+      "Hold 1s at top"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 each side"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps",
+      "easier": "single-leg-glute-bridge-march"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "banded-clamshell",
+    "name": "Banded Clamshells",
+    "aliases": [
+      "Clamshell"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Activation"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [
+      "mini band"
+    ],
+    "position": "side-lying",
+    "setup": "Side-lying, band above the knees.",
+    "execution": "Open the knees apart, squeezing the glute. Hold 10s on the last rep.",
+    "cues": [
+      "Squeeze glute",
+      "Hold 10s on last rep"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 each side"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "depth-jump",
+    "name": "Depth Jump",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Power Block A"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "knee",
+      "ankle-foot",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "jump",
+      "power"
+    ],
+    "equipment": [
+      "18-24\" box"
+    ],
+    "position": "standing",
+    "setup": "Stand on an 18-24\" box.",
+    "execution": "Step off, land on both feet, and immediately explode upward for max height. Reset between each rep.",
+    "cues": [
+      "Minimize ground contact time",
+      "Reset between each rep"
+    ],
+    "errors": [],
+    "why": "Reactive strength; rest 2-3 min between sets for full CNS recovery.",
+    "defaultDose": {
+      "sets": 4,
+      "reps": "4"
+    },
+    "intensity": 5,
+    "impact": "high",
+    "progression": {
+      "method": "complexity",
+      "easier": "bunny-hops"
+    },
+    "contraindications": [
+      "acute knee/ankle pain"
+    ]
+  },
+  {
+    "id": "skaters",
+    "name": "Skaters (Lateral Bounds)",
+    "aliases": [
+      "Lateral Bounds"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Power Block A"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot"
+    ],
+    "goals": [
+      "jump",
+      "power",
+      "stability"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Stand on one leg.",
+    "execution": "Push off explosively laterally and land softly on the outside foot, sticking each landing 1s.",
+    "cues": [
+      "Land softly",
+      "Stick each landing 1s"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 4,
+      "reps": "6 each side"
+    },
+    "intensity": 4,
+    "impact": "high",
+    "progression": {
+      "method": "complexity"
+    },
+    "contraindications": [
+      "acute knee/ankle pain"
+    ]
+  },
+  {
+    "id": "kb-swing",
+    "name": "KB Swings",
+    "aliases": [
+      "Kettlebell Swing"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Power Block B"
+    },
+    "category": "power",
+    "bodyAreas": [
+      "pelvis-hip",
+      "lumbar",
+      "core"
+    ],
+    "goals": [
+      "power"
+    ],
+    "equipment": [
+      "kettlebell"
+    ],
+    "position": "standing",
+    "setup": "Kettlebell in both hands, hinge stance.",
+    "execution": "Hinge at the hips and drive explosive hip extension, swinging the bell to chest height.",
+    "cues": [
+      "Explosive hip extension",
+      "Arms are just along for the ride",
+      "Bell to chest height"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 4,
+      "reps": "10"
+    },
+    "intensity": 4,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "split-squat-jump",
+    "name": "Split Squat Jumps",
+    "aliases": [
+      "Jumping Lunges"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Power Block B"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip",
+      "ankle-foot"
+    ],
+    "goals": [
+      "jump",
+      "power"
+    ],
+    "equipment": [],
+    "position": "split stance",
+    "setup": "Start in a lunge position.",
+    "execution": "Explode up, switch legs in the air, and land softly in a lunge. Full depth each rep.",
+    "cues": [
+      "Land softly",
+      "Full depth each rep"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 4,
+      "reps": "6 each side"
+    },
+    "intensity": 4,
+    "impact": "high",
+    "progression": {
+      "method": "complexity"
+    },
+    "contraindications": [
+      "acute knee/ankle pain"
+    ]
+  },
+  {
+    "id": "bunny-hops",
+    "name": "Bunny Hops",
+    "aliases": [
+      "Pogo Hops"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Power Block B"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "ankle-foot",
+      "knee"
+    ],
+    "goals": [
+      "jump"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Stand with knees slightly bent, on the balls of the feet.",
+    "execution": "Hop continuously with small hops and quick ground contact.",
+    "cues": [
+      "Stay on balls of feet",
+      "Quick ground contact"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 4,
+      "reps": "20"
+    },
+    "intensity": 3,
+    "impact": "low",
+    "progression": {
+      "method": "complexity",
+      "harder": "depth-jump"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "bb-side-lunge",
+    "name": "BB Side Lunge",
+    "aliases": [
+      "Lateral Lunge"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Accessory Work"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee"
+    ],
+    "goals": [
+      "strength",
+      "mobility"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "position": "standing",
+    "setup": "Barbell on your back.",
+    "execution": "Step wide to the side, sit the hips back over that leg, and push back to start.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "8 each side"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "lateral-band-walk",
+    "name": "Lateral Band Walk",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Accessory Work"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee"
+    ],
+    "goals": [
+      "stability",
+      "strength"
+    ],
+    "equipment": [
+      "mini band"
+    ],
+    "position": "standing",
+    "setup": "Band at the ankles, stay low.",
+    "execution": "Step laterally, pushing the knees out. Don't let the feet come together.",
+    "cues": [
+      "Stay low",
+      "Push knees out",
+      "Don't let feet come together"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 each direction"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps",
+      "harder": "banded-monster-walk"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "adductor-side-bridge",
+    "name": "Adductor Side Bridge",
+    "aliases": [
+      "Copenhagen Plank"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Accessory Work"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "pelvis-hip",
+      "core"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "bench"
+    ],
+    "position": "side-lying",
+    "setup": "Side-lying on the elbow, top leg on a bench, bottom leg on the ground.",
+    "execution": "Bridge up from the elbow and hold.",
+    "cues": [
+      "Inner thigh on fire"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "30s each side",
+      "holdSeconds": 30
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "hold",
+      "easier": "side-bridge"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "popliteus-release",
+    "name": "Popliteus Release with Lacrosse Ball",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Cool-Down"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "knee"
+    ],
+    "goals": [
+      "recovery",
+      "mobility"
+    ],
+    "equipment": [
+      "lacrosse ball"
+    ],
+    "setup": "Place a lacrosse ball behind the knee.",
+    "execution": "Release for 60s each leg.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "60s each leg"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "adductor-stretch",
+    "name": "Adductor Stretch",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Lower Power / Cool-Down"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility",
+      "recovery"
+    ],
+    "equipment": [],
+    "setup": "Get into an adductor stretch position.",
+    "execution": "Hold 30s each side.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "30s each side",
+      "holdSeconds": 30
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "physioball-dead-bug",
+    "name": "Physioball Dead Bug",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Activation"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core",
+      "lumbar"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [
+      "physioball"
+    ],
+    "position": "supine",
+    "setup": "Lie on your back holding a physioball between the opposite hand and knee.",
+    "execution": "Extend the free arm and leg, keeping the lower back flat.",
+    "cues": [
+      "Keep lower back flat"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "10 each side"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps",
+      "easier": "dead-bug"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "physioball-plank-circles",
+    "name": "Physioball Plank Circles",
+    "aliases": [
+      "Stir the Pot"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Activation"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core",
+      "shoulder"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [
+      "physioball"
+    ],
+    "position": "prone",
+    "setup": "Plank with forearms on a physioball.",
+    "execution": "Make small circles with the core locked in.",
+    "cues": [
+      "Core locked in"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "10 each direction"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps",
+      "easier": "plank"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "bb-warm-up-complex",
+    "name": "BB Warm-Up Complex",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Complex Block"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "strength",
+      "mobility"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "position": "standing",
+    "setup": "Empty bar or light load.",
+    "execution": "5 reps each with no rest between movements: back squat → snatch grip press → good morning → bent-over row.",
+    "cues": [
+      "No rest between movements"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "5 each movement"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "bb-overhead-squat",
+    "name": "BB Overhead Squat",
+    "aliases": [
+      "Overhead Squat"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Complex Block"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "full-body",
+      "shoulder",
+      "thoracic",
+      "ankle-foot"
+    ],
+    "goals": [
+      "strength",
+      "mobility",
+      "stability"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "position": "standing",
+    "setup": "Wide snatch grip, bar locked overhead.",
+    "execution": "Sit deep with the bar overhead, then stand.",
+    "cues": [],
+    "errors": [],
+    "why": "Requires thoracic mobility + ankle mobility.",
+    "defaultDose": {
+      "sets": 4,
+      "reps": "6"
+    },
+    "intensity": 4,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "landmine-rotational-press",
+    "name": "BB Landmine (Rotational Press)",
+    "aliases": [
+      "Landmine Rotational Press"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Complex Block"
+    },
+    "category": "power",
+    "bodyAreas": [
+      "shoulder",
+      "core",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "power",
+      "strength"
+    ],
+    "equipment": [
+      "barbell",
+      "landmine or corner"
+    ],
+    "position": "standing",
+    "setup": "Bar anchored in a corner.",
+    "execution": "Press and rotate, controlling the eccentric.",
+    "cues": [
+      "Control the eccentric"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 each direction"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "single-leg-cable-row-side-lunge",
+    "name": "One Arm One Leg Cable Row + Side Lunge",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Complex Block"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "full-body",
+      "pelvis-hip",
+      "shoulder"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "position": "single-leg standing",
+    "setup": "Stand on one leg facing the cable.",
+    "execution": "Row with the same-side arm, then step into a side lunge.",
+    "cues": [],
+    "errors": [],
+    "why": "Combines balance + pull + lateral movement.",
+    "defaultDose": {
+      "sets": 3,
+      "reps": "6 each side"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "sa-overhead-db-lunge",
+    "name": "SA Overhead DB Lunge in Place",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Accessory Work"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip",
+      "shoulder",
+      "core"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "position": "split stance",
+    "setup": "Lock a DB overhead with one arm.",
+    "execution": "Lunge in place with the opposite leg. Switch arms each set.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 each leg"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "low-to-high-cable-chop",
+    "name": "Low to High Cable Chop",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Accessory Work"
+    },
+    "category": "power",
+    "bodyAreas": [
+      "core",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "power",
+      "strength"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "position": "standing",
+    "setup": "Cable set low, start at the hip.",
+    "execution": "Rotate and drive diagonally upward.",
+    "cues": [
+      "Power comes from hips, not arms"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 each side"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "rotational-resist-complex",
+    "name": "Rotational Resist Complex",
+    "aliases": [
+      "Pallof Press Complex"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Accessory Work"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core"
+    ],
+    "goals": [
+      "stability",
+      "strength"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "position": "standing",
+    "setup": "Cable at chest height, stand side-on.",
+    "execution": "Resist rotation while pressing out, rotating, and holding: 10 in/out + 10 rotations + 10s hold.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10 in/out + 10 rotations + 10s hold"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "db-plank-row-knee-tuck",
+    "name": "DB Plank Row with Knee Tuck",
+    "aliases": [
+      "Renegade Row"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Accessory Work"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "core",
+      "shoulder"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "position": "plank",
+    "setup": "Plank position on DBs.",
+    "execution": "Row one DB, then tuck the same-side knee.",
+    "cues": [],
+    "errors": [],
+    "why": "Anti-rotation challenge.",
+    "defaultDose": {
+      "sets": 3,
+      "reps": "6 each arm"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "ladder-drills",
+    "name": "Ladder Drills",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Agility Finisher"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "ankle-foot",
+      "knee"
+    ],
+    "goals": [
+      "jump",
+      "conditioning"
+    ],
+    "equipment": [
+      "agility ladder"
+    ],
+    "position": "standing",
+    "setup": "Agility ladder on the floor.",
+    "execution": "Single-leg hops, criss-cross hops, in-in-out-out.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "30-60s"
+    },
+    "intensity": 3,
+    "impact": "low",
+    "progression": {
+      "method": "complexity"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "quadrant-jumps",
+    "name": "Quadrant Jumps",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Agility Finisher"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "ankle-foot",
+      "knee"
+    ],
+    "goals": [
+      "jump"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Mark 4 squares on the floor.",
+    "execution": "Hop between the 4 squares in different patterns.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "30-60s"
+    },
+    "intensity": 3,
+    "impact": "low",
+    "progression": {
+      "method": "complexity"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "180-jumps",
+    "name": "180 Jumps",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Agility Finisher"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip",
+      "ankle-foot"
+    ],
+    "goals": [
+      "jump",
+      "power"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Stand in a squat stance.",
+    "execution": "Squat jump with a 180° rotation and land softly.",
+    "cues": [
+      "Land softly"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "30-60s"
+    },
+    "intensity": 4,
+    "impact": "high",
+    "progression": {
+      "method": "complexity"
+    },
+    "contraindications": [
+      "acute knee/ankle pain"
+    ]
+  },
+  {
+    "id": "clock-lunge-series",
+    "name": "Clock Lunge Series",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Agility Finisher"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "strength",
+      "stability",
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Stand at the center of an imaginary clock.",
+    "execution": "Lunge to the 12, 2, 3, 4, and 6 o'clock positions.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "30-60s"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "foam-roll-full-body",
+    "name": "Foam Roll: Full Body",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Cool-Down"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "recovery",
+      "mobility"
+    ],
+    "equipment": [
+      "foam roller"
+    ],
+    "setup": "Foam roller.",
+    "execution": "Roll 45s each: calves, quads, hamstrings, TFL, IT bands, lats, thoracic spine.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "45s each"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "childs-pose-reach-under",
+    "name": "Child's Pose with Reach Under",
+    "aliases": [
+      "Thread the Needle"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: 4-Day Vertical Jump Program / Athletic Full Body / Cool-Down"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "thoracic",
+      "shoulder",
+      "lumbar"
+    ],
+    "goals": [
+      "mobility",
+      "recovery"
+    ],
+    "equipment": [],
+    "position": "kneeling",
+    "setup": "Kneel in child's pose.",
+    "execution": "Reach one arm under the body and hold 30s each side.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "30s each side",
+      "holdSeconds": 30
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "light-jog-or-brisk-walk",
+    "name": "Light Jog or Brisk Walk",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: Basketball Cardio Program / Steady-State Cardio / Warm-Up"
+    },
+    "category": "conditioning",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "conditioning"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Run or walk outdoors, on a track, or on a treadmill.",
+    "execution": "Move at an easy pace to raise heart rate gradually.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "durationMin": 5
+    },
+    "intensity": 1,
+    "impact": "low",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "steady-state-cardio",
+    "name": "Steady-State Run / Bike / Row",
+    "aliases": [
+      "Zone 2 Cardio"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: Basketball Cardio Program / Steady-State Cardio / Main Work"
+    },
+    "category": "conditioning",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "conditioning"
+    ],
+    "equipment": [
+      "bike or rower (optional)"
+    ],
+    "setup": "Choose run, bike, or row based on joint comfort.",
+    "execution": "Maintain a consistent pace at 65-70% max HR for 20-30 min. Conversational pace: you should be able to talk.",
+    "cues": [
+      "Conversational pace — you should be able to talk"
+    ],
+    "errors": [],
+    "why": "Aerobic base, 65-70% max HR.",
+    "defaultDose": {
+      "reps": "20-30 min",
+      "durationMin": 25
+    },
+    "intensity": 3,
+    "impact": "low",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "cardio-cooldown-walk-stretch",
+    "name": "Walk + Stretch",
+    "aliases": [
+      "Walk + Light Stretching",
+      "Walk + Full Lower Body Stretch",
+      "Walk + Full Stretch",
+      "Walk + Light Stretch"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: Basketball Cardio Program / Steady-State Cardio / Cool-Down"
+    },
+    "category": "conditioning",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "recovery"
+    ],
+    "equipment": [],
+    "setup": "Finish the cardio session.",
+    "execution": "Walk easy for 5 min, then stretch the legs (calves, quads, hamstrings, hip flexors, glutes/groin), 30s each.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "durationMin": 5
+    },
+    "intensity": 1,
+    "impact": "low",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "easy-jog-dynamic-warm-up",
+    "name": "Easy Jog + Dynamic Stretches",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: Basketball Cardio Program / Intervals — Base / Warm-Up"
+    },
+    "category": "conditioning",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "conditioning",
+      "mobility"
+    ],
+    "equipment": [],
+    "setup": "Start with an easy jog.",
+    "execution": "Jog easy for 5 min, then do leg swings, high knees, and butt kicks.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "durationMin": 5
+    },
+    "intensity": 2,
+    "impact": "low",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "interval-30-90",
+    "name": "30s Hard / 90s Easy",
+    "aliases": [
+      "Intervals — Base"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: Basketball Cardio Program / Intervals — Base / Intervals"
+    },
+    "category": "conditioning",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "conditioning"
+    ],
+    "equipment": [],
+    "setup": "Warm up first.",
+    "execution": "Sprint or go hard (~85-90% effort) for 30 seconds, then recover with easy jog or walk for 90 seconds. Repeat for 6-8 rounds.",
+    "cues": [],
+    "errors": [],
+    "why": "Sprint capacity, lactate tolerance.",
+    "defaultDose": {
+      "sets": 8,
+      "reps": "30s hard / 90s easy"
+    },
+    "intensity": 4,
+    "impact": "high",
+    "progression": {
+      "method": "complexity",
+      "harder": "interval-40-80"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "easy-run",
+    "name": "Easy Run",
+    "aliases": [
+      "Long Easy Run",
+      "Easy Jog",
+      "Taper Jog"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: Basketball Cardio Program / Long Easy Run / Main Work"
+    },
+    "category": "conditioning",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "conditioning",
+      "recovery"
+    ],
+    "equipment": [],
+    "setup": "Run at an easy, conversational pace.",
+    "execution": "Run 30-40 minutes easy; walk breaks are fine if needed. Taper version: 20 min at very easy pace.",
+    "cues": [
+      "Don't push — the intervals do the hard work",
+      "If in doubt, go slower"
+    ],
+    "errors": [],
+    "why": "Aerobic endurance; taper version is active recovery.",
+    "defaultDose": {
+      "reps": "30-40 min",
+      "durationMin": 35
+    },
+    "intensity": 2,
+    "impact": "low",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "interval-40-80",
+    "name": "40s Hard / 80s Easy",
+    "aliases": [
+      "Intervals — Ramp"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: Basketball Cardio Program / Intervals — Ramp / Intervals"
+    },
+    "category": "conditioning",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "conditioning"
+    ],
+    "equipment": [],
+    "setup": "Warm up first.",
+    "execution": "Sprint or go hard (~85-90% effort) for 40 seconds, then recover for 80 seconds. Repeat for 8-10 rounds.",
+    "cues": [],
+    "errors": [],
+    "why": "More work, less rest than Base intervals.",
+    "defaultDose": {
+      "sets": 10,
+      "reps": "40s hard / 80s easy"
+    },
+    "intensity": 4,
+    "impact": "high",
+    "progression": {
+      "method": "complexity",
+      "easier": "interval-30-90"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "jog-lateral-shuffle-warm-up",
+    "name": "Light Jog + Lateral Shuffles",
+    "aliases": [],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: Basketball Cardio Program / Basketball Intervals / Warm-Up"
+    },
+    "category": "conditioning",
+    "bodyAreas": [
+      "full-body",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "conditioning"
+    ],
+    "equipment": [],
+    "setup": "Court or open space.",
+    "execution": "Jog 3 min, then 2 min of lateral shuffles, backpedals, and defensive slides.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "durationMin": 5
+    },
+    "intensity": 2,
+    "impact": "low",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "suicide-sprints",
+    "name": "Suicide Sprints (Shuttle Runs)",
+    "aliases": [
+      "Shuttle Runs",
+      "Line Drills"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: Basketball Cardio Program / Basketball Intervals / Basketball Drills"
+    },
+    "category": "conditioning",
+    "bodyAreas": [
+      "full-body",
+      "knee",
+      "ankle-foot"
+    ],
+    "goals": [
+      "conditioning",
+      "power"
+    ],
+    "equipment": [],
+    "setup": "Start on the baseline of a basketball court.",
+    "execution": "Baseline → free throw line → back → half court → back → far free throw → back → far baseline → back. All-out effort; full recovery between sets.",
+    "cues": [
+      "All-out effort"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 6,
+      "reps": "1 full suicide"
+    },
+    "intensity": 5,
+    "impact": "high",
+    "progression": {
+      "method": "complexity",
+      "easier": "interval-40-80"
+    },
+    "contraindications": [
+      "acute knee/ankle pain"
+    ]
+  },
+  {
+    "id": "defensive-slide-shuttles",
+    "name": "Defensive Slide Shuttles",
+    "aliases": [
+      "Defensive Slides"
+    ],
+    "source": {
+      "kind": "trainer",
+      "ref": "prisma/seed.ts: Basketball Cardio Program / Basketball Intervals / Basketball Drills"
+    },
+    "category": "conditioning",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot"
+    ],
+    "goals": [
+      "conditioning",
+      "stability"
+    ],
+    "equipment": [],
+    "setup": "Defensive stance on the baseline.",
+    "execution": "Slide baseline to baseline, alternating the leading direction.",
+    "cues": [
+      "Stay low",
+      "Quick feet"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 4,
+      "reps": "1 full court"
+    },
+    "intensity": 4,
+    "impact": "low",
+    "progression": {
+      "method": "complexity"
+    },
+    "contraindications": []
+  }
+]

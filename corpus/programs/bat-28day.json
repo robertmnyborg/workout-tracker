@@ -1,0 +1,896 @@
+{
+  "id": "bat-28day",
+  "name": "BAT 28-Day Full Body Alignment Protocol",
+  "description": "Body Alignment Training Level 1 challenge (coach Gabby). Four weeks: neurological reset and tension unloading, vertical axis, horizontal axis with rib-spine-shoulder work, then three-axis integration. Short daily floor and wall sessions (about 5-15 min); self-tests on Days 0, 7, 21, 28; photo/video checkpoints on Days 0, 14, 28. Body Breathing is the breath pattern inside every movement. Minutes are estimates except Days 17, 19, 25, which the source time-caps.",
+  "source": {
+    "kind": "bat",
+    "ref": "bat-28day/EXERCISE-LIST.md#daily-session-plan"
+  },
+  "days": [
+    {
+      "dayNumber": 0,
+      "name": "Baseline Tests",
+      "focus": "Self-tests + standing photos (front/side/back) and overhead squat videos (front/side/back). No training.",
+      "minutes": 10,
+      "items": [
+        {
+          "exerciseId": "wall-leaning-test",
+          "dose": {
+            "reps": "1 test"
+          }
+        },
+        {
+          "exerciseId": "belly-rotation-test",
+          "dose": {
+            "reps": "1 rotation each side"
+          },
+          "notes": "Screenshot left and right limits; compare with Day 0"
+        }
+      ]
+    },
+    {
+      "dayNumber": 1,
+      "name": "Body Breathing",
+      "focus": "Week 1: Neurological Reset + Global Tension Unloading",
+      "minutes": 20,
+      "items": [
+        {
+          "exerciseId": "body-breathing",
+          "dose": {
+            "reps": "5-10 minutes per session",
+            "frequency": "2 sessions (AM + PM)"
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 2,
+      "name": "Down-Regulation Flow",
+      "focus": "Week 1: Neurological Reset + Global Tension Unloading",
+      "minutes": 9,
+      "items": [
+        {
+          "exerciseId": "axial-tension-reset",
+          "dose": {
+            "reps": "20",
+            "durationMin": 3
+          },
+          "notes": "Page says 2-3 minutes; video says 20 reps"
+        },
+        {
+          "exerciseId": "spinal-arc-release",
+          "dose": {
+            "reps": "15-20 per side",
+            "durationMin": 3
+          },
+          "notes": "Page says 2-3 minutes both sides. Skip if hip flexion causes excessive lower-back tension"
+        },
+        {
+          "exerciseId": "rotational-glide-reset",
+          "dose": {
+            "reps": "10 per side",
+            "durationMin": 3
+          },
+          "notes": "Page says 2-3 minutes; video says 10 reps per side"
+        }
+      ]
+    },
+    {
+      "dayNumber": 3,
+      "name": "Chest-Pelvis Alignment Training",
+      "focus": "Week 1: Neurological Reset + Global Tension Unloading",
+      "minutes": 10,
+      "items": [
+        {
+          "exerciseId": "integrated-pelvic-lift-breathing",
+          "dose": {
+            "reps": "20"
+          }
+        },
+        {
+          "exerciseId": "diaphragm-pelvic-elastic-recoil",
+          "dose": {
+            "reps": "20"
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 4,
+      "name": "Lower-Body Fascia Tension Release",
+      "focus": "Week 1: Neurological Reset + Global Tension Unloading",
+      "minutes": 10,
+      "items": [
+        {
+          "exerciseId": "ankle-flexion-extension",
+          "dose": {
+            "sets": 2,
+            "reps": "1 minute per side"
+          }
+        },
+        {
+          "exerciseId": "small-circulations",
+          "dose": {
+            "sets": 2,
+            "reps": "10 circles each direction"
+          }
+        },
+        {
+          "exerciseId": "single-leg-cycling",
+          "dose": {
+            "sets": 2,
+            "reps": "1 minute"
+          }
+        },
+        {
+          "exerciseId": "alternating-cycling",
+          "dose": {
+            "sets": 2,
+            "reps": "1 minute"
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 5,
+      "name": "Lower-Body Unwind Lift",
+      "focus": "Week 1: Neurological Reset + Global Tension Unloading",
+      "minutes": 10,
+      "items": [
+        {
+          "exerciseId": "lower-body-unwind-lift",
+          "dose": {
+            "durationMin": 8
+          },
+          "notes": "Video audio says '80 minutes'; lesson page says 8"
+        }
+      ]
+    },
+    {
+      "dayNumber": 6,
+      "name": "Pelvic Axis Isolation",
+      "focus": "Week 1: Neurological Reset + Global Tension Unloading",
+      "minutes": 10,
+      "items": [
+        {
+          "exerciseId": "pelvic-axis-isolation",
+          "dose": {
+            "reps": "20 each side, then 20 bilateral"
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 7,
+      "name": "Rest or Repeat / Tests Day",
+      "focus": "Rest day: full break or repeat any movements you enjoyed, then the self-tests",
+      "minutes": 5,
+      "items": [
+        {
+          "exerciseId": "wall-leaning-test",
+          "dose": {
+            "reps": "1 test"
+          },
+          "notes": "compare with Day 0"
+        },
+        {
+          "exerciseId": "belly-rotation-test",
+          "dose": {
+            "reps": "1 rotation each side"
+          },
+          "notes": "Screenshot left and right limits; compare with Day 0; compare with Day 0"
+        }
+      ]
+    },
+    {
+      "dayNumber": 8,
+      "name": "Lower-Body Alignment Training",
+      "focus": "Week 2: Vertical Axis",
+      "minutes": 8,
+      "items": [
+        {
+          "exerciseId": "triple-flexion",
+          "dose": {
+            "reps": "4-8"
+          }
+        },
+        {
+          "exerciseId": "triple-flexion-extension",
+          "dose": {
+            "reps": "4-8"
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 9,
+      "name": "Vertical Axis Complex",
+      "focus": "Week 2: Vertical Axis",
+      "minutes": 15,
+      "items": [
+        {
+          "exerciseId": "ankle-flexion-extension",
+          "dose": {
+            "sets": 2,
+            "reps": "1 minute per side"
+          }
+        },
+        {
+          "exerciseId": "small-circulations",
+          "dose": {
+            "sets": 2,
+            "reps": "10 circles each direction"
+          }
+        },
+        {
+          "exerciseId": "single-leg-cycling",
+          "dose": {
+            "reps": "1 minute each side"
+          }
+        },
+        {
+          "exerciseId": "alternating-cycling",
+          "dose": {
+            "sets": 2,
+            "reps": "1 minute"
+          }
+        },
+        {
+          "exerciseId": "lower-body-unwind-lift",
+          "dose": {
+            "durationMin": 2
+          }
+        },
+        {
+          "exerciseId": "triple-flexion-extension",
+          "dose": {
+            "reps": "8"
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 10,
+      "name": "Lower-Body Alignment",
+      "focus": "Week 2: Vertical Axis",
+      "minutes": 12,
+      "items": [
+        {
+          "exerciseId": "lower-body-unwind-lift",
+          "dose": {
+            "durationMin": 4
+          }
+        },
+        {
+          "exerciseId": "pelvic-axis-isolation",
+          "dose": {
+            "reps": "20 each side, then 20 bilateral"
+          }
+        },
+        {
+          "exerciseId": "triple-flexion-extension",
+          "dose": {
+            "reps": "8"
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 11,
+      "name": "Vertical Axis Alignment (Rib-Pelvis Basic)",
+      "focus": "Week 2: Vertical Axis",
+      "minutes": 12,
+      "items": [
+        {
+          "exerciseId": "integrated-pelvic-lift-breathing",
+          "dose": {
+            "reps": "20"
+          }
+        },
+        {
+          "exerciseId": "diaphragm-pelvic-elastic-recoil",
+          "dose": {
+            "reps": "20"
+          }
+        },
+        {
+          "exerciseId": "lower-body-unwind-lift",
+          "dose": {
+            "durationMin": 3
+          }
+        },
+        {
+          "exerciseId": "triple-flexion-extension",
+          "dose": {
+            "reps": "8"
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 12,
+      "name": "Rib-Pelvis + Lower Body Complex",
+      "focus": "Week 2: Vertical Axis (repeat of Day 11)",
+      "minutes": 12,
+      "items": [
+        {
+          "exerciseId": "integrated-pelvic-lift-breathing",
+          "dose": {
+            "reps": "20"
+          }
+        },
+        {
+          "exerciseId": "diaphragm-pelvic-elastic-recoil",
+          "dose": {
+            "reps": "20"
+          }
+        },
+        {
+          "exerciseId": "lower-body-unwind-lift",
+          "dose": {
+            "durationMin": 3
+          }
+        },
+        {
+          "exerciseId": "triple-flexion-extension",
+          "dose": {
+            "reps": "8"
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 13,
+      "name": "Axial Stability Complex",
+      "focus": "Week 2: Vertical Axis",
+      "minutes": 15,
+      "items": [
+        {
+          "exerciseId": "integrated-pelvic-lift-breathing",
+          "dose": {
+            "reps": "20"
+          }
+        },
+        {
+          "exerciseId": "diaphragm-pelvic-elastic-recoil",
+          "dose": {
+            "reps": "20"
+          }
+        },
+        {
+          "exerciseId": "ankle-flexion-extension",
+          "dose": {
+            "sets": 2,
+            "reps": "1 minute per side"
+          }
+        },
+        {
+          "exerciseId": "small-circulations",
+          "dose": {
+            "sets": 2,
+            "reps": "10 circles each direction"
+          }
+        },
+        {
+          "exerciseId": "alternating-cycling",
+          "dose": {
+            "sets": 2,
+            "reps": "1 minute"
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 14,
+      "name": "Midpoint Checkpoint",
+      "focus": "No training. Standing photos + overhead squat videos + written answers; mentor video feedback within 5 working days",
+      "items": []
+    },
+    {
+      "dayNumber": 15,
+      "name": "Arm & Shoulder Tension Release",
+      "focus": "Week 3: Horizontal Axis + Rib-Spine + Shoulder Integration",
+      "minutes": 8,
+      "items": [
+        {
+          "exerciseId": "finger-flicks",
+          "dose": {
+            "reps": "8 per fingertip"
+          }
+        },
+        {
+          "exerciseId": "wrist-pronation-supination",
+          "dose": {
+            "reps": "12 each direction per side"
+          }
+        },
+        {
+          "exerciseId": "fixed-elbow-wrist-rotation",
+          "dose": {
+            "reps": "10 total per side"
+          },
+          "notes": "Video suggests 8-20"
+        }
+      ]
+    },
+    {
+      "dayNumber": 16,
+      "name": "Rib Re-Opening: 3 Ways",
+      "focus": "Week 3: Horizontal Axis + Rib-Spine + Shoulder Integration",
+      "minutes": 12,
+      "items": [
+        {
+          "exerciseId": "side-lying-90-90-breathing",
+          "dose": {
+            "reps": "2 minutes per side (~20 breaths)"
+          }
+        },
+        {
+          "exerciseId": "wall-rib-expansion-cross",
+          "dose": {
+            "sets": 2,
+            "reps": "30-60 seconds per side"
+          }
+        },
+        {
+          "exerciseId": "diamond-elbow-wall-plank",
+          "dose": {
+            "sets": 2,
+            "holdSeconds": 60
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 17,
+      "name": "Horizontal Axis Realignment Complex 1",
+      "focus": "Week 3: Horizontal Axis + Rib-Spine + Shoulder Integration (Day 15 + 16 content, time-capped ~13-15 min)",
+      "minutes": 15,
+      "items": [
+        {
+          "exerciseId": "finger-flicks",
+          "dose": {
+            "reps": "6 per fingertip"
+          }
+        },
+        {
+          "exerciseId": "wrist-pronation-supination",
+          "dose": {
+            "reps": "8 each direction, both sides"
+          }
+        },
+        {
+          "exerciseId": "fixed-elbow-wrist-rotation",
+          "dose": {
+            "reps": "8 total per side"
+          }
+        },
+        {
+          "exerciseId": "side-lying-90-90-breathing",
+          "dose": {
+            "reps": "1 minute per side"
+          }
+        },
+        {
+          "exerciseId": "wall-rib-expansion-cross",
+          "dose": {
+            "sets": 2,
+            "reps": "30 seconds per side"
+          }
+        },
+        {
+          "exerciseId": "diamond-elbow-wall-plank",
+          "dose": {
+            "sets": 2,
+            "holdSeconds": 45
+          },
+          "notes": "15s rest between sets"
+        }
+      ]
+    },
+    {
+      "dayNumber": 18,
+      "name": "Shoulder & Arm Alignment Training",
+      "focus": "Week 3: Horizontal Axis + Rib-Spine + Shoulder Integration",
+      "minutes": 8,
+      "items": [
+        {
+          "exerciseId": "wall-back-arm-reach-ear-line",
+          "dose": {
+            "durationMin": 2
+          }
+        },
+        {
+          "exerciseId": "wall-back-arm-reach-rotation",
+          "dose": {
+            "durationMin": 2
+          }
+        },
+        {
+          "exerciseId": "wall-back-draw-the-bow",
+          "dose": {
+            "durationMin": 2
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 19,
+      "name": "Horizontal Axis Realignment Complex 2",
+      "focus": "Week 3: Horizontal Axis + Rib-Spine + Shoulder Integration (Day 15 + 16 + 18 content, compressed ~14-15 min)",
+      "minutes": 15,
+      "items": [
+        {
+          "exerciseId": "finger-flicks",
+          "dose": {
+            "reps": "4 per fingertip"
+          }
+        },
+        {
+          "exerciseId": "wrist-pronation-supination",
+          "dose": {
+            "reps": "6 each direction, both sides"
+          }
+        },
+        {
+          "exerciseId": "fixed-elbow-wrist-rotation",
+          "dose": {
+            "reps": "6 total per side"
+          }
+        },
+        {
+          "exerciseId": "side-lying-90-90-breathing",
+          "dose": {
+            "reps": "45 seconds per side"
+          }
+        },
+        {
+          "exerciseId": "wall-rib-expansion-cross",
+          "dose": {
+            "sets": 1,
+            "reps": "30 seconds per side"
+          }
+        },
+        {
+          "exerciseId": "diamond-elbow-wall-plank",
+          "dose": {
+            "sets": 2,
+            "holdSeconds": 45
+          },
+          "notes": "15s rest between sets"
+        },
+        {
+          "exerciseId": "wall-back-arm-reach-ear-line",
+          "dose": {
+            "durationMin": 1
+          }
+        },
+        {
+          "exerciseId": "wall-back-arm-reach-rotation",
+          "dose": {
+            "durationMin": 1
+          }
+        },
+        {
+          "exerciseId": "wall-back-draw-the-bow",
+          "dose": {
+            "durationMin": 1.5
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 20,
+      "name": "Full Axis Alignment Complex",
+      "focus": "Week 3: Horizontal Axis + Rib-Spine + Shoulder Integration (all three axes together)",
+      "minutes": 15,
+      "items": [
+        {
+          "exerciseId": "triple-flexion-extension",
+          "dose": {
+            "reps": "8"
+          }
+        },
+        {
+          "exerciseId": "integrated-pelvic-lift-breathing",
+          "dose": {
+            "reps": "40 breaths total with Elastic Recoil"
+          },
+          "notes": "Source prescribes 'Chest-Pelvis Alignment Training, 40 breaths'; split between the two movements not specified"
+        },
+        {
+          "exerciseId": "diaphragm-pelvic-elastic-recoil",
+          "dose": {
+            "reps": "40 breaths total with Pelvic Lift Breathing"
+          },
+          "notes": "See Integrated Pelvic Lift Breathing note"
+        },
+        {
+          "exerciseId": "wall-back-arm-reach-ear-line",
+          "dose": {
+            "durationMin": 2
+          }
+        },
+        {
+          "exerciseId": "wall-back-arm-reach-rotation",
+          "dose": {
+            "durationMin": 2
+          }
+        },
+        {
+          "exerciseId": "wall-back-draw-the-bow",
+          "dose": {
+            "durationMin": 2
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 21,
+      "name": "Checkpoint (No Training)",
+      "focus": "Rest day; self-tests compared against Day 0",
+      "minutes": 5,
+      "items": [
+        {
+          "exerciseId": "wall-leaning-test",
+          "dose": {
+            "reps": "1 test"
+          }
+        },
+        {
+          "exerciseId": "belly-rotation-test",
+          "dose": {
+            "reps": "1 rotation each side"
+          },
+          "notes": "Screenshot left and right limits; compare with Day 0"
+        }
+      ]
+    },
+    {
+      "dayNumber": 22,
+      "name": "Vertical Axis Reconstruction from the Foot Tripod",
+      "focus": "Week 4: Total Three-Axis Integration",
+      "minutes": 10,
+      "items": [
+        {
+          "exerciseId": "triple-flexion-extension",
+          "dose": {
+            "reps": "8"
+          }
+        },
+        {
+          "exerciseId": "tripod-rebalancing",
+          "dose": {
+            "reps": "16"
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 23,
+      "name": "Complete Vertical Axis Alignment Training Plan",
+      "focus": "Week 4: Total Three-Axis Integration (no new exercises from here)",
+      "minutes": 12,
+      "items": [
+        {
+          "exerciseId": "lower-body-unwind-lift",
+          "dose": {
+            "reps": "3-5 minutes",
+            "durationMin": 4
+          },
+          "notes": "Sense the toe fascia extending outward with each body-breathing cycle"
+        },
+        {
+          "exerciseId": "pelvic-axis-isolation",
+          "dose": {
+            "reps": "20 each side"
+          },
+          "notes": "Aim for a hollow, floating sensation deep in the hip joints"
+        },
+        {
+          "exerciseId": "triple-flexion-extension",
+          "dose": {
+            "reps": "8 full squats"
+          },
+          "notes": "Spine curves naturally on descent; pause at first restriction; rise along the central axis without forcing the chest up or lifting the head"
+        }
+      ]
+    },
+    {
+      "dayNumber": 24,
+      "name": "Complete Vertical Axis Alignment Training Plan (Repeat)",
+      "focus": "Week 4: Total Three-Axis Integration (repeat of Day 23)",
+      "minutes": 12,
+      "items": [
+        {
+          "exerciseId": "lower-body-unwind-lift",
+          "dose": {
+            "reps": "3-5 minutes",
+            "durationMin": 4
+          },
+          "notes": "Sense the toe fascia extending outward with each body-breathing cycle"
+        },
+        {
+          "exerciseId": "pelvic-axis-isolation",
+          "dose": {
+            "reps": "20 each side"
+          },
+          "notes": "Aim for a hollow, floating sensation deep in the hip joints"
+        },
+        {
+          "exerciseId": "triple-flexion-extension",
+          "dose": {
+            "reps": "8 full squats"
+          },
+          "notes": "Spine curves naturally on descent; pause at first restriction; rise along the central axis without forcing the chest up or lifting the head"
+        }
+      ]
+    },
+    {
+      "dayNumber": 25,
+      "name": "Complete Horizontal Axis Alignment Training Plan",
+      "focus": "Week 4: Total Three-Axis Integration. Coordinate movements with body breathing; open the shoulder blades to the sides, don't force them down",
+      "minutes": 15,
+      "items": [
+        {
+          "exerciseId": "finger-flicks",
+          "dose": {
+            "reps": "4 per fingertip"
+          }
+        },
+        {
+          "exerciseId": "wrist-pronation-supination",
+          "dose": {
+            "reps": "6 each direction, both sides"
+          }
+        },
+        {
+          "exerciseId": "fixed-elbow-wrist-rotation",
+          "dose": {
+            "reps": "6 total per side"
+          }
+        },
+        {
+          "exerciseId": "side-lying-90-90-breathing",
+          "dose": {
+            "reps": "45 seconds per side"
+          }
+        },
+        {
+          "exerciseId": "wall-rib-expansion-cross",
+          "dose": {
+            "sets": 1,
+            "reps": "30 seconds per side"
+          }
+        },
+        {
+          "exerciseId": "diamond-elbow-wall-plank",
+          "dose": {
+            "sets": 2,
+            "holdSeconds": 45
+          },
+          "notes": "15s rest between sets"
+        },
+        {
+          "exerciseId": "wall-back-arm-reach-ear-line",
+          "dose": {
+            "durationMin": 1
+          }
+        },
+        {
+          "exerciseId": "wall-back-arm-reach-rotation",
+          "dose": {
+            "durationMin": 1
+          }
+        },
+        {
+          "exerciseId": "wall-back-draw-the-bow",
+          "dose": {
+            "durationMin": 1.5
+          }
+        }
+      ]
+    },
+    {
+      "dayNumber": 26,
+      "name": "Complete Horizontal Axis Alignment Training Plan (Repeat)",
+      "focus": "Week 4: Total Three-Axis Integration. Repeat of Day 25 per lesson title; session page locked, doses carried from Day 25 unconfirmed",
+      "minutes": 15,
+      "items": [
+        {
+          "exerciseId": "finger-flicks",
+          "dose": {
+            "reps": "4 per fingertip"
+          },
+          "notes": "dose from Day 25 (Day 26 page locked)"
+        },
+        {
+          "exerciseId": "wrist-pronation-supination",
+          "dose": {
+            "reps": "6 each direction, both sides"
+          },
+          "notes": "dose from Day 25 (Day 26 page locked)"
+        },
+        {
+          "exerciseId": "fixed-elbow-wrist-rotation",
+          "dose": {
+            "reps": "6 total per side"
+          },
+          "notes": "dose from Day 25 (Day 26 page locked)"
+        },
+        {
+          "exerciseId": "side-lying-90-90-breathing",
+          "dose": {
+            "reps": "45 seconds per side"
+          },
+          "notes": "dose from Day 25 (Day 26 page locked)"
+        },
+        {
+          "exerciseId": "wall-rib-expansion-cross",
+          "dose": {
+            "sets": 1,
+            "reps": "30 seconds per side"
+          },
+          "notes": "dose from Day 25 (Day 26 page locked)"
+        },
+        {
+          "exerciseId": "diamond-elbow-wall-plank",
+          "dose": {
+            "sets": 2,
+            "holdSeconds": 45
+          },
+          "notes": "15s rest between sets; dose from Day 25 (Day 26 page locked)"
+        },
+        {
+          "exerciseId": "wall-back-arm-reach-ear-line",
+          "dose": {
+            "durationMin": 1
+          },
+          "notes": "dose from Day 25 (Day 26 page locked)"
+        },
+        {
+          "exerciseId": "wall-back-arm-reach-rotation",
+          "dose": {
+            "durationMin": 1
+          },
+          "notes": "dose from Day 25 (Day 26 page locked)"
+        },
+        {
+          "exerciseId": "wall-back-draw-the-bow",
+          "dose": {
+            "durationMin": 1.5
+          },
+          "notes": "dose from Day 25 (Day 26 page locked)"
+        }
+      ]
+    },
+    {
+      "dayNumber": 27,
+      "name": "Final Three-Axis Complex",
+      "focus": "not captured (locked lesson)",
+      "items": []
+    },
+    {
+      "dayNumber": 28,
+      "name": "Final Checkpoint (No Training)",
+      "focus": "Lesson locked. Self-tests + photos + overhead squat videos per the Day 0 schedule",
+      "minutes": 10,
+      "items": [
+        {
+          "exerciseId": "wall-leaning-test",
+          "dose": {
+            "reps": "1 test"
+          },
+          "notes": "Scheduled on the Day 0 page; Day 28 lesson itself not captured (locked)"
+        },
+        {
+          "exerciseId": "belly-rotation-test",
+          "dose": {
+            "reps": "1 rotation each side"
+          },
+          "notes": "Scheduled on the Day 0 page; Day 28 lesson itself not captured (locked)"
+        }
+      ]
+    }
+  ]
+}

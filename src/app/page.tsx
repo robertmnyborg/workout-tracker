@@ -8,6 +8,37 @@ import { DashboardProfileSync } from "@/components/DashboardProfileSync";
 import { WeekSelector } from "@/components/WeekSelector";
 import { DayLog, type DayEntry } from "@/components/DayLog";
 import { getUserNow, getUserDayOfWeek } from "@/lib/utils";
+import { BatCard, type BatStatus } from "@/components/BatCard";
+import { programDayNumber, userTodayYmd } from "@/lib/program-day";
+
+// Today's day of the BAT 28-day program for this profile, if enrolled.
+async function getBatToday(profileId: string): Promise<{ status: BatStatus; programDayId: string | null }> {
+  const enrollment = await prisma.programEnrollment.findFirst({
+    where: { profileId, active: true, program: { corpusId: "bat-28day" } },
+    include: {
+      program: {
+        include: { days: { include: { _count: { select: { sections: true } } }, orderBy: { dayNumber: "asc" } } },
+      },
+    },
+  });
+  if (!enrollment) return { status: { state: "none" }, programDayId: null };
+
+  const days = enrollment.program.days;
+  const lastDay = days[days.length - 1].dayNumber;
+  const n = programDayNumber(enrollment.startDate);
+  if (n < 0) return { status: { state: "upcoming", enrollmentId: enrollment.id, startsIn: -n }, programDayId: null };
+  if (n > lastDay) return { status: { state: "finished", enrollmentId: enrollment.id, lastDay }, programDayId: null };
+
+  const day = days.find((d) => d.dayNumber === n)!;
+  const hasWork = day._count.sections > 0;
+  return {
+    status: {
+      state: "active", enrollmentId: enrollment.id, day: n, lastDay, name: day.name, minutes: day.totalTime,
+      note: hasWork ? null : day.focus,
+    },
+    programDayId: hasWork ? day.id : null,
+  };
+}
 
 const DAY_NAMES = [
   "Monday",
@@ -104,23 +135,20 @@ export default async function Today({
   }
 
   const todayEntries = schedule.entries;
-  const isRest =
-    todayEntries.length === 0 ||
-    todayEntries.every((e) => e.isRest || !e.programDay);
   const restNote = todayEntries.find((e) => e.isRest)?.notes ?? null;
-
   const workEntries = todayEntries.filter((e) => e.programDay && !e.isRest);
-  const programDayIds = workEntries
-    .map((e) => e.programDay?.id)
-    .filter((id): id is string => Boolean(id));
+  const bat = await getBatToday(profileId);
+
+  // BAT alignment goes first every day, rest days included.
+  const dayEntries: DayEntry[] = [
+    ...(bat.programDayId ? [{ programDayId: bat.programDayId, notes: "BAT alignment, before training" }] : []),
+    ...workEntries.map((e) => ({ programDayId: e.programDay!.id, notes: e.notes })),
+  ];
+  const isRest = dayEntries.length === 0;
+  const programDayIds = dayEntries.map((e) => e.programDayId);
   const completed = await getTodayCompleted(profileId, programDayIds);
   const allDone =
     programDayIds.length > 0 && programDayIds.every((id) => completed.has(id));
-
-  const dayEntries: DayEntry[] = workEntries.map((e) => ({
-    programDayId: e.programDay!.id,
-    notes: e.notes,
-  }));
 
   return (
     <div className="space-y-6">
@@ -144,6 +172,8 @@ export default async function Today({
         </Link>
       </div>
 
+      <BatCard profileId={profileId} status={bat.status} todayYmd={userTodayYmd()} />
+
       {/* Week selector — no program start-date anchor yet, so pick your week */}
       <WeekSelector currentWeek={weekNumber} totalWeeks={3} basePath="/" />
 
@@ -161,7 +191,7 @@ export default async function Today({
               Day complete ✓
             </div>
             <div className="text-sm text-muted mt-1">
-              {workEntries.map((e) => e.programDay?.name).join(" + ")} logged.
+              {[bat.programDayId && "BAT", ...workEntries.map((e) => e.programDay?.name)].filter(Boolean).join(" + ")} logged.
             </div>
           </div>
           {/* Redo links to the individual day logger to start a fresh session */}

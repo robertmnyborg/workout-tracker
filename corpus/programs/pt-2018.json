@@ -1,0 +1,121 @@
+{
+  "id": "pt-2018",
+  "name": "2018 PT Home Program",
+  "description": "2018 physical-therapy home program: core stability (bird dog, dead bug, planks), hip stabilizer clamshell series, lumbar extension, thoracic foam roller, and hamstring/hip flexor stretches.",
+  "source": {
+    "kind": "pt",
+    "ref": "physical_therapy_routines/2018 PT"
+  },
+  "days": [
+    {
+      "dayNumber": 1,
+      "name": "Home Program",
+      "items": [
+        {
+          "exerciseId": "bird-dog-with-resistance",
+          "dose": {
+            "sets": 3,
+            "reps": "10",
+            "frequency": "1x daily"
+          }
+        },
+        {
+          "exerciseId": "dead-bug-swiss-ball",
+          "dose": {
+            "sets": 3,
+            "reps": "10",
+            "frequency": "1x daily"
+          }
+        },
+        {
+          "exerciseId": "standard-plank",
+          "dose": {
+            "sets": 3,
+            "holdSeconds": 30,
+            "frequency": "5x weekly"
+          },
+          "notes": "Add punches, rotations of the feet"
+        },
+        {
+          "exerciseId": "monster-walk",
+          "dose": {
+            "sets": 3,
+            "reps": "10",
+            "frequency": "1x daily / 2x weekly"
+          }
+        },
+        {
+          "exerciseId": "side-plank-on-elbow",
+          "dose": {
+            "sets": 3,
+            "holdSeconds": 20,
+            "reps": "15-20 second hold",
+            "frequency": "5x weekly"
+          }
+        },
+        {
+          "exerciseId": "clamshell",
+          "dose": {
+            "sets": 3,
+            "reps": "10",
+            "frequency": "1x daily"
+          }
+        },
+        {
+          "exerciseId": "reverse-clamshell",
+          "dose": {
+            "sets": 2,
+            "reps": "10"
+          },
+          "notes": "No frequency given in source"
+        },
+        {
+          "exerciseId": "clamshell-in-abduction",
+          "dose": {
+            "sets": 3,
+            "reps": "10",
+            "frequency": "1x daily"
+          }
+        },
+        {
+          "exerciseId": "wall-multifidus",
+          "dose": {
+            "reps": "10",
+            "holdSeconds": 10,
+            "frequency": "1x daily"
+          }
+        },
+        {
+          "exerciseId": "prone-press-up",
+          "dose": {
+            "reps": "15",
+            "frequency": "2x daily"
+          }
+        },
+        {
+          "exerciseId": "foam-roller-thoracic-series",
+          "dose": {
+            "reps": "10 per movement",
+            "frequency": "2x daily"
+          }
+        },
+        {
+          "exerciseId": "supine-hamstring-stretch-doorway",
+          "dose": {
+            "sets": 3,
+            "holdSeconds": 30,
+            "frequency": "2x daily"
+          }
+        },
+        {
+          "exerciseId": "hip-flexor-stretch-edge-of-bed",
+          "dose": {
+            "reps": "3",
+            "holdSeconds": 30,
+            "frequency": "1x daily"
+          }
+        }
+      ]
+    }
+  ]
+}

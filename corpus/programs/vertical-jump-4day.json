@@ -1,0 +1,643 @@
+{
+  "id": "vertical-jump-4day",
+  "name": "4-Day Vertical Jump Program",
+  "description": "Reorganized from 30+ trainer/PT sessions into a repeatable 4-day weekly program. Train 4 days per week. Rest or light mobility on off days.",
+  "source": {
+    "kind": "trainer",
+    "ref": "prisma/seed.ts: 4-Day Vertical Jump Program"
+  },
+  "days": [
+    {
+      "dayNumber": 1,
+      "name": "Lower Strength",
+      "focus": "Squat patterns, hip hinge, single-leg strength",
+      "minutes": 60,
+      "items": [
+        {
+          "exerciseId": "banded-monster-walk",
+          "dose": {
+            "sets": 3,
+            "reps": "10 steps each direction"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "single-leg-glute-bridge-march",
+          "dose": {
+            "sets": 3,
+            "reps": "45 seconds"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "ankle-mobility-wall",
+          "dose": {
+            "sets": 3,
+            "reps": "5 each side"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "prone-press-up",
+          "dose": {
+            "sets": 1,
+            "reps": "10"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "supine-hip-ir-er-rotation",
+          "dose": {
+            "sets": 2,
+            "reps": "10 each side"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "barbell-front-squat",
+          "dose": {
+            "sets": 4,
+            "reps": "8"
+          },
+          "notes": "Strength Block A · rest 105s"
+        },
+        {
+          "exerciseId": "barbell-deadlift",
+          "dose": {
+            "sets": 4,
+            "reps": "6"
+          },
+          "notes": "Strength Block A · rest 105s"
+        },
+        {
+          "exerciseId": "ffe-bulgarian-split-squat-hold",
+          "dose": {
+            "sets": 3,
+            "reps": "8 each leg"
+          },
+          "notes": "Strength Block B · rest 75s"
+        },
+        {
+          "exerciseId": "barbell-rdl",
+          "dose": {
+            "sets": 4,
+            "reps": "6"
+          },
+          "notes": "Strength Block B · rest 75s"
+        },
+        {
+          "exerciseId": "weighted-wall-sit",
+          "dose": {
+            "sets": 3,
+            "reps": "1 min"
+          },
+          "notes": "Accessory Work · rest 50s"
+        },
+        {
+          "exerciseId": "physioball-hamstring-curl",
+          "dose": {
+            "sets": 3,
+            "reps": "10"
+          },
+          "notes": "Accessory Work · rest 50s"
+        },
+        {
+          "exerciseId": "glute-ham-raise",
+          "dose": {
+            "sets": 3,
+            "reps": "8"
+          },
+          "notes": "Accessory Work · rest 50s"
+        },
+        {
+          "exerciseId": "foam-roll-lower-body",
+          "dose": {
+            "sets": 1,
+            "reps": "60s each"
+          },
+          "notes": "Cool-Down"
+        },
+        {
+          "exerciseId": "hamstring-strap-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "30s each position"
+          },
+          "notes": "Cool-Down"
+        },
+        {
+          "exerciseId": "calf-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "60s"
+          },
+          "notes": "Cool-Down"
+        },
+        {
+          "exerciseId": "hip-flexor-lunge-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "30s each side"
+          },
+          "notes": "Cool-Down"
+        }
+      ]
+    },
+    {
+      "dayNumber": 2,
+      "name": "Upper Body + Core",
+      "focus": "Push/pull balance, scapular health, trunk stability",
+      "minutes": 55,
+      "items": [
+        {
+          "exerciseId": "band-complex",
+          "dose": {
+            "sets": 3,
+            "reps": "5 each movement"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "wall-angels",
+          "dose": {
+            "sets": 3,
+            "reps": "10"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "physioball-scap-complex",
+          "dose": {
+            "sets": 2,
+            "reps": "5 each position"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "thoracic-rotation-open-book",
+          "dose": {
+            "sets": 2,
+            "reps": "10 each side"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "single-arm-cable-row",
+          "dose": {
+            "sets": 3,
+            "reps": "10 each arm"
+          },
+          "notes": "Push/Pull Block · rest 75s"
+        },
+        {
+          "exerciseId": "single-arm-cable-press",
+          "dose": {
+            "sets": 3,
+            "reps": "10 each arm"
+          },
+          "notes": "Push/Pull Block · rest 75s"
+        },
+        {
+          "exerciseId": "db-curl-to-press-single-leg",
+          "dose": {
+            "sets": 3,
+            "reps": "5 each side"
+          },
+          "notes": "Push/Pull Block · rest 75s"
+        },
+        {
+          "exerciseId": "pull-up",
+          "dose": {
+            "sets": 3,
+            "reps": "6-8"
+          },
+          "notes": "Push/Pull Block · rest 75s"
+        },
+        {
+          "exerciseId": "db-shoulder-press-single-leg",
+          "dose": {
+            "sets": 3,
+            "reps": "8"
+          },
+          "notes": "Accessory Work · rest 50s"
+        },
+        {
+          "exerciseId": "rope-face-pull",
+          "dose": {
+            "sets": 3,
+            "reps": "10"
+          },
+          "notes": "Accessory Work · rest 50s"
+        },
+        {
+          "exerciseId": "tricep-skull-crusher",
+          "dose": {
+            "sets": 3,
+            "reps": "10"
+          },
+          "notes": "Accessory Work · rest 50s"
+        },
+        {
+          "exerciseId": "plank",
+          "dose": {
+            "sets": 3,
+            "reps": "30s"
+          },
+          "notes": "Core Circuit · rest 30s"
+        },
+        {
+          "exerciseId": "side-bridge",
+          "dose": {
+            "sets": 3,
+            "reps": "30s each side"
+          },
+          "notes": "Core Circuit · rest 30s"
+        },
+        {
+          "exerciseId": "dead-bug",
+          "dose": {
+            "sets": 3,
+            "reps": "10 each side"
+          },
+          "notes": "Core Circuit · rest 30s"
+        },
+        {
+          "exerciseId": "banded-bird-dog",
+          "dose": {
+            "sets": 3,
+            "reps": "10 each side"
+          },
+          "notes": "Core Circuit · rest 30s"
+        },
+        {
+          "exerciseId": "body-coil",
+          "dose": {
+            "sets": 3,
+            "reps": "6"
+          },
+          "notes": "Core Circuit · rest 30s"
+        },
+        {
+          "exerciseId": "foam-roll-upper-body",
+          "dose": {
+            "sets": 1,
+            "reps": "60s each"
+          },
+          "notes": "Cool-Down"
+        },
+        {
+          "exerciseId": "foam-roll-thoracic-extension",
+          "dose": {
+            "sets": 1,
+            "reps": "2 min"
+          },
+          "notes": "Cool-Down"
+        },
+        {
+          "exerciseId": "clock-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "15s each position"
+          },
+          "notes": "Cool-Down"
+        },
+        {
+          "exerciseId": "ninety-ninety-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "30s each side"
+          },
+          "notes": "Cool-Down"
+        }
+      ]
+    },
+    {
+      "dayNumber": 3,
+      "name": "Lower Power",
+      "focus": "Plyometrics, reactive strength, explosive power",
+      "minutes": 55,
+      "items": [
+        {
+          "exerciseId": "side-leg-raise-circles",
+          "dose": {
+            "sets": 3,
+            "reps": "10 raises + 10 circles each direction, each side"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "single-leg-glute-bridge-liftoff",
+          "dose": {
+            "sets": 3,
+            "reps": "10 each side"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "banded-clamshell",
+          "dose": {
+            "sets": 3,
+            "reps": "10 each side"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "reverse-clamshell",
+          "dose": {
+            "sets": 2,
+            "reps": "10 each side"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "quadruped-train-tracks",
+          "dose": {
+            "sets": 2,
+            "reps": "15 each side"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "depth-jump",
+          "dose": {
+            "sets": 4,
+            "reps": "4"
+          },
+          "notes": "Power Block A · rest 150s"
+        },
+        {
+          "exerciseId": "skaters",
+          "dose": {
+            "sets": 4,
+            "reps": "6 each side"
+          },
+          "notes": "Power Block A · rest 150s"
+        },
+        {
+          "exerciseId": "kb-swing",
+          "dose": {
+            "sets": 4,
+            "reps": "10"
+          },
+          "notes": "Power Block B · rest 105s"
+        },
+        {
+          "exerciseId": "split-squat-jump",
+          "dose": {
+            "sets": 4,
+            "reps": "6 each side"
+          },
+          "notes": "Power Block B · rest 105s"
+        },
+        {
+          "exerciseId": "bunny-hops",
+          "dose": {
+            "sets": 4,
+            "reps": "20"
+          },
+          "notes": "Power Block B · rest 105s"
+        },
+        {
+          "exerciseId": "bb-side-lunge",
+          "dose": {
+            "sets": 3,
+            "reps": "8 each side"
+          },
+          "notes": "Accessory Work · rest 60s"
+        },
+        {
+          "exerciseId": "lateral-band-walk",
+          "dose": {
+            "sets": 3,
+            "reps": "10 each direction"
+          },
+          "notes": "Accessory Work · rest 60s"
+        },
+        {
+          "exerciseId": "adductor-side-bridge",
+          "dose": {
+            "sets": 3,
+            "reps": "30s each side"
+          },
+          "notes": "Accessory Work · rest 60s"
+        },
+        {
+          "exerciseId": "foam-roll-lower-body",
+          "dose": {
+            "sets": 1,
+            "reps": "60s each"
+          },
+          "notes": "Cool-Down · as written: Foam Roll: Calves, Quads, Hamstrings, TFL, IT Bands"
+        },
+        {
+          "exerciseId": "popliteus-release",
+          "dose": {
+            "sets": 1,
+            "reps": "60s each leg"
+          },
+          "notes": "Cool-Down"
+        },
+        {
+          "exerciseId": "calf-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "60s"
+          },
+          "notes": "Cool-Down"
+        },
+        {
+          "exerciseId": "hip-flexor-lunge-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "10 drops + 30s hold each side"
+          },
+          "notes": "Cool-Down · as written: Hip Flexor Lunge Stretch with Yoga Blocks"
+        },
+        {
+          "exerciseId": "adductor-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "30s each side"
+          },
+          "notes": "Cool-Down"
+        }
+      ]
+    },
+    {
+      "dayNumber": 4,
+      "name": "Athletic Full Body",
+      "focus": "Movement quality, complexes, rotational power, agility",
+      "minutes": 60,
+      "items": [
+        {
+          "exerciseId": "physioball-dead-bug",
+          "dose": {
+            "sets": 2,
+            "reps": "10 each side"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "physioball-plank-circles",
+          "dose": {
+            "sets": 2,
+            "reps": "10 each direction"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "ta-march",
+          "dose": {
+            "sets": 2,
+            "reps": "15 each side"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "forward-t",
+          "dose": {
+            "sets": 2,
+            "reps": "10 each side"
+          },
+          "notes": "Activation · rest 30s"
+        },
+        {
+          "exerciseId": "bb-warm-up-complex",
+          "dose": {
+            "sets": 3,
+            "reps": "5 each movement"
+          },
+          "notes": "Complex Block · rest 90s"
+        },
+        {
+          "exerciseId": "bb-overhead-squat",
+          "dose": {
+            "sets": 4,
+            "reps": "6"
+          },
+          "notes": "Complex Block · rest 90s"
+        },
+        {
+          "exerciseId": "landmine-rotational-press",
+          "dose": {
+            "sets": 3,
+            "reps": "10 each direction"
+          },
+          "notes": "Complex Block · rest 90s"
+        },
+        {
+          "exerciseId": "single-leg-cable-row-side-lunge",
+          "dose": {
+            "sets": 3,
+            "reps": "6 each side"
+          },
+          "notes": "Complex Block · rest 90s"
+        },
+        {
+          "exerciseId": "sa-overhead-db-lunge",
+          "dose": {
+            "sets": 3,
+            "reps": "10 each leg"
+          },
+          "notes": "Accessory Work · rest 60s"
+        },
+        {
+          "exerciseId": "low-to-high-cable-chop",
+          "dose": {
+            "sets": 3,
+            "reps": "10 each side"
+          },
+          "notes": "Accessory Work · rest 60s"
+        },
+        {
+          "exerciseId": "rotational-resist-complex",
+          "dose": {
+            "sets": 3,
+            "reps": "10 in/out + 10 rotations + 10s hold"
+          },
+          "notes": "Accessory Work · rest 60s"
+        },
+        {
+          "exerciseId": "db-plank-row-knee-tuck",
+          "dose": {
+            "sets": 3,
+            "reps": "6 each arm"
+          },
+          "notes": "Accessory Work · rest 60s"
+        },
+        {
+          "exerciseId": "ladder-drills",
+          "dose": {
+            "sets": 1,
+            "reps": "30-60s"
+          },
+          "notes": "Agility Finisher"
+        },
+        {
+          "exerciseId": "quadrant-jumps",
+          "dose": {
+            "sets": 1,
+            "reps": "30-60s"
+          },
+          "notes": "Agility Finisher"
+        },
+        {
+          "exerciseId": "180-jumps",
+          "dose": {
+            "sets": 1,
+            "reps": "30-60s"
+          },
+          "notes": "Agility Finisher"
+        },
+        {
+          "exerciseId": "clock-lunge-series",
+          "dose": {
+            "sets": 1,
+            "reps": "30-60s"
+          },
+          "notes": "Agility Finisher"
+        },
+        {
+          "exerciseId": "foam-roll-full-body",
+          "dose": {
+            "sets": 1,
+            "reps": "45s each"
+          },
+          "notes": "Cool-Down"
+        },
+        {
+          "exerciseId": "ninety-ninety-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "30s each side"
+          },
+          "notes": "Cool-Down"
+        },
+        {
+          "exerciseId": "hamstring-strap-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "30s each leg"
+          },
+          "notes": "Cool-Down · as written: Supine Hamstring Stretch with Strap"
+        },
+        {
+          "exerciseId": "childs-pose-reach-under",
+          "dose": {
+            "sets": 1,
+            "reps": "30s each side"
+          },
+          "notes": "Cool-Down"
+        },
+        {
+          "exerciseId": "calf-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "60s"
+          },
+          "notes": "Cool-Down · as written: Ankle Stretch"
+        }
+      ]
+    }
+  ]
+}

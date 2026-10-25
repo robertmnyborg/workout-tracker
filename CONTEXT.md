@@ -209,3 +209,50 @@ npx prisma studio    # Visual DB browser
 - [x] Meal tracker: API routes (foods, meals, totals, weekly-compliance, progress, plans, bootstrap)
 - [x] Meal tracker: UI (/meals daily log, /meals/plans, /meals/foods, /meals/progress) with macro bars, compliance checklist, plan suggestions
 - [x] Build passes
+
+## Unified corpus + Coach (2026-10-24)
+Plan: `plans/unified-corpus-and-coach.md`.
+
+### Corpus (`corpus/`)
+- `library/*.json`: 127 exercises, one record per movement, typed by `corpus/schema.ts`:
+  bat 26 (BAT 28-day, from `~/Projects/bat-28day`), pt 27 (2018/2020/2026 PT), trainer 72 (seed.ts lifting/jump/cardio),
+  youtube 2 (RP / Dr. Mike jump video n1-KuZ9aOHM). Each has category, bodyAreas, goals, intensity 1-5, impact,
+  progression method + easier/harder links, cues, errors.
+- `programs/*.json`: bat-28day (Day 0-28), pt-2018/2020/2026, vertical-jump-4day, basketball-cardio.
+- `principles/*.md`: bat-alignment, pt-notes, jump-science, schedule. Reference text for an AI planner.
+- `sources/youtube/<id>.md`: raw transcripts.
+- `npm run corpus:check` validates (enums, unique ids, link targets). `npm run corpus:import` upserts into the DB.
+- **Never run `prisma db seed` / `/api/programs/reset`: they delete all profiles and sessions.** `corpus:import` is additive.
+- Gaps: BAT Day 27 not captured (locked lesson), Day 26 copies Day 25 (unconfirmed), Day 14 is photos only.
+- Adding a source: transcribe (`~/.claude/skills/transcribe/run.sh <url>`; its final fetch returns empty, take the transcript from
+  the SSE `[done]` event), extract to `library/<source>.json`, `corpus:check`, `corpus:import`.
+
+### DB additions (migration 20261024120000, additive)
+`LibraryExercise` (corpus mirror, `data` = full JSON), `Exercise.libraryId`, `Program.corpusId`,
+`ProgramEnrollment` (profile + program + startDate; day N = calendar days since start, UTC-date storage via `src/lib/program-day.ts`),
+`CheckIn` (parsed inputs + saved plan JSON). All 92 seeded exercises are linked to library ids.
+
+### BAT on Today
+`BatCard` on `/`: Start (pick Day 0 date) → "BAT Day N of 28". The BAT day stacks first in the daily log every day, rest days included.
+
+### Engine (`src/lib/engine/`, pure, `npm test` = 12 node:test cases)
+- `readiness` = round((energy + (6 - soreness) + sleep) / 3) - 1 if any pain. Max intensity: r1→2, r2→3, r3→4, r4-5→5.
+  High impact only at readiness 4+ and no knee/ankle/lumbar/hip pain.
+- Painful areas get only gentle work (breathing/alignment/mobility/stability, intensity ≤ 2).
+- Blocks: Alignment (BAT day if enrolled, else breathing/alignment) → Prep (mobility/stability on the focus's body areas) →
+  Main (explosive capped at 2 plyo + 1 power + 1 skill, then strength). Readiness ≤ 2 or no trainable focus = recovery day, no Main.
+- `progression.nextDose`: load +5% (min +2.5 lb) after hitting every set; reps +2; hold +5 s; complexity → harder after 3 clean
+  sessions. Readiness ≤ 2 or two missed sessions → deload 10% / one set fewer / easier variation.
+
+### Coach (`/coach`)
+Text → `POST /api/coach/parse` (Claude `claude-opus-5-5`, effort low, zod structured output, only reads the note) → sliders/chips
+(editable) → `POST /api/coach/plan` (engine, saves CheckIn) → `POST /api/coach/start` (creates a day in the "Coach Sessions"
+program) → existing `/workout/[dayId]` logger. Claude never picks exercises or loads.
+- Needs `ANTHROPIC_API_KEY`. Without it, parse returns 503 and the sliders still work.
+- **Vercel has no key yet.** Local test used `ANTHROPIC_API_KEY_EVAL` from `~/.env` as a process env var only.
+
+### Status 2026-10-24
+- [x] Corpus, import, BAT enrollment on Today, engine + tests, coach page, verified at 390px in Chrome.
+- [ ] Personal Anthropic key on Vercel (`vercel env add ANTHROPIC_API_KEY production`).
+- [ ] More YouTube sources (user to send links).
+- [ ] Duplicate Robert/Casey profiles exist (cmq2… from June and cmvnf… created 2026-10-24 on a new device).

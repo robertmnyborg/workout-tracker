@@ -1,0 +1,49 @@
+{
+  "id": "pt-2026",
+  "name": "2026 PT Lumbar Home Program",
+  "description": "2026 lumbar PT home program: four daily exercises for deep hip and trunk stability, controlled rotation, and hip rotation mobility.",
+  "source": {
+    "kind": "pt",
+    "ref": "physical_therapy_routines/2026 PT"
+  },
+  "days": [
+    {
+      "dayNumber": 1,
+      "name": "Lumbar Home Program",
+      "items": [
+        {
+          "exerciseId": "quadruped-train-tracks",
+          "dose": {
+            "sets": 2,
+            "reps": "15",
+            "frequency": "1x daily / 7x weekly"
+          }
+        },
+        {
+          "exerciseId": "ta-march",
+          "dose": {
+            "sets": 2,
+            "reps": "15",
+            "frequency": "1x daily / 7x weekly"
+          }
+        },
+        {
+          "exerciseId": "split-stance-row-thoracic-rotation",
+          "dose": {
+            "sets": 2,
+            "reps": "15",
+            "frequency": "1x daily / 7x weekly"
+          }
+        },
+        {
+          "exerciseId": "supine-hip-ir-er-rotation",
+          "dose": {
+            "sets": 2,
+            "reps": "15",
+            "frequency": "1x daily / 7x weekly"
+          }
+        }
+      ]
+    }
+  ]
+}

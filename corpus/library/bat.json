@@ -1,0 +1,1178 @@
+[
+  {
+    "id": "wall-leaning-test",
+    "name": "Wall-Leaning Test",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#t1"
+    },
+    "category": "assessment",
+    "bodyAreas": [
+      "full-body",
+      "lumbar",
+      "thoracic",
+      "neck"
+    ],
+    "goals": [
+      "posture"
+    ],
+    "equipment": [
+      "wall"
+    ],
+    "position": "standing, back to a wall",
+    "setup": "Feet together, heels one fist away from the wall. This distance removes ankle and calf compensation.",
+    "execution": "Pelvis neutral, no tucking and no arching. Let the body fall back into the wall rather than posing into it. Note the order in which body parts arrive. Reading it: the lower back should contact the wall passively; a persistent gap, or contact you have to force, means lumbar extension bias. Upper back and ribs should attach without flaring; if the mid-back cannot meet the wall, thoracic rigidity or rib flare is blocking the vertical axis. The head should meet the wall last; arriving early means the cervical spine is over-leading.",
+    "cues": [
+      "Use gravity, don't force anything",
+      "Order of contact should be pelvis, lumbar spine, thoracic spine, head",
+      "Do not tuck the pelvis, push the ribs back, arch the lower back, or lead with the head"
+    ],
+    "errors": [
+      "Posing into the wall instead of falling back",
+      "Tucking or arching the pelvis"
+    ],
+    "why": "Shows where structural drift starts (pelvis, ribs, or head) and whether the spine can stack without muscular bracing.",
+    "defaultDose": {
+      "reps": "1 test",
+      "frequency": "Days 0, 7, 21, 28"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "belly-rotation-test",
+    "name": "Belly Rotation Test",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#t2"
+    },
+    "category": "assessment",
+    "bodyAreas": [
+      "pelvis-hip",
+      "lumbar"
+    ],
+    "goals": [
+      "mobility",
+      "posture"
+    ],
+    "equipment": [
+      "phone"
+    ],
+    "position": "supine",
+    "setup": "Lie supine. Phone on the belly button, slippery surface against the skin. Knees together, hips at 90 degrees, lower back sunk to the floor. Sinking the lower back isolates pelvic rotation and removes lumbar twisting.",
+    "execution": "Rotate the knees side to side slowly. No momentum. Screenshot the exact frame the phone drops; that is the true rotational limit. Place the left and right limit screenshots side by side and compare with Day 0.",
+    "cues": [
+      "Keep the lower back on the floor",
+      "Rotate only the pelvis, no lower-back engagement",
+      "Knees really together"
+    ],
+    "errors": [
+      "Using momentum",
+      "Arching the lower back off the floor"
+    ],
+    "why": "Shows available rotation per side, whether the pelvis rotates symmetrically or favors one direction, and how much torsion the lumbar spine has been absorbing.",
+    "defaultDose": {
+      "reps": "1 rotation to each side",
+      "frequency": "Days 0, 7, 21, 28"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "body-breathing",
+    "name": "Body Breathing",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#1"
+    },
+    "category": "breathing",
+    "bodyAreas": [
+      "ribs",
+      "thoracic"
+    ],
+    "goals": [
+      "posture",
+      "recovery"
+    ],
+    "equipment": [],
+    "position": "any (sitting, standing, supine, walking)",
+    "setup": "Find your collarbones. Slide the fingertips down to the first bony ridge you reach, the second rib. Leave the fingertips there. Open nose and mouth; they are only channels.",
+    "execution": "Push your fingertips away using the ribs themselves. Structure moves first, volume increases, pressure drops, air enters on its own. Silent. Only the inhale is work; on the exhale simply relax and let go. Make each inhale slightly longer than the last, starting around 8 seconds and building toward 20. Work the upper and mid ribs and the lateral ribs under the armpit; ignore the lower ribs, which open easily. Test around the cage, find the restricted spots, work those.",
+    "cues": [
+      "Structure moves first, air enters on its own",
+      "Only the inhale is work; exhale is letting go",
+      "Target the restriction, not the expansion",
+      "Back expands backward like a barrel, not upward",
+      "If shoulders are tight, face a wall and push the wall away for feedback",
+      "The right chest is usually more collapsed than the left"
+    ],
+    "errors": [
+      "Sniffing or pumping air through nose or mouth",
+      "Neck or trap tension",
+      "Shrugging (hand on the neck to check)",
+      "Buying inhale length with tension"
+    ],
+    "why": "Noiseless, gentle, long, and relaxed keeps you out of sympathetic and into parasympathetic, so the body can learn new movement afterward. It is the breath baseline used inside every other movement.",
+    "defaultDose": {
+      "reps": "5-10 minutes per session",
+      "durationMin": 10,
+      "frequency": "2x daily (AM + PM)"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "axial-tension-reset",
+    "name": "Axial Tension Reset",
+    "aliases": [
+      "Supine Breathing"
+    ],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#2"
+    },
+    "category": "breathing",
+    "bodyAreas": [
+      "ribs",
+      "lumbar",
+      "core"
+    ],
+    "goals": [
+      "recovery",
+      "posture"
+    ],
+    "equipment": [
+      "chair",
+      "pillow (optional)",
+      "folded towel (optional)",
+      "cushion (optional)"
+    ],
+    "position": "supine, hips/knees/ankles at 90 degrees on a chair",
+    "setup": "Lie on your back with the calves on a chair, hips, knees, and ankles all at 90 degrees. Lower back heavy and fully attached to the floor. Pillow under the head for a stiff neck or upper back; folded towel under the buttocks for a stiff lower back. If the legs roll outward, squeeze a cushion between the knees (alignment, not adductor work). Hands on the sides of the rib cage. Hips, glutes, and front of the hips relaxed.",
+    "execution": "Mouth open. Exhale first without engaging any abdominal muscle and watch the lower costal arch close like two doors. When no air is left, put your fingertips on the highest rib you can find and inhale, pushing the fingertips away with the bone. Exhale through the belly, inhale through the upper ribs.",
+    "cues": [
+      "Lower costal arch closes like two doors",
+      "Exhale through the belly, inhale through the upper ribs",
+      "Glutes and front of hips stay relaxed"
+    ],
+    "errors": [
+      "Contracting the abs to exhale",
+      "Compensating instead of expanding (use the fingers to check)"
+    ],
+    "why": "Down-regulate the nervous system and restore rib-lumbar coordination (Day 2 Down-Regulation Flow).",
+    "defaultDose": {
+      "reps": "20",
+      "durationMin": 3
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "spinal-arc-release",
+    "name": "Spinal Arc Release",
+    "aliases": [
+      "Knee Lift with Arm Raise and Full-Body Rotation"
+    ],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#3"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "thoracic",
+      "lumbar",
+      "full-body"
+    ],
+    "goals": [
+      "recovery",
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "supine, knees up",
+    "setup": "Supine. Arms up as if holding a huge watermelon, middle fingers pointing toward each other. Bring the knees up high; the higher the legs, the less tension reaches the lower back. Adjust knee height and width until the spine is most comfortable on the floor. Chest and pelvis aligned.",
+    "execution": "One arm leads across the body on a 45-degree arc and the rest of the body follows as one continuous structure. To return, push slightly with the arm or leg.",
+    "cues": [
+      "Arms hold a huge watermelon",
+      "Arm leads, body follows as one structure",
+      "Let the breathing guide the rotation"
+    ],
+    "errors": [
+      "Lower body rolling before the arm has moved",
+      "Letting the knees close together",
+      "Going floppy instead of staying structurally continuous",
+      "Holding the breath"
+    ],
+    "why": "Breath-led whole-body rotation to improve rotational neutrality and activate the parasympathetic response.",
+    "defaultDose": {
+      "reps": "15-20 per side",
+      "durationMin": 3
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [
+      "Skip if hip flexion produces excessive lower-back tension; go straight to Rotational Glide Reset"
+    ]
+  },
+  {
+    "id": "rotational-glide-reset",
+    "name": "Rotational Glide Reset",
+    "aliases": [
+      "Single-Leg Flexion Rotation"
+    ],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#4"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "full-body",
+      "lumbar",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "recovery",
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "supine to prone",
+    "setup": "Same watermelon arm position. Raise one knee and place that heel just above the opposite kneecap to form a triangle. This creates tension in the lower back on that same side.",
+    "execution": "The tension is not the point; the fall is. Relax completely and let yourself roll all the way over onto your belly. The skin and superficial fascia lead and the deep fascia glides after. Use some strength to come back. Rotate the whole body as one unit; if rotation is hard at first, press the flexed foot lightly into the floor to assist.",
+    "cues": [
+      "The tension is not the point; the fall is",
+      "Skin and superficial fascia lead, deep fascia glides after",
+      "Rotate the whole body as one unit"
+    ],
+    "errors": [
+      "Muscling the roll instead of releasing into it",
+      "Holding the breath"
+    ],
+    "why": "Evens out superficial and deep fascial tension through a passive whole-body roll.",
+    "defaultDose": {
+      "reps": "10 per side",
+      "durationMin": 3
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "integrated-pelvic-lift-breathing",
+    "name": "Integrated Pelvic Lift Breathing",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#5"
+    },
+    "category": "breathing",
+    "bodyAreas": [
+      "pelvis-hip",
+      "ribs",
+      "core"
+    ],
+    "goals": [
+      "posture",
+      "stability"
+    ],
+    "equipment": [
+      "wall",
+      "pillow or Pilates ball (optional)",
+      "folded towel (optional)"
+    ],
+    "position": "supine, feet on wall at 90 degrees",
+    "setup": "Supine with feet on the wall, hips and knees near 90 degrees, feet hip-width, second toes pointing up so toes, knees, and pelvic floor line up. Optional Pilates ball or pillow between the knees, lightly squeezed for alignment only. Push the hips slightly forward. Folded towel under the hips (not the lower back) if the lower back lifts or the pelvis feels tight; towel or small pillow under the neck if needed.",
+    "execution": "Attention on the exhale only. Use a fingertip to draw the skin up slightly to feel where the pelvic floor is; it should travel up. Exhale slowly and gently, drawing in on the belly a little, then relax and let the inhale happen. Each exhale slightly longer than the last.",
+    "cues": [
+      "Hold a soft, rounded 'oh' mouth shape; tight lips tighten everything below",
+      "Pelvic floor travels up on the exhale",
+      "Each exhale slightly longer than the last"
+    ],
+    "errors": [],
+    "why": "Restores chest-pelvis coordination: rib movement, pressure control, pelvic recoil, and spinal support through breathing (Day 3 Chest-Pelvis Alignment Training).",
+    "defaultDose": {
+      "reps": "20"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "complexity",
+      "harder": "diaphragm-pelvic-elastic-recoil"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "diaphragm-pelvic-elastic-recoil",
+    "name": "Diaphragm–Pelvic Elastic Recoil",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#6"
+    },
+    "category": "breathing",
+    "bodyAreas": [
+      "pelvis-hip",
+      "ribs",
+      "core"
+    ],
+    "goals": [
+      "recovery",
+      "stability"
+    ],
+    "equipment": [
+      "wall"
+    ],
+    "position": "supine, feet on wall at 90 degrees",
+    "setup": "Identical to Integrated Pelvic Lift Breathing: supine, feet on the wall at 90 degrees. Spine long and relaxed on the floor.",
+    "execution": "Exhale gently and softly until there is genuinely no air left. Pinch the nose, seal the mouth, and inhale against the seal so the pelvic floor and diaphragm draw upward. Hold three seconds, count 1-2-3, then relax and let air flow in naturally. Ignore the inhale quality; only the exhale is trained.",
+    "cues": [
+      "Exhale until genuinely empty",
+      "Inhale against the seal; pelvic floor and diaphragm draw up",
+      "Only the exhale is trained"
+    ],
+    "errors": [
+      "Forcing the exhale",
+      "Holding the sealed position longer than three seconds"
+    ],
+    "why": "Restores elasticity between the diaphragm and pelvic floor (the 'twins') and pushes the parasympathetic system: digest, slow down, feel safe.",
+    "defaultDose": {
+      "reps": "20",
+      "holdSeconds": 3
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none",
+      "easier": "integrated-pelvic-lift-breathing"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "ankle-flexion-extension",
+    "name": "Ankle Flexion & Extension",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#7"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "ankle-foot",
+      "knee",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility",
+      "recovery"
+    ],
+    "equipment": [
+      "tissue",
+      "folded towel (optional)",
+      "bench (optional)"
+    ],
+    "position": "supine, one leg at 90/90",
+    "setup": "Supine, lower back fully attached to the floor. With an anterior pelvic tilt put a folded towel under the hips (not the lower back), or rest the calves and knees on a bench near 90 degrees. Lower back and belly soft. Raise one leg to 90/90. Crumple one or two tissues into a small ball and tuck it under the second toe.",
+    "execution": "Grip the crumpled tissue as hard as you can and keep gripping. Then dorsiflex and plantarflex the ankle. Do not watch the movement; feel for tissue sliding under the skin of the calf, up through the leg and thigh, and if relaxed and aligned enough, into the groin.",
+    "cues": [
+      "Grip the tissue under the second toe hard and keep gripping",
+      "Feel the tissue slide up the leg, don't watch the ankle",
+      "Cramping is normal: the toes have never been trained"
+    ],
+    "errors": [
+      "Treating it as an ankle exercise; it is a fascia-sliding exercise",
+      "Tensing the belly, lower back, or leg"
+    ],
+    "why": "Lower-body fascia sliding and tension reset (Day 4).",
+    "defaultDose": {
+      "sets": 2,
+      "reps": "1 minute per side"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "complexity",
+      "harder": "small-circulations"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "small-circulations",
+    "name": "Small Circulations",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#8"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "ankle-foot",
+      "knee",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility",
+      "recovery"
+    ],
+    "equipment": [
+      "tissue"
+    ],
+    "position": "supine, one leg at 90/90",
+    "setup": "Same setup as Ankle Flexion & Extension: supine, one leg at 90/90, tissue gripped under the second toe.",
+    "execution": "The ankle also inverts and everts. Reach fully into each direction to trace a full apple-sized circle. Full control through full range, not speed. Feel the movement travel through the calf, up the inside of the leg, into hip, groin, and belly.",
+    "cues": [
+      "Apple-sized circle",
+      "A real circle, not a triangle and not a circle with a corner in it",
+      "Full control through full range, not speed"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "10 circles each direction"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "complexity",
+      "easier": "ankle-flexion-extension"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "single-leg-cycling",
+    "name": "Single-Leg Cycling",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#9"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot"
+    ],
+    "goals": [
+      "mobility",
+      "stability"
+    ],
+    "equipment": [
+      "resistance band (optional)"
+    ],
+    "position": "supine",
+    "setup": "Supine, lower back and belly relaxed. Optionally loop a resistance band behind the thighs and hold it to offload some leg weight.",
+    "execution": "Flex ankle, knee, and hip at the same rate and at the same time, then extend ankle, knee, and hip together: triple flexion and triple extension coordinated. Smooth and gentle. Once coordinated, blend it into a cycling circle, making the circle progressively bigger and reaching for more hip flexion without tensing the belly.",
+    "cues": [
+      "Ankle, knee, and hip move at the same rate",
+      "Grow the circle without tensing the belly",
+      "Band behind the thighs makes it easier"
+    ],
+    "errors": [
+      "Leading with one joint",
+      "Letting the ankle extend last on the way back",
+      "Bracing the belly to get a bigger circle"
+    ],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "1 minute"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "complexity",
+      "harder": "alternating-cycling"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "alternating-cycling",
+    "name": "Alternating Cycling",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#10"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot"
+    ],
+    "goals": [
+      "mobility",
+      "stability"
+    ],
+    "equipment": [
+      "tissue",
+      "resistance band (optional)"
+    ],
+    "position": "supine",
+    "setup": "Supine, tissue gripped under the second toe of both feet. Optional resistance band behind the thighs.",
+    "execution": "Cycle both legs, alternating: one flexing while the other extends, each still coordinating ankle, knee, and hip at the same rate. The bigger the circle, the harder it gets. Lower back and belly stay relaxed.",
+    "cues": [
+      "Ankle, knee, and hip at the same rate on each leg",
+      "Bigger circle = harder",
+      "Lower back and belly stay relaxed"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "1 minute"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "complexity",
+      "easier": "single-leg-cycling"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "lower-body-unwind-lift",
+    "name": "Lower-Body Unwind Lift",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#11"
+    },
+    "category": "alignment",
+    "bodyAreas": [
+      "pelvis-hip",
+      "ankle-foot",
+      "knee"
+    ],
+    "goals": [
+      "recovery",
+      "mobility"
+    ],
+    "equipment": [
+      "wall",
+      "folded towel (optional)",
+      "pillow (optional)"
+    ],
+    "position": "supine, feet high on wall",
+    "setup": "Supine, closer to the wall than feels natural. Folded towel under the pelvis if the back will not touch the floor or the hips feel tight; towel or pillow under the head only if the neck is tight, just enough to keep the head level. Feet together, both tripods and the toes firmly on the wall. Slide the feet up until the big toes are almost, but not quite, leaving the wall. Knees squeezed together.",
+    "execution": "It looks static, but the work is putting both tripods evenly and firmly on the wall at once and continuously re-adjusting the balance. The groin stays relaxed; check with the fingertips for soft tissue, no hip-flexor activation. As you get used to the position, slide the feet higher while keeping the hips relaxed.",
+    "cues": [
+      "Both tripods even and firm on the wall",
+      "Groin soft, check with fingertips",
+      "Big toes stay in contact",
+      "Later: sense the toe fascia extending outward with each breath"
+    ],
+    "errors": [
+      "Zoning out (phone and TV off)",
+      "Letting the groin engage",
+      "Letting one tripod carry more than the other"
+    ],
+    "why": "Space creation, not alignment: balance the lower-body structure, increase space within, and release tension through the hips and ankles. Let the lower body decompress without forcing form.",
+    "defaultDose": {
+      "durationMin": 3,
+      "reps": "3-5 minutes (8 minutes on the teaching day)"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "pelvic-axis-isolation",
+    "name": "Pelvic Axis Isolation",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#12"
+    },
+    "category": "alignment",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility",
+      "posture"
+    ],
+    "equipment": [
+      "wall",
+      "folded towel (optional)"
+    ],
+    "position": "supine, feet on wall",
+    "setup": "Supine, spine fully on the floor; towel under the buttocks if the lower back arches, under the neck if the shoulders are tense. Feet on the wall a little wider than the knees. Push the hips forward and stay close so the femurs are vertical. Open and close the knees until the upper thighs feel evenly relaxed. Lift toes and heels: the only contact left is the big-toe ball (first metatarsal head).",
+    "execution": "Pelvis leads, knee follows, big-toe ball drives into the wall. Gentle internal and external rotation drawn entirely from the pelvis. External rotation: the outer buttock moves; internal: feel the inner thigh activate. Quads stay relaxed. Keep the big-toe-ball anchor nailed to the wall; the feet are the stabilizers, not the pelvis and not the core.",
+    "cues": [
+      "Pelvis leads, knee follows",
+      "Big-toe ball nailed to the wall",
+      "Feet are the stabilizers",
+      "Aim for a hollow, floating sensation deep in the hip joints"
+    ],
+    "errors": [
+      "Driving from the knee instead of the pelvis (roughly 99% of people)",
+      "Lifting any part of the spine off the floor",
+      "Chasing range; minimum range is fine"
+    ],
+    "why": "Gentle pelvic awareness without correction; soft re-orientation of the pelvis.",
+    "defaultDose": {
+      "reps": "20 each side, then 20 bilateral"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "triple-flexion",
+    "name": "Triple Flexion",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#13"
+    },
+    "category": "alignment",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot",
+      "lumbar"
+    ],
+    "goals": [
+      "posture",
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Feet together, toes turned out to about 90 degrees between them, heels parallel (wider if wobbly). Lift the heels with straight legs, weight even across first and fifth metatarsal heads, then bring the heels down without the weight drifting back by unlocking knees and hips (poke the back of the knees and front of the hips: both soft). Flex the neck, then the thoracic spine, then the lower back into a full curve. Glutes and hip flexors fully relaxed.",
+    "execution": "Flex hips, knees, and ankles at the same rate so the lower body folds together. Relax the hips further, and further again. Descend only until one pair of joints stops moving, not to the floor. Knees track over the toes. At the end, optionally hold the shins and roll backward on the rounded spine.",
+    "cues": [
+      "Hips, knees, ankles flex at the same rate",
+      "Stop when one pair of joints stops moving",
+      "Relaxed joints keep the balance centred",
+      "Squeezing the glutes flattens the lower back"
+    ],
+    "errors": [
+      "Letting the knees collapse in",
+      "Weight drifting backward",
+      "Going to the floor"
+    ],
+    "why": "Teach the joints to flex together, and use the backward roll to overwrite the old movement pattern. The signature BAT lower-body movement.",
+    "defaultDose": {
+      "reps": "4-8"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "complexity",
+      "harder": "triple-flexion-extension"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "triple-flexion-extension",
+    "name": "Triple Flexion & Extension",
+    "aliases": [
+      "Lower-Body Alignment Training",
+      "Lower-Body Alignment"
+    ],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#14"
+    },
+    "category": "alignment",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot",
+      "lumbar"
+    ],
+    "goals": [
+      "posture",
+      "stability"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Identical to Triple Flexion: feet together with toes out about 90 degrees, heels parallel, knees and hips unlocked, spine curved from the neck down, glutes and hip flexors relaxed.",
+    "execution": "Descend the same way but do not squat. Stop at your real bottom, the point where one pair of joints stops moving. Then push the floor away with both feet and let the floor raise you: the spine does not move and ankles, knees, and hips extend together at the same rate. Do not lock the knees at the top. Then extend the spine in order (sacrum, lumbar, thoracic, neck) and look forward.",
+    "cues": [
+      "Stop at your real bottom; depth is irrelevant",
+      "Push the floor away and let it raise you",
+      "Spine still while the legs extend",
+      "Extend the spine sacrum to neck, then look forward",
+      "Later (Days 23-24): pause at first restriction and rise along the central axis without forcing the chest up or lifting the head"
+    ],
+    "errors": [
+      "Turning it into a squat",
+      "Going lower than the real bottom",
+      "Locking out",
+      "Moving fast"
+    ],
+    "why": "More fundamental than a squat; slow is what builds the new pattern of ankles, knees, and hips extending together.",
+    "defaultDose": {
+      "reps": "8"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "complexity",
+      "easier": "triple-flexion",
+      "harder": "tripod-rebalancing"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "finger-flicks",
+    "name": "Finger Flicks",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#15"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "elbow-wrist"
+    ],
+    "goals": [
+      "recovery",
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "any",
+    "setup": "Any position. Four fingers per hand; skip the thumb.",
+    "execution": "Flick each fingertip out from the thumb. You should hear the sound. Some fingers will be noticeably weaker; do extra reps on those.",
+    "cues": [
+      "You should hear the flick",
+      "Extra reps on the weaker fingers"
+    ],
+    "errors": [],
+    "why": "Release tension at the distal end. Phones, keyboards, and barbells keep the fingers flexed all day; this trains the extensor side.",
+    "defaultDose": {
+      "reps": "8 per fingertip"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "wrist-pronation-supination",
+    "name": "Full Wrist Pronation–Supination",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#16"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "elbow-wrist",
+      "shoulder"
+    ],
+    "goals": [
+      "mobility",
+      "recovery"
+    ],
+    "equipment": [],
+    "position": "any",
+    "setup": "Stretch and expand the fingertips forward first. Pressed against a wall they should stay stiff and extended, not bend back or go soft.",
+    "execution": "Rotate the wrist through full internal and external range, letting arms and shoulders flow with it. Once comfortable, play with opposing directions: one hand internally rotating while the other externally rotates. Shake the hands out afterward.",
+    "cues": [
+      "Fingertips stiff and extended lengthen the whole fascia web",
+      "Arms and shoulders flow with the wrist",
+      "Clicking on the tighter side is normal"
+    ],
+    "errors": [
+      "Losing full range because the shoulder and elbow take over",
+      "Soft or collapsing fingertips"
+    ],
+    "defaultDose": {
+      "reps": "12 each direction per side"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "fixed-elbow-wrist-rotation",
+    "name": "Fixed-Elbow Wrist Rotation",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#17"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "elbow-wrist"
+    ],
+    "goals": [
+      "mobility",
+      "recovery"
+    ],
+    "equipment": [],
+    "position": "any",
+    "setup": "Elbow into the body, trunk lightly squeezed, elbow at 90 degrees, hand lower than the elbow. The elbow does not move.",
+    "execution": "Close in sequence (pinky, ring, middle, index) gripping as if holding a barbell, then flex the wrist, always paired with internal rotation. Reverse: open pinky to index, shooting the fingers out like the flicks, always paired with external rotation, back to neutral. Hold tension from the end of the fingers throughout. Train one hand first, then both together.",
+    "cues": [
+      "Flexion always with internal rotation, extension always with external rotation",
+      "Close pinky to index, open pinky to index",
+      "Elbow does not move"
+    ],
+    "errors": [],
+    "why": "Stretching or cramping on the back of the hand is normal and means you have never turned the hand this way before.",
+    "defaultDose": {
+      "reps": "10 total per side"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "side-lying-90-90-breathing",
+    "name": "90/90 Side-Lying Breathing",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#18"
+    },
+    "category": "breathing",
+    "bodyAreas": [
+      "ribs",
+      "thoracic",
+      "shoulder"
+    ],
+    "goals": [
+      "posture",
+      "mobility"
+    ],
+    "equipment": [
+      "1-2 pillows"
+    ],
+    "position": "side-lying",
+    "setup": "Side-lying, pillow under the head so it aligns with the spine; second pillow between the knees if the legs are thick. Hips, knees, ankles at 90 degrees and the trunk at 90 degrees to the floor. Chin neither lifted nor tucked. Bottom shoulder at 90 degrees without shrugging, web of the hand facing you. Top arm at 90 degrees, resting just above the bottom elbow on that web.",
+    "execution": "Shoulder stays down and relaxed. Exhale through the lower ribs and feel them become heavy and travel down toward the pelvis. Inhale into the armpit, feeling the upper thorax expand front and back. After a few looser breaths, slowly stretch the top elbow forward, still at 90 degrees, to lengthen the upper back eccentrically.",
+    "cues": [
+      "Lower ribs travel down toward the pelvis, not tucking in",
+      "Inhale into the armpit",
+      "Use fingertips against the ribs to feel resistance",
+      "Top scapula floats on the ribs"
+    ],
+    "errors": [
+      "Shrugging",
+      "Arching or extending the lower back"
+    ],
+    "why": "Locks a structurally strong position and lets the top scapula float on the ribs (Day 16 Rib Re-Opening).",
+    "defaultDose": {
+      "reps": "2 minutes per side (~20 breaths)"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "wall-rib-expansion-cross",
+    "name": "Wall-Supported Rib Expansion Cross",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#19"
+    },
+    "category": "alignment",
+    "bodyAreas": [
+      "ribs",
+      "shoulder",
+      "pelvis-hip",
+      "ankle-foot"
+    ],
+    "goals": [
+      "posture",
+      "stability"
+    ],
+    "equipment": [
+      "wall"
+    ],
+    "position": "standing at a wall, single-leg",
+    "setup": "Stand close to the wall (closer is easier). One arm at 90 degrees at the shoulder, elbow bent 90, back of forearm and hand firmly on the wall. Feet together, lean in. Lift the heels, stand on both foot tripods, and lift the inner knee to a full 90 degrees, hips and knee aligned: a slightly folded cross.",
+    "execution": "Inhale and actively push yourself away from the wall through the elbow. Shoulder stays down and lengthening. Hold. A mirror helps.",
+    "cues": [
+      "Push away from the wall through the elbow",
+      "Shoulder down and lengthening"
+    ],
+    "errors": [
+      "Collapsing",
+      "Rotating",
+      "Shrugging into the wall instead of pushing off it"
+    ],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "30-60 seconds per side"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "diamond-elbow-wall-plank",
+    "name": "Diamond-Elbow Wall Plank",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#20"
+    },
+    "category": "alignment",
+    "bodyAreas": [
+      "ribs",
+      "shoulder",
+      "thoracic",
+      "core"
+    ],
+    "goals": [
+      "posture",
+      "stability"
+    ],
+    "equipment": [
+      "wall"
+    ],
+    "position": "standing, facing a wall",
+    "setup": "Feet together. Hands in a diamond with the forearms at 120 degrees (the scapular angle; 120, not 140). Face the wall and lean in; further feet is harder. Stand on both foot tripods. Shoulders, buttocks, and ankles in one line.",
+    "execution": "Push away from the wall through both palms and forearms, driving from the upper chest rather than the hips. Exhale and bring the lower rib cage down toward the pelvis. Inhale into the upper chest. Lengthen the spine upward and press down through the lower ribs for a clean cross.",
+    "cues": [
+      "Forearms at 120 degrees",
+      "Drive from the upper chest, not the hips",
+      "Exhale lower ribs toward pelvis, inhale into upper chest"
+    ],
+    "errors": [
+      "Tilting the mid-back or hips backward",
+      "Resting the head on the wall when tired",
+      "Letting the forearm angle open past 120"
+    ],
+    "why": "Opens the upper front chest and eccentrically lengthens the upper back at the same time.",
+    "defaultDose": {
+      "sets": 2,
+      "holdSeconds": 60
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "wall-back-arm-reach-ear-line",
+    "name": "Wall-Back Parallel Arm Reach (Ear-Line)",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#21"
+    },
+    "category": "alignment",
+    "bodyAreas": [
+      "shoulder",
+      "thoracic",
+      "ribs"
+    ],
+    "goals": [
+      "posture",
+      "mobility"
+    ],
+    "equipment": [
+      "wall"
+    ],
+    "position": "standing, back to a wall",
+    "setup": "Stand close to a wall, feet hip-width (wider if the legs are big), heels one fist from the wall, further out with a strong anterior tilt. Level pelvis: do not squeeze the buttocks into a posterior tilt and do not let it tip anterior. Lean back so the lower back meets the wall with no gap you could pass a hand through.",
+    "execution": "Bring the arms up with palms and inner elbows facing each other until the middle fingers are parallel to the floor and the thumbs sit around earlobe height. Open the arms so the angle between arm and wall is about 20-30 degrees and the arms sit at roughly 120-140 degrees. Inhale and lengthen the fingertips away; exhale and relax. When the arms tire, lower them gently.",
+    "cues": [
+      "Thumbs at earlobe height",
+      "Inhale, lengthen fingertips away; exhale, relax",
+      "Elbows slightly unlocked so the load stays in soft tissue"
+    ],
+    "errors": [
+      "Locking out the elbows",
+      "Shifting weight to one side"
+    ],
+    "defaultDose": {
+      "durationMin": 2
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "complexity",
+      "harder": "wall-back-arm-reach-rotation"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "wall-back-arm-reach-rotation",
+    "name": "Wall-Back Parallel Arm Reach (Internal/External Rotation Focus)",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#22"
+    },
+    "category": "alignment",
+    "bodyAreas": [
+      "shoulder",
+      "elbow-wrist",
+      "neck"
+    ],
+    "goals": [
+      "posture",
+      "mobility"
+    ],
+    "equipment": [
+      "wall"
+    ],
+    "position": "standing, back to a wall",
+    "setup": "Stand close to a wall, feet hip-width (wider if the legs are big), heels one fist from the wall, further out with a strong anterior tilt. Level pelvis: do not squeeze the buttocks into a posterior tilt and do not let it tip anterior. Lean back so the lower back meets the wall with no gap you could pass a hand through. Arms forward with inner elbows and palms facing each other, then opened to 120-130 degrees.",
+    "execution": "Reach the fingertips out to the side until you feel the connection from fingertips to shoulder. Rotate from forearms, hands, and shoulders at the same time: external rotation on one side while the other internally rotates. Inhale and reach, exhale and relax. Track the palm-up side with your eyes, following the middle finger.",
+    "cues": [
+      "Both arms turn the same direction as one structure",
+      "Eyes follow the palm-up middle finger to relax that side of the neck",
+      "Scapula lies fully on the ribs"
+    ],
+    "errors": [
+      "Shrugging",
+      "Turning the upper body to the side"
+    ],
+    "defaultDose": {
+      "durationMin": 2
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "complexity",
+      "easier": "wall-back-arm-reach-ear-line"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "wall-back-draw-the-bow",
+    "name": "Wall-Back Draw the Bow",
+    "aliases": [
+      "Baduanjin #2"
+    ],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#23"
+    },
+    "category": "alignment",
+    "bodyAreas": [
+      "thoracic",
+      "shoulder",
+      "ribs"
+    ],
+    "goals": [
+      "mobility",
+      "posture"
+    ],
+    "equipment": [
+      "wall"
+    ],
+    "position": "standing, back to a wall",
+    "setup": "Stand close to a wall, feet hip-width (wider if the legs are big), heels one fist from the wall, further out with a strong anterior tilt. Level pelvis: do not squeeze the buttocks into a posterior tilt and do not let it tip anterior. Lean back so the lower back meets the wall with no gap you could pass a hand through.",
+    "execution": "Rotate only the chest to one side; the lower back stays firmly on the wall. Draw a big cross: one forearm vertical, the other parallel to the floor. The front hand makes a 'little gun', rotates, and pushes out to the side. The rear elbow then draws laterally to the side, not backward. At the end of the pull, open the fist into a flat palm so the stretch continues. Relax back to the middle and down. Repeat other side.",
+    "cues": [
+      "Rotation through the thoracic spine only",
+      "Push one arm first, stabilize, then draw the other",
+      "Rear elbow draws to the side, not back",
+      "Open the fist at the end"
+    ],
+    "errors": [
+      "Rotating from the lumbar spine",
+      "Moving both elbows at once",
+      "Shrugging",
+      "Rushing; target is upper-chest expansion, not rep count"
+    ],
+    "defaultDose": {
+      "durationMin": 2
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "tripod-rebalancing",
+    "name": "Tripod Rebalancing Training",
+    "aliases": [],
+    "source": {
+      "kind": "bat",
+      "ref": "bat-28day/EXERCISE-LIST.md#24"
+    },
+    "category": "alignment",
+    "bodyAreas": [
+      "ankle-foot",
+      "knee",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "posture",
+      "stability"
+    ],
+    "equipment": [
+      "2-4 books of equal height",
+      "wall or chair (optional support)"
+    ],
+    "position": "standing on books",
+    "setup": "Diagnose first: second toes forward, squat slowly and watch which way the heel bone leans (outer edge lifts = leaning inward; inner edge lifts = leaning outward; feet can differ). Support only the missing half of the heel on books (outer half if leaning inward, inner half if leaning outward); one book for a small frame, two for taller. At the front, step only on the big-toe ball. Feet level. Hold a wall or chair if needed.",
+    "execution": "The same movement as Triple Flexion & Extension. Squat to your bottom, maintain balance, push the floor away, and feel the reaction as you stand slowly. Sink about 60% into the heels and 40% into the big-toe balls.",
+    "cues": [
+      "Books, not yoga blocks",
+      "60% heels, 40% big-toe balls",
+      "Let the weight sink onto the big toe; don't force it",
+      "Stiffness means compensation; relax knees and hip corner"
+    ],
+    "errors": [
+      "Forcing weight onto the big toe",
+      "Shortening the foot",
+      "Gripping the toes hard"
+    ],
+    "why": "Every step applies force into the ground and the ground returns it. The foot tripod (heel, first and fifth metatarsal heads) sets the orientation of the arch system, and that orientation propagates up through ankle, tibia, fibula, pelvis, spine. A leaning base forces everything above it to compensate.",
+    "defaultDose": {
+      "reps": "16"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "complexity",
+      "easier": "triple-flexion-extension"
+    },
+    "contraindications": []
+  }
+]

@@ -1,0 +1,1104 @@
+[
+  {
+    "id": "bird-dog-with-resistance",
+    "name": "Bird Dog with Resistance",
+    "aliases": [
+      "Bird Dog"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core",
+      "lumbar",
+      "pelvis-hip",
+      "shoulder"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [
+      "resistance band"
+    ],
+    "position": "quadruped",
+    "setup": "Begin on all fours, with a resistance band looped around one hand and your opposite foot.",
+    "execution": "Straighten your arm and opposite leg at the same time, pulling against the resistance. Hold briefly then return to the starting position and repeat.",
+    "cues": [
+      "Keep your back straight.",
+      "Keep your chin tucked."
+    ],
+    "errors": [
+      "Do not let your trunk twist."
+    ],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10",
+      "frequency": "1x daily"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "dead-bug-swiss-ball",
+    "name": "Dead Bug with Swiss Ball",
+    "aliases": [
+      "Dead Bug"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core",
+      "lumbar"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [
+      "swiss ball"
+    ],
+    "position": "supine",
+    "setup": "Begin lying on your back holding a swiss ball up against your knees, then raise your feet off the floor with your legs at a 90 degree angle.",
+    "execution": "Slowly reach one arm overhead and straighten your opposite leg. Return to the starting position, and repeat with your opposite arm and leg.",
+    "cues": [
+      "Keep your abdominals tight.",
+      "Keep your low back flat against the floor."
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10",
+      "frequency": "1x daily"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "standard-plank",
+    "name": "Standard Plank",
+    "aliases": [
+      "Forearm Plank"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT; 2020 PT"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [],
+    "position": "prone",
+    "setup": "Begin lying on your front, propped up on your elbows.",
+    "execution": "Engage your abdominal muscles and lift your hips and legs up into a plank position, keeping your elbows directly under your shoulders. Hold this position.",
+    "cues": [
+      "Keep your back straight.",
+      "Maintain a gentle chin tuck."
+    ],
+    "errors": [],
+    "why": "2018 note: add punches, rotations of the feet. 2020 note: add foam roll.",
+    "defaultDose": {
+      "sets": 3,
+      "holdSeconds": 30,
+      "frequency": "3x weekly"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "monster-walk",
+    "name": "Monster Walk",
+    "aliases": [
+      "Banded Monster Walk"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT; 2020 PT"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "loop band"
+    ],
+    "position": "standing",
+    "setup": "Place a loop band around your ankles.",
+    "execution": "With loop around ankles, step out to the right and then to the left. Repeat going back.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "reps": "10",
+      "frequency": "3x daily"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "side-plank-on-elbow",
+    "name": "Side Plank on Elbow",
+    "aliases": [],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [],
+    "position": "side-lying",
+    "setup": "Begin lying on your side with your feet stacked, resting on your elbow.",
+    "execution": "Lift your hips off the floor so your body is in a straight line and your hips and shoulders are facing forward. Hold this position.",
+    "cues": [
+      "Keep your head in line with your trunk."
+    ],
+    "errors": [
+      "Do not let your hips drop toward the floor.",
+      "Do not roll forward or backward."
+    ],
+    "defaultDose": {
+      "sets": 3,
+      "holdSeconds": 20,
+      "reps": "15-20 second hold",
+      "frequency": "5x weekly"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "hold",
+      "harder": "side-plank-full-arm-rotation"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "clamshell",
+    "name": "Clamshell",
+    "aliases": [],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "stability",
+      "strength"
+    ],
+    "equipment": [],
+    "position": "side-lying",
+    "setup": "Begin lying on your side with your knees bent and your hips and shoulders stacked.",
+    "execution": "Engage your abdominals and raise your top knee up toward the ceiling, then slowly return to the starting position and repeat.",
+    "cues": [
+      "Keep your core engaged."
+    ],
+    "errors": [
+      "Do not roll your hips forward or backward."
+    ],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10",
+      "frequency": "1x daily"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps",
+      "harder": "clamshell-in-abduction"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "reverse-clamshell",
+    "name": "Sidelying Reverse Clamshell",
+    "aliases": [
+      "Reverse Clamshell"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "stability",
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "side-lying",
+    "setup": "Begin lying on your side with your knees bent.",
+    "execution": "Rotate your top foot upward, then lower it back to the starting position and repeat.",
+    "cues": [
+      "Keep your knees together as you move your foot."
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "10"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "clamshell-in-abduction",
+    "name": "Clamshell in Abduction",
+    "aliases": [],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "stability",
+      "strength"
+    ],
+    "equipment": [],
+    "position": "side-lying",
+    "setup": "Begin lying on your side with your knees bent. Lift your top leg so it is parallel with the ground.",
+    "execution": "Slowly lift your upper knee toward the ceiling, keeping your foot in the same position. Return your leg to parallel and repeat.",
+    "cues": [],
+    "errors": [
+      "Do not let your hips roll forward or backward."
+    ],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10",
+      "frequency": "1x daily"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps",
+      "easier": "clamshell"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "wall-multifidus",
+    "name": "Wall Multifidus",
+    "aliases": [],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "lumbar",
+      "core"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [],
+    "position": "wall",
+    "setup": "Stand with back at wall and slide down wall into a slight squat.",
+    "execution": "Gently press one elbow into wall and hold, then repeat with the other elbow.",
+    "cues": [
+      "Keep back flat by keeping core tight."
+    ],
+    "errors": [],
+    "defaultDose": {
+      "reps": "10",
+      "holdSeconds": 10,
+      "frequency": "1x daily"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "prone-press-up",
+    "name": "Prone Press Up",
+    "aliases": [],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT; 2020 PT"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "lumbar"
+    ],
+    "goals": [
+      "mobility",
+      "pain-relief"
+    ],
+    "equipment": [],
+    "position": "prone",
+    "setup": "Begin lying on your stomach, with your hands by your shoulders resting flat on the ground.",
+    "execution": "Push against the floor with your hands, bending your back upward.",
+    "cues": [
+      "Keep your hips in contact with the floor.",
+      "Maintain a gentle chin tuck throughout.",
+      "Exhale on the press (2020 note)."
+    ],
+    "errors": [],
+    "defaultDose": {
+      "reps": "15",
+      "frequency": "1x daily"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "foam-roller-thoracic-series",
+    "name": "Foam Roller Thoracic Series",
+    "aliases": [],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "thoracic",
+      "shoulder"
+    ],
+    "goals": [
+      "mobility",
+      "posture"
+    ],
+    "equipment": [
+      "foam roller",
+      "pillow"
+    ],
+    "position": "supine",
+    "setup": "Lie lengthwise on foam roller with pillow for neck support. Perform pelvic tilt to flatten back onto roller. Arms straight up toward ceiling with palms facing in.",
+    "execution": "1. Reach straight arms long overhead toward floor maintaining pelvic tilt, then return to starting position (10x). 2. Alternate straight arms in scissor motion (10x). 3. Make snow angel motion reaching overhead then down to hips (10x).",
+    "cues": [
+      "Maintain the pelvic tilt throughout.",
+      "If snow angels bother your shoulder(s), lift arms off ground more or remove that motion from the series."
+    ],
+    "errors": [],
+    "defaultDose": {
+      "reps": "10 per movement",
+      "frequency": "2x daily"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "supine-hamstring-stretch-doorway",
+    "name": "Supine Hamstring Stretch with Doorway",
+    "aliases": [],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [
+      "doorway"
+    ],
+    "position": "supine",
+    "setup": "Begin lying on your back in a doorway with your hips next to the doorframe.",
+    "execution": "Keeping your leg straight, raise your heel up onto the doorframe until you feel a gentle stretch in the back of your leg. Hold this position.",
+    "cues": [
+      "Keep breathing evenly."
+    ],
+    "errors": [
+      "Do not lock your knee."
+    ],
+    "defaultDose": {
+      "sets": 3,
+      "holdSeconds": 30,
+      "frequency": "2x daily"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "hip-flexor-stretch-edge-of-bed",
+    "name": "Hip Flexor Stretch at Edge of Bed",
+    "aliases": [
+      "Thomas Stretch"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2018 PT"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip",
+      "lumbar"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [
+      "bed or table"
+    ],
+    "position": "supine",
+    "setup": "Begin lying diagonally at the edge of a table or bed, with the leg furthest from the edge bent.",
+    "execution": "Let your straight leg hang off the edge of the bed, then pull your bent leg toward your chest and hold. You should feel a stretch in the front of the hip of your hanging leg.",
+    "cues": [
+      "Keep your upper body relaxed."
+    ],
+    "errors": [
+      "Do not let your low back arch."
+    ],
+    "defaultDose": {
+      "reps": "3",
+      "holdSeconds": 30,
+      "frequency": "1x daily"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "standing-lateral-shift-correction-wall",
+    "name": "Standing Lateral Shift Correction at Wall",
+    "aliases": [
+      "Right Standing Lateral Shift Correction at Wall"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2020 PT"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "lumbar",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "pain-relief",
+      "posture"
+    ],
+    "equipment": [
+      "wall"
+    ],
+    "position": "standing",
+    "setup": "Begin in a standing upright position with a wall on the right side of your body.",
+    "execution": "Place your right forearm and shoulder on the wall, then shift your hip toward the wall. Hold briefly, then relax and repeat.",
+    "cues": [
+      "Maintain your balance.",
+      "Step out of the position when you are finished."
+    ],
+    "errors": [],
+    "why": "2020 program prescribed it on the right side only.",
+    "defaultDose": {
+      "reps": "10",
+      "frequency": "1x daily"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "supine-figure-4-piriformis-stretch",
+    "name": "Supine Figure 4 Piriformis Stretch",
+    "aliases": [
+      "Figure 4 Stretch",
+      "Piriformis Stretch"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2020 PT"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "supine",
+    "setup": "Begin by lying on your back with your knees bent. Cross one leg over the other so your ankle is resting on your opposite knee.",
+    "execution": "Pull your leg towards your chest until you feel a stretch and hold.",
+    "cues": [
+      "Keep your back flat against the bed."
+    ],
+    "errors": [],
+    "defaultDose": {
+      "reps": "2-3",
+      "holdSeconds": 30,
+      "frequency": "1x daily"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "prone-quad-stretch-strap",
+    "name": "Prone Quadriceps Stretch with Strap",
+    "aliases": [],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2020 PT"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [
+      "strap"
+    ],
+    "position": "prone",
+    "setup": "Begin lying on your front with your legs straight, holding the end of a strap that is looped around one foot.",
+    "execution": "Pull the end of the strap over your shoulder on the same side of your body, bending your knee, until you feel a gentle stretch in your thigh.",
+    "cues": [],
+    "errors": [
+      "Do not let your low back arch."
+    ],
+    "defaultDose": {
+      "sets": 3,
+      "holdSeconds": 30,
+      "frequency": "1x daily"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "hold"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "thoracic-rotation-open-book",
+    "name": "Sidelying Thoracic Rotation with Open Book",
+    "aliases": [
+      "Thoracic Rotation Open Book",
+      "Sidelying Thoracic Rotation (Open Book)",
+      "Open Book"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2020 PT"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "thoracic",
+      "shoulder"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "side-lying",
+    "setup": "Begin lying on your side with your legs bent at a 75 degree angle and your arms together straight in front of you on the ground.",
+    "execution": "Slide your top hand back and forth over your bottom hand 5 times, rotating your shoulders. Then, lift your top arm straight up and over to the floor on your other side.",
+    "cues": [
+      "Keep your knees together.",
+      "Only rotate your back and upper arm.",
+      "Your hips should stay facing forward."
+    ],
+    "errors": [],
+    "defaultDose": {
+      "reps": "10",
+      "frequency": "1x daily"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "figure-4-bridge",
+    "name": "Figure 4 Bridge",
+    "aliases": [
+      "Single Leg Figure 4 Bridge"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2020 PT"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "pelvis-hip",
+      "core"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [],
+    "position": "supine",
+    "setup": "Begin lying on your back with your knees bent and feet flat on the floor. Cross one ankle over your other knee.",
+    "execution": "Lift your hips off the floor into a bridge position and hold, then lower yourself back down and repeat.",
+    "cues": [
+      "Keep your abdominals tight.",
+      "Keep your arms flat on the floor."
+    ],
+    "errors": [
+      "Do not let your hips rotate to either side."
+    ],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10",
+      "frequency": "3x weekly"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "forward-t",
+    "name": "Forward T",
+    "aliases": [
+      "Forward T (Single-Leg Balance)"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2020 PT"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "pelvis-hip",
+      "ankle-foot",
+      "knee",
+      "core"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Begin in a standing upright position with your hands resting at your waist.",
+    "execution": "Balancing on one leg, bend at your hips and slowly tilt your body forward while extending the other leg backward, then return to the starting position and repeat.",
+    "cues": [
+      "Keep your back straight."
+    ],
+    "errors": [
+      "Don't let your knee collapse inward."
+    ],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "10",
+      "frequency": "3x weekly"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "complexity"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "side-plank-full-arm-rotation",
+    "name": "Side Plank on Full Arm with Rotation",
+    "aliases": [
+      "Side Plank Thread the Needle"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2020 PT"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core",
+      "shoulder",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "stability",
+      "strength"
+    ],
+    "equipment": [],
+    "position": "side-lying",
+    "setup": "Begin lying on your side. Lift your hip off the floor into a side plank position and raise your arm straight up toward the ceiling.",
+    "execution": "Reach your arm under your side as far as you can while maintaining the plank, then bring it back up to the starting position and repeat.",
+    "cues": [
+      "Keep your abdominals tight."
+    ],
+    "errors": [
+      "Do not let your hips rotate or drop toward the floor."
+    ],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10",
+      "frequency": "3x weekly"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "reps",
+      "easier": "side-plank-on-elbow"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "runners-step-up-down",
+    "name": "Runner's Step Up/Down",
+    "aliases": [
+      "Runner's Step Up"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2020 PT"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip",
+      "ankle-foot"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "step or platform"
+    ],
+    "position": "standing",
+    "setup": "Begin in a standing position with one foot resting on a platform or step in front of your body.",
+    "execution": "Slowly step up, raising your knee to a 90 degree angle and moving your opposite arm at the same time. Then lower your foot to the ground and repeat.",
+    "cues": [],
+    "errors": [
+      "Do not let your trunk bend forward as you lower your foot.",
+      "Do not let your knee collapse inward as you lower your foot."
+    ],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10",
+      "frequency": "3x weekly"
+    },
+    "intensity": 3,
+    "impact": "low",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "lateral-hopping",
+    "name": "Lateral Hopping on Level Ground",
+    "aliases": [
+      "Lateral Hops"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2020 PT"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "ankle-foot",
+      "knee",
+      "pelvis-hip"
+    ],
+    "goals": [
+      "jump",
+      "stability"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Begin in a standing upright position with your feet slightly wider than shoulder width apart.",
+    "execution": "Jump sideways, taking off with both feet, and landing with both feet.",
+    "cues": [
+      "Stick the landing."
+    ],
+    "errors": [
+      "Don't let your knees collapse inward at any point."
+    ],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10",
+      "frequency": "3x weekly"
+    },
+    "intensity": 3,
+    "impact": "low",
+    "progression": {
+      "method": "complexity",
+      "harder": "jump-lunges"
+    },
+    "contraindications": [
+      "acute knee/ankle pain"
+    ]
+  },
+  {
+    "id": "jump-lunges",
+    "name": "Jump Lunges",
+    "aliases": [
+      "Split Jumps",
+      "Switch Lunges"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2020 PT"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "knee",
+      "pelvis-hip",
+      "ankle-foot"
+    ],
+    "goals": [
+      "jump",
+      "power"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Begin in a lunge position.",
+    "execution": "Jump straight upward and switch the position of your legs, landing back in a lunge position. Continue these jumps, alternating your legs each time.",
+    "cues": [
+      "Keep your back straight."
+    ],
+    "errors": [
+      "Do not let your knees collapse inward as you land.",
+      "Do not let your knees move forward past your toes as you land."
+    ],
+    "defaultDose": {
+      "sets": 3,
+      "reps": "10",
+      "frequency": "3x weekly"
+    },
+    "intensity": 4,
+    "impact": "high",
+    "progression": {
+      "method": "complexity",
+      "easier": "lateral-hopping"
+    },
+    "contraindications": [
+      "acute knee/ankle pain"
+    ]
+  },
+  {
+    "id": "quadruped-train-tracks",
+    "name": "Quadruped Train Tracks",
+    "aliases": [],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2026 PT"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "pelvis-hip",
+      "core",
+      "lumbar"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [
+      "towel or yoga block"
+    ],
+    "position": "quadruped",
+    "setup": "Begin on your hands and knees with a towel or yoga block under one of your knees. Hands under shoulders and knees under hips.",
+    "execution": "Lift the working knee off of the ground until your knees are parallel, then lower your knee back down.",
+    "cues": [
+      "The elevated leg will remain stationary throughout the movement.",
+      "Keep your toes on the ground.",
+      "If you need more support in your wrists, try making a fist and elevating up onto your knuckles."
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "15",
+      "frequency": "1x daily"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "ta-march",
+    "name": "TA March",
+    "aliases": [
+      "Transversus Abdominis March",
+      "Supine March"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2026 PT"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "core",
+      "lumbar"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [],
+    "position": "supine",
+    "setup": "Begin lying on your back with your arms resting at your sides, your knees bent and your feet flat on the ground.",
+    "execution": "Tighten your abdominals and slowly raise one of your legs off the floor, keeping your knee bent. Then return to the starting position and repeat with your other leg.",
+    "cues": [
+      "Keep your trunk stiff."
+    ],
+    "errors": [
+      "Do not let your low back arch."
+    ],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "15",
+      "frequency": "1x daily"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "reps"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "split-stance-row-thoracic-rotation",
+    "name": "Split Stance Single Arm Row with Thoracic Rotation",
+    "aliases": [
+      "Split Stance Cable Row with Rotation"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2026 PT"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "thoracic",
+      "shoulder",
+      "core",
+      "lumbar"
+    ],
+    "goals": [
+      "strength",
+      "stability"
+    ],
+    "equipment": [
+      "cable machine or resistance band"
+    ],
+    "position": "standing",
+    "setup": "Grab a single handle on a cable machine or with bands. Adjust anchor point so it is about at elbow height. Place opposite foot forward and opposite arm out in front of you.",
+    "execution": "Find neutral pelvis, engage lower abdominals and pull handle focusing on squeezing your shoulder blade back and down while the opposite arm presses forward. As the weight pulls you back to the starting position, pull the opposite arm back. Maintain stillness in your legs and pelvis throughout the exercise and squeeze abs more as you pull the weight toward you.",
+    "cues": [
+      "Breathe out as you pull the weight and inhale as the weight pulls you back to the starting position.",
+      "Keep belly button facing straight ahead as if a laser pointer was aiming at the wall and not moving.",
+      "Squeeze your shoulder blade back and down.",
+      "Maintain stillness in your legs and pelvis."
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "15",
+      "frequency": "1x daily"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": []
+  },
+  {
+    "id": "supine-hip-ir-er-rotation",
+    "name": "Supine Hip Internal and External Rotation",
+    "aliases": [
+      "Hip IR/ER Rotation",
+      "Supine Hip IR/ER Rotation",
+      "Windshield Wipers"
+    ],
+    "source": {
+      "kind": "pt",
+      "ref": "physical_therapy_routines/2026 PT"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip",
+      "lumbar"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "supine",
+    "setup": "Begin lying on your back with your knees bent, feet flat on the floor, and legs wider than hip width apart.",
+    "execution": "Let your knees fall toward the same side, then repeat on the other side.",
+    "cues": [
+      "Keep both of your shoulders on the ground."
+    ],
+    "errors": [
+      "Do not arch your back."
+    ],
+    "defaultDose": {
+      "sets": 2,
+      "reps": "15",
+      "frequency": "1x daily"
+    },
+    "intensity": 1,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": []
+  }
+]

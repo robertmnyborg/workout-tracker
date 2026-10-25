@@ -1,0 +1,195 @@
+{
+  "id": "basketball-cardio",
+  "name": "Basketball Cardio Program",
+  "description": "3-week cardiovascular training plan for basketball. Builds lactate threshold and sprint recovery speed. Stop hard training 4-5 days before game day.",
+  "source": {
+    "kind": "trainer",
+    "ref": "prisma/seed.ts: Basketball Cardio Program"
+  },
+  "days": [
+    {
+      "dayNumber": 1,
+      "name": "Steady-State Cardio",
+      "focus": "Aerobic base, 65-70% max HR",
+      "minutes": 35,
+      "items": [
+        {
+          "exerciseId": "light-jog-or-brisk-walk",
+          "dose": {
+            "sets": 1,
+            "reps": "5 min"
+          },
+          "notes": "Warm-Up"
+        },
+        {
+          "exerciseId": "steady-state-cardio",
+          "dose": {
+            "sets": 1,
+            "reps": "20-30 min"
+          },
+          "notes": "Main Work"
+        },
+        {
+          "exerciseId": "cardio-cooldown-walk-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "5 min"
+          },
+          "notes": "Cool-Down · as written: Walk + Light Stretching"
+        }
+      ]
+    },
+    {
+      "dayNumber": 2,
+      "name": "Intervals — Base",
+      "focus": "Sprint capacity, lactate tolerance (Week 1 intensity)",
+      "minutes": 25,
+      "items": [
+        {
+          "exerciseId": "easy-jog-dynamic-warm-up",
+          "dose": {
+            "sets": 1,
+            "reps": "5 min"
+          },
+          "notes": "Warm-Up"
+        },
+        {
+          "exerciseId": "interval-30-90",
+          "dose": {
+            "sets": 8,
+            "reps": "30s hard / 90s easy"
+          },
+          "notes": "Intervals · rest 90s"
+        },
+        {
+          "exerciseId": "cardio-cooldown-walk-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "5 min"
+          },
+          "notes": "Cool-Down"
+        }
+      ]
+    },
+    {
+      "dayNumber": 3,
+      "name": "Long Easy Run",
+      "focus": "Aerobic endurance, fat oxidation",
+      "minutes": 45,
+      "items": [
+        {
+          "exerciseId": "easy-run",
+          "dose": {
+            "sets": 1,
+            "reps": "30-40 min"
+          },
+          "notes": "Main Work"
+        },
+        {
+          "exerciseId": "cardio-cooldown-walk-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "5 min walk + stretching"
+          },
+          "notes": "Cool-Down · as written: Walk + Full Lower Body Stretch"
+        }
+      ]
+    },
+    {
+      "dayNumber": 4,
+      "name": "Intervals — Ramp",
+      "focus": "Higher intensity intervals (Week 2 progression)",
+      "minutes": 30,
+      "items": [
+        {
+          "exerciseId": "easy-jog-dynamic-warm-up",
+          "dose": {
+            "sets": 1,
+            "reps": "5 min"
+          },
+          "notes": "Warm-Up"
+        },
+        {
+          "exerciseId": "interval-40-80",
+          "dose": {
+            "sets": 10,
+            "reps": "40s hard / 80s easy"
+          },
+          "notes": "Intervals · rest 80s"
+        },
+        {
+          "exerciseId": "cardio-cooldown-walk-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "5 min"
+          },
+          "notes": "Cool-Down"
+        }
+      ]
+    },
+    {
+      "dayNumber": 5,
+      "name": "Basketball Intervals",
+      "focus": "Sport-specific conditioning, court movement patterns",
+      "minutes": 30,
+      "items": [
+        {
+          "exerciseId": "jog-lateral-shuffle-warm-up",
+          "dose": {
+            "sets": 1,
+            "reps": "5 min"
+          },
+          "notes": "Warm-Up"
+        },
+        {
+          "exerciseId": "suicide-sprints",
+          "dose": {
+            "sets": 6,
+            "reps": "1 full suicide"
+          },
+          "notes": "Basketball Drills · rest 90s"
+        },
+        {
+          "exerciseId": "defensive-slide-shuttles",
+          "dose": {
+            "sets": 4,
+            "reps": "1 full court"
+          },
+          "notes": "Basketball Drills · rest 90s"
+        },
+        {
+          "exerciseId": "cardio-cooldown-walk-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "5-10 min"
+          },
+          "notes": "Cool-Down · as written: Walk + Full Stretch"
+        }
+      ]
+    },
+    {
+      "dayNumber": 6,
+      "name": "Taper Jog",
+      "focus": "Active recovery, maintain without fatiguing (Week 3 taper)",
+      "minutes": 25,
+      "items": [
+        {
+          "exerciseId": "easy-run",
+          "dose": {
+            "sets": 1,
+            "reps": "20 min"
+          },
+          "notes": "Easy Jog · as written: Easy Jog"
+        },
+        {
+          "exerciseId": "cardio-cooldown-walk-stretch",
+          "dose": {
+            "sets": 1,
+            "reps": "5 min"
+          },
+          "notes": "Cool-Down · as written: Walk + Light Stretch"
+        }
+      ]
+    }
+  ]
+}

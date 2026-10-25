@@ -9,11 +9,13 @@ datasource db {
 }
 
 model Program {
-  id          String       @id @default(cuid())
+  id          String              @id @default(cuid())
   name        String
   description String?
-  createdAt   DateTime     @default(now())
+  createdAt   DateTime            @default(now())
+  corpusId    String?             @unique // corpus/programs/<id>.json, set by corpus:import
   days        ProgramDay[]
+  enrollments ProgramEnrollment[]
 }
 
 model ProgramDay {
@@ -46,26 +48,30 @@ model Section {
 }
 
 model Exercise {
-  id          String   @id @default(cuid())
+  id          String           @id @default(cuid())
   sectionId   String
-  section     Section  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  section     Section          @relation(fields: [sectionId], references: [id], onDelete: Cascade)
   name        String
   description String?
   sets        Int
   reps        String
   holdSeconds Int?
   order       Int
+  libraryId   String?
+  library     LibraryExercise? @relation(fields: [libraryId], references: [id])
   setLogs     SetLog[]
 
   @@unique([sectionId, order])
 }
 
 model Profile {
-  id              String           @id @default(cuid())
+  id              String              @id @default(cuid())
   name            String
-  createdAt       DateTime         @default(now())
+  createdAt       DateTime            @default(now())
   workoutSessions WorkoutSession[]
   nutritionTarget NutritionTarget?
+  enrollments     ProgramEnrollment[]
+  checkIns        CheckIn[]
   mealPlans       MealPlan[]
   mealLogs        MealLog[]
 }
@@ -207,4 +213,52 @@ model MealLogItem {
   carbs     Float
   fat       Float
   order     Int     @default(0)
+}
+
+// One row per corpus/library record. `data` holds the full CorpusExercise JSON.
+model LibraryExercise {
+  id         String     @id // corpus id (kebab-case)
+  name       String
+  category   String
+  sourceKind String
+  intensity  Int
+  impact     String
+  bodyAreas  String[]
+  goals      String[]
+  data       Json
+  updatedAt  DateTime   @updatedAt
+  exercises  Exercise[]
+}
+
+// A profile following a day-sequenced program (BAT 28-day): day N = days since startDate.
+model ProgramEnrollment {
+  id        String   @id @default(cuid())
+  profileId String
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  programId String
+  program   Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  startDate DateTime
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  @@unique([profileId, programId])
+}
+
+// "Here's how I feel" — the parsed inputs and the plan the engine built from them.
+model CheckIn {
+  id        String   @id @default(cuid())
+  profileId String
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  date      DateTime @default(now())
+  rawText   String?
+  energy    Int
+  soreness  Int
+  sleep     Int?
+  painAreas String[]
+  focus     String[]
+  minutes   Int
+  plan      Json
+  createdAt DateTime @default(now())
+
+  @@index([profileId, date])
 }

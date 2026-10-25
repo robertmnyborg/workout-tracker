@@ -1,0 +1,120 @@
+{
+  "id": "pt-2020",
+  "name": "2020 PT Home Program",
+  "description": "2020 physical-therapy home program (episode of care from 11/20/2020): lumbar extension and right lateral shift correction, hip/quad/thoracic mobility, then hip and core strength, single-leg balance, step-ups, and plyometrics (lateral hops, jump lunges).",
+  "source": {
+    "kind": "pt",
+    "ref": "physical_therapy_routines/2020 PT"
+  },
+  "days": [
+    {
+      "dayNumber": 1,
+      "name": "Home Program",
+      "items": [
+        {
+          "exerciseId": "prone-press-up",
+          "dose": {
+            "reps": "15",
+            "frequency": "1x daily"
+          },
+          "notes": "Add exhale on press"
+        },
+        {
+          "exerciseId": "standing-lateral-shift-correction-wall",
+          "dose": {
+            "reps": "10",
+            "frequency": "1x daily"
+          },
+          "notes": "Right side: wall on your right"
+        },
+        {
+          "exerciseId": "supine-figure-4-piriformis-stretch",
+          "dose": {
+            "reps": "2-3",
+            "holdSeconds": 30,
+            "frequency": "1x daily"
+          }
+        },
+        {
+          "exerciseId": "prone-quad-stretch-strap",
+          "dose": {
+            "sets": 3,
+            "holdSeconds": 30,
+            "frequency": "1x daily"
+          }
+        },
+        {
+          "exerciseId": "thoracic-rotation-open-book",
+          "dose": {
+            "reps": "10",
+            "frequency": "1x daily"
+          }
+        },
+        {
+          "exerciseId": "figure-4-bridge",
+          "dose": {
+            "sets": 3,
+            "reps": "10",
+            "frequency": "3x weekly"
+          }
+        },
+        {
+          "exerciseId": "standard-plank",
+          "dose": {
+            "sets": 3,
+            "holdSeconds": 30,
+            "frequency": "3x weekly"
+          },
+          "notes": "Add foam roll"
+        },
+        {
+          "exerciseId": "forward-t",
+          "dose": {
+            "sets": 2,
+            "reps": "10",
+            "frequency": "3x weekly"
+          }
+        },
+        {
+          "exerciseId": "monster-walk",
+          "dose": {
+            "reps": "10",
+            "frequency": "3x daily"
+          }
+        },
+        {
+          "exerciseId": "side-plank-full-arm-rotation",
+          "dose": {
+            "sets": 3,
+            "reps": "10",
+            "frequency": "3x weekly"
+          }
+        },
+        {
+          "exerciseId": "runners-step-up-down",
+          "dose": {
+            "sets": 3,
+            "reps": "10",
+            "frequency": "3x weekly"
+          }
+        },
+        {
+          "exerciseId": "lateral-hopping",
+          "dose": {
+            "sets": 3,
+            "reps": "10",
+            "frequency": "3x weekly"
+          }
+        },
+        {
+          "exerciseId": "jump-lunges",
+          "dose": {
+            "sets": 3,
+            "reps": "10",
+            "frequency": "3x weekly"
+          }
+        }
+      ]
+    }
+  ]
+}
