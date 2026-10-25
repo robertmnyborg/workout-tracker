@@ -9,7 +9,9 @@ Personal web app to track a combined training program: vertical jump / strength 
 - Tailwind CSS 4
 - Recharts for progress charts
 - Two-profile support (no auth, localStorage-based switching)
-- Deployed on Vercel: https://workout-tracker-eta-nine.vercel.app
+- Hosted on Fly.io: https://robert-workout-tracker.fly.dev (app `robert-workout-tracker`, personal org, sjc, scale-to-zero).
+  Push to main deploys via `.github/workflows/fly-deploy.yml` (repo secret FLY_API_TOKEN, 1-year deploy token).
+  The old Vercel URL https://workout-tracker-eta-nine.vercel.app now only redirects to Fly (`vercel.json`).
 
 ## Source Data
 - Google Doc: `1Psu0QVlvmQ52xvu1uACJFeaLELMGruPZqgNnIjtJuxU` ("4-Day Vertical Jump Program")
@@ -250,11 +252,14 @@ Plan: `plans/unified-corpus-and-coach.md`.
 Text → `POST /api/coach/parse` (Claude `claude-opus-5-5`, effort low, zod structured output, only reads the note) → sliders/chips
 (editable) → `POST /api/coach/plan` (engine, saves CheckIn) → `POST /api/coach/start` (creates a day in the "Coach Sessions"
 program) → existing `/workout/[dayId]` logger. Claude never picks exercises or loads.
-- Needs `ANTHROPIC_API_KEY`. Without it, parse returns 503 and the sliders still work.
-- **Vercel has no key yet.** Local test used `ANTHROPIC_API_KEY_EVAL` from `~/.env` as a process env var only.
+- Runs on Robert's Claude subscription via the Claude Agent SDK, the same pattern as Peek's mimic: Fly secret
+  `CLAUDE_CODE_OAUTH_TOKEN` from `claude setup-token` (valid 1 year, created 2026-10-25; rotate by re-running and
+  `fly secrets set`). Locally it uses the logged-in Claude Code session. Any ANTHROPIC_API_KEY is stripped from the
+  child env because it would outrank the token. Parse takes ~12 s. Without a token, parse returns 503 and the sliders still work.
+- Why Fly, not Vercel: the SDK bundles a 278MB Claude binary (linux-x64); Vercel functions cap at 250MB.
 
 ### Status 2026-10-24
 - [x] Corpus, import, BAT enrollment on Today, engine + tests, coach page, verified at 390px in Chrome.
-- [ ] Personal Anthropic key on Vercel (`vercel env add ANTHROPIC_API_KEY production`).
+- [x] Coach on subscription, live on Fly (2026-10-25).
 - [ ] More YouTube sources (user to send links).
 - [ ] Duplicate Robert/Casey profiles exist (cmq2… from June and cmvnf… created 2026-10-24 on a new device).
