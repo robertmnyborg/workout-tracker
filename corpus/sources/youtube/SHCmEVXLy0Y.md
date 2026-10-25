@@ -13,4 +13,4 @@ The UPDATED RP HYPERTROPHY APP: https://rpstrength.com/hypeapp
 Become an RP channel member and get instant access to over 200 videos of exclusive in-depth training and advanced science content! ➡️https://www.youtube.com/channel/UCfQgsKhHjSyRLOp9mnffqVg/join
 
 ## Transcript
-TRANSCRIPT UNAVAILABLE: Captions disabled on YouTube watch player (player captionTracks empty and no transcript engagement panel exposed).
+TRANSCRIPT UNAVAILABLE: Members-only video (playabilityStatus UNPLAYABLE / sponsors_only_video; Gemini file_uri returns HTTP 403 PERMISSION_DENIED).

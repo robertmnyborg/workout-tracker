@@ -225,7 +225,8 @@ Plan: `plans/unified-corpus-and-coach.md`.
 - `principles/*.md`: bat-alignment, pt-notes, jump-science, schedule, yt-athletic, yt-pt, yt-programming, yt-technique
   (timestamped citations; yt-pt states the Jeff-vs-BAT posture disagreement; yt-programming lists engine gaps).
 - `sources/youtube/channels/`: full catalogs of both channels (YouTube Data API via Antigravity), `candidates.json`
-  (keyword pass, 487) and `shortlist.json` (34 picked). Neither channel has a true vertical-jump/plyometric video. Reference text for an AI planner.
+  (keyword pass, 487) and `shortlist.json` (34 picked; 31 transcribed, 3 members-only excluded; 4 via Gemini video
+  understanding because captions were off or garbled). Neither channel has a true vertical-jump/plyometric video. Reference text for an AI planner.
 - `sources/youtube/<id>.md`: raw transcripts.
 - `npm run corpus:check` validates (enums, unique ids, link targets). `npm run corpus:import` upserts into the DB.
 - **Never run `prisma db seed` / `/api/programs/reset`: they delete all profiles and sessions.** `corpus:import` is additive.

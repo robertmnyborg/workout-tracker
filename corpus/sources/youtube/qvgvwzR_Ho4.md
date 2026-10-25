@@ -13,4 +13,4 @@ The ALL NEW RP Hypertrophy App: https://rp.app/hypertrophy/code/RP_YOUTUBE?utm_s
 Become an RP channel member and get instant access to over 30 hrs of exclusive in-depth training and advanced science content! ➡️https://www.youtube.com/channel/UCfQgsKhHjSyRLOp9mnffqVg/join
 
 ## Transcript
-TRANSCRIPT UNAVAILABLE: Captions disabled on YouTube watch player (player captionTracks empty and no transcript engagement panel exposed).
+TRANSCRIPT UNAVAILABLE: Members-only video (playabilityStatus UNPLAYABLE / sponsors_only_video; Gemini file_uri returns HTTP 403 PERMISSION_DENIED).
