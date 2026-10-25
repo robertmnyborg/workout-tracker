@@ -70,6 +70,8 @@ model Profile {
   goal            String? // standing goal in the user's words: "dunk by summer"
   goalFocus       String[]            @default([])
   athlete         Json? // onboarding answers, see src/lib/engine/athlete.ts
+  jumpBlockStart  DateTime? // day 0 of the 12-week jump block (UTC midnight of the user's date)
+  jumpTests       JumpTest[]
   createdAt       DateTime            @default(now())
   workoutSessions WorkoutSession[]
   nutritionTarget NutritionTarget?
@@ -264,6 +266,19 @@ model CheckIn {
   override        Boolean  @default(false)
   plan            Json
   createdAt       DateTime @default(now())
+
+  @@index([profileId, date])
+}
+
+// Weekly vertical test: best of 3 reach-to-touch jumps after the usual warm-up (TMS, 1CFAZfxEkoQ @ 7:27).
+model JumpTest {
+  id        String   @id @default(cuid())
+  profileId String
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  date      DateTime // UTC midnight of the user's date
+  standing  Float?   // inches
+  approach  Float?
+  createdAt DateTime @default(now())
 
   @@index([profileId, date])
 }

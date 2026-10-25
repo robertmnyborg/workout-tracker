@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { buildPlan, readiness, type CheckIn, type LibItem } from "./plan";
 import { nextDose, type PastSession } from "./progression";
 import { athleteLimits, contacts, type Athlete } from "./athlete";
+import { blockPhase, phaseDose, testDue } from "./phase";
 
 const ex = (id: string, o: Partial<LibItem>): LibItem => ({
   id, name: id, category: "strength", bodyAreas: ["full-body"], goals: ["strength"],
@@ -227,4 +228,38 @@ test("athlete: small approach gap moves approach drills up; knee history adds a 
   const p = buildPlan(fresh, libJump, [], undefined, a);
   assert.ok(ids(p).includes("spanish-squat"));
   assert.equal(p.blocks.find((b) => b.name === "Main")!.items[0].exerciseId, "approach-drill");
+});
+
+test("phase clock: weeks map to phases, then the block ends", () => {
+  assert.deepEqual([0, 27, 28, 55, 56, 83, 84].map((d) => blockPhase(d).phase), [1, 1, 2, 2, 3, 3, null]);
+  assert.equal(blockPhase(30).week, 5);
+});
+
+test("phase clock: phase 1 lifts 8-12, phase 2 lifts 6-8, non-jump days untouched", () => {
+  const squat = (p: number) => buildPlan(fresh, lib, [], undefined, undefined, blockPhase(p)).blocks
+    .flatMap((b) => b.items).find((i) => i.exerciseId === "back-squat")!.dose.reps;
+  assert.equal(squat(0), "8-12");
+  assert.equal(squat(35), "6-8");
+  const strengthDay = buildPlan({ ...fresh, focus: ["strength"] }, lib, [], undefined, undefined, blockPhase(0));
+  assert.equal(strengthDay.blocks.flatMap((b) => b.items).find((i) => i.exerciseId === "back-squat")!.dose.reps, "5");
+});
+
+test("phase clock: phase 2 ranks hard plyos ahead of easy ones", () => {
+  const main = (d: number) => buildPlan(fresh, libJump, [], undefined, athleteLimits(athlete({})), blockPhase(d))
+    .blocks.find((b) => b.name === "Main")!.items.map((i) => i.exerciseId);
+  const p2 = main(35);
+  assert.ok(p2.indexOf("tuck-jump") < p2.indexOf("pogo") || !p2.includes("pogo"));
+});
+
+test("jump test is due weekly", () => {
+  assert.equal(testDue(null), true);
+  assert.equal(testDue(6), false);
+  assert.equal(testDue(7), true);
+});
+
+test("phase clock: timed or odd rep formats keep their dose", () => {
+  const p2 = blockPhase(35);
+  const lunge = ex("lunge", {});
+  assert.equal(phaseDose(p2, lunge, { sets: 1, reps: "30-60s" }).reps, "30-60s");
+  assert.equal(phaseDose(p2, lunge, { sets: 3, reps: "10 each arm" }).reps, "6-8 each arm");
 });

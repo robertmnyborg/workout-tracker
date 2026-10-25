@@ -270,7 +270,7 @@ posts the same route with no message. Claude never picks exercises or loads; its
 - Jump corpus (2026-10-25): Antigravity picked The Movement System (Dr. Matt Casturo, DPT) and PJF Performance (Paul
   Fabritz, NBA) from 14 channels (`corpus/sources/youtube/jump/README.md`); 12 transcripts → `principles/yt-jump.md`
   (20 engine rules) + 20 drills in `library/yt-jump.json`. Not yet in the engine: weekly contact caps by training age,
-  12-week phase clock, weekly jump test log. Built 2026-10-25 from the /setup questionnaire (Profile.athlete JSON, `src/lib/engine/athlete.ts`):
+  (all built). Built 2026-10-25 from the /setup questionnaire (Profile.athlete JSON, `src/lib/engine/athlete.ts`):
   per-session contact caps by plyo age (beginner 100/0 high, intermediate 120/20, advanced 150/30; sets trimmed to fit), depth jumps
   locked until 6+ mo plyo and 6+ mo lifting (also blocks progression swaps into them), jerk budget (jumping sport 3x/wk, or 2x/wk with
   knee/ankle history, drops fast power lifts except low-landing ones), approach-standing gap < 4 in ranks skill drills first, knee/ankle
@@ -293,3 +293,9 @@ posts the same route with no message. Claude never picks exercises or loads; its
   switch in the header (`theme-context` setTheme). Emoji nav and rainbow section pills removed. Coach is a transcript with a plan table.
   Gotcha: the app re-creates any profile listed in a browser's localStorage that is missing from the DB (profile-context reconcile),
   so clear the test browser's storage before deleting a test profile.
+- 2026-10-25: 12-week jump block + weekly jump test (`src/lib/engine/phase.ts`, `JumpTest` table, `Profile.jumpBlockStart`,
+  `/api/profiles/[id]/jump`, card at the top of Progress). Block starts the first time a jump goal is saved at /setup, or from
+  the Progress card. Weeks 1-4 phase 1 (strength reps 8-12, power + easy plyos ranked up), 5-8 phase 2 (6-8, hard plyos up),
+  9-12 phase 3 (hard plyos + approach skill up), week 13+ "retest, start a new block". Phase shapes jump/power days only; only
+  plain rep counts get rewritten. Opening message reminds a test when 7+ days since the last one (block active).
+  Chart: dataviz-validated blue/orange (light #2a78d6/#eb6834, dark #3987e5/#d95926), table twin.

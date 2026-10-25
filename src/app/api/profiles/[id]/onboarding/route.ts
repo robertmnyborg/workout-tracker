@@ -3,6 +3,7 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { BODY_AREAS, GOALS } from "../../../../../../corpus/schema";
 import { LIFT_AGES, PLYO_AGES } from "@/lib/engine/athlete";
+import { userTodayYmd, ymdToUtc } from "@/lib/program-day";
 
 const inches = z.number().min(0).max(60).nullable();
 const Body = z.object({
@@ -32,6 +33,12 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
   const parsed = Body.safeParse(await req.json());
   if (!parsed.success) return NextResponse.json({ error: parsed.error.issues[0].message }, { status: 400 });
   const { goal, goalFocus, athlete } = parsed.data;
-  await prisma.profile.update({ where: { id }, data: { goal: goal || null, goalFocus, athlete } });
+  const { jumpBlockStart } = await prisma.profile.findUniqueOrThrow({ where: { id }, select: { jumpBlockStart: true } });
+  // A jump goal starts the 12-week block clock the first time it is saved.
+  const startBlock = !jumpBlockStart && goalFocus.includes("jump");
+  await prisma.profile.update({
+    where: { id },
+    data: { goal: goal || null, goalFocus, athlete, ...(startBlock ? { jumpBlockStart: ymdToUtc(userTodayYmd()) } : {}) },
+  });
   return NextResponse.json({ ok: true });
 }

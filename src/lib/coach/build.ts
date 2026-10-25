@@ -7,6 +7,16 @@ import { nextDose, type PastSession } from "../engine/progression";
 import { assessRecovery, EXPLOSIVE, LOADING, outsideEvents, region, suggestFocus, type LoadEvent, type OutsideActivity, type Recovery } from "../engine/recovery";
 import { daysAgo, programDayNumber } from "../program-day";
 import { athleteLimits, type Athlete } from "../engine/athlete";
+import { blockPhase, testDue, type Phase } from "../engine/phase";
+
+/** Where the profile is in its jump block, and how long since the last jump test. */
+async function jumpState(profile: { id: string; jumpBlockStart: Date | null }): Promise<{ phase?: Phase; sinceTest: number | null }> {
+  const last = await prisma.jumpTest.findFirst({ where: { profileId: profile.id }, orderBy: { date: "desc" } });
+  return {
+    phase: profile.jumpBlockStart ? blockPhase(programDayNumber(profile.jumpBlockStart)) : undefined,
+    sinceTest: last ? programDayNumber(last.date) : null,
+  };
+}
 
 const UNKNOWN_ATHLETE: Athlete = { plyoAge: "none", liftAge: "none", standingVert: null, approachVert: null,
   sport: null, sportPerWeek: 0, sportJumping: false, tendonHistory: [], sessionMinutes: 30 };
@@ -103,10 +113,15 @@ export async function coachOpening(profileId: string): Promise<Opening> {
   const events = await recentEvents(profileId, library);
   const recovery = assessRecovery(events);
   const suggestedFocus = suggestFocus(profile.goalFocus as Goal[], recovery);
+  const { phase, sinceTest } = await jumpState(profile);
   const lines = [
     describe(events) || "Nothing logged in the last week.",
     profile.goal ? `Your goal: ${profile.goal}.` : "No standing goal yet. Tell me one, like \"my goal is to dunk\".",
     `I'd suggest ${suggestedFocus.join(" + ")} today${recovery.rules.length ? `, because:\n${recovery.rules.map((r) => `• ${r.text}`).join("\n")}` : "."}`,
+    ...(phase ? [phase.rule.text] : []),
+    ...(phase && testDue(sinceTest)
+      ? [`Jump test due${sinceTest === null ? "" : ` (last one ${sinceTest} days ago)`}: after your usual warm-up, 3 standing and 3 approach jumps, chalk on a wall. Log the best on Progress.`]
+      : []),
     ...(profile.athlete ? [] : ["I don't know your jump history yet, so jump volume uses beginner limits. Answer the 7 setup questions to change that."]),
     "How are you feeling, and how much time do you have?",
   ];
@@ -121,7 +136,8 @@ export async function buildCoachPlan(profileId: string, checkIn: CheckIn, skipCh
   const bat = await batItems(profileId, library);
   const events = await recentEvents(profileId, library, skipCheckIn);
   const recovery = assessRecovery([...events, ...outsideEvents(checkIn.outsideActivity ?? [], 0)]);
-  const plan = buildPlan(checkIn, [...library.values()] as LibItem[], bat.items, recovery, limits);
+  const { phase } = await jumpState(profile);
+  const plan = buildPlan(checkIn, [...library.values()] as LibItem[], bat.items, recovery, limits, phase);
   const r = readiness(checkIn);
 
   const blocks = await Promise.all(plan.blocks.map(async (b) => ({

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ProgressChart } from "@/components/ProgressChart";
+import { JumpTestCard } from "@/components/JumpTestCard";
 import { useProfile } from "@/lib/profile-context";
 
 type Exercise = {
@@ -70,9 +71,10 @@ export default function ProgressPage() {
     return (
       <div className="space-y-4">
         <h1 className="text-xl font-normal">Progress</h1>
+        {activeProfile && <JumpTestCard profileId={activeProfile.id} />}
         <div className="bg-card border border-border rounded-xl p-8 text-center">
           <p className="text-muted text-sm">
-            No workout data yet. Complete a workout to see your progress!
+            No lifts logged yet. Finish a workout to see weight and volume here.
           </p>
         </div>
       </div>
@@ -82,6 +84,7 @@ export default function ProgressPage() {
   return (
     <div className="space-y-6">
       <h1 className="text-xl font-normal">Progress</h1>
+      {activeProfile && <JumpTestCard profileId={activeProfile.id} />}
 
       {/* Exercise Selector */}
       <select

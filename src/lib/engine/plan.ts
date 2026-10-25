@@ -3,6 +3,7 @@
 import type { BodyArea, CorpusExercise, Dose, Goal } from "../../../corpus/schema";
 import { hardJump, LOADING, region, type OutsideActivity, type Recovery, type Rule } from "./recovery";
 import { contacts, type AthleteLimits } from "./athlete";
+import { phaseBoost, phaseDose, type Phase } from "./phase";
 
 export interface CheckIn {
   energy: number; // 1-5
@@ -165,13 +166,14 @@ function contactBudget(a?: AthleteLimits) {
   };
 }
 
-export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] = [], recovery?: Recovery, athlete?: AthleteLimits): Plan {
+export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] = [], recovery?: Recovery, athlete?: AthleteLimits, phase?: Phase): Plan {
   const r = readiness(c);
   const maxIntensity = MAX_INTENSITY[r];
   const rec = recovery && !c.override ? recovery : undefined;
   const allowHighImpact = r >= 4 && !c.painAreas.some((p) => IMPACT_SENSITIVE.includes(p)) && !rec?.noExplosive;
   const pool = library.filter((e) => safe(e, c, maxIntensity, allowHighImpact) && athleteAllows(e, athlete));
   const jumpFocus = c.focus.includes("jump") || c.focus.includes("power");
+  const block = jumpFocus ? phase : undefined; // the jump block shapes jump days only
   const primer = (e: LibItem) => tendonIso(e) && (e.bodyAreas.some((b) => c.painAreas.includes(b)) ||
     (jumpFocus && e.bodyAreas.some((b) => athlete?.primerAreas.includes(b))));
   const used = new Set<string>(alignment.map((i) => i.exerciseId));
@@ -213,14 +215,15 @@ export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] 
     const ranked = rank(
       pool.filter((e) => mainCats.has(e.category) && !rested(e)),
       (e) => e.goals.filter((g) => c.focus.includes(g)).length * 2 + e.bodyAreas.filter((b) => focusAreas.has(b)).length +
-        (athlete?.mechanicsFirst && jumpFocus && e.category === "skill" ? 3 : 0)
+        (athlete?.mechanicsFirst && jumpFocus && e.category === "skill" ? 3 : 0) + phaseBoost(block, e)
     );
     // Explosive work first while fresh (capped per category), then strength.
     const taken: Record<string, number> = {};
     const explosive = ranked.filter((e) => e.category in CATEGORY_CAP && (taken[e.category] = (taken[e.category] ?? 0) + 1) <= CATEGORY_CAP[e.category]);
+    const budget = contactBudget(athlete);
     const main = [...explosive, ...ranked.filter((e) => !(e.category in CATEGORY_CAP))];
     blocks.push(fill("Main", main, Math.max(0, left()), r, used,
-      (e) => `${e.category} for ${c.focus.join("/")}`, 6, contactBudget(athlete)));
+      (e) => `${e.category} for ${c.focus.join("/")}`, 6, (e, d) => budget(e, phaseDose(block, e, d))));
     if (!main.length) notes.push("Recovery rules leave nothing to load for this focus today, so it is alignment and prep only.");
   } else if (mainCats.size) {
     notes.push("Main block skipped: recovery day. Come back to it when readiness is 3+.");
@@ -228,5 +231,5 @@ export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] 
 
   const total = blocks.flatMap((b) => b.items).reduce((s, i) => s + i.minutes, 0);
   return { readiness: r, maxIntensity, allowHighImpact, minutes: total, blocks: blocks.filter((b) => b.items.length), notes,
-    rules: [...(recovery?.rules ?? []), ...(jumpFocus ? athlete?.rules ?? [] : [])] };
+    rules: [...(recovery?.rules ?? []), ...(block ? [block.rule] : []), ...(jumpFocus ? athlete?.rules ?? [] : [])] };
 }
