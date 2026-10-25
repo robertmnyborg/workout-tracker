@@ -216,12 +216,16 @@ npx prisma studio    # Visual DB browser
 Plan: `plans/unified-corpus-and-coach.md`.
 
 ### Corpus (`corpus/`)
-- `library/*.json`: 127 exercises, one record per movement, typed by `corpus/schema.ts`:
+- `library/*.json`: 151 exercises (2026-10-25: +24 from Jeff Nippard and Renaissance Periodization channels; see yt-*.json)
+  Previously 127, one record per movement, typed by `corpus/schema.ts`:
   bat 26 (BAT 28-day, from `~/Projects/bat-28day`), pt 27 (2018/2020/2026 PT), trainer 72 (seed.ts lifting/jump/cardio),
   youtube 2 (RP / Dr. Mike jump video n1-KuZ9aOHM). Each has category, bodyAreas, goals, intensity 1-5, impact,
   progression method + easier/harder links, cues, errors.
 - `programs/*.json`: bat-28day (Day 0-28), pt-2018/2020/2026, vertical-jump-4day, basketball-cardio.
-- `principles/*.md`: bat-alignment, pt-notes, jump-science, schedule. Reference text for an AI planner.
+- `principles/*.md`: bat-alignment, pt-notes, jump-science, schedule, yt-athletic, yt-pt, yt-programming, yt-technique
+  (timestamped citations; yt-pt states the Jeff-vs-BAT posture disagreement; yt-programming lists engine gaps).
+- `sources/youtube/channels/`: full catalogs of both channels (YouTube Data API via Antigravity), `candidates.json`
+  (keyword pass, 487) and `shortlist.json` (34 picked). Neither channel has a true vertical-jump/plyometric video. Reference text for an AI planner.
 - `sources/youtube/<id>.md`: raw transcripts.
 - `npm run corpus:check` validates (enums, unique ids, link targets). `npm run corpus:import` upserts into the DB.
 - **Never run `prisma db seed` / `/api/programs/reset`: they delete all profiles and sessions.** `corpus:import` is additive.
@@ -246,8 +250,10 @@ Plan: `plans/unified-corpus-and-coach.md`.
 - Painful areas get only gentle work (breathing/alignment/mobility/stability, intensity ≤ 2).
 - Blocks: Alignment (BAT day if enrolled, else breathing/alignment) → Prep (mobility/stability on the focus's body areas) →
   Main (explosive capped at 2 plyo + 1 power + 1 skill, then strength). Readiness ≤ 2 or no trainable focus = recovery day, no Main.
-- `progression.nextDose`: load +5% (min +2.5 lb) after hitting every set; reps +2; hold +5 s; complexity → harder after 3 clean
-  sessions. Readiness ≤ 2 or two missed sessions → deload 10% / one set fewer / easier variation.
+- `progression.nextDose`: load +5% (min +2.5 lb, max +10 lb) after hitting every set; reps +2; hold +5 s; complexity → harder after 3 clean
+  sessions. Two stalled sessions → deload: half the sets, 10% lighter (RP). Readiness ≤ 2 → today only: 10% lighter / one set fewer / easier variation.
+- Open engine gaps (from yt-programming.md): no scheduled deload every 4-8 weeks, no training-age gate, no RPE input, no
+  game-day taper (yt-athletic.md has the rules), no per-exercise pain swap (yt-pt.md rules), readiness ignores stress/appetite/jump height.
 
 ### Coach (`/coach`)
 Text → `POST /api/coach/parse` (Claude `claude-opus-5-5`, effort low, zod structured output, only reads the note) → sliders/chips

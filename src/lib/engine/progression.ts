@@ -48,11 +48,20 @@ export function nextDose(
   const w = topWeight(last);
   const missedTwice = history.length >= 2 && !hitTarget(history[0]) && !hitTarget(history[1]);
 
-  if (readiness <= 2 || missedTwice) {
-    const why = readiness <= 2 ? `Readiness ${readiness}/5` : "Missed target two sessions running";
+  // A stall (two non-improving sessions while trying) earns a real deload: RP halves sets and drops load
+  // (corpus/principles/yt-programming.md). A bad day only scales today's session.
+  if (missedTwice) {
+    const why = "Stalled two sessions running";
     if (method === "complexity" && links.easier)
       return { ...repeat(`${why}: regress to the easier variation.`), swapTo: links.easier };
-    if (method === "load" && w) return repeat(`${why}: deload 10%.`, roundToNearest(w * 0.9));
+    const sets = Math.max(1, Math.ceil(base.sets / 2));
+    return { ...repeat(`${why}: deload, half the sets${w ? ", 10% lighter" : ""}.`, w ? roundToNearest(w * 0.9) : w), sets };
+  }
+  if (readiness <= 2) {
+    const why = `Readiness ${readiness}/5, today only`;
+    if (method === "complexity" && links.easier)
+      return { ...repeat(`${why}: use the easier variation.`), swapTo: links.easier };
+    if (method === "load" && w) return repeat(`${why}: 10% lighter.`, roundToNearest(w * 0.9));
     return { ...repeat(`${why}: one set fewer.`, w), sets: Math.max(1, base.sets - 1) };
   }
 
@@ -61,7 +70,8 @@ export function nextDose(
   switch (method) {
     case "load": {
       if (!w) return repeat("Hit target. Log a weight to start load progression.");
-      const up = Math.max(roundToNearest(w * 1.05), w + 2.5);
+      // +5%, but at least 2.5 lb and at most 10 lb: 5% of a 300 lb squat is a 15 lb jump, too big a step.
+      const up = Math.min(Math.max(roundToNearest(w * 1.05), w + 2.5), w + 10);
       return repeat(`Hit every set last time: +${up - w} lb.`, up);
     }
     case "reps": {

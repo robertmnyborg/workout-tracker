@@ -1,0 +1,523 @@
+[
+  {
+    "id": "general-warm-up-light-sweat",
+    "name": "General Warm-Up to a Light Sweat",
+    "aliases": [],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 1:37"
+    },
+    "category": "conditioning",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "conditioning",
+      "recovery"
+    ],
+    "equipment": [
+      "incline treadmill or stair machine"
+    ],
+    "position": "standing",
+    "setup": "Pick moderate-pace cardio: incline treadmill or stair machine. A baggy hoodie helps in a cold climate. Do this before every session.",
+    "execution": "Work at a moderate pace until you break a light sweat, then stop. Option: moderate-intensity intervals of 20-30 seconds at an assertive pace and about 1 minute at a low pace, repeated until a light sweat starts.",
+    "cues": [
+      "Target heart rate 55-65% of max, roughly 100-120 bpm for young active people",
+      "Main guide: stop at a light sweat",
+      "Goal is to raise core temperature, not to burn calories or count as cardio"
+    ],
+    "errors": [
+      "Turning it into formal cardio",
+      "Skipping it"
+    ],
+    "why": "Warming up raised temperature; 3 of 5 studies in a systematic review showed lower injury risk, and the two with no benefit emphasized stretching over warming the body.",
+    "defaultDose": {
+      "durationMin": 7,
+      "frequency": "before every session"
+    },
+    "intensity": 2,
+    "impact": "low",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=97s"
+  },
+  {
+    "id": "leg-swings-front-back",
+    "name": "Leg Swings, Front to Back",
+    "aliases": [],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 4:14"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Standing.",
+    "execution": "Swing one leg forward and back to stretch the hamstrings. 10-12 swings, then switch legs.",
+    "cues": [
+      "Dynamic: keep moving, no hold"
+    ],
+    "errors": [],
+    "why": "Dynamic stretching improves performance in several studies, unlike long static stretching.",
+    "defaultDose": {
+      "sets": 1,
+      "reps": "10-12 each leg"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=254s"
+  },
+  {
+    "id": "leg-swings-side-to-side",
+    "name": "Leg Swings, Side to Side",
+    "aliases": [],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 4:22"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Standing.",
+    "execution": "Swing one leg across the body and out to the side to open the hip adductors and groin. 10-12 swings, then switch legs.",
+    "cues": [
+      "Dynamic: keep moving, no hold"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "10-12 each leg"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=262s"
+  },
+  {
+    "id": "step-through-lunge-pause",
+    "name": "Step-Through With Pause",
+    "aliases": [
+      "Walking lunge stretch"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 4:22"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Standing.",
+    "execution": "Step through into a lunge with the knee brought well forward, pause 1-2 seconds, then repeat. 10-12 reps. Stretches the glutes.",
+    "cues": [
+      "Knee really brought forward",
+      "1-2 second pause at the end of each step"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "10-12"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=262s"
+  },
+  {
+    "id": "squat-and-reach-stretch",
+    "name": "Squat and Reach Stretch",
+    "aliases": [
+      "Squat and reach"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 4:45"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Grab your toes with a slight knee bend (the video uses this on sumo deadlift days).",
+    "execution": "Squat down while lifting your chest until you feel a strong stretch in the inner thighs and hamstrings. Hold 10-15 seconds.",
+    "cues": [
+      "Slight knee bend when you grab the toes",
+      "Lift the chest as you squat down"
+    ],
+    "errors": [],
+    "why": "Opens the hips and adductors so a wide stance feels comfortable.",
+    "defaultDose": {
+      "sets": 1,
+      "holdSeconds": 12
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=285s"
+  },
+  {
+    "id": "cossack-squat",
+    "name": "Cossack Squat",
+    "aliases": [],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 5:09"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "pelvis-hip"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Standing; the video gives no further setup.",
+    "execution": "Squat down to one side, keeping the other leg extended, to stretch the adductors of the extended leg. Alternate sides.",
+    "cues": [
+      "If balance is hard, put your hands on the floor or hold something in front of you until you own the movement"
+    ],
+    "errors": [],
+    "why": "Adductor stretch for a wide stance (e.g. sumo deadlift days).",
+    "defaultDose": {
+      "sets": 1
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=309s"
+  },
+  {
+    "id": "eccentric-calf-raise-stretch",
+    "name": "Slow Eccentric Calf Raise (Stretch Bottom)",
+    "aliases": [],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 5:26"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "ankle-foot"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Standing; the video gives no further setup.",
+    "execution": "Do slow eccentric calf raises, focusing on stretching the calves at the bottom.",
+    "cues": [
+      "Slow eccentric",
+      "Focus on the stretch at the bottom"
+    ],
+    "errors": [],
+    "why": "For people who struggle to hit squat depth because of tight ankles or calves.",
+    "defaultDose": {
+      "sets": 1
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=326s"
+  },
+  {
+    "id": "arm-circles-small-to-big",
+    "name": "Arm Circles, Small to Big",
+    "aliases": [],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 7:17"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "shoulder"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Standing.",
+    "execution": "10-12 small arm circles, then 10-12 big arm circles.",
+    "cues": [
+      "Small circles first, then big"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "10-12 small, 10-12 big"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=437s"
+  },
+  {
+    "id": "arm-swings-side-to-side",
+    "name": "Arm Swings, Side to Side",
+    "aliases": [],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 7:25"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "shoulder",
+      "thoracic"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "standing",
+    "setup": "Standing.",
+    "execution": "10-12 side-to-side arm swings.",
+    "cues": [
+      "Dynamic: keep moving"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1,
+      "reps": "10-12"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=445s"
+  },
+  {
+    "id": "band-pull-apart",
+    "name": "Band Pull-Apart",
+    "aliases": [],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 7:25"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "shoulder",
+      "thoracic"
+    ],
+    "goals": [
+      "stability",
+      "pain-relief"
+    ],
+    "equipment": [
+      "resistance band"
+    ],
+    "position": "standing",
+    "setup": "Standing with a band; the video gives no further setup.",
+    "execution": "Pull the band apart, 15 reps.",
+    "cues": [],
+    "errors": [],
+    "why": "Jeff: great for preventing shoulder pain while benching, in his experience.",
+    "defaultDose": {
+      "sets": 1,
+      "reps": "15"
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=445s"
+  },
+  {
+    "id": "banded-external-rotation",
+    "name": "Banded External Rotation",
+    "aliases": [],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 7:32"
+    },
+    "category": "stability",
+    "bodyAreas": [
+      "shoulder"
+    ],
+    "goals": [
+      "stability"
+    ],
+    "equipment": [
+      "resistance band"
+    ],
+    "position": "standing",
+    "setup": "Band; the video gives no further setup.",
+    "execution": "Do banded external rotations to warm up the rotator cuff.",
+    "cues": [
+      "Paired with band face pulls to warm up the rotator cuff"
+    ],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=452s"
+  },
+  {
+    "id": "wall-slide-prehab",
+    "name": "Wall Slide (Prehab)",
+    "aliases": [],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 7:41"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "shoulder",
+      "thoracic"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [],
+    "position": "wall",
+    "setup": "Pin your elbows against a wall.",
+    "execution": "Lift your arms up overhead while keeping the elbows pinned to the wall.",
+    "cues": [
+      "Elbows stay pinned against the wall"
+    ],
+    "errors": [],
+    "why": "Use when shoulder mobility is lagging.",
+    "defaultDose": {
+      "sets": 1
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=461s"
+  },
+  {
+    "id": "overhead-db-side-bend",
+    "name": "Overhead Dumbbell Side Bend",
+    "aliases": [],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 7:49"
+    },
+    "category": "mobility",
+    "bodyAreas": [
+      "shoulder",
+      "thoracic"
+    ],
+    "goals": [
+      "mobility"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "position": "standing",
+    "setup": "Dumbbell held overhead.",
+    "execution": "Side bend to help walk your arms out overhead for vertical pressing.",
+    "cues": [],
+    "errors": [],
+    "defaultDose": {
+      "sets": 1
+    },
+    "intensity": 2,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=469s"
+  },
+  {
+    "id": "progressive-pyramid-warm-up",
+    "name": "Progressive Pyramid Warm-Up Sets",
+    "aliases": [],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=E81GN-3A8XM @ 5:43"
+    },
+    "category": "strength",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "strength"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "position": "standing",
+    "setup": "Use before main heavy compound lifts only; most other exercises can start without a full pyramid. Example from the video: squat 3x6 at 330 lb.",
+    "execution": "Start with the bar for 10-12 reps and rest about 30 seconds. Then 135 lb x 4-5, 225 lb x 3-4, 275 lb x 1-2, then the working sets at 330 lb x 6. Use 3-4 pyramid sets for 4-10 rep work; for upper body 2-3 sets, and 1-2 sets if starting with a row or pull-up.",
+    "cues": [
+      "Reps fall as weight rises",
+      "Purpose is to prepare mentally and physically, not to fatigue the muscle",
+      "Takes about 5-10 minutes"
+    ],
+    "errors": [
+      "Fatiguing yourself during the pyramid"
+    ],
+    "why": "Prepares you for the weight you are about to put on your back and cuts injury risk.",
+    "defaultDose": {
+      "sets": 4,
+      "reps": "10-12, 4-5, 3-4, 1-2 (descending)"
+    },
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=E81GN-3A8XM&t=343s"
+  }
+]

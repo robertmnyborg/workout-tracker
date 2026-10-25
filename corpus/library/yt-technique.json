@@ -1,0 +1,80 @@
+[
+  {
+    "id": "barbell-back-squat",
+    "name": "High-Bar Barbell Back Squat",
+    "aliases": ["Back Squat", "High Bar Squat"],
+    "source": { "kind": "youtube", "ref": "https://www.youtube.com/watch?v=Fs6GwjGHKRo @ 0:30" },
+    "category": "strength",
+    "bodyAreas": ["knee", "pelvis-hip", "core"],
+    "goals": ["strength"],
+    "equipment": ["barbell", "rack"],
+    "position": "standing",
+    "setup": "Bar high on the upper traps (not low on the rear delts). Unrack, take a moderate stance with toes turned out as needed for comfort, set the feet, breathe in and tighten the abdominals so the torso stays upright and the spine neutral.",
+    "execution": "Break at the hips and knees together, sit back a little and plenty down, and let the knees travel forward over the toes. Control the descent to a standardized depth (at least just below parallel, or as deep as you can keep a neutral spine and flat feet). Stand up, breathing out in the last half of the ascent or at the top.",
+    "cues": [
+      "Hit the same depth landmark every rep",
+      "Chest does not cave forward; back neutral or slightly arched",
+      "Stay on the whole foot, heels and toes down",
+      "Break hips and knees at the same time; knees may pass the toes",
+      "Breathe in at the top, tighten, breathe out in the last half of the ascent",
+      "Pause at the bottom and settle onto the heels if you drift to your toes",
+      "Controlled descent; no dive bombing"
+    ],
+    "errors": [
+      "Cutting depth at an arbitrary point",
+      "Rounding the lower back at the bottom",
+      "Heels lifting off the floor",
+      "Going deeper than your hips and ankles allow, so the pelvis tucks or you go on your toes",
+      "Not bracing, or over-bracing on every rep of a 5-15 rep set",
+      "Dive bombing the descent",
+      "Different depth or cadence every rep",
+      "Looking straight down or straight up behind you, which costs balance",
+      "Excess forward lean from sitting back too far"
+    ],
+    "why": "Coach frames it as a quad-hypertrophy squat; high bar keeps the torso upright and the quads the limiting factor.",
+    "defaultDose": { "sets": 3, "reps": "5-10" },
+    "intensity": 4,
+    "impact": "none",
+    "progression": { "method": "load" },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=Fs6GwjGHKRo"
+  },
+  {
+    "id": "walking-dumbbell-lunge",
+    "name": "Walking Dumbbell Lunge",
+    "aliases": ["Walking Lunge", "DB Walking Lunge"],
+    "source": { "kind": "youtube", "ref": "https://www.youtube.com/watch?v=0MZd3iKzzPM @ 0:39" },
+    "category": "strength",
+    "bodyAreas": ["pelvis-hip", "knee"],
+    "goals": ["strength"],
+    "equipment": ["dumbbells"],
+    "position": "standing",
+    "setup": "Hold a dumbbell in each hand. Stand tall. Plan a step of roughly one yard (a metre) to start, then adjust.",
+    "execution": "Step forward into a long but stable step. Lower with a controlled descent of about two seconds until the back knee gently touches the floor, keeping the torso upright and still. Stand up, stop the trailing leg beside the lead leg instead of swinging it through, then step into the next rep.",
+    "cues": [
+      "Back knee gently touches the floor every rep",
+      "Step about a yard (a metre), long enough to feel a stretch but still stable",
+      "About a two-second controlled descent",
+      "Keep the upper body upright and level, including on the way up",
+      "Stop the trailing leg and reset each rep rather than swinging it through",
+      "Every rep looks the same"
+    ],
+    "errors": [
+      "Stopping partway down",
+      "Inconsistent range of motion from rep to rep",
+      "Step too short (squat-like, more knee shear)",
+      "Step so long you lose stability",
+      "Falling into the bottom of each rep",
+      "Tilting the torso forward to recruit the back and hamstrings",
+      "Banging the knee onto the floor",
+      "Grip, traps or collapse forward ending the set before the legs do"
+    ],
+    "why": "Coach targets glutes, adductors and quads, in roughly that order.",
+    "defaultDose": { "sets": 3, "reps": "15-30 steps" },
+    "intensity": 3,
+    "impact": "none",
+    "progression": { "method": "load" },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=0MZd3iKzzPM"
+  }
+]

@@ -1,0 +1,369 @@
+[
+  {
+    "id": "french-contrast-circuit",
+    "name": "French Contrast Circuit (squat, tuck jump, banded jump, banded swing)",
+    "aliases": [
+      "contrast training circuit",
+      "explosive athletic circuit",
+      "post-activation potentiation circuit"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=cPsy38pkZzE @ 6:19-8:37"
+    },
+    "category": "power",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot",
+      "full-body"
+    ],
+    "goals": [
+      "power",
+      "jump"
+    ],
+    "equipment": [
+      "spider bar or barbell",
+      "jump bands",
+      "kettlebell"
+    ],
+    "position": "standing",
+    "setup": "Four exercises done back to back as one round: partial-depth squat, vertical leap with a tuck, banded squat jump, banded kettlebell swing. Use a light squat load of about 50-55% of max.",
+    "execution": "Do 4 reps of the squat, rest about 20 seconds so the potentiation is not lost, then 4 vertical leaps with a tuck, then 4 banded squat jumps, then 4 banded kettlebell swings. That is a 16-rep round. Rest 20 seconds between rounds and do 4 rounds (64 reps total, about 5 minutes).",
+    "cues": [
+      "Squat sets of 4 at about 50-55% of max, nowhere near maximal, so you produce force instead of fatigue",
+      "Squat only to a depth that has something to do with your sport; no full squat",
+      "Take about 20 seconds before the jump; longer and you lose the potentiation",
+      "Move every rep as explosively as you can",
+      "Stay composed between rounds; do not rush the rest"
+    ],
+    "errors": [
+      "Going heavy or doing many squat reps, which turns it into a hypertrophy workout",
+      "Resting too long after the squat, which loses the potentiation",
+      "Finishing the round not tired, which means effort was too low"
+    ],
+    "why": "Coach John Meadows: an advanced session for a college or pro football player. The goal is to produce a lot of force quickly (rate of force development) and to keep doing it while tired, as an athlete must in a game.",
+    "defaultDose": {
+      "sets": 4,
+      "reps": "4 squat + 4 tuck jumps + 4 banded jumps + 4 banded swings",
+      "frequency": "2x weekly (Mon/Fri in the example)"
+    },
+    "intensity": 5,
+    "impact": "high",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [
+      "Advanced session, not for beginners",
+      "Acute knee/ankle pain",
+      "Needs adequate rest from other hard training"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=cPsy38pkZzE"
+  },
+  {
+    "id": "banded-squat-jump",
+    "name": "Banded Squat Jump",
+    "aliases": [
+      "squat jump with bands",
+      "jump out of a band"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=cPsy38pkZzE @ 7:47-11:30"
+    },
+    "category": "plyometric",
+    "bodyAreas": [
+      "pelvis-hip",
+      "knee",
+      "ankle-foot"
+    ],
+    "goals": [
+      "power",
+      "jump"
+    ],
+    "equipment": [
+      "jump bands",
+      "barbell or spider bar"
+    ],
+    "position": "standing",
+    "setup": "Place the bands over the shoulders so they pull you down toward the floor; one band goes over each side.",
+    "execution": "Jump up in the air against the band pull. The bands add resistance as you rise and force you to absorb a lot of force on the way down. Do 4 jumps per set, landing under control each time.",
+    "cues": [
+      "Think \"I am jumping out of a band\"",
+      "Land well; the landing matters and loads the muscles eccentrically",
+      "The band teaches you to explode and follow through, because it gets harder toward the top"
+    ],
+    "errors": [
+      "Losing coordination and staying on the toes late in the round (fatigue; the band pulls you more)"
+    ],
+    "why": "Bands load the jump eccentrically and teach you to accelerate through the whole range.",
+    "defaultDose": {
+      "sets": 4,
+      "reps": "4"
+    },
+    "intensity": 5,
+    "impact": "high",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": [
+      "Acute knee/ankle pain"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=cPsy38pkZzE"
+  },
+  {
+    "id": "banded-kb-swing",
+    "name": "Banded Kettlebell Swing",
+    "aliases": [
+      "banded swing"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=cPsy38pkZzE @ 8:12-11:22"
+    },
+    "category": "power",
+    "bodyAreas": [
+      "pelvis-hip",
+      "core"
+    ],
+    "goals": [
+      "power"
+    ],
+    "equipment": [
+      "kettlebell",
+      "jump bands"
+    ],
+    "position": "standing",
+    "setup": "Kettlebell swing with a band adding resistance (the bands are set so they pull the swing).",
+    "execution": "Swing the kettlebell with light weight and generate as much force as you can on every rep. Do 4 reps as the last exercise of the round; the band makes the top harder, so follow through.",
+    "cues": [
+      "Light weight, maximum force",
+      "Explode on each rep",
+      "Follow through; the band makes the top end more difficult",
+      "Arms back and drop down as fast as you can"
+    ],
+    "errors": [],
+    "why": "The most accelerated exercise of the circuit; it trains force production while already fatigued.",
+    "defaultDose": {
+      "sets": 4,
+      "reps": "4"
+    },
+    "intensity": 4,
+    "impact": "low",
+    "progression": {
+      "method": "load"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=cPsy38pkZzE"
+  },
+  {
+    "id": "countermovement-jump-test",
+    "name": "Countermovement Jump Test (vertical jump monitoring)",
+    "aliases": [
+      "CMJ test",
+      "vertical jump test",
+      "chalk wall touch test"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=c7b_gh6Th18 @ 29:41-30:21; 36:07-36:23"
+    },
+    "category": "assessment",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "jump",
+      "power"
+    ],
+    "equipment": [
+      "jump mat or Vertec, or chalk and a wall"
+    ],
+    "position": "standing",
+    "setup": "Stand on a switch/jump mat, or beside a Vertec or wall. A wall works with chalk on the hand: touch the wall at standing reach, then jump and touch again.",
+    "execution": "Jump as high as you can, however you like, from a standing position. Record jump height. Repeat under the same conditions each time so values can be compared over weeks.",
+    "cues": [
+      "Same method and conditions every time",
+      "Chalk wall touch is crude but \"better than nothing\""
+    ],
+    "errors": [],
+    "why": "Jumps are among the best indicators of general athletic performance and are easy to repeat for monitoring.",
+    "defaultDose": {},
+    "intensity": 4,
+    "impact": "high",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [
+      "Acute knee/ankle pain"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=c7b_gh6Th18"
+  },
+  {
+    "id": "squat-jump-test",
+    "name": "Squat Jump Test",
+    "aliases": [
+      "static jump test",
+      "SJ test"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=c7b_gh6Th18 @ 30:04-30:21; 39:42-39:58"
+    },
+    "category": "assessment",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "jump",
+      "power"
+    ],
+    "equipment": [
+      "jump mat or Vertec, or chalk and a wall"
+    ],
+    "position": "standing",
+    "setup": "Get into a squat with knees at about 90 degrees, no countermovement.",
+    "execution": "Hold the position, then jump straight up with a concentric-only push. Record height. It can be done weighted or unweighted.",
+    "cues": [
+      "Start position about 90 degrees"
+    ],
+    "errors": [],
+    "why": "Compared with the countermovement jump it isolates the concentric push from a standstill.",
+    "defaultDose": {},
+    "intensity": 4,
+    "impact": "high",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [
+      "Acute knee/ankle pain"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=c7b_gh6Th18"
+  },
+  {
+    "id": "short-sprint-test",
+    "name": "Short Sprint Test (5-10-20 m)",
+    "aliases": [
+      "10 m sprint test",
+      "stopwatch sprint test"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=c7b_gh6Th18 @ 30:46-31:27; 36:38-36:53"
+    },
+    "category": "assessment",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "power",
+      "conditioning"
+    ],
+    "equipment": [
+      "stopwatch",
+      "measuring tape"
+    ],
+    "position": "standing",
+    "setup": "Measure the distances with a tape. The video lists 5, 10, 20, 30 and at most about 40 m; most team-sport sprints are 20 m or less, so 30-40 m is often unnecessary.",
+    "execution": "Run each distance from a standstill all-out and time it with a stopwatch (timing gates are more accurate but not required). Log the times.",
+    "cues": [
+      "Keep distances to what your sport demands (0-20 m for field and court sports)",
+      "A stopwatch is \"a pretty good idea of where they are currently at\""
+    ],
+    "errors": [],
+    "why": "Sprints are one of the best indices of general athletic performance and need no special equipment.",
+    "defaultDose": {},
+    "intensity": 5,
+    "impact": "high",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [
+      "Acute leg or hamstring pain"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=c7b_gh6Th18"
+  },
+  {
+    "id": "medicine-ball-toss-test",
+    "name": "Medicine Ball Toss Test",
+    "aliases": [
+      "med ball throw distance"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=c7b_gh6Th18 @ 36:23-36:30"
+    },
+    "category": "assessment",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "power"
+    ],
+    "equipment": [
+      "medicine ball",
+      "measuring tape"
+    ],
+    "position": "standing",
+    "setup": "Mark a start line and lay out a measuring tape.",
+    "execution": "Toss the medicine ball as far as you can and measure the distance accurately. Repeat the same toss each time.",
+    "cues": [
+      "Mark the landing accurately"
+    ],
+    "errors": [],
+    "why": "Cheap upper-body and trunk power monitor; only a ruler or tape is needed.",
+    "defaultDose": {},
+    "intensity": 3,
+    "impact": "none",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [],
+    "videoUrl": "https://www.youtube.com/watch?v=c7b_gh6Th18"
+  },
+  {
+    "id": "repeated-sprint-test",
+    "name": "Repeated Sprint Ability Test (6 x 30 m)",
+    "aliases": [
+      "repeated effort ability test"
+    ],
+    "source": {
+      "kind": "youtube",
+      "ref": "https://www.youtube.com/watch?v=c7b_gh6Th18 @ 40:37-40:53"
+    },
+    "category": "assessment",
+    "bodyAreas": [
+      "full-body"
+    ],
+    "goals": [
+      "conditioning",
+      "power"
+    ],
+    "equipment": [
+      "stopwatch",
+      "measuring tape"
+    ],
+    "position": "standing",
+    "setup": "Mark 30 m. This is a power-endurance style test for team sports.",
+    "execution": "Run 6 sprints of 30 m with incomplete rest between them. Compare the first sprint with each later one to see the speed and power drop-off.",
+    "cues": [
+      "Record first-sprint speed and the drop-off for later sprints"
+    ],
+    "errors": [],
+    "why": "Shows how well sprint power holds up under repeated efforts, relevant to court and field sports.",
+    "defaultDose": {
+      "sets": 1,
+      "reps": "6 x 30 m, incomplete rest"
+    },
+    "intensity": 5,
+    "impact": "high",
+    "progression": {
+      "method": "none"
+    },
+    "contraindications": [
+      "Acute leg or hamstring pain",
+      "Not a monitoring test to repeat often: it is very fatiguing"
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=c7b_gh6Th18"
+  }
+]

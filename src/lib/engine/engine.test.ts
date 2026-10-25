@@ -70,13 +70,21 @@ test("load: hit target -> +5% rounded, min +2.5", () => {
   assert.equal(nextDose("load", { sets: 3, reps: "8" }, [s(20, 8)], 4).weight, 22.5);
 });
 
-test("load: missed -> repeat; missed twice -> deload 10%", () => {
+test("load: missed -> repeat; stalled twice -> deload 10% and half the sets", () => {
   assert.equal(nextDose("load", { sets: 3, reps: "8" }, [s(200, 6)], 4).weight, 200);
-  assert.equal(nextDose("load", { sets: 3, reps: "8" }, [s(200, 6), s(200, 7)], 4).weight, 180);
+  const d = nextDose("load", { sets: 4, reps: "8" }, [s(200, 6), s(200, 7)], 4);
+  assert.equal(d.weight, 180);
+  assert.equal(d.sets, 2);
 });
 
-test("low readiness deloads even after a good session", () => {
-  assert.equal(nextDose("load", { sets: 3, reps: "8" }, [s(200, 8)], 2).weight, 180);
+test("load: jump capped at +10 lb on heavy lifts", () => {
+  assert.equal(nextDose("load", { sets: 3, reps: "8" }, [s(300, 8)], 4).weight, 310);
+});
+
+test("low readiness lightens today only, sets unchanged", () => {
+  const d = nextDose("load", { sets: 3, reps: "8" }, [s(200, 8)], 2);
+  assert.equal(d.weight, 180);
+  assert.equal(d.sets, 3);
 });
 
 test("complexity: three clean sessions -> harder; low readiness -> easier", () => {
