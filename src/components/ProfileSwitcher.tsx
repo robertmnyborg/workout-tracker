@@ -17,7 +17,7 @@ export function ProfileSwitcher() {
             onClick={() => switchProfile(profile.id)}
             className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${
               isActive
-                ? "bg-primary text-white"
+                ? "bg-primary text-on-primary"
                 : "text-muted hover:text-foreground"
             }`}
           >

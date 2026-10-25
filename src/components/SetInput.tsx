@@ -109,7 +109,7 @@ export function SetInput({
           disabled={saving}
           className={`w-8 h-8 rounded-md flex items-center justify-center text-sm transition-colors ${
             completed
-              ? "bg-accent text-white"
+              ? "bg-accent text-on-accent"
               : "border border-border text-muted hover:border-accent hover:text-accent"
           }`}
         >

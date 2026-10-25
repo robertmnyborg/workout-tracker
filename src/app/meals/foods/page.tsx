@@ -30,11 +30,11 @@ export default function FoodsPage() {
           <Link href="/meals" className="text-xs text-muted hover:text-foreground">
             ← Meals
           </Link>
-          <h1 className="text-2xl font-bold text-foreground mt-1">Food Database</h1>
+          <h1 className="text-xl font-normal mt-1">Food Database</h1>
         </div>
         <button
           onClick={() => setCreating(true)}
-          className="px-3 py-1.5 text-xs bg-primary text-white rounded-lg hover:opacity-90"
+          className="px-3 py-1.5 text-xs bg-primary text-on-primary rounded-lg hover:opacity-90"
         >
           + New food
         </button>

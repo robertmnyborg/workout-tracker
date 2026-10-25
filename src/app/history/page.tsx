@@ -84,7 +84,7 @@ export default function HistoryPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">History</h1>
+      <h1 className="text-xl font-normal">History</h1>
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-3">
@@ -131,7 +131,7 @@ export default function HistoryPage() {
           >
             ←
           </button>
-          <h2 className="font-semibold text-sm">
+          <h2 className="font-medium text-sm">
             {format(currentMonth, "MMMM yyyy")}
           </h2>
           <button
@@ -164,7 +164,7 @@ export default function HistoryPage() {
                 onClick={() => daySession && setSelectedSession(daySession)}
                 className={`aspect-square rounded-lg flex items-center justify-center text-xs transition-colors ${
                   hasWorkout
-                    ? "bg-primary text-white font-medium cursor-pointer hover:bg-primary-dark"
+                    ? "bg-primary text-on-primary font-medium cursor-pointer hover:bg-primary-dark"
                     : "text-muted hover:bg-background"
                 }`}
               >
@@ -180,7 +180,7 @@ export default function HistoryPage() {
         <div className="bg-card border border-border rounded-xl p-4">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="font-semibold">
+              <h3 className="font-medium">
                 Day {selectedSession.programDay.dayNumber}:{" "}
                 {selectedSession.programDay.name}
               </h3>

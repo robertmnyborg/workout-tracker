@@ -74,7 +74,7 @@ export default function PlansPage() {
           <Link href="/meals" className="text-xs text-muted hover:text-foreground">
             ← Meals
           </Link>
-          <h1 className="text-2xl font-bold text-foreground mt-1">Meal Plans</h1>
+          <h1 className="text-xl font-normal mt-1">Meal Plans</h1>
         </div>
         <button
           onClick={reset}
@@ -121,15 +121,15 @@ function PlanCard({ plan, onActivate }: { plan: MealPlan; onActivate: () => void
     <section className="bg-card border border-border rounded-xl overflow-hidden">
       <header className="px-4 py-3 border-b border-border flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <h2 className="text-lg font-semibold text-foreground">{plan.name}</h2>
+          <h2 className="text-lg font-medium">{plan.name}</h2>
           {plan.isActive && (
-            <span className="text-xs bg-primary text-white px-2 py-0.5 rounded-full">active</span>
+            <span className="text-xs bg-primary text-on-primary px-2 py-0.5 rounded-full">active</span>
           )}
         </div>
         {!plan.isActive && (
           <button
             onClick={onActivate}
-            className="px-3 py-1.5 text-xs bg-primary text-white rounded-lg hover:opacity-90"
+            className="px-3 py-1.5 text-xs bg-primary text-on-primary rounded-lg hover:opacity-90"
           >
             Make active
           </button>

@@ -40,7 +40,7 @@ export function ProfileSetup() {
     <div className="fixed inset-0 z-[100] bg-background flex items-center justify-center p-6">
       <div className="w-full max-w-sm space-y-6">
         <div className="text-center">
-          <h1 className="text-2xl font-bold">Workout Tracker</h1>
+          <h1 className="text-xl font-normal">Workout Tracker</h1>
           <p className="text-muted text-sm mt-2">
             Enter both names to get started. You can switch between profiles
             during workouts.
@@ -78,7 +78,7 @@ export function ProfileSetup() {
         <button
           onClick={handleSubmit}
           disabled={!canSubmit}
-          className="w-full py-3 rounded-xl bg-primary text-white font-medium text-sm hover:bg-primary-dark transition-colors disabled:opacity-40"
+          className="w-full py-3 rounded-xl bg-primary text-on-primary font-medium text-sm hover:bg-primary-dark transition-colors disabled:opacity-40"
         >
           {submitting ? "Setting up..." : "Get Started"}
         </button>

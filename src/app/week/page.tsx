@@ -121,7 +121,7 @@ export default async function Dashboard({
         <Suspense>
           <DashboardProfileSync />
         </Suspense>
-        <h1 className="text-2xl font-bold mb-4">Welcome</h1>
+        <h1 className="text-xl font-normal mb-4">Welcome</h1>
         <p className="text-muted text-sm">
           Set up your profiles to get started.
         </p>
@@ -142,7 +142,7 @@ export default async function Dashboard({
         <Suspense>
           <DashboardProfileSync />
         </Suspense>
-        <h1 className="text-2xl font-bold mb-4">No Schedule Found</h1>
+        <h1 className="text-xl font-normal mb-4">No Schedule Found</h1>
         <p className="text-muted text-sm">
           Run the seed script to load the program.
         </p>
@@ -176,7 +176,7 @@ export default async function Dashboard({
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold">{schedule.name}</h1>
+          <h1 className="text-xl font-normal">{schedule.name}</h1>
           {schedule.notes && (
             <p className="text-muted text-sm mt-1">{schedule.notes}</p>
           )}
@@ -285,7 +285,7 @@ export default async function Dashboard({
                           className={`ml-3 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors flex-shrink-0 ${
                             isCompleted
                               ? "text-muted hover:text-foreground border border-border"
-                              : "bg-primary text-white hover:bg-primary-dark"
+                              : "bg-primary text-on-primary hover:bg-primary-dark"
                           }`}
                         >
                           {isCompleted ? "Redo" : "Start"}
@@ -303,7 +303,7 @@ export default async function Dashboard({
       {/* Recent Workouts */}
       {recentSessions.length > 0 && (
         <div>
-          <h2 className="text-lg font-semibold mb-3">Recent Workouts</h2>
+          <h2 className="text-lg font-medium mb-3">Recent Workouts</h2>
           <div className="space-y-2">
             {recentSessions.map((session) => {
               const duration = session.completedAt

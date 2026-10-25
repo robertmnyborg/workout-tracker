@@ -9,11 +9,11 @@ import {
   type ReactNode,
 } from "react";
 
-type Theme = "light" | "dark";
+export type Theme = "light" | "dark";
 
 type ThemeContextValue = {
   theme: Theme;
-  toggleTheme: () => void;
+  setTheme: (t: Theme) => void;
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -42,16 +42,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     root.classList.toggle("dark", theme === "dark");
   }, [theme, hydrated]);
 
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => {
-      const next = prev === "light" ? "dark" : "light";
-      localStorage.setItem(THEME_KEY, next);
-      return next;
-    });
+  const choose = useCallback((t: Theme) => {
+    localStorage.setItem(THEME_KEY, t);
+    setTheme(t);
   }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme: choose }}>
       {children}
     </ThemeContext.Provider>
   );

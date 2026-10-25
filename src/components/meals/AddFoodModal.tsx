@@ -63,7 +63,7 @@ export function AddFoodModal({ initialName, onClose, onCreated }: Props) {
     <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
       <div className="bg-card border border-border rounded-xl shadow-lg w-full max-w-md max-h-[90vh] overflow-auto">
         <div className="p-4 border-b border-border flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-foreground">Add Custom Food</h3>
+          <h3 className="text-lg font-medium">Add Custom Food</h3>
           <button onClick={onClose} className="text-muted hover:text-foreground text-xl leading-none">
             ×
           </button>
@@ -115,7 +115,7 @@ export function AddFoodModal({ initialName, onClose, onCreated }: Props) {
                   onClick={() => toggleTag(t)}
                   className={`px-2 py-1 rounded-md text-xs transition-colors ${
                     tags.includes(t)
-                      ? "bg-primary text-white"
+                      ? "bg-primary text-on-primary"
                       : "bg-background text-muted hover:text-foreground border border-border"
                   }`}
                 >
@@ -136,7 +136,7 @@ export function AddFoodModal({ initialName, onClose, onCreated }: Props) {
           <button
             onClick={submit}
             disabled={submitting}
-            className="px-4 py-2 text-sm bg-primary text-white rounded-lg hover:opacity-90 disabled:opacity-50"
+            className="px-4 py-2 text-sm bg-primary text-on-primary rounded-lg hover:opacity-90 disabled:opacity-50"
           >
             {submitting ? "Saving…" : "Save Food"}
           </button>

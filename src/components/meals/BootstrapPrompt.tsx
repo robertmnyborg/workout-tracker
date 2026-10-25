@@ -39,7 +39,7 @@ export function BootstrapPrompt({ profileId, profileName, onDone }: Props) {
   return (
     <div className="bg-card border border-border rounded-xl p-6 space-y-4 max-w-md mx-auto">
       <div>
-        <h2 className="text-lg font-bold text-foreground">Set up meal tracking</h2>
+        <h2 className="text-lg font-medium">Set up meal tracking</h2>
         <p className="text-sm text-muted mt-1">
           Choose a starting preset for {profileName}. You can adjust targets later.
         </p>

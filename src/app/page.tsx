@@ -110,7 +110,7 @@ export default async function Today({
         <Suspense>
           <DashboardProfileSync />
         </Suspense>
-        <h1 className="text-2xl font-bold mb-4">Welcome</h1>
+        <h1 className="text-xl font-normal mb-4">Welcome</h1>
         <p className="text-muted text-sm">
           Set up your profiles to get started.
         </p>
@@ -126,7 +126,7 @@ export default async function Today({
         <Suspense>
           <DashboardProfileSync />
         </Suspense>
-        <h1 className="text-2xl font-bold mb-4">No Schedule Found</h1>
+        <h1 className="text-xl font-normal mb-4">No Schedule Found</h1>
         <p className="text-muted text-sm">
           Run the seed script to load the program.
         </p>
@@ -159,7 +159,7 @@ export default async function Today({
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold">{todayName}</h1>
+          <h1 className="text-xl font-normal">{todayName}</h1>
           <p className="text-muted text-sm mt-0.5">
             {dateLabel} · {schedule.name}
           </p>

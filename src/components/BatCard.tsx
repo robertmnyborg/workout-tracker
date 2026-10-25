@@ -47,7 +47,7 @@ export function BatCard({ profileId, status, todayYmd }: { profileId: string; st
           <button
             onClick={start}
             disabled={busy}
-            className="px-3 py-1.5 rounded-lg text-sm font-medium bg-primary text-white disabled:opacity-50"
+            className="px-3 py-1.5 rounded-lg text-sm font-medium bg-primary text-on-primary disabled:opacity-50"
           >
             {status.state === "finished" ? "Restart" : "Start"} (Day 0)
           </button>

@@ -28,7 +28,7 @@ export function WeekOverview({
               <div
                 className={`w-10 h-10 mx-auto rounded-full flex items-center justify-center text-sm font-medium ${
                   done
-                    ? "bg-accent text-white"
+                    ? "bg-accent text-on-accent"
                     : "bg-background border border-border text-muted"
                 }`}
               >

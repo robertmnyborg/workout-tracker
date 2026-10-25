@@ -51,7 +51,7 @@ export default function MealsProgressPage() {
           <Link href="/meals" className="text-xs text-muted hover:text-foreground">
             ← Meals
           </Link>
-          <h1 className="text-2xl font-bold text-foreground mt-1">Macro Progress</h1>
+          <h1 className="text-xl font-normal mt-1">Macro Progress</h1>
         </div>
         <div className="flex gap-1">
           {[7, 30, 90].map((d) => (
@@ -60,7 +60,7 @@ export default function MealsProgressPage() {
               onClick={() => setDays(d)}
               className={`px-3 py-1.5 text-xs rounded-lg transition-colors ${
                 days === d
-                  ? "bg-primary text-white"
+                  ? "bg-primary text-on-primary"
                   : "text-muted hover:text-foreground border border-border"
               }`}
             >
@@ -101,7 +101,7 @@ function ChartCard({
   return (
     <div className="bg-card border border-border rounded-xl p-4">
       <div className="flex items-baseline justify-between mb-2">
-        <h2 className="text-sm font-semibold text-foreground">{title}</h2>
+        <h2 className="text-sm font-medium">{title}</h2>
         <span className="text-xs text-muted">{unit}</span>
       </div>
       {children}

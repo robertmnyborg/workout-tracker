@@ -58,16 +58,6 @@ type SetRecommendation = {
   suggestedReps: number | null;
 };
 
-const sectionTypeColors: Record<string, string> = {
-  alignment: "text-teal-600 bg-teal-100/60 dark:text-teal-400 dark:bg-teal-900/30",
-  activation: "text-amber-600 bg-amber-100/60 dark:text-amber-400 dark:bg-amber-900/30",
-  main: "text-red-600 bg-red-100/60 dark:text-red-400 dark:bg-red-900/30",
-  accessory: "text-blue-600 bg-blue-100/60 dark:text-blue-400 dark:bg-blue-900/30",
-  cooldown: "text-green-600 bg-green-100/60 dark:text-green-400 dark:bg-green-900/30",
-  core: "text-purple-600 bg-purple-100/60 dark:text-purple-400 dark:bg-purple-900/30",
-  agility: "text-orange-600 bg-orange-100/60 dark:text-orange-400 dark:bg-orange-900/30",
-};
-
 export default function WorkoutPage({
   params,
 }: {
@@ -154,7 +144,7 @@ export default function WorkoutPage({
       {/* Header */}
       <div className="flex items-center justify-between sticky top-14 bg-background/95 backdrop-blur py-3 -mx-4 px-4 z-40 border-b border-border">
         <div>
-          <h1 className="text-lg font-bold">
+          <h1 className="text-lg font-medium">
             Day {activeSession.programDay.dayNumber}:{" "}
             {activeSession.programDay.name}
           </h1>
@@ -177,13 +167,11 @@ export default function WorkoutPage({
         <div key={section.id}>
           <div className="flex items-center gap-2 mb-3">
             <span
-              className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                sectionTypeColors[section.type] || "text-muted bg-background"
-              }`}
+              className="text-[11px] font-bold uppercase tracking-wider text-muted"
             >
-              {section.type.charAt(0).toUpperCase() + section.type.slice(1)}
+              {section.type}
             </span>
-            <h2 className="text-base font-semibold">{section.name}</h2>
+            <h2 className="text-base font-medium">{section.name}</h2>
           </div>
 
           {section.notes && (
@@ -215,7 +203,7 @@ export default function WorkoutPage({
           <button
             onClick={finishWorkout}
             disabled={finishing}
-            className="w-full py-3 rounded-xl bg-accent text-white font-medium text-sm hover:bg-accent-dark transition-colors disabled:opacity-50"
+            className="w-full py-3 rounded-xl bg-accent text-on-accent font-medium text-sm hover:bg-accent-dark transition-colors disabled:opacity-50"
           >
             {finishing
               ? "Saving..."

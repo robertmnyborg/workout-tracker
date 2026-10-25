@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import { ClientLayout } from "@/components/ClientLayout";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-geist-sans",
+const roboto = Roboto({
+  variable: "--font-roboto",
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
 });
 
@@ -13,12 +14,12 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: "#1a3a5c",
+  themeColor: [{ media: "(prefers-color-scheme: light)", color: "#ffffff" }, { media: "(prefers-color-scheme: dark)", color: "#1a1a2b" }],
 };
 
 export const metadata: Metadata = {
   title: "Workout Tracker",
-  description: "4-Day Vertical Jump Program Tracker",
+  description: "Training log and coach",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
@@ -33,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={roboto.variable} suppressHydrationWarning>
       <head>
         <link rel="apple-touch-icon" href="/icon-192.png" />
         <script
@@ -42,7 +43,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} antialiased`}>
+      <body className="antialiased">
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

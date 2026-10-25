@@ -37,17 +37,6 @@ type Program = {
   days: ProgramDay[];
 };
 
-const sectionTypeColors: Record<string, string> = {
-  activation: "bg-amber-50 border-amber-200 dark:bg-amber-900/20 dark:border-amber-800",
-  main: "bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800",
-  accessory: "bg-blue-50 border-blue-200 dark:bg-blue-900/20 dark:border-blue-800",
-  cooldown: "bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800",
-  core: "bg-purple-50 border-purple-200 dark:bg-purple-900/20 dark:border-purple-800",
-  agility: "bg-orange-50 border-orange-200 dark:bg-orange-900/20 dark:border-orange-800",
-  cardio: "bg-cyan-50 border-cyan-200 dark:bg-cyan-900/20 dark:border-cyan-800",
-  intervals: "bg-rose-50 border-rose-200 dark:bg-rose-900/20 dark:border-rose-800",
-};
-
 export default function ProgramPage() {
   const [programs, setPrograms] = useState<Program[]>([]);
   const [expandedDay, setExpandedDay] = useState<string | null>(null);
@@ -118,7 +107,7 @@ export default function ProgramPage() {
     <div className="space-y-8">
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Programs</h1>
+          <h1 className="text-xl font-normal">Programs</h1>
           <p className="text-sm text-muted mt-1">
             {programs.length} programs · {programs.reduce((acc, p) => acc + p.days.length, 0)} workout days
           </p>
@@ -134,7 +123,7 @@ export default function ProgramPage() {
       {programs.map((program) => (
         <div key={program.id} className="space-y-3">
           <div>
-            <h2 className="text-lg font-semibold">{program.name}</h2>
+            <h2 className="text-lg font-medium">{program.name}</h2>
             <p className="text-sm text-muted">{program.description}</p>
           </div>
 
@@ -150,7 +139,7 @@ export default function ProgramPage() {
                   <div className="text-xs font-medium text-muted uppercase tracking-wide">
                     Day {day.dayNumber}
                   </div>
-                  <h3 className="text-lg font-semibold">{day.name}</h3>
+                  <h3 className="text-lg font-medium">{day.name}</h3>
                   <p className="text-xs text-muted">
                     {day.focus} · {day.totalTime}
                   </p>
@@ -165,9 +154,7 @@ export default function ProgramPage() {
                   {day.sections.map((section) => (
                     <div
                       key={section.id}
-                      className={`border rounded-lg p-3 ${
-                        sectionTypeColors[section.type] || "bg-background border-border"
-                      }`}
+                      className="border border-border rounded-lg p-3 bg-background"
                     >
                       <div className="flex items-center justify-between mb-2">
                         <h4 className="text-sm font-semibold">{section.name}</h4>
@@ -242,7 +229,7 @@ export default function ProgramPage() {
                                 </button>
                                 <button
                                   onClick={() => saveEdit(exercise.id)}
-                                  className="px-3 py-1 text-xs bg-primary text-white rounded-md hover:bg-primary-dark"
+                                  className="px-3 py-1 text-xs bg-primary text-on-primary rounded-md hover:bg-primary-dark"
                                 >
                                   Save
                                 </button>

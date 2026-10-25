@@ -28,7 +28,7 @@ export function WeekSelector({
           onClick={() => setWeek(week)}
           className={`flex-1 py-2 text-sm font-medium rounded-lg transition-colors ${
             week === currentWeek
-              ? "bg-primary text-white"
+              ? "bg-primary text-on-primary"
               : "text-muted hover:text-foreground"
           }`}
         >

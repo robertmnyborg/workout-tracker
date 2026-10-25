@@ -69,7 +69,7 @@ export default function ProgressPage() {
   if (exercises.length === 0) {
     return (
       <div className="space-y-4">
-        <h1 className="text-2xl font-bold">Progress</h1>
+        <h1 className="text-xl font-normal">Progress</h1>
         <div className="bg-card border border-border rounded-xl p-8 text-center">
           <p className="text-muted text-sm">
             No workout data yet. Complete a workout to see your progress!
@@ -81,7 +81,7 @@ export default function ProgressPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Progress</h1>
+      <h1 className="text-xl font-normal">Progress</h1>
 
       {/* Exercise Selector */}
       <select
@@ -122,7 +122,7 @@ export default function ProgressPage() {
 
       {/* Charts */}
       <div className="bg-card border border-border rounded-xl p-4">
-        <h2 className="text-sm font-semibold mb-4">Weight Over Time</h2>
+        <h2 className="text-sm font-medium mb-4">Weight Over Time</h2>
         <ProgressChart
           data={progress}
           dataKey="maxWeight"
@@ -132,7 +132,7 @@ export default function ProgressPage() {
       </div>
 
       <div className="bg-card border border-border rounded-xl p-4">
-        <h2 className="text-sm font-semibold mb-4">Volume Over Time</h2>
+        <h2 className="text-sm font-medium mb-4">Volume Over Time</h2>
         <ProgressChart
           data={progress}
           dataKey="totalVolume"

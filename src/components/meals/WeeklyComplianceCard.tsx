@@ -22,7 +22,7 @@ export function WeeklyComplianceCard({ rows, activePlanName }: Props) {
   return (
     <div className="bg-card border border-border rounded-xl p-4">
       <div className="flex items-baseline justify-between mb-3">
-        <h3 className="text-sm font-semibold text-foreground">Weekly Non-Negotiables</h3>
+        <h3 className="text-sm font-medium">Weekly Non-Negotiables</h3>
         <span className="text-xs text-muted">last 7 days</span>
       </div>
       <ul className="space-y-2">
