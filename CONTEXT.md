@@ -299,3 +299,6 @@ posts the same route with no message. Claude never picks exercises or loads; its
   9-12 phase 3 (hard plyos + approach skill up), week 13+ "retest, start a new block". Phase shapes jump/power days only; only
   plain rep counts get rewritten. Opening message reminds a test when 7+ days since the last one (block active).
   Chart: dataviz-validated blue/orange (light #2a78d6/#eb6834, dark #3987e5/#d95926), table twin.
+- 2026-10-25: /setup is now a 5-question conversation, one question at a time, with a "Question N of 5" counter and a
+  5-segment bar. Answered questions stay above as Coach/You lines with Change links. Jump and lifting history share one
+  question; session length is no longer asked (stays 30; the coach asks time daily). The vertical question says "Skip" when blank.

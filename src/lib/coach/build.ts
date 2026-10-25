@@ -122,7 +122,7 @@ export async function coachOpening(profileId: string): Promise<Opening> {
     ...(phase && testDue(sinceTest)
       ? [`Jump test due${sinceTest === null ? "" : ` (last one ${sinceTest} days ago)`}: after your usual warm-up, 3 standing and 3 approach jumps, chalk on a wall. Log the best on Progress.`]
       : []),
-    ...(profile.athlete ? [] : ["I don't know your jump history yet, so jump volume uses beginner limits. Answer the 7 setup questions to change that."]),
+    ...(profile.athlete ? [] : ["I don't know your jump history yet, so jump volume uses beginner limits. Answer the 5 setup questions to change that."]),
     "How are you feeling, and how much time do you have?",
   ];
   const athlete = profile.athlete as Athlete | null;
