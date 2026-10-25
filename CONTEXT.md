@@ -263,4 +263,4 @@ program) → existing `/workout/[dayId]` logger. Claude never picks exercises or
 - [x] Corpus, import, BAT enrollment on Today, engine + tests, coach page, verified at 390px in Chrome.
 - [x] Coach on subscription, live on Fly (2026-10-25).
 - [ ] More YouTube sources (user to send links).
-- [ ] Duplicate Robert/Casey profiles exist (cmq2… from June and cmvnf… created 2026-10-24 on a new device).
+- [x] Duplicate Robert/Casey copies removed 2026-10-25 (all empty); POST /api/profiles now reuses an existing name, so a new device joins the same profiles.

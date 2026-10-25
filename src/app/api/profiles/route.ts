@@ -15,6 +15,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Name is required" }, { status: 400 });
   }
 
+  // A new phone or browser runs first-time setup with the same names; reuse those profiles
+  // instead of creating a second "Robert" whose history is split from the first.
+  const existing = await prisma.profile.findFirst({
+    where: { name: { equals: name.trim(), mode: "insensitive" } },
+    orderBy: { createdAt: "asc" },
+  });
+  if (existing) return NextResponse.json(existing);
+
   const profile = await prisma.profile.create({
     data: { name: name.trim() },
   });
