@@ -69,6 +69,7 @@ model Profile {
   name            String
   goal            String? // standing goal in the user's words: "dunk by summer"
   goalFocus       String[]            @default([])
+  athlete         Json? // onboarding answers, see src/lib/engine/athlete.ts
   createdAt       DateTime            @default(now())
   workoutSessions WorkoutSession[]
   nutritionTarget NutritionTarget?

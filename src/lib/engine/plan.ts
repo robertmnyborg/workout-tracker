@@ -2,6 +2,7 @@
 // The AI layer only produces a CheckIn; it never picks exercises or loads.
 import type { BodyArea, CorpusExercise, Dose, Goal } from "../../../corpus/schema";
 import { hardJump, LOADING, region, type OutsideActivity, type Recovery, type Rule } from "./recovery";
+import { contacts, type AthleteLimits } from "./athlete";
 
 export interface CheckIn {
   energy: number; // 1-5
@@ -95,13 +96,15 @@ function scaleDose(d: Dose, r: number): Dose {
 
 function fill(
   block: PlanBlock["name"], ranked: LibItem[], budget: number, r: number,
-  used: Set<string>, why: (e: LibItem) => string, limit = 6
+  used: Set<string>, why: (e: LibItem) => string, limit = 6,
+  fit: (e: LibItem, d: Dose) => Dose | null = (_, d) => d
 ): PlanBlock {
   const items: PlanItem[] = [];
   let spent = 0;
   for (const e of ranked) {
     if (used.has(e.id) || items.length >= limit) continue;
-    const dose = scaleDose(e.defaultDose, r);
+    const dose = fit(e, scaleDose(e.defaultDose, r));
+    if (!dose) continue;
     const m = estimateMinutes(e, dose);
     if (spent + m > budget) continue;
     items.push({ exerciseId: e.id, name: e.name, dose, minutes: m, why: why(e) });
@@ -134,12 +137,43 @@ const MAIN_CATEGORIES: Partial<Record<Goal, string[]>> = {
  * Build a session. `alignment` = today's BAT day items when enrolled; they go first, untouched,
  * because the protocol's day order is the point of the 28 days.
  */
-export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] = [], recovery?: Recovery): Plan {
+// High-intensity contacts: hard jumps that land hard (box jumps land soft and count as moderate).
+const highContact = (e: LibItem) => hardJump(e) && e.impact === "high";
+const JUMPING = new Set(["plyometric", "skill"]);
+
+/** Onboarding limits: locked drills and the jerk budget remove items; the contact cap trims sets. */
+export function athleteAllows(e: LibItem, a?: AthleteLimits): boolean {
+  if (!a) return true;
+  if (!a.depthUnlocked && e.id.includes("depth")) return false;
+  if (a.highCap === 0 && highContact(e)) return false;
+  if (a.noFastLifting && e.category === "power" && e.intensity >= 4 && e.impact !== "low") return false;
+  return true;
+}
+
+function contactBudget(a?: AthleteLimits) {
+  let total = 0, high = 0;
+  return (e: LibItem, d: Dose): Dose | null => {
+    if (!a || !JUMPING.has(e.category)) return d;
+    const per = contacts({ ...d, sets: 1 });
+    if (!per) return d;
+    const room = Math.min(a.contactCap - total, highContact(e) ? a.highCap - high : Infinity);
+    const sets = Math.min(d.sets ?? 1, Math.floor(room / per));
+    if (sets < 1) return null;
+    total += sets * per;
+    if (highContact(e)) high += sets * per;
+    return { ...d, sets };
+  };
+}
+
+export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] = [], recovery?: Recovery, athlete?: AthleteLimits): Plan {
   const r = readiness(c);
   const maxIntensity = MAX_INTENSITY[r];
   const rec = recovery && !c.override ? recovery : undefined;
   const allowHighImpact = r >= 4 && !c.painAreas.some((p) => IMPACT_SENSITIVE.includes(p)) && !rec?.noExplosive;
-  const pool = library.filter((e) => safe(e, c, maxIntensity, allowHighImpact));
+  const pool = library.filter((e) => safe(e, c, maxIntensity, allowHighImpact) && athleteAllows(e, athlete));
+  const jumpFocus = c.focus.includes("jump") || c.focus.includes("power");
+  const primer = (e: LibItem) => tendonIso(e) && (e.bodyAreas.some((b) => c.painAreas.includes(b)) ||
+    (jumpFocus && e.bodyAreas.some((b) => athlete?.primerAreas.includes(b))));
   const used = new Set<string>(alignment.map((i) => i.exerciseId));
   const notes: string[] = [];
 
@@ -169,8 +203,8 @@ export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] 
   const prepBudget = recoveryDay ? left() : Math.min(left(), Math.round(c.minutes * 0.2));
   const prep = rank(
     pool.filter((e) => e.category === "mobility" || e.category === "stability" ||
-      (tendonIso(e) && e.bodyAreas.some((b) => c.painAreas.includes(b)))),
-    (e) => (tendonIso(e) ? 3 : 0) + e.goals.filter((g) => c.focus.includes(g)).length + e.bodyAreas.filter((b) => focusAreas.has(b)).length
+      primer(e)),
+    (e) => (primer(e) ? 3 : 0) + e.goals.filter((g) => c.focus.includes(g)).length + e.bodyAreas.filter((b) => focusAreas.has(b)).length
   );
   blocks.push(fill("Prep", prep, prepBudget, r, used,
     (e) => e.goals.some((g) => c.focus.includes(g)) ? `Supports ${c.focus.join("/")}` : "Stability prep", recoveryDay ? 8 : 4));
@@ -178,19 +212,21 @@ export function buildPlan(c: CheckIn, library: LibItem[], alignment: PlanItem[] 
   if (!recoveryDay) {
     const ranked = rank(
       pool.filter((e) => mainCats.has(e.category) && !rested(e)),
-      (e) => e.goals.filter((g) => c.focus.includes(g)).length * 2 + e.bodyAreas.filter((b) => focusAreas.has(b)).length
+      (e) => e.goals.filter((g) => c.focus.includes(g)).length * 2 + e.bodyAreas.filter((b) => focusAreas.has(b)).length +
+        (athlete?.mechanicsFirst && jumpFocus && e.category === "skill" ? 3 : 0)
     );
     // Explosive work first while fresh (capped per category), then strength.
     const taken: Record<string, number> = {};
     const explosive = ranked.filter((e) => e.category in CATEGORY_CAP && (taken[e.category] = (taken[e.category] ?? 0) + 1) <= CATEGORY_CAP[e.category]);
     const main = [...explosive, ...ranked.filter((e) => !(e.category in CATEGORY_CAP))];
     blocks.push(fill("Main", main, Math.max(0, left()), r, used,
-      (e) => `${e.category} for ${c.focus.join("/")}`));
+      (e) => `${e.category} for ${c.focus.join("/")}`, 6, contactBudget(athlete)));
     if (!main.length) notes.push("Recovery rules leave nothing to load for this focus today, so it is alignment and prep only.");
   } else if (mainCats.size) {
     notes.push("Main block skipped: recovery day. Come back to it when readiness is 3+.");
   }
 
   const total = blocks.flatMap((b) => b.items).reduce((s, i) => s + i.minutes, 0);
-  return { readiness: r, maxIntensity, allowHighImpact, minutes: total, blocks: blocks.filter((b) => b.items.length), notes, rules: recovery?.rules ?? [] };
+  return { readiness: r, maxIntensity, allowHighImpact, minutes: total, blocks: blocks.filter((b) => b.items.length), notes,
+    rules: [...(recovery?.rules ?? []), ...(jumpFocus ? athlete?.rules ?? [] : [])] };
 }

@@ -270,7 +270,11 @@ posts the same route with no message. Claude never picks exercises or loads; its
 - Jump corpus (2026-10-25): Antigravity picked The Movement System (Dr. Matt Casturo, DPT) and PJF Performance (Paul
   Fabritz, NBA) from 14 channels (`corpus/sources/youtube/jump/README.md`); 12 transcripts → `principles/yt-jump.md`
   (20 engine rules) + 20 drills in `library/yt-jump.json`. Not yet in the engine: weekly contact caps by training age,
-  jerk budget across a week, plyo level gate, 12-week phase clock, weekly jump test (need jump-height and plyo-age inputs). "Train through" (override) keeps the plan and shows the rules as warnings.
+  12-week phase clock, weekly jump test log. Built 2026-10-25 from the /setup questionnaire (Profile.athlete JSON, `src/lib/engine/athlete.ts`):
+  per-session contact caps by plyo age (beginner 100/0 high, intermediate 120/20, advanced 150/30; sets trimmed to fit), depth jumps
+  locked until 6+ mo plyo and 6+ mo lifting (also blocks progression swaps into them), jerk budget (jumping sport 3x/wk, or 2x/wk with
+  knee/ankle history, drops fast power lifts except low-landing ones), approach-standing gap < 4 in ranks skill drills first, knee/ankle
+  history adds the tendon isometric primer on jump days. No answers = beginner limits; the opening message says so. "Train through" (override) keeps the plan and shows the rules as warnings.
 - DB (migration 20261025120000, additive): `Profile.goal`, `Profile.goalFocus`; `CheckIn.outsideActivity`, `CheckIn.override`.
 - Runs on Robert's Claude subscription via the Claude Agent SDK, the same pattern as Peek's mimic: Fly secret
   `CLAUDE_CODE_OAUTH_TOKEN` from `claude setup-token` (valid 1 year, created 2026-10-25; rotate by re-running and
@@ -283,3 +287,9 @@ posts the same route with no message. Claude never picks exercises or loads; its
 - [x] Coach on subscription, live on Fly (2026-10-25).
 - [ ] More YouTube sources (user to send links).
 - [x] Duplicate Robert/Casey copies removed 2026-10-25 (all empty); POST /api/profiles now reuses an existing name, so a new device joins the same profiles.
+
+- 2026-10-25: Restyled to the Peek dashboard tokens (marketing-tracker look): Roboto, #FAFAFA page, white hairline cards, radius 4
+  (Tailwind radius tokens all 4px), navy primary with `text-on-primary`, teal only for the active tab/focus. Light/Dark segmented
+  switch in the header (`theme-context` setTheme). Emoji nav and rainbow section pills removed. Coach is a transcript with a plan table.
+  Gotcha: the app re-creates any profile listed in a browser's localStorage that is missing from the DB (profile-context reconcile),
+  so clear the test browser's storage before deleting a test profile.

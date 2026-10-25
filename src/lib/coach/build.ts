@@ -2,10 +2,14 @@
 import { prisma } from "../prisma";
 import type { CorpusExercise } from "../../../corpus/schema";
 import type { Goal } from "../../../corpus/schema";
-import { buildPlan, estimateMinutes, readiness, type CheckIn, type LibItem, type Plan, type PlanItem } from "../engine/plan";
+import { athleteAllows, buildPlan, estimateMinutes, readiness, type CheckIn, type LibItem, type Plan, type PlanItem } from "../engine/plan";
 import { nextDose, type PastSession } from "../engine/progression";
 import { assessRecovery, EXPLOSIVE, LOADING, outsideEvents, region, suggestFocus, type LoadEvent, type OutsideActivity, type Recovery } from "../engine/recovery";
 import { daysAgo, programDayNumber } from "../program-day";
+import { athleteLimits, type Athlete } from "../engine/athlete";
+
+const UNKNOWN_ATHLETE: Athlete = { plyoAge: "none", liftAge: "none", standingVert: null, approachVert: null,
+  sport: null, sportPerWeek: 0, sportJumping: false, tendonHistory: [], sessionMinutes: 30 };
 
 export type CoachItem = PlanItem & { weight: number | null; progression: string; swapTo?: string };
 export type CoachPlan = Omit<Plan, "blocks"> & { blocks: { name: string; items: CoachItem[] }[]; batDay: number | null };
@@ -91,7 +95,7 @@ function describe(events: LoadEvent[]): string {
   return [...byDay].map(([d, tags]) => `${DAY(d)}: ${[...tags].join(", ")}.`).join(" ");
 }
 
-export interface Opening { message: string; suggestedFocus: Goal[]; goal: string | null; recovery: Recovery }
+export interface Opening { message: string; suggestedFocus: Goal[]; goal: string | null; recovery: Recovery; minutes: number | null; onboarded: boolean }
 
 /** The coach's first message: what you did, your goal, what it suggests, then the question. */
 export async function coachOpening(profileId: string): Promise<Opening> {
@@ -103,17 +107,21 @@ export async function coachOpening(profileId: string): Promise<Opening> {
     describe(events) || "Nothing logged in the last week.",
     profile.goal ? `Your goal: ${profile.goal}.` : "No standing goal yet. Tell me one, like \"my goal is to dunk\".",
     `I'd suggest ${suggestedFocus.join(" + ")} today${recovery.rules.length ? `, because:\n${recovery.rules.map((r) => `• ${r.text}`).join("\n")}` : "."}`,
+    ...(profile.athlete ? [] : ["I don't know your jump history yet, so jump volume uses beginner limits. Answer the 7 setup questions to change that."]),
     "How are you feeling, and how much time do you have?",
   ];
-  return { message: lines.join("\n\n"), suggestedFocus, goal: profile.goal, recovery };
+  const athlete = profile.athlete as Athlete | null;
+  return { message: lines.join("\n\n"), suggestedFocus, goal: profile.goal, recovery, minutes: athlete?.sessionMinutes ?? null, onboarded: !!athlete };
 }
 
 export async function buildCoachPlan(profileId: string, checkIn: CheckIn, skipCheckIn?: string): Promise<CoachPlan> {
-  const library = await loadLibrary();
+  const [library, profile] = await Promise.all([loadLibrary(), prisma.profile.findUniqueOrThrow({ where: { id: profileId } })]);
+  // No answers yet: beginner limits, the safe default for an unknown jump history.
+  const limits = athleteLimits((profile.athlete as Athlete | null) ?? UNKNOWN_ATHLETE);
   const bat = await batItems(profileId, library);
   const events = await recentEvents(profileId, library, skipCheckIn);
   const recovery = assessRecovery([...events, ...outsideEvents(checkIn.outsideActivity ?? [], 0)]);
-  const plan = buildPlan(checkIn, [...library.values()] as LibItem[], bat.items, recovery);
+  const plan = buildPlan(checkIn, [...library.values()] as LibItem[], bat.items, recovery, limits);
   const r = readiness(checkIn);
 
   const blocks = await Promise.all(plan.blocks.map(async (b) => ({
@@ -124,7 +132,11 @@ export async function buildCoachPlan(profileId: string, checkIn: CheckIn, skipCh
       if (b.name === "Alignment" && bat.items.length) return { ...it, weight: null, progression: "Protocol dose" };
       const base = { sets: it.dose.sets ?? 1, reps: it.dose.reps ?? "1", holdSeconds: it.dose.holdSeconds };
       const next = nextDose(lib.progression.method, base, await history(profileId, lib.id), r, lib.progression);
-      const swap = next.swapTo ? library.get(next.swapTo) : undefined;
+      const target = next.swapTo ? library.get(next.swapTo) : undefined;
+      // A harder variation that the onboarding limits lock (depth jumps for a beginner) waits.
+      if (target && !athleteAllows(target as LibItem, limits))
+        return { ...it, weight: null, progression: "Ready for the harder variation once it unlocks; repeat this dose." };
+      const swap = target;
       return {
         ...it,
         ...(swap ? { exerciseId: swap.id, name: swap.name } : {}),

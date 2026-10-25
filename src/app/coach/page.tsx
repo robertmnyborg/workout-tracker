@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useProfile } from "@/lib/profile-context";
 import { BODY_AREAS, GOALS } from "../../../corpus/schema";
@@ -113,14 +114,16 @@ export default function Coach() {
   const [busy, setBusy] = useState<"chat" | "start" | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [adjust, setAdjust] = useState(false);
+  const [onboarded, setOnboarded] = useState(true);
   const end = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!profileId) return;
     setMsgs([]); setCheckInId(null); setError(null);
-    fetch(`/api/coach/opening?profileId=${profileId}`).then((r) => r.json()).then((o: { message: string; suggestedFocus: Goal[]; goal: string | null }) => {
+    fetch(`/api/coach/opening?profileId=${profileId}`).then((r) => r.json()).then((o: { message: string; suggestedFocus: Goal[]; goal: string | null; minutes: number | null; onboarded: boolean }) => {
       setGoal(o.goal);
-      setCheckIn({ ...DEFAULT, focus: o.suggestedFocus });
+      setOnboarded(o.onboarded);
+      setCheckIn({ ...DEFAULT, focus: o.suggestedFocus, minutes: o.minutes ?? DEFAULT.minutes });
       setMsgs([{ role: "coach", text: o.message }]);
     });
   }, [profileId]);
@@ -163,7 +166,9 @@ export default function Coach() {
     <div className="max-w-xl flex flex-col gap-3">
       <div>
         <h1 className="text-xl font-normal">Coach</h1>
-        <p className="text-muted text-xs mt-0.5">{goal ? `Goal: ${goal}` : "No goal set"}</p>
+        <p className="text-muted text-xs mt-0.5">
+          {goal ? `Goal: ${goal}` : "No goal set"} · <Link href="/setup" className="underline">{onboarded ? "Edit setup answers" : "Answer setup questions"}</Link>
+        </p>
       </div>
 
       <div className="divide-y divide-border">

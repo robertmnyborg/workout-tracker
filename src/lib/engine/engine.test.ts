@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { buildPlan, readiness, type CheckIn, type LibItem } from "./plan";
 import { nextDose, type PastSession } from "./progression";
+import { athleteLimits, contacts, type Athlete } from "./athlete";
 
 const ex = (id: string, o: Partial<LibItem>): LibItem => ({
   id, name: id, category: "strength", bodyAreas: ["full-body"], goals: ["strength"],
@@ -176,4 +177,54 @@ test("recovery: old or light work does not block", () => {
   const rec = assessRecovery([ev(2, {}), ev(1, { category: "mobility", intensity: 2 })]);
   assert.deepEqual(rec, { noExplosive: false, noConditioning: false, restRegions: [], rules: [] });
   assert.deepEqual(suggestFocus(["jump", "power"], rec), ["jump", "power"]);
+});
+
+const athlete = (o: Partial<Athlete>): Athlete => ({
+  plyoAge: "1y+", liftAge: "2y+", standingVert: null, approachVert: null, sport: null, sportPerWeek: 0,
+  sportJumping: false, tendonHistory: [], sessionMinutes: 45, ...o,
+});
+const libJump = [
+  ...lib,
+  ex("pogo", { category: "plyometric", bodyAreas: ["ankle-foot"], goals: ["jump"], intensity: 3, impact: "low", defaultDose: { sets: 4, reps: "20" } }),
+  ex("tuck-jump", { category: "plyometric", bodyAreas: ["knee"], goals: ["jump"], intensity: 4, impact: "high", defaultDose: { sets: 4, reps: "10" } }),
+  ex("kb-swing", { category: "power", bodyAreas: ["pelvis-hip"], goals: ["power", "jump"], intensity: 4, defaultDose: { sets: 4, reps: "10" } }),
+  ex("approach-drill", { category: "skill", bodyAreas: ["ankle-foot"], goals: ["jump"], intensity: 2, impact: "low", defaultDose: { sets: 3, reps: "3" } }),
+  ex("spanish-squat", { bodyAreas: ["knee"], goals: ["pain-relief", "strength"], intensity: 2, defaultDose: { sets: 3, holdSeconds: 45 } }),
+];
+const jumpIds = (a: Athlete) => ids(buildPlan(fresh, libJump, [], undefined, athleteLimits(a)));
+
+test("contacts: sets x top reps, doubled each side, timed work is 0", () => {
+  assert.equal(contacts({ sets: 3, reps: "3-5" }), 15);
+  assert.equal(contacts({ sets: 4, reps: "6 each side" }), 48);
+  assert.equal(contacts({ sets: 1, reps: "30-60s" }), 0);
+});
+
+test("athlete: beginner gets no hard landing jumps and no depth jumps", () => {
+  const got = jumpIds(athlete({ plyoAge: "lt2m" }));
+  assert.ok(!got.includes("depth-jump") && !got.includes("tuck-jump"));
+  assert.ok(got.includes("pogo"));
+});
+
+test("athlete: high-intensity contacts are capped by trimming sets", () => {
+  const p = buildPlan(fresh, libJump, [], undefined, athleteLimits(athlete({ plyoAge: "2to6m", liftAge: "2y+" })));
+  const high = p.blocks.flatMap((b) => b.items).filter((i) => ["tuck-jump", "depth-jump"].includes(i.exerciseId));
+  assert.ok(high.reduce((s, i) => s + contacts(i.dose), 0) <= 20);
+});
+
+test("athlete: depth jumps unlock with 6+ months of plyos and lifting", () => {
+  assert.ok(!jumpIds(athlete({ plyoAge: "6to12m", liftAge: "lt6m" })).includes("depth-jump"));
+  assert.ok(jumpIds(athlete({ plyoAge: "6to12m", liftAge: "6mto2y" })).includes("depth-jump"));
+});
+
+test("athlete: heavy court volume drops fast lifting", () => {
+  assert.ok(jumpIds(athlete({})).includes("kb-swing"));
+  assert.ok(!jumpIds(athlete({ sport: "basketball", sportPerWeek: 3, sportJumping: true })).includes("kb-swing"));
+});
+
+test("athlete: small approach gap moves approach drills up; knee history adds a primer", () => {
+  const a = athleteLimits(athlete({ standingVert: 24, approachVert: 26, tendonHistory: ["knee"] }));
+  assert.ok(a.mechanicsFirst);
+  const p = buildPlan(fresh, libJump, [], undefined, a);
+  assert.ok(ids(p).includes("spanish-squat"));
+  assert.equal(p.blocks.find((b) => b.name === "Main")!.items[0].exerciseId, "approach-drill");
 });
